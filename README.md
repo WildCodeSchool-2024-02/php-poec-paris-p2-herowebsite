@@ -1,3 +1,3 @@
 # STORY TELLER
 
-Virtual Novel Engine Project
+Visual Novel Engine Project
