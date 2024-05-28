@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `choice` (
 -- Création de la table 'dialogue_line'
 CREATE TABLE IF NOT EXISTS `dialogue_line` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
-  `body` TEXT NOT NULL,
+  `body` VARCHAR(80) NOT NULL,
   `character_id` INT NOT NULL,
   `scene_id` INT NOT NULL
 );
