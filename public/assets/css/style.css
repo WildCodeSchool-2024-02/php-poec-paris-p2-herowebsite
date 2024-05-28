@@ -1,3 +1,11 @@
 body {
-    color: #f76c6c;
+    margin: 0;
+    --color-textbox: rgba (0,0,0,0.65);
+    --color-text:white;
+    --color-narration: #FFB55E;
+    --color-continue: rgba(217, 217, 217, 0.25);
+    --color-button-hover: rgba(217, 217, 217, 0.6);
+    --font-title: "Julee", cursive;
+    --font-text: "Lancelot", serif;
+    --font-continue: "Kaisei Decol", serif;
 }
