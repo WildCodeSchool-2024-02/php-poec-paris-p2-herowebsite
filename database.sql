@@ -6,7 +6,7 @@ CREATE TABLE `story` (
 CREATE TABLE `scene` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `name` VARCHAR(255) NOT NULL,
-  `background` TEXT
+  `background` TEXT,
   `story_id` INT NOT NULL
 );
 
