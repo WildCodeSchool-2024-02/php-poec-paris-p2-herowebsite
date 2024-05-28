@@ -1,51 +1,53 @@
 CREATE TABLE `story` (
-  `id` integer PRIMARY KEY,
-  `name` varchar(255)
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `name` VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE `scene` (
-  `id` integer PRIMARY KEY,
-  `name` varchar(255),
-  `story_id` integer,
-  `background` image
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `name` VARCHAR(255) NOT NULL,
+  `background` TEXT
+  `story_id` INT NOT NULL
 );
 
 CREATE TABLE `choice` (
-  `id` integer PRIMARY KEY,
-  `body` text,
-  `scene_id` integer,
-  `next_scene_id` integer
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `body` VARCHAR(30),
+  `scene_id` INT NOT NULL,
+  `next_scene_id` INT
 );
 
-CREATE TABLE `dialogue` (
-  `id` integer PRIMARY KEY,
-  `speaker` varchar(255),
-  `body` text,
-  `scene_id` integer,
-  `sprite` image
+CREATE TABLE `dialogue_line` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `body` TEXT,
+  `character_id` VARCHAR(30) NOT NULL,
+  `scene_id` INT NOT NULL
+);
+
+CREATE TABLE `character` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `name` VARCHAR(30) NOT NULL,
+  `sprite` TEXT
 );
 
 CREATE TABLE `user` (
-  `id` integer PRIMARY KEY,
-  `name` varchar(255),
-  `password` varchar(255),
-  `fontsize` integer,
-  `textspeed` integer
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `name` VARCHAR(30) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `fontsize` INT,
+  `textspeed` INT
 );
 
 CREATE TABLE `history` (
-  `id` integer PRIMARY KEY,
-  `updated_at` datetime,
-  `user_id` integer,
-  `choice_id` integer
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `updated_at` DATETIME NOT NULL,
+  `user_id` INT NOT NULL,
+  `choice_id` INT NOT NULL
 );
 
 ALTER TABLE `scene` ADD FOREIGN KEY (`story_id`) REFERENCES `story` (`id`);
-
-ALTER TABLE `scene` ADD FOREIGN KEY (`id`) REFERENCES `choice` (`scene_id`);
-
-ALTER TABLE `user` ADD FOREIGN KEY (`id`) REFERENCES `history` (`user_id`);
-
-ALTER TABLE `choice` ADD FOREIGN KEY (`id`) REFERENCES `history` (`choice_id`);
-
-ALTER TABLE `scene` ADD FOREIGN KEY (`id`) REFERENCES `dialogue` (`scene_id`);
+ALTER TABLE `choice` ADD FOREIGN KEY (`scene_id`) REFERENCES `scene` (`id`);
+ALTER TABLE `dialogue_line` ADD FOREIGN KEY (`scene_id`) REFERENCES `scene` (`id`);
+ALTER TABLE `dialogue_line` ADD FOREIGN KEY (`character_id`) REFERENCES `character` (`id`);
+ALTER TABLE `history` ADD FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+ALTER TABLE `history` ADD FOREIGN KEY (`choice_id`) REFERENCES `choice` (`id`);
