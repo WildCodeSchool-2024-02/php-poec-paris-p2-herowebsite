@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Création de la table 'history'
 CREATE TABLE IF NOT EXISTS `history` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
-  `updated_at` DATETIME NOT NULL,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP ,
   `user_id` INT NOT NULL,
   `choice_id` INT
 );
