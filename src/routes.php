@@ -9,5 +9,7 @@
 return [
     '' => ['HomeController', 'index',],
     'StoryCreation/add' => ['StoryCreationController', 'add',],
-    'StoryCreation/show' => ['StoryCreationController', 'show', ['id']]
+    'StoryCreation/show' => ['StoryCreationController', 'show', ['id']],
+    'StoryCreation/SceneCreation/add' => ['SceneCreationController', 'add', ['story_id']],
+    'StoryCreation/SceneCreation/show' => ['SceneCreationController', 'show', ['id']]
 ];
