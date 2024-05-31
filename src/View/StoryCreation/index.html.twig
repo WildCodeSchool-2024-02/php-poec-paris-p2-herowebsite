@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+<h1>Histoires en cours</h1>
+<a href="storycreation/add">Ajouter une histoire</a>
+<ul>
+    {% for story in stories %}
+        <li>{{ story.name }} : <a href="storycreation/show?id={{ story.id }}">Editer l'histoire</a> </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
