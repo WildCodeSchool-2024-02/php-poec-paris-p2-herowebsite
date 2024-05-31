@@ -1,11 +1,51 @@
-body {
-    margin: 0;
-    --color-textbox: rgba (0,0,0,0.65);
-    --color-text:white;
-    --color-narration: #FFB55E;
+/* variables  */
+:root {
+    --color-textbox: rgba (0, 0, 0, 0.65);
+    --color-text: white;
+    --color-narration: #ffb55e;
     --color-continue: rgba(217, 217, 217, 0.25);
     --color-button-hover: rgba(217, 217, 217, 0.6);
     --font-title: "Julee", cursive;
     --font-text: "Lancelot", serif;
     --font-continue: "Kaisei Decol", serif;
+}
+
+/* Reset */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 62.5%;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.test {
+    background-color: red;
+    width: 100px;
+    height: 100px;
+}
+
+.container {
+    background-color: violet;
+    width: 100rem;
+    height: 100rem;
+    border: 1px solid blue;
+}
+
+.dialogues {
+    display: flex;
+    justify-content: start;
+    align-items: end;
+    margin: 0 0 3rem 3rem;
+    background-color: var(--color-textbox);
+    width: 90%;
+    height: 99%;
+    border: 1px solid red;
+    background-color: var(--color-textbox);
 }

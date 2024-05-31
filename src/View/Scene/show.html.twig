@@ -1,0 +1,66 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+<body style="background-image: url('/images/back grounds/{{scene.background}}'); background-size: cover;">
+
+    <section id="container">
+        <article class="dialogs">
+        {% for dialogue in dialogues %}
+            <aaa class="dialogue-box">
+      <img src="{{ dialogue.sprite }}" alt="{{ dialogue.character_name }}">
+      <h2 class="character-name">
+        {{ dialogue.character_name }}:
+      </h2>
+      <p class="dialogue-body">
+        {{ dialogue.body }}
+      </p>
+    </aaa>
+    {% endfor %}
+    <button id="continue-button">Continuer</button>
+
+  </article>
+
+  <div class="choices" style="display: none;">
+    {% for choice in choices %}
+    <form action="/story/show/?id={{choice.next_scene_id}}" method="post">
+      <input type="hidden" name="story_id" value="{{ scene.story_id }}">
+      <button type="submit" class="choice-button">
+        {{ choice.body }}</button>
+    </form>
+    {% endfor %}
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Récupérer tous les dialogues
+      let dialogues = document.querySelectorAll('.dialogue-box');
+      let currentIndex = 0;
+
+      // Cacher tous les dialogues sauf le premier
+      for (let i = 1; i < dialogues.length; i++) {
+        dialogues[i].style.display = 'none';
+      }
+
+      // Gestionnaire d'événements pour le bouton "Continuer"
+      document.querySelector('#continue-button').addEventListener('click', function() {
+        // Masquer le dialogue actuel
+        if (currentIndex < dialogues.length - 1) {
+          dialogues[currentIndex].style.display = 'none';
+        }
+        currentIndex++;
+
+        // Afficher le prochain dialogue
+        if (currentIndex < dialogues.length) {
+          dialogues[currentIndex].style.display = 'block';
+        } else {
+          // S'il n'y a plus de dialogues, afficher les boutons de choix
+          document.querySelector('.choices').style.display = 'block';
+          // Masquer le bouton "Continuer"
+          document.querySelector('#continue-button').style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+{% endblock %}
