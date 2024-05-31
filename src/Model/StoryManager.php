@@ -37,8 +37,8 @@ class StoryManager extends AbstractManager
             INNER JOIN `story` ON story.id = scene.story_id
             WHERE story.id = " . $storyId .
             " ORDER BY scene.id;"
-            );
-        
+        );
+
         $scenes = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         return $scenes;
