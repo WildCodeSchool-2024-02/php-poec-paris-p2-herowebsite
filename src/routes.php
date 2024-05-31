@@ -11,5 +11,5 @@ return [
     'storycreation/add' => ['StoryController', 'add',],
     'storycreation/show' => ['StoryController', 'show', ['id']],
     'storycreation/scene/add' => ['SceneController', 'add', ['story_id']],
-    'storycreation/scene/show' => ['SceneController', 'show', ['id']]
+    'storycreation/scene/show' => ['SceneController', 'show', ['story_id', 'id']]
 ];

@@ -15,18 +15,23 @@ class SceneController extends AbstractController
             $scene['story_id'] = $storyId;
             $id = $sceneManager->insert($scene);
 
-            header('Location:/storycreation/scene/show?id=' . $id);
+            header('Location:/storycreation/scene/show?' . http_build_query(['story_id' => $storyId, 'id' => $id]));
             return null;
         }
 
         return $this->twig->render('SceneCreation/add.html.twig');
     }
 
-    public function show(int $id): string
+    public function show(int $storyId, int $id): string
     {
         $sceneManager = new SceneManager();
         $scene = $sceneManager->selectOneById($id);
+        $story = $sceneManager->getStory($storyId);
 
-        return $this->twig->render('SceneCreation/show.html.twig', ['scene' => $scene]);
+        return $this->twig->render('SceneCreation/show.html.twig', 
+        [
+            'scene' => $scene,
+            'story' => $story
+        ]);
     }
 }
