@@ -18,11 +18,11 @@ class SceneController extends AbstractController
             $scene = $sceneManager->selectOneById($id);
 
             if ($scene) {
-                $DialogueManager = new DialogueManager();
-                $ChoiceManager = new ChoiceManager();
+                $dialogueManager = new DialogueManager();
+                $choiceManager = new ChoiceManager();
 
-                $dialogues = $DialogueManager->getdialoguesBySceneId($id);
-                $choices = $ChoiceManager->getChoicesBySceneId($id);
+                $dialogues = $dialogueManager->getDialoguesBySceneId($id);
+                $choices = $choiceManager->getChoicesBySceneId($id);
 
                 return $this->twig->render('Scene/show.html.twig', [
                     'scene' => $scene,
@@ -36,19 +36,19 @@ class SceneController extends AbstractController
             return $this->twig->render('Error/400.html.twig', ['message' => 'No story ID provided.']);
         }
     }
-}
-/**
- * Handle the next scene based on the user's choice.
 
+    /**
+     * Handle the next scene based on the user's choice.
+     */
     public function next(): string
     {
         if (isset($_POST['story_id']) && isset($_POST['scene_id'])) {
-            $story_id = (int)$_POST['story_id'];
-            $scene_id = (int)$_POST['scene_id'];
+            $storyId = (int)$_POST['story_id'];
+            $sceneId = (int)$_POST['scene_id'];
 
-            if ($story_id && $scene_id) {
+            if ($storyId && $sceneId) {
                 $sceneManager = new SceneManager();
-                $nextScene  = $sceneManager->findScene($story_id, $scene_id);
+                $nextScene = $sceneManager->findScene($storyId, $sceneId);
                 if ($nextScene) {
                     header('Location: /scene/show?id=' . $nextScene['id']);
                     exit();
@@ -63,4 +63,3 @@ class SceneController extends AbstractController
         }
     }
 }
- */

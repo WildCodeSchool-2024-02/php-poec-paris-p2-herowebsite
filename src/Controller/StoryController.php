@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Model\StoryManager;
-
 use App\Model\SceneManager;
 
 class StoryController extends AbstractController
