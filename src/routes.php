@@ -11,6 +11,8 @@ return [
     'storycreation' => ['StoryController', 'indexCreation'],
     'storycreation/add' => ['StoryController', 'add',],
     'storycreation/show' => ['StoryController', 'show', ['id']],
+    'storycreation/delete' => ['StoryController', 'delete', ['id']],
     'storycreation/scene/add' => ['SceneController', 'add', ['story_id']],
-    'storycreation/scene/show' => ['SceneController', 'show', ['story_id', 'id']]
+    'storycreation/scene/show' => ['SceneController', 'show', ['story_id', 'id']],
+    'storycreation/scene/delete' => ['SceneController', 'delete', ['story_id', 'id']]
 ];

@@ -7,7 +7,8 @@
 <h2>Scènes :</h2>
 <ul>
     {% for scene in scenes %}
-    <li>{{ scene.name }} : <a href="scene/show?story_id={{ story.id }}&id={{ scene.id }}">voir la scène</a></li>
+    <li>{{ scene.name }} : <a href="scene/show?story_id={{ story.id }}&id={{ scene.id }}">voir la scène</a>
+    <a href="scene/delete?story_id={{ story.id }}&id={{scene.id}}">supprimer la scene</a></li>
     {% endfor %}
 </ul>
 

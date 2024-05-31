@@ -31,9 +31,18 @@ class SceneController extends AbstractController
         return $this->twig->render(
             'SceneCreation/show.html.twig',
             [
-            'scene' => $scene,
-            'story' => $story
+                'scene' => $scene,
+                'story' => $story
             ]
         );
+    }
+
+    public function delete(string $storyId, string $sceneId): ?string
+    {
+        $sceneManager = new SceneManager();
+        $sceneManager->delete((int) $sceneId);
+
+        header('Location:/storycreation/show?id=' . $storyId);
+        return null;
     }
 }

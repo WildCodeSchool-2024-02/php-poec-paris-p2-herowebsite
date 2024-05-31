@@ -42,4 +42,13 @@ class StoryController extends AbstractController
             ]
         );
     }
+
+    public function delete(int $id): ?string
+    {
+        $storyManager = new StoryManager();
+        $storyManager->delete((int) $id);
+
+        header('Location:/storycreation');
+        return null;
+    }
 }
