@@ -28,9 +28,4 @@ class StoryController extends AbstractController
 
         return $this->twig->render('StoryCreation/show.html.twig', ['story' => $story]);
     }
-
-    public function goToSceneCreation(int $story_id): string
-    {
-        return $this->twig->render('SceneCreation/add.html.twig', ['story_id' => $story_id]);
-    }
 }
