@@ -4,7 +4,7 @@ namespace App\Model;
 
 use PDO;
 
-class StoryCreationManager extends AbstractManager
+class StoryManager extends AbstractManager
 {
     public const TABLE = 'story';
 

@@ -4,7 +4,7 @@ namespace App\Model;
 
 use PDO;
 
-class SceneCreationManager extends AbstractManager
+class SceneManager extends AbstractManager
 {
     public const TABLE = 'scene';
 

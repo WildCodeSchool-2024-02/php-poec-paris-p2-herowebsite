@@ -2,20 +2,20 @@
 
 namespace App\Controller;
 
-use App\Model\SceneCreationManager;
+use App\Model\SceneManager;
 
-class SceneCreationController extends AbstractController
+class SceneController extends AbstractController
 {
     public function add(int $storyId): ?string
     {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $sceneCreationManager = new SceneCreationManager();
+            $sceneManager = new SceneManager();
             $scene = array_map('trim', $_POST);
             $scene['story_id'] = $storyId;
-            $id = $sceneCreationManager->insert($scene);
+            $id = $sceneManager->insert($scene);
 
-            header('Location:/StoryCreation/SceneCreation/show?id=' . $id);
+            header('Location:/storycreation/scene/show?id=' . $id);
             return null;
         }
 
@@ -24,8 +24,8 @@ class SceneCreationController extends AbstractController
 
     public function show(int $id): string
     {
-        $sceneCreationManager = new SceneCreationManager();
-        $scene = $sceneCreationManager->selectOneById($id);
+        $sceneManager = new SceneManager();
+        $scene = $sceneManager->selectOneById($id);
 
         return $this->twig->render('SceneCreation/show.html.twig', ['scene' => $scene]);
     }
