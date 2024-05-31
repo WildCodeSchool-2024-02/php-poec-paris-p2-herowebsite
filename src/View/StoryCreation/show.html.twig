@@ -3,7 +3,7 @@
 {% block content %}
 
 <h1>{{story['name']}}</h1>
-<a href = "scene/add?story_id={{story['id']}}"> ajouter une scene </a>
+<a href = "scene/add?story_id={{story.id}}"> ajouter une scene </a>
 <h2>Scènes :</h2>
 <ul>
     {% for scene in scenes %}

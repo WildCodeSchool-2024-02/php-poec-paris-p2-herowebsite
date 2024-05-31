@@ -1,7 +1,7 @@
 {% block content %}
 
-<p>Histoire : {{ story['name'] }} </p>
-<a href="../show?id={{ story['id']|number_format }}">Retour à l'histoire</a>
+<p>Histoire : {{ story.name }} </p>
+<a href="../show?id={{ story.id }}">Retour à l'histoire</a>
 <h1>{{scene['name']}}</h1>
 
 {% endblock %}
