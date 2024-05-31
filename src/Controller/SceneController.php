@@ -2,64 +2,72 @@
 
 namespace App\Controller;
 
+use App\Model\StoryManager;
 use App\Model\SceneManager;
 use App\Model\DialogueManager;
 use App\Model\ChoiceManager;
+// use App\Model\UserSaveManager; à venir
 
 class SceneController extends AbstractController
 {
-    /**
-     * Show the first scene of a specific story.
-     */
-    public function show(int $id): string
+    public function show(int $storyId, int $sceneId)
     {
-        if ($id > 0) {
-            $sceneManager = new SceneManager();
-            $scene = $sceneManager->selectOneById($id);
-
-            if ($scene) {
-                $dialogueManager = new DialogueManager();
-                $choiceManager = new ChoiceManager();
-
-                $dialogues = $dialogueManager->getDialoguesBySceneId($id);
-                $choices = $choiceManager->getChoicesBySceneId($id);
-
-                return $this->twig->render('Scene/show.html.twig', [
-                    'scene' => $scene,
-                    'dialogues' => $dialogues,
-                    'choices' => $choices
-                ]);
-            } else {
-                return $this->twig->render('Error/404.html.twig', ['message' => 'Scene not found for this story.']);
-            }
+        // Utiliser SceneManager pour obtenir les informations sur la scène
+        $sceneManager = new SceneManager();
+        $scene = $sceneManager->findScene($storyId, $sceneId);
+        // Log the result of findScene
+        if ($scene) {
+            error_log("Scene found: " . print_r($scene, true));
         } else {
-            return $this->twig->render('Error/400.html.twig', ['message' => 'No story ID provided.']);
+            error_log("No scene found for storyId: $storyId, sceneId: $sceneId");
         }
+
+        // Vérifier si la scène existe, sinon renvoyer une erreur 404
+        if (!$scene) {
+            header("HTTP/1.0 404 Not Found");
+            echo '404 - Page not found';
+            exit();
+        }
+
+        // Utiliser DialogueManager pour obtenir les dialogues de la scène
+        $dialogueManager = new DialogueManager();
+        $dialogues = $dialogueManager->getDialoguesBySceneId($sceneId);
+
+        // Utiliser ChoiceManager pour obtenir les choix de la scène
+        $choiceManager = new ChoiceManager();
+        $choices = $choiceManager->getChoicesBySceneId($sceneId);
+
+        // Rendre la vue avec les données récupérées
+        return $this->twig->render('Scene/show.html.twig', [
+            'scene' => $scene,
+            'dialogues' => $dialogues,
+            'choices' => $choices
+        ]);
     }
 
-    /**
-     * Handle the next scene based on the user's choice.
-     */
-    public function next(): string
+    public function showFirstScene(int $storyId)
     {
-        if (isset($_POST['story_id']) && isset($_POST['scene_id'])) {
-            $storyId = (int)$_POST['story_id'];
-            $sceneId = (int)$_POST['scene_id'];
-
-            if ($storyId && $sceneId) {
-                $sceneManager = new SceneManager();
-                $nextScene = $sceneManager->findScene($storyId, $sceneId);
-                if ($nextScene) {
-                    header('Location: /scene/show?id=' . $nextScene['id']);
-                    exit();
-                } else {
-                    return $this->twig->render('Error/404.html.twig', ['message' => 'Next scene not found.']);
-                }
-            } else {
-                return $this->twig->render('Error/400.html.twig', ['message' => 'Invalid story or scene ID.']);
-            }
-        } else {
-            return $this->twig->render('Error/400.html.twig', ['message' => 'Story ID and Scene ID are required.']);
+        function custom_log($message)
+        {
+            echo $message . PHP_EOL; // PHP_EOL represents the end of line character
         }
+
+        custom_log("Je suis dans showfirst scene avec storyId, $storyId");
+        $sceneManager = new SceneManager();
+        $firstSceneId = $sceneManager->findFirstSceneIdOfStory($storyId);
+        $firstSceneId = intval($firstSceneId);
+        custom_log("Je suis dans showfirst scene : first scene id : firstSceneId, $firstSceneId");
+
+        // Vérifiez si l'identifiant de la première scène a été trouvé
+        if (!$firstSceneId) {
+            // Gérer l'erreur (par exemple, renvoyer une réponse 404)
+            header("HTTP/1.0 404 Not Found");
+            echo 'coucou';
+            exit();
+        }
+        custom_log("je lance donc la méthode ");
+
+        // Afficher la première scène de l'histoire
+        return $this->show($storyId, $firstSceneId);
     }
 }

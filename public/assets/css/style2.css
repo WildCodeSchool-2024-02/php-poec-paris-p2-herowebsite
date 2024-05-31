@@ -1,0 +1,16 @@
+body,
+h2,
+p,
+button {
+    font-size: 24px;
+}
+button {
+    all: unset;
+}
+
+body {
+    background-image: unset;
+}
+.character-name {
+    background-image: url(/assets/images/backgrounds/brush.png);
+}

@@ -9,5 +9,9 @@
 return [
     '' => ['HomeController', 'index'],
     'story' => ['StoryController', 'index'],
-    'story/show' => ['SceneController', 'show', ['id']],
+    'scene/start' => [
+        'SceneController', 'showFirstScene', ['storyId']
+    ],
+    'scene/show' => ['SceneController', 'show', ['storyId', 'sceneId']]
+
 ];

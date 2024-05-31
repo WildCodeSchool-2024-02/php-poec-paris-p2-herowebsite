@@ -6,12 +6,15 @@ $route = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?? '', '/');
 // $routes comes from 'routes.php' required here
 $routes = require_once __DIR__ . '/../src/routes.php';
 
+/* Ceci est un commentaire sur
+
 // If required route is not is $routes, return a 404 Page not found error
 if (!key_exists($route, $routes)) {
     header("HTTP/1.0 404 Not Found");
     echo '404 - Page not found';
     exit();
 }
+       plusieurs lignes */
 
 // Get the matching route in $routes array
 $matchingRoute = $routes[$route];

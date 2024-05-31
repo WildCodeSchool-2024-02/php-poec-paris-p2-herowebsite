@@ -4,7 +4,7 @@
     <h1>Story Teller</h1>
     <ul>
         {% for story in stories %}
-            <li><a href="/story/show/?id={{ story.id }}">{{ story.name }}</a></li>
+            <li><a href="/scene/start?storyId={{ story.id }}">{{ story.name }}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}
