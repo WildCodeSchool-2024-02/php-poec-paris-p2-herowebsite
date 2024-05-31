@@ -28,10 +28,12 @@ class SceneController extends AbstractController
         $scene = $sceneManager->selectOneById($id);
         $story = $sceneManager->getStory($storyId);
 
-        return $this->twig->render('SceneCreation/show.html.twig', 
-        [
+        return $this->twig->render(
+            'SceneCreation/show.html.twig',
+            [
             'scene' => $scene,
             'story' => $story
-        ]);
+            ]
+        );
     }
 }

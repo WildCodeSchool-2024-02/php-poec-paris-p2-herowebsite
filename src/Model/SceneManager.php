@@ -24,9 +24,9 @@ class SceneManager extends AbstractManager
     public function getStory(int $id): string
     {
         $statement = $this->pdo->query("SELECT `name` FROM `story` WHERE `id` = " . $id . ";");
-        
+
         $story = $statement->fetch(PDO::FETCH_ASSOC);
-        
+
         return $story['name'];
     }
 }

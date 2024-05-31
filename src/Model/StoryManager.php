@@ -29,4 +29,18 @@ class StoryManager extends AbstractManager
 
         return $statement->execute();
     }
+
+    public function getScenes(int $storyId): array
+    {
+        $statement = $this->pdo->query(
+            "SELECT scene.name FROM `scene`
+            INNER JOIN `story` ON story.id = scene.story_id
+            WHERE story.id = " . $storyId .
+            " ORDER BY scene.id;"
+            );
+        
+        $scenes = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $scenes;
+    }
 }

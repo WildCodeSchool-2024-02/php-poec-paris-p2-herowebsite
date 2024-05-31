@@ -25,7 +25,14 @@ class StoryController extends AbstractController
     {
         $storyManager = new StoryManager();
         $story = $storyManager->selectOneById($id);
+        $scenes = $storyManager->getScenes($id);
 
-        return $this->twig->render('StoryCreation/show.html.twig', ['story' => $story]);
+        return $this->twig->render(
+            'StoryCreation/show.html.twig', 
+            [
+                'story' => $story,
+                'scenes' => $scenes
+            ]
+        );
     }
 }
