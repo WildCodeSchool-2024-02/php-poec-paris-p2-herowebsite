@@ -21,7 +21,7 @@ class SceneManager extends AbstractManager
         return (int) $this->pdo->lastInsertId();
     }
 
-    public function getStory(int $id): array
+    public function getStory(string $id): array
     {
         $statement = $this->pdo->query("SELECT * FROM `story` WHERE `id` = " . $id . ";");
 
