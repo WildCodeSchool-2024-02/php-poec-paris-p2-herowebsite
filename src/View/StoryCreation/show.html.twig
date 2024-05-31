@@ -1,13 +1,13 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-
+<a href="../storycreation">Retour aux histoires</a>
 <h1>{{story.name}}</h1>
-<a href = "scene/add?story_id={{story.id}}"> ajouter une scene </a>
+<a href = "scene/add?story_id={{story.id}}"> Ajouter une scène </a>
 <h2>Scènes :</h2>
 <ul>
     {% for scene in scenes %}
-    <li>{{ scene.name }} : <a href="scene/show?story_id={{ story.id }}&id={{ scene.id }}">Voir la scène</a></li>
+    <li>{{ scene.name }} : <a href="scene/show?story_id={{ story.id }}&id={{ scene.id }}">voir la scène</a></li>
     {% endfor %}
 </ul>
 
