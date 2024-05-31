@@ -10,9 +10,9 @@ return [
     '' => ['HomeController', 'index',],
     'storycreation' => ['StoryController', 'indexCreation'],
     'storycreation/add' => ['StoryController', 'add',],
-    'storycreation/show' => ['StoryController', 'show', ['id']],
+    'storycreation/show' => ['StoryController', 'showCreation', ['id']],
     'storycreation/delete' => ['StoryController', 'delete', ['id']],
     'storycreation/scene/add' => ['SceneController', 'add', ['story_id']],
-    'storycreation/scene/show' => ['SceneController', 'show', ['story_id', 'id']],
+    'storycreation/scene/show' => ['SceneController', 'showCreation', ['story_id', 'id']],
     'storycreation/scene/delete' => ['SceneController', 'delete', ['story_id', 'id']]
 ];

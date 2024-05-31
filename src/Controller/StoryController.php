@@ -28,7 +28,7 @@ class StoryController extends AbstractController
         return $this->twig->render('StoryCreation/add.html.twig');
     }
 
-    public function show(string $id): string
+    public function showCreation(string $id): string
     {
         $storyManager = new StoryManager();
         $story = $storyManager->selectOneById((int) $id);

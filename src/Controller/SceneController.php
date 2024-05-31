@@ -22,7 +22,7 @@ class SceneController extends AbstractController
         return $this->twig->render('SceneCreation/add.html.twig');
     }
 
-    public function show(string $storyId, string $id): string
+    public function showCreation(string $storyId, string $id): string
     {
         $sceneManager = new SceneManager();
         $scene = $sceneManager->selectOneById((int) $id);
