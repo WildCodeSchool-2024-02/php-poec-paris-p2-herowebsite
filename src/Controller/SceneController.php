@@ -6,6 +6,7 @@ use App\Model\StoryManager;
 use App\Model\SceneManager;
 use App\Model\DialogueManager;
 use App\Model\ChoiceManager;
+
 // use App\Model\UserSaveManager; à venir
 
 class SceneController extends AbstractController
@@ -47,16 +48,14 @@ class SceneController extends AbstractController
 
     public function showFirstScene(int $storyId)
     {
-        function custom_log($message)
-        {
-            echo $message . PHP_EOL; // PHP_EOL represents the end of line character
-        }
+        //      function custom_log($message)
+        //        {
+        //         echo $message . PHP_EOL; // PHP_EOL represents the end of line character
+        //     }
 
-        custom_log("Je suis dans showfirst scene avec storyId, $storyId");
         $sceneManager = new SceneManager();
         $firstSceneId = $sceneManager->findFirstSceneIdOfStory($storyId);
         $firstSceneId = intval($firstSceneId);
-        custom_log("Je suis dans showfirst scene : first scene id : firstSceneId, $firstSceneId");
 
         // Vérifiez si l'identifiant de la première scène a été trouvé
         if (!$firstSceneId) {
@@ -65,7 +64,6 @@ class SceneController extends AbstractController
             echo 'coucou';
             exit();
         }
-        custom_log("je lance donc la méthode ");
 
         // Afficher la première scène de l'histoire
         return $this->show($storyId, $firstSceneId);
