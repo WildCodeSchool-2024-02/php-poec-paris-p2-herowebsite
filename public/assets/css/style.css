@@ -1,43 +1,60 @@
-Styles généraux pour le conteneur * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-html {
-    height: 100dvh;
-    width: 100dvw;
-    overflow: hidden;
-}
+/* Styles généraux pour le conteneur */
 body {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+    height: 100vh;
     background-position: center;
     background-size: cover;
     background-image: url(/assets/images/backgrounds/home.png);
-}
-#brushImg {
-    background-image: url(/assets/images/backgrounds/brush.png);
-    background-position: center;
-    background-size: cover;
-    height: fit-content;
-}
-
-@keyframes animationAppears {
-    0% {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    70% {
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0%);
-        opacity: 1;
-    }
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.65); /* Police d'écriture avec 65% d'opacité */
+    width: fit-content;
+    margin: auto;
 }
 
-.appears {
-    animation: animationAppears 0.5s linear;
+/* Styles pour les titres h1 */
+h1 {
+    font-size: 160px;
+    text-decoration: underline;
+    font-family: "Julee", cursive;
+    font-weight: 500;
+}
+
+/* Styles pour les liens a */
+a {
+    text-decoration: none;
+    font-size: 64px;
+    cursor: pointer;
+    border-radius: 12px;
+    padding: 8px;
+    margin: 5px;
+    background-color: rgba(
+        0,
+        0,
+        0,
+        0.65
+    ); /* Police d'écriture avec 65% d'opacité */
+    color: #d9d9d9; /* Fond par défaut */
+    font-family: "Julee", cursive;
+    width: 800px; /* Largeur fixe */
+    display: inline-block; /* Pour permettre la définition de la largeur */
+}
+
+/* Styles pour les liens a au survol (hover) */
+a:hover {
+    background-color: #dfdfdf; /* Couleur du texte inversée */
+    color: rgba(0, 0, 0, 0.65); /* Couleur de fond inversée */
+}
+
+/* Styles pour la liste ul */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Styles pour les éléments de liste li */
+li {
+    margin: 10px 0;
+    padding: 10px;
 }

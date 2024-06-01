@@ -49,8 +49,8 @@
           <div class="character-sprite">
             {% set appears_class = '' %}
             {% if dialogue.character_name not in displayed_characters %}
-              {% set appears_class = 'appears' %}
-              {% set displayed_characters = displayed_characters | merge([dialogue.character_name]) %}
+            {% set appears_class = 'appears' %}
+            {% set displayed_characters = displayed_characters | merge([dialogue.character_name]) %}
             {% endif %}
             <img src="/assets/images/sprites/{{ dialogue.sprite }}" alt="{{ dialogue.character_name }}" class="sprite {{ appears_class }}">
           </div>
@@ -66,5 +66,8 @@
 
     </section>
   </div>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/assets/js/script.js"></script>
+
 </body>
 {% endblock %}

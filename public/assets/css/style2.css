@@ -1,4 +1,23 @@
 /* General styles */
+Styles généraux pour le conteneur * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html {
+    height: 100dvh;
+    width: 100dvw;
+    overflow: hidden;
+}
+body {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-position: center;
+    background-size: cover;
+}
+
 body {
     background-size: cover;
 }
@@ -139,4 +158,28 @@ body {
 /* Choices container */
 .choices {
     display: none; /* Par défaut, caché */
+}
+#brushImg {
+    background-image: url(/assets/images/backgrounds/brush.png);
+    background-position: center;
+    background-size: cover;
+    height: fit-content;
+}
+
+@keyframes animationAppears {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    70% {
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+.appears {
+    animation: animationAppears 0.5s linear;
 }
