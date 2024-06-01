@@ -1,0 +1,142 @@
+/* General styles */
+body {
+    background-size: cover;
+}
+.bg-black-opacity-70 {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.h-full {
+    height: 100%;
+}
+.w-full {
+    width: 100%;
+}
+.text-white {
+    color: white;
+}
+.flex {
+    display: flex;
+}
+.flex-col {
+    flex-direction: column;
+}
+.flex-grow {
+    flex-grow: 1;
+}
+
+/* Button styles */
+.btn-style {
+    height: fit-content;
+    padding: 12px;
+    border-radius: 1rem;
+    border: 1px solid;
+}
+
+/* Container styles */
+.ml-10 {
+    margin-left: 2.5rem;
+}
+.relative {
+    position: relative;
+}
+.top-20 {
+    top: 5rem;
+}
+.dialogue-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.dialogue-content {
+    background-color: rgba(15, 23, 42, 0.8);
+    border: 2px solid #334155;
+    display: flex;
+    flex-direction: column;
+    width: 33.33%;
+    border-radius: 1rem;
+    height: 300px;
+    padding: 8px;
+    margin-bottom: 2.5rem;
+}
+.character-name {
+    padding: 8px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    font-style: italic;
+}
+.dialogue-body {
+    padding: 8px;
+    flex-grow: 1;
+    font-size: 1.25rem;
+    color: #f59e0b;
+    font-style: italic;
+}
+.choices {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    width: fit-content;
+    background-opacity: 0.5;
+    position: relative;
+    bottom: 5rem;
+}
+.choice-link {
+    background-color: #334155;
+    font-size: 2rem;
+    padding: 12px;
+    border: 1px solid;
+    color: white;
+    text-decoration: none;
+    border-radius: 1rem;
+    margin: 1.25rem;
+    transition: all 0.1s;
+}
+.choice-link:hover {
+    background-color: #1e293b;
+    transform: scale(0.95);
+}
+
+/* Character sprite styles */
+.character-sprite {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    width: 33.33%;
+    height: auto;
+}
+.sprite {
+    object-fit: contain;
+    min-height: 500px;
+}
+
+/* Continue button styles */
+.continue-button-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 33.33%;
+    margin-left: 2.5rem;
+    align-items: center;
+    height: fit-content;
+    min-height: 60px;
+}
+.continue-button {
+    background: none;
+    color: white;
+    border: 2px solid #334155;
+    padding: 12px;
+    border-radius: 1rem;
+    position: relative;
+    bottom: 2rem;
+    right: 1.75rem;
+    transition: all 0.1s;
+}
+.continue-button:hover {
+    background-color: #1e293b;
+    border-color: white;
+    transform: scale(0.95);
+}
+/* Choices container */
+.choices {
+    display: none; /* Par défaut, caché */
+}

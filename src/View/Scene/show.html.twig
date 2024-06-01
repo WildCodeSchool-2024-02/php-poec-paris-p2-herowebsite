@@ -4,18 +4,18 @@
 <link rel="stylesheet" href="/assets/css/style2.css">
 
 <body style="background-image: url('/assets/images/backgrounds/{{scene.background}}'); background-size: cover;">
-  <div class="bg-black bg-opacity-70 h-full w-full text-white flex flex-col">
+  <div class="bg-black-opacity-70 h-full w-full text-white flex flex-col">
 
     {#// ===== MAIN CONTAINER ===== // #}
     <section id="container" class="flex flex-col flex-grow">
 
       {#// ===== BTN DIV ===== // #}
       <div class="flex w-full flex-grow gap-2 p-2">
-        <button class="h-fit p-3 rounded-2xl border">
+        <button class="btn-style">
           BTN 1
         </button>
 
-        <button class="h-fit p-3 rounded-2xl border">
+        <button class="btn-style">
           BTN 2
         </button>
       </div>
@@ -24,42 +24,42 @@
         {% set displayed_characters = [] %}
         {% for dialogue in dialogues %}
         <div class="dialogue-box flex justify-between items-end" id="dialogue-{{ loop.index }}" style="display: {% if loop.first %}flex{% else %}none{% endif %};">
-          <div class='bg-slate-950 bg-opacity-80 border-2 border-slate-600 flex flex-col w-4/12 rounded-2xl h-[300px] p-2 mb-10'>
+          <div class='dialogue-content'>
 
-            <h2 class="character-name p-2 text-4xl font-bold text-white italic">
+            <h2 class="character-name">
               {{ dialogue.character_name }}
             </h2>
 
             <div>
-              <p class="dialogue-body p-2 flex flex-grow italic text-xl text-amber-400">
+              <p class="dialogue-body">
                 {{ dialogue.body }}
               </p>
             </div>
 
           </div>
 
-          <div class="choices block flex justify-evenly flex-col w-fit hidden bg-opacity-50 relative bottom-20">
+          <div class="choices hidden">
             {% for choice in choices %}
-            <a href="/scene/show?storyId={{scene.story_id}}&sceneId={{ choice.next_scene_id }}" class="choice-link bg-slate-600 text-3xl p-3 border hover:bg-slate-800 hover:scale-95 text-white text-black duration-100 transition-all rounded-2xl m-5">
+            <a href="/scene/show?storyId={{scene.story_id}}&sceneId={{ choice.next_scene_id }}" class="choice-link">
               {{ choice.body }}
             </a>
             {% endfor %}
           </div>
 
-          <div class="w-4/12 flex items-end justify-end h-auto">
+          <div class="character-sprite">
             {% set appears_class = '' %}
             {% if dialogue.character_name not in displayed_characters %}
               {% set appears_class = 'appears' %}
               {% set displayed_characters = displayed_characters | merge([dialogue.character_name]) %}
             {% endif %}
-            <img src="/assets/images/sprites/{{ dialogue.sprite }}" alt="{{ dialogue.character_name }}" class="object-contain min-h-[500px] {{ appears_class }}">
+            <img src="/assets/images/sprites/{{ dialogue.sprite }}" alt="{{ dialogue.character_name }}" class="sprite {{ appears_class }}">
           </div>
         </div>
         {% endfor %}
       </article>
 
-      <div class="flex justify-end w-4/12 ml-10 items-center h-fit min-h-[60px]">
-        <button id="continue-button" class="hover:scale-95 bg-none text-white hover:border-white border-slate-700 border-2 p-3 hover:bg-slate-700 duration-100 transition-all rounded-2xl relative bottom-8 right-7">
+      <div class="continue-button-container">
+        <button id="continue-button" class="continue-button">
           Continuer
         </button>
       </div>
