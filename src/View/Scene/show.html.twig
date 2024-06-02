@@ -1,7 +1,16 @@
 {% extends 'layout.html.twig' %}
+{% block head_extra %}
+<link rel="stylesheet" href="/assets/css/style2.css">
+<script src="/assets/js/script.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+
+{% endblock %}
+{% block title %}
+
+{{ scene.name }}
+{% endblock %}
 
 {% block content %}
-<link rel="stylesheet" href="/assets/css/style2.css">
 
 <body style="background-image: url('/assets/images/backgrounds/{{scene.background}}'); background-size: cover;">
   <div class="bg-black-opacity-70 h-full w-full text-white flex flex-col">
@@ -66,8 +75,5 @@
 
     </section>
   </div>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="/assets/js/script.js"></script>
-
 </body>
 {% endblock %}
