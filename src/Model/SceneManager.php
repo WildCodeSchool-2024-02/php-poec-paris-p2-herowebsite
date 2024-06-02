@@ -29,4 +29,22 @@ class SceneManager extends AbstractManager
 
         return $story;
     }
+
+    public function getDialogues(string $id): array
+    {
+        $statement = $this->pdo->query("SELECT id, body FROM `dialogue_line` WHERE `scene_id` = " . $id . ";");
+
+        $dialogues = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $dialogues;
+    }
+
+    public function getChoices(string $id): array
+    {
+        $statement = $this->pdo->query("SELECT id, body FROM `choice` WHERE `scene_id` = " . $id . ";");
+
+        $choices = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $choices;
+    }
 }

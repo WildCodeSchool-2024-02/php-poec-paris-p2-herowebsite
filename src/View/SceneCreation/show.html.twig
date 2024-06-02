@@ -1,7 +1,21 @@
 {% block content %}
 
-<p>Histoire : {{ story.name }} </p>
+<p>Histoire : {{ story.name }}</p>
 <a href="../show?id={{ story.id }}">Retour à l'histoire</a>
 <h1>{{scene['name']}}</h1>
+
+<h2>Répliques :</h2>
+<ul>
+{% for dialogue in dialogues %}
+    <li>{{ dialogue.id }} :  {{ dialogue.body }}</li>
+{% endfor %}
+<ul>
+
+<h2>Choix :</h2>
+<ul>
+{% for choice in choices %}
+    <li>{{ choice.id }} : {{ choice.body }}</li>
+{% endfor %}
+</ul>
 
 {% endblock %}
