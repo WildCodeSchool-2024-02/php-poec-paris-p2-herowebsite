@@ -16,11 +16,9 @@ body {
     flex-direction: column;
     background-position: center;
     background-size: cover;
+    font-family: "Julee", cursive;
 }
 
-body {
-    background-size: cover;
-}
 .bg-black-opacity-70 {
     background-color: rgba(0, 0, 0, 0.7);
 }
@@ -76,27 +74,26 @@ body {
     height: 300px;
     padding: 8px;
     margin-bottom: 2.5rem;
+    text-align: left;
 }
 .character-name {
     padding: 8px;
     font-size: 2.5rem;
     font-weight: bold;
     color: white;
-    font-style: italic;
+    text-align: left;
 }
 .dialogue-body {
     padding: 8px;
     flex-grow: 1;
-    font-size: 1.25rem;
-    color: #f59e0b;
-    font-style: italic;
+    font-size: 2rem;
+    color: rgb(226, 209, 75);
 }
 .choices {
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
     width: fit-content;
-    background-opacity: 0.5;
     position: relative;
     bottom: 5rem;
 }
@@ -144,7 +141,6 @@ body {
     color: white;
     border: 2px solid #334155;
     padding: 12px;
-    border-radius: 1rem;
     position: relative;
     bottom: 2rem;
     right: 1.75rem;
@@ -153,11 +149,11 @@ body {
 .continue-button:hover {
     background-color: #1e293b;
     border-color: white;
-    transform: scale(0.95);
+    transform: scale(0.98);
 }
 /* Choices container */
 .choices {
-    display: none; /* Par défaut, caché */
+    display: none;
 }
 #brushImg {
     background-image: url(/assets/images/backgrounds/brush.png);
