@@ -19,9 +19,6 @@ body {
     font-family: "Julee", cursive;
 }
 
-.bg-black-opacity-70 {
-    background-color: rgba(0, 0, 0, 0.7);
-}
 .h-full {
     height: 100%;
 }
@@ -98,19 +95,19 @@ body {
     bottom: 5rem;
 }
 .choice-link {
-    background-color: #334155;
-    font-size: 2rem;
+    /* background-color: #334155;
     padding: 12px;
     border: 1px solid;
     color: white;
     text-decoration: none;
-    border-radius: 1rem;
+    border-radius: 1rem; */
+    width: auto;
     margin: 1.25rem;
     transition: all 0.1s;
 }
 .choice-link:hover {
-    background-color: #1e293b;
-    transform: scale(0.95);
+    background-color: #d9d9d9;
+    transform: scale(0.99);
 }
 
 /* Character sprite styles */
