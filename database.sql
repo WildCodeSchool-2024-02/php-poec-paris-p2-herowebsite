@@ -45,7 +45,8 @@ CREATE TABLE IF NOT EXISTS `dialogue_line` (
 CREATE TABLE IF NOT EXISTS `character` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `name` VARCHAR(30) NOT NULL,
-  `sprite` TEXT
+  `sprite` TEXT,
+  `story_id` INT
 );
 
 -- Création de la table 'user'
@@ -72,6 +73,7 @@ ALTER TABLE `dialogue_line` ADD FOREIGN KEY (`scene_id`) REFERENCES `scene` (`id
 ALTER TABLE `dialogue_line` ADD FOREIGN KEY (`character_id`) REFERENCES `character` (`id`) ON DELETE CASCADE;
 ALTER TABLE `history` ADD FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE;
 ALTER TABLE `history` ADD FOREIGN KEY (`choice_id`) REFERENCES `choice` (`id`) ON DELETE CASCADE;
+ALTER TABLE `character` ADD FOREIGN KEY (`story_id`) REFERENCES `story` (`id`) ON DELETE CASCADE;
 
 -- Commit de la transaction
 COMMIT;
