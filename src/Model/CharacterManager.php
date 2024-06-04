@@ -8,27 +8,27 @@ class CharacterManager extends AbstractManager
 {
     public const TABLE = "`character`";
 
-    public function insert(array $characters): bool
+    public function insert(array $character): bool
     {
         $statement = $this->pdo->prepare(
             "INSERT INTO " . self::TABLE . " (`name`, `sprite`, `story_id`) VALUE (:name, :sprite, :story_id);"
         );
-        $statement->bindValue("name", $characters["name"], PDO::PARAM_STR);
-        $statement->bindValue("sprite", $characters["sprite"], PDO::PARAM_STR);
-        $statement->bindValue("story_id", $characters["story_id"], PDO::PARAM_STR);
+        $statement->bindValue("name", $character["name"], PDO::PARAM_STR);
+        $statement->bindValue("sprite", $character["sprite"], PDO::PARAM_STR);
+        $statement->bindValue("story_id", $character["story_id"], PDO::PARAM_STR);
 
 
         return $statement->execute();
     }
 
-    public function update(array $characters): bool
+    public function update(int $id, array $character): bool
     {
         $statement = $this->pdo->prepare(
             "UPDATE " . self::TABLE .
-            "SET name = " . $characters["name"] .
-            "sprite = " . $characters["sprite"] . ";"
+            " SET name = \"" . $character["name"] .
+            "\", sprite = \"" . $character["sprite"] . "\"
+            WHERE id = " . $id . ";"
         );
-
         return $statement->execute();
     }
 

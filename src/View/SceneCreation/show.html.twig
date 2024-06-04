@@ -19,7 +19,7 @@
     <label for="{{character.name}}">{{character.name}}
       <a href="/storycreation/delchar?story_id={{story.id}}&scene_id={{scene.id}}&id={{character.id}}"> supprimer</a>
       <button class="edit">Editer</button>
-      <form method="post" action="" class="character-edit">
+      <form method="post" action="/storycreation/update_char?story_id={{ story.id }}&scene_id={{ scene.id }}&id={{ character.id }}" class="character-edit">
         <input type="text" name="e_name" id="character_name">
         <input type="text" name="e_sprite" id="e_sprite">
         <input type="submit">

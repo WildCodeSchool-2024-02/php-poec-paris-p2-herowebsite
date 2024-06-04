@@ -17,5 +17,6 @@ return [
     'storycreation/scene/delete' => ['SceneController', 'delete', ['story_id', 'id']],
     'storycreation/scene/add_dial' => ['DialogueController', 'add', ['story_id', 'scene_id']],
     'storycreation/addchar' => ['CharacterController', 'add', ['story_id', 'scene_id']],
-    'storycreation/delchar' => ['CharacterController', 'delete', ['story_id', 'scene_id', 'id']]
+    'storycreation/delchar' => ['CharacterController', 'delete', ['story_id', 'scene_id', 'id']],
+    'storycreation/update_char' => ['CharacterController', 'update', ['story_id', 'scene_id', 'id']]
 ];
