@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Model\SceneManager;
 use App\Model\CharacterManager;
+use App\Model\DialogueManager;
 
 class SceneController extends AbstractController
 {
@@ -27,12 +28,12 @@ class SceneController extends AbstractController
     {
         $sceneManager = new SceneManager();
         $characterManager = new CharacterManager();
+        $dialogueManager = new DialogueManager();
         $scene = $sceneManager->selectOneById((int) $id);
         $story = $sceneManager->getStory($storyId);
-        $dialogues = $sceneManager->getDialogues($id);
+        $dialogues = $dialogueManager->getDialogues($id);
         $choices = $sceneManager->getChoices($id);
         $characters = $characterManager->getCharacters($storyId);
-
         return $this->twig->render(
             'SceneCreation/show.html.twig',
             [

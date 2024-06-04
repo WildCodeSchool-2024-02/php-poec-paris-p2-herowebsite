@@ -35,7 +35,10 @@ class DialogueManager extends AbstractManager
 
     public function getDialogues(string $id): array
     {
-        $statement = $this->pdo->query("SELECT * FROM " . self::TABLE . " WHERE `scene_id` = " . $id . ";");
+        $statement = $this->pdo->query("SELECT d.*, c.name AS character_name FROM " . self::TABLE . "AS d 
+        INNER JOIN `character` AS c
+        ON d.character_id = c.id 
+        WHERE `scene_id` = " . $id . ";");
 
         $dialogues = $statement->fetchAll(PDO::FETCH_ASSOC);
 

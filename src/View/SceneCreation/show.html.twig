@@ -11,7 +11,7 @@
         <input type="checkbox" id = "{{character.name}}" name = "{{character.name}}">
         <label for = "{{character.name}}">{{character.name}}
         <a href = "/storycreation/delchar?story_id={{story.id}}&scene_id={{scene.id}}&id={{character.id}}"> supprimer</a>
-        <a href= ""> Editer</a>
+        <a href= "" class="edit"> Editer</a>
     </li>
 {% endfor %}
     <form method = 'post' action="/storycreation/addchar?story_id={{ story.id }}&scene_id={{ scene.id }}">
@@ -26,7 +26,7 @@
 <h2>Répliques :</h2>
 <ul>
 {% for dialogue in dialogues %}
-    <li>{{ dialogue.id }} :  {{ dialogue.body }}</li>
+    <li>{{ dialogue.character_name }} :  {{ dialogue.body }}</li>
 {% endfor %}
     <li><a href="/storycreation/scene/add_dial?story_id={{ story.id }}&scene_id={{ scene.id }}"> Ajouter une ligne de dialogue</a></li>  
 </ul>
@@ -37,5 +37,5 @@
     <li>{{ choice.id }} : {{ choice.body }}</li>
 {% endfor %}
 </ul>
-
+<script src="/public/assets/script/editDialogue.js"></script>
 {% endblock %}

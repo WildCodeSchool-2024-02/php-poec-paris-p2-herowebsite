@@ -7,10 +7,10 @@
 <form method = "post" action ="">
 <label for = "body"></label>
 <input type = "textarea" name = "body" id ="body"> 
-    <select>
-        {% for character in characters %}
-            <option value = "{{ character.id }}"> {{ character.name }} </option>
-
+        <label for = "character_id"></label>
+        <select name = "character_id" id = "character_id">
+        {% for character in characters %} 
+            <option  value = "{{ character.id }}"> {{ character.name }} </option>
         {% endfor %}
     </select>
 <input type ="submit">
