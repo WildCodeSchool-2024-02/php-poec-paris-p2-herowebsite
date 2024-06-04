@@ -43,4 +43,6 @@ class StoryManager extends AbstractManager
 
         return $this->decodeHtmlEntitiesInArray($scenes);
     }
+
+    // Hérite de la méthode SelectAll pour récupérer toutes les histoires après défintion de la table
 }

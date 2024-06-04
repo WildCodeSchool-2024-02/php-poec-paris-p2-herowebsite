@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Model\StoryManager;
+use App\Model\SceneManager;
+
 class StoryController extends AbstractController
 {
     public function indexCreation(): ?string
@@ -24,8 +27,6 @@ class StoryController extends AbstractController
         return $this->twig->render('StoryCreation/add.html.twig');
     }
 
-
-
     public function showCreation(string $id): string
     {
         $story = $this->storyManager->selectOneById((int) $id);
@@ -46,5 +47,15 @@ class StoryController extends AbstractController
 
         header('Location:/storycreation');
         return null;
+    }
+    /**
+     * Affiche la page de sélection d'histoire
+     */
+    public function index(): string
+    {
+        $storyManager = new StoryManager();
+        $stories = $storyManager->selectAll();
+
+        return $this->twig->render('Story/index.html.twig', ['stories' => $stories]);
     }
 }

@@ -1,4 +1,4 @@
-version: '3.4'
+version: "3.4"
 
 services:
     web:
@@ -15,12 +15,20 @@ services:
     database:
         image: mysql/mysql-server:8.0
         healthcheck:
-            test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-uroot", "-prootpassword"] # Command to check health.
+            test: [
+                    "CMD",
+                    "mysqladmin",
+                    "ping",
+                    "-h",
+                    "localhost",
+                    "-uroot",
+                    "-prootpassword",
+                ] # Command to check health.
             interval: 5s # Interval between health checks.
             timeout: 5s # Timeout for each health checking.
             retries: 20 # Hou many times retries.
             start_period: 10s
-#        container_name: database
+        #        container_name: database
         volumes:
             - ./database-setup.sh:/docker-entrypoint-initdb.d/setup.sh
             - db-data:/var/lib/mysql

@@ -13,32 +13,32 @@ DROP TABLE IF EXISTS `character`;
 
 -- Création de la table 'story'
 CREATE TABLE IF NOT EXISTS `story` (
-  `id` INT AUTO_INCREMENT PRIMARY KEY,
-  `name` VARCHAR(255) NOT NULL
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(255) NOT NULL
 );
 
 -- Création de la table 'scene'
 CREATE TABLE IF NOT EXISTS `scene` (
-  `id` INT AUTO_INCREMENT PRIMARY KEY,
-  `name` VARCHAR(255) NOT NULL,
-  `background` TEXT,
-  `story_id` INT NOT NULL
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(255) NOT NULL,
+    `background` TEXT,
+    `story_id` INT NOT NULL
 );
 
 -- Création de la table 'choice'
 CREATE TABLE IF NOT EXISTS `choice` (
-  `id` INT AUTO_INCREMENT PRIMARY KEY,
-  `body` VARCHAR(30) NOT NULL,
-  `scene_id` INT NOT NULL,
-  `next_scene_id` INT
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `body` VARCHAR(30) NOT NULL,
+    `scene_id` INT NOT NULL,
+    `next_scene_id` INT
 );
 
 -- Création de la table 'dialogue_line'
 CREATE TABLE IF NOT EXISTS `dialogue_line` (
-  `id` INT AUTO_INCREMENT PRIMARY KEY,
-  `body` VARCHAR(255) NOT NULL,
-  `character_id` INT NOT NULL,
-  `scene_id` INT NOT NULL
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `body` VARCHAR(255) NOT NULL,
+    `character_id` INT NOT NULL,
+    `scene_id` INT NOT NULL
 );
 
 -- Création de la table 'character'
@@ -51,11 +51,11 @@ CREATE TABLE IF NOT EXISTS `character` (
 
 -- Création de la table 'user'
 CREATE TABLE IF NOT EXISTS `user` (
-  `id` INT AUTO_INCREMENT PRIMARY KEY,
-  `name` VARCHAR(30) NOT NULL,
-  `password` VARCHAR(255) NOT NULL,
-  `fontsize` INT,
-  `textspeed` INT
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(30) NOT NULL,
+    `password` VARCHAR(255) NOT NULL,
+    `fontsize` INT,
+    `textspeed` INT
 );
 
 -- Création de la table 'history'
@@ -77,3 +77,4 @@ ALTER TABLE `character` ADD FOREIGN KEY (`story_id`) REFERENCES `story` (`id`) O
 
 -- Commit de la transaction
 COMMIT;
+
