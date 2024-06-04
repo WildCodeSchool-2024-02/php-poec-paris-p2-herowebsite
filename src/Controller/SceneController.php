@@ -44,7 +44,8 @@ class SceneController extends AbstractController
     // Affiche la première scène d'une histoire en trouvant le scène ID correspondant
     /**
      * Solution alternative, intégrer cette gestion dans le cas où sceneID est null dans la méthode show ⏫
-     * Solution 2 rendre le paramètre storyID optionnel et dans ce cas changer le datamapper pour faire une condition qui changerait la requête en ajoutant ORDER BY id ASC LIMIT 1
+     * Solution 2 rendre le paramètre storyID optionnel et dans ce cas changer le datamapper pour
+     * faire une condition qui changerait la requête en ajoutant ORDER BY id ASC LIMIT 1
      */
 
     public function showFirstScene(int $storyId): string

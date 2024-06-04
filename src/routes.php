@@ -12,6 +12,6 @@ return [
     'scene/start' => [
         'SceneController', 'showFirstScene', ['storyId'] // Affiche la première scène de l'histoire
     ],
-    'scene/show' => ['SceneController', 'show', ['storyId', 'sceneId']] // Affiche une scène correspondant à une histoire
+    'scene/show' => ['SceneController', 'show', ['storyId', 'sceneId']] // Affiche une scène à l'aide de son histoire
 
 ];
