@@ -14,6 +14,5 @@ return [
     'storycreation/delete' => ['StoryController', 'delete', ['id']],
     'storycreation/scene/add' => ['SceneController', 'add', ['story_id']],
     'storycreation/scene/show' => ['SceneController', 'showCreation', ['story_id', 'id']],
-    'storycreation/scene/delete' => ['SceneController', 'delete', ['story_id', 'id']],
-    '/storycreation/scene/dialoadd'
+    'storycreation/scene/delete' => ['SceneController', 'delete', ['story_id', 'id']]
 ];
