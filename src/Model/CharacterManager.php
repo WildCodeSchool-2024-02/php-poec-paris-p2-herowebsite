@@ -39,6 +39,6 @@ class CharacterManager extends AbstractManager
         );
         $characters = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-        return $characters;
+        return $this->decodeHtmlEntitiesInArray($characters);
     }
 }

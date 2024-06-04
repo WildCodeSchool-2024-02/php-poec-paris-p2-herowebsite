@@ -29,8 +29,8 @@ abstract class AbstractManager
         if ($orderBy) {
             $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
         }
-
-        return $this->pdo->query($query)->fetchAll();
+        $result = $this->pdo->query($query)->fetchAll();
+        return $this->decodeHtmlEntitiesInArray($result);
     }
 
     /**
@@ -43,7 +43,8 @@ abstract class AbstractManager
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
-        return $statement->fetch();
+        $result = $statement->fetch();
+        return $this->decodeHtmlEntitiesInArray($result);
     }
 
     /**
@@ -55,5 +56,18 @@ abstract class AbstractManager
         $statement = $this->pdo->prepare("DELETE FROM " . static::TABLE . " WHERE id=:id");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
+    }
+
+
+    public function decodeHtmlEntitiesInArray(array $array): array
+    {
+        foreach ($array as $key => $value) {
+            if (is_array($value)) {
+                $array[$key] = $this->decodeHtmlEntitiesInArray($value);
+            } else {
+                $array[$key] = html_entity_decode($value);
+            }
+        }
+        return $array;
     }
 }

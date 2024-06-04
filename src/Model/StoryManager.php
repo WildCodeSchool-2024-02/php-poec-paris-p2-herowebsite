@@ -41,6 +41,6 @@ class StoryManager extends AbstractManager
 
         $scenes = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-        return $scenes;
+        return $this->decodeHtmlEntitiesInArray($scenes);
     }
 }

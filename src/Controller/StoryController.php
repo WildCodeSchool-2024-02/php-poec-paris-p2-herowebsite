@@ -2,15 +2,11 @@
 
 namespace App\Controller;
 
-use App\Model\StoryManager;
-use App\Model\CharacterManager;
-
 class StoryController extends AbstractController
 {
     public function indexCreation(): ?string
     {
-        $storyManager = new StoryManager();
-        $stories = $storyManager->selectAll();
+        $stories = $this->storyManager->selectAll();
 
         return $this->twig->render('StoryCreation/index.html.twig', ['stories' => $stories]);
     }
@@ -18,9 +14,8 @@ class StoryController extends AbstractController
     {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $storyManager = new StoryManager();
-            $story = array_map('trim', $_POST);
-            $id = $storyManager->insert($story);
+            $story = array_map('htmlentities', array_map('trim', $_POST));
+            $id = $this->storyManager->insert($story);
 
             header('Location:/storycreation/show?id=' . $id);
             return null;
@@ -33,9 +28,8 @@ class StoryController extends AbstractController
 
     public function showCreation(string $id): string
     {
-        $storyManager = new StoryManager();
-        $story = $storyManager->selectOneById((int) $id);
-        $scenes = $storyManager->getScenes($id);
+        $story = $this->storyManager->selectOneById((int) $id);
+        $scenes = $this->storyManager->getScenes($id);
 
         return $this->twig->render(
             'StoryCreation/show.html.twig',
@@ -48,8 +42,7 @@ class StoryController extends AbstractController
 
     public function delete(int $id): ?string
     {
-        $storyManager = new StoryManager();
-        $storyManager->delete((int) $id);
+        $this->storyManager->delete((int) $id);
 
         header('Location:/storycreation');
         return null;

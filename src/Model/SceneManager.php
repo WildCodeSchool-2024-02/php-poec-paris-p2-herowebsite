@@ -27,7 +27,7 @@ class SceneManager extends AbstractManager
 
         $story = $statement->fetch(PDO::FETCH_ASSOC);
 
-        return $story;
+        return $this->decodeHtmlEntitiesInArray($story);
     }
 
     public function getChoices(string $id): array
@@ -36,6 +36,6 @@ class SceneManager extends AbstractManager
 
         $choices = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-        return $choices;
+        return $this->decodeHtmlEntitiesInArray($choices);
     }
 }

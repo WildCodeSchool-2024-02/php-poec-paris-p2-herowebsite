@@ -42,6 +42,6 @@ class DialogueManager extends AbstractManager
 
         $dialogues = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-        return $dialogues;
+        return $this->decodeHtmlEntitiesInArray($dialogues);
     }
 }

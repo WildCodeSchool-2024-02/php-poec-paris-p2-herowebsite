@@ -2,20 +2,15 @@
 
 namespace App\Controller;
 
-use App\Model\SceneManager;
-use App\Model\CharacterManager;
-use App\Model\DialogueManager;
-
 class SceneController extends AbstractController
 {
     public function add(int $storyId): ?string
     {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $sceneManager = new SceneManager();
-            $scene = array_map('trim', $_POST);
+            $scene = array_map('htmlentities', array_map('trim', $_POST));
             $scene['story_id'] = $storyId;
-            $id = $sceneManager->insert($scene);
+            $id = $this->sceneManager->insert($scene);
 
             header('Location:/storycreation/scene/show?' . http_build_query(['story_id' => $storyId, 'id' => $id]));
             return null;
@@ -26,14 +21,12 @@ class SceneController extends AbstractController
 
     public function showCreation(string $storyId, string $id): string
     {
-        $sceneManager = new SceneManager();
-        $characterManager = new CharacterManager();
-        $dialogueManager = new DialogueManager();
-        $scene = $sceneManager->selectOneById((int) $id);
-        $story = $sceneManager->getStory($storyId);
-        $dialogues = $dialogueManager->getDialogues($id);
-        $choices = $sceneManager->getChoices($id);
-        $characters = $characterManager->getCharacters($storyId);
+        $scene = $this->sceneManager->selectOneById((int) $id);
+        $story = $this->sceneManager->getStory($storyId);
+        $dialogues = $this->dialogueManager->getDialogues($id);
+        $choices = $this->sceneManager->getChoices($id);
+        $characters = $this->characterManager->getCharacters($storyId);
+
         return $this->twig->render(
             'SceneCreation/show.html.twig',
             [
@@ -48,8 +41,7 @@ class SceneController extends AbstractController
 
     public function delete(string $storyId, string $sceneId): ?string
     {
-        $sceneManager = new SceneManager();
-        $sceneManager->delete((int) $sceneId);
+        $this->sceneManager->delete((int) $sceneId);
 
         header('Location:/storycreation/show?id=' . $storyId);
         return null;

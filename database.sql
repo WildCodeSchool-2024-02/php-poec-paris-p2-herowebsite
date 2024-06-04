@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `dialogue_line` (
 -- Création de la table 'character'
 CREATE TABLE IF NOT EXISTS `character` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
-  `name` VARCHAR(30) NOT NULL,
+  `name` VARCHAR(255) NOT NULL,
   `sprite` TEXT,
   `story_id` INT
 );
