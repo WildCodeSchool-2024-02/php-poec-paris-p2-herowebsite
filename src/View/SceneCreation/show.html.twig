@@ -7,7 +7,12 @@
 <h2>Personnages :</h2>
 <ul>
 {% for character in characters %}
-    <li><input type="checkbox" id = "{{character.name}}" name = "{{character.name}}"><label for = "{{character.name}}">{{character.name}}<a href = "/storycreation/delchar?story_id={{story.id}}&scene_id={{scene.id}}&id={{character.id}}">supprimer</a></li>
+    <li>
+        <input type="checkbox" id = "{{character.name}}" name = "{{character.name}}">
+        <label for = "{{character.name}}">{{character.name}}
+        <a href = "/storycreation/delchar?story_id={{story.id}}&scene_id={{scene.id}}&id={{character.id}}"> supprimer</a>
+        <a href= ""> Editer</a>
+    </li>
 {% endfor %}
     <form method = 'post' action="/storycreation/addchar?story_id={{ story.id }}&scene_id={{ scene.id }}">
         <label for="name"></label>
@@ -23,12 +28,13 @@
 {% for dialogue in dialogues %}
     <li>{{ dialogue.id }} :  {{ dialogue.body }}</li>
 {% endfor %}
+    <li><a href="/storycreation/scene/add_dial?story_id={{ story.id }}&scene_id={{ scene.id }}"> Ajouter une ligne de dialogue</a></li>  
 </ul>
 
 <h2>Choix :</h2>
 <ul>
 {% for choice in choices %}
-    <li>{{ choice.id }} : {{ choice.body }} <a href="/storycreation/scene/add_dialogue?id={{scene.id}}">ajouter un dialogue</a></li>
+    <li>{{ choice.id }} : {{ choice.body }}</li>
 {% endfor %}
 </ul>
 

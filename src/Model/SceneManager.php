@@ -6,7 +6,7 @@ use PDO;
 
 class SceneManager extends AbstractManager
 {
-    public const TABLE = 'scene';
+    public const TABLE = "`scene`";
 
     public function insert(array $scene): int
     {

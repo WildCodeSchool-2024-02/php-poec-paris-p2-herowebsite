@@ -6,7 +6,7 @@ use PDO;
 
 class CharacterManager extends AbstractManager
 {
-    public const TABLE = '`character`';
+    public const TABLE = "`character`";
 
     public function insert(array $characters): bool
     {
@@ -19,6 +19,17 @@ class CharacterManager extends AbstractManager
 
 
         return $statement->execute();
+    }
+
+    public function update(array $characters): bool
+    {
+        $statement = $this->pdo->prepare(
+            "UPDATE " . self::TABLE . 
+            "SET name = " . $characters["name"] . 
+            "sprite = " . $characters["sprite"] . ";"
+        );
+
+        return $statement->execute();    
     }
 
     public function getCharacters(string $storyId): array
