@@ -11,7 +11,8 @@ class DialogueManager extends AbstractManager
     public function insert(array $dialogues): bool
     {
         $statement = $this->pdo->prepare(
-            "INSERT INTO " . self::TABLE . " (`body`, `character_id`, `scene_id`) VALUE (:body, :character_id, :scene_id);"
+            "INSERT INTO " . self::TABLE . " (`body`, `character_id`, `scene_id`) 
+            VALUE (:body, :character_id, :scene_id);"
         );
         $statement->bindValue("body", $dialogues["body"], PDO::PARAM_STR);
         $statement->bindValue("character_id", $dialogues["character_id"], PDO::PARAM_STR);
@@ -24,12 +25,12 @@ class DialogueManager extends AbstractManager
     public function update(array $dialogues): bool
     {
         $statement = $this->pdo->prepare(
-            "UPDATE " . self::TABLE . 
-            "SET body = " . $dialogues["body"] . 
+            "UPDATE " . self::TABLE .
+            "SET body = " . $dialogues["body"] .
             "character_id = " . $dialogues["character_id"] . ";"
         );
 
-        return $statement->execute();    
+        return $statement->execute();
     }
 
     public function getDialogues(string $id): array
@@ -40,5 +41,4 @@ class DialogueManager extends AbstractManager
 
         return $dialogues;
     }
-
 }

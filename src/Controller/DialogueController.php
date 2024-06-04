@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 use App\Model\SceneManager;
 use App\Model\DialogueManager;
 use App\Model\CharacterManager;
@@ -19,19 +20,21 @@ class DialogueController extends AbstractController
             return null;
         }
 
-        $sceneManager = new SceneManager;
-        $characterManager = new CharacterManager;
+        $sceneManager = new SceneManager();
+        $characterManager = new CharacterManager();
 
         $story = $sceneManager->getStory($storyId);
         $scene = $sceneManager->selectOneById((int) $sceneId);
         $characters = $characterManager->getCharacters($storyId);
-                    
-        return $this->twig->render('DialogueCreation/add.html.twig', 
+
+        return $this->twig->render(
+            'DialogueCreation/add.html.twig',
             [
                 'story' => $story,
                 'scene' => $scene,
                 'characters' => $characters,
-            ]);
+            ]
+        );
     }
 
     public function delete(string $storyId, string $sceneId, int $id): ?string

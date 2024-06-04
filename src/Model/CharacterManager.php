@@ -24,12 +24,12 @@ class CharacterManager extends AbstractManager
     public function update(array $characters): bool
     {
         $statement = $this->pdo->prepare(
-            "UPDATE " . self::TABLE . 
-            "SET name = " . $characters["name"] . 
+            "UPDATE " . self::TABLE .
+            "SET name = " . $characters["name"] .
             "sprite = " . $characters["sprite"] . ";"
         );
 
-        return $statement->execute();    
+        return $statement->execute();
     }
 
     public function getCharacters(string $storyId): array
