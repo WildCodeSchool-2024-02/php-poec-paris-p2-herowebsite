@@ -4,11 +4,11 @@
 
 <a href="/">Retour à l'accueil</a>
 <h1>Histoires en cours</h1>
-<a href="storycreation/add">Ajouter une histoire</a>
+<a href="/storycreation/add">Ajouter une histoire</a>
 <ul>
     {% for story in stories %}
-        <li>{{ story.name }} : <a href="storycreation/show?id={{ story.id }}">éditer l'histoire</a> 
-        <a href="storycreation/delete?id={{ story.id }}">supprimer l'histoire</a></li>
+        <li>{{ story.name }} : <a href="/storycreation/show?id={{ story.id }}">éditer l'histoire</a> 
+        <a href="/storycreation/delete?id={{ story.id }}">supprimer l'histoire</a></li>
     {% endfor %}
 </ul>
 

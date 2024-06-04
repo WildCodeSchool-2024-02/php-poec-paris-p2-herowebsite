@@ -1,7 +1,7 @@
 {% block content %}
 
 <p>Histoire : {{ story.name }}</p>
-<a href="../show?id={{ story.id }}">Retour à l'histoire</a>
+<a href="/storycreation/show?id={{ story.id }}">Retour à l'histoire</a>
 <h1>{{scene['name']}}</h1>
 
 <h2>Répliques :</h2>
@@ -14,7 +14,7 @@
 <h2>Choix :</h2>
 <ul>
 {% for choice in choices %}
-    <li>{{ choice.id }} : {{ choice.body }}</li>
+    <li>{{ choice.id }} : {{ choice.body }} <a href="/storycreation/scene/dialogue/add?story_id={{story.id}}&scene_id={{scene['id']}}"</li>
 {% endfor %}
 </ul>
 
