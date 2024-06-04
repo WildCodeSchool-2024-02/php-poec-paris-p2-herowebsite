@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\SceneManager;
+use App\Model\CharacterManager;
 
 class SceneController extends AbstractController
 {
@@ -25,10 +26,12 @@ class SceneController extends AbstractController
     public function showCreation(string $storyId, string $id): string
     {
         $sceneManager = new SceneManager();
+        $characterManager = new CharacterManager();
         $scene = $sceneManager->selectOneById((int) $id);
         $story = $sceneManager->getStory($storyId);
         $dialogues = $sceneManager->getDialogues($id);
         $choices = $sceneManager->getChoices($id);
+        $characters = $characterManager->getCharacters($storyId);
 
         return $this->twig->render(
             'SceneCreation/show.html.twig',
@@ -36,7 +39,8 @@ class SceneController extends AbstractController
                 'scene' => $scene,
                 'story' => $story,
                 'dialogues' => $dialogues,
-                'choices' => $choices
+                'choices' => $choices,
+                'characters' => $characters
             ]
         );
     }

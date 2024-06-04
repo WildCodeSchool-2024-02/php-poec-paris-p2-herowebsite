@@ -2,19 +2,33 @@
 
 <p>Histoire : {{ story.name }}</p>
 <a href="/storycreation/show?id={{ story.id }}">Retour à l'histoire</a>
-<h1>{{scene['name']}}</h1>
+<h1>{{scene.name}}</h1>
+
+<h2>Personnages :</h2>
+<ul>
+{% for character in characters %}
+    <li><input type="checkbox" id = "{{character.name}}" name = "{{character.name}}"><label for = "{{character.name}}">{{character.name}}<a href = "/storycreation/delchar?story_id={{story.id}}&scene_id={{scene.id}}&id={{character.id}}">supprimer</a></li>
+{% endfor %}
+    <form method = 'post' action="/storycreation/addchar?story_id={{ story.id }}&scene_id={{ scene.id }}">
+        <label for="name"></label>
+        <input type="text" id="name" name="name">
+        <label for = "sprite">sprite</label>
+        <input type="text" id="sprite" name="sprite">
+        <input type = "submit">
+    </form>
+</ul>
 
 <h2>Répliques :</h2>
 <ul>
 {% for dialogue in dialogues %}
     <li>{{ dialogue.id }} :  {{ dialogue.body }}</li>
 {% endfor %}
-<ul>
+</ul>
 
 <h2>Choix :</h2>
 <ul>
 {% for choice in choices %}
-    <li>{{ choice.id }} : {{ choice.body }} </li>
+    <li>{{ choice.id }} : {{ choice.body }} <a href="/storycreation/scene/add_dialogue?id={{scene.id}}">ajouter un dialogue</a></li>
 {% endfor %}
 </ul>
 

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\StoryManager;
+use App\Model\CharacterManager;
 
 class StoryController extends AbstractController
 {
@@ -27,6 +28,8 @@ class StoryController extends AbstractController
 
         return $this->twig->render('StoryCreation/add.html.twig');
     }
+
+
 
     public function showCreation(string $id): string
     {
