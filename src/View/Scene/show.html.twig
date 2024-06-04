@@ -56,7 +56,7 @@
     </div>
 
     {### Div de boutons de choix ###}
-    <div class="choices hidden">
+    <div class="choices hidden"   data-story-id="{{scene.story_id}}">
       {% for choice in choices %}
       <a href="/scene/show?storyId={{ scene.story_id }}&sceneId={{ choice.next_scene_id }}" class="choice-link">
         {{ choice.body }}
