@@ -10,6 +10,7 @@ DROP TABLE IF EXISTS `story`;
 DROP TABLE IF EXISTS `user`;
 DROP TABLE IF EXISTS `character`;
 
+
 -- Création de la table 'story'
 CREATE TABLE IF NOT EXISTS `story` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
