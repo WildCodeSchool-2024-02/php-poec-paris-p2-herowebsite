@@ -11,17 +11,12 @@ use App\Model\ChoiceManager;
 
 class SceneController extends AbstractController
 {
-    public function show(int $storyId, int $sceneId)
+    // Affiche une scène par son ID et celui de l'histoire
+    public function show(int $storyId, int $sceneId): string
     {
         // Utiliser SceneManager pour obtenir les informations sur la scène
         $sceneManager = new SceneManager();
         $scene = $sceneManager->findScene($storyId, $sceneId);
-        // Log the result of findScene
-        if ($scene) {
-            error_log("Scene found: " . print_r($scene, true));
-        } else {
-            error_log("No scene found for storyId: $storyId, sceneId: $sceneId");
-        }
 
         // Vérifier si la scène existe, sinon renvoyer une erreur 404
         if (!$scene) {
@@ -46,22 +41,22 @@ class SceneController extends AbstractController
         ]);
     }
 
-    public function showFirstScene(int $storyId)
-    {
-        //      function custom_log($message)
-        //        {
-        //         echo $message . PHP_EOL; // PHP_EOL represents the end of line character
-        //     }
+    // Affiche la première scène d'une histoire en trouvant le scène ID correspondant
+    /**
+     * Solution alternative, intégrer cette gestion dans le cas où sceneID est null dans la méthode show ⏫
+     * Solution 2 rendre le paramètre storyID optionnel et dans ce cas changer le datamapper pour faire une condition qui changerait la requête en ajoutant ORDER BY id ASC LIMIT 1
+     */
 
+    public function showFirstScene(int $storyId): string
+    {
         $sceneManager = new SceneManager();
         $firstSceneId = $sceneManager->findFirstSceneIdOfStory($storyId);
         $firstSceneId = intval($firstSceneId);
 
         // Vérifiez si l'identifiant de la première scène a été trouvé
         if (!$firstSceneId) {
-            // Gérer l'erreur (par exemple, renvoyer une réponse 404)
             header("HTTP/1.0 404 Not Found");
-            echo 'coucou';
+            echo '404 - Page not found';
             exit();
         }
 

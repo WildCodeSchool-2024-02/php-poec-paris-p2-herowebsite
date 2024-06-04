@@ -6,36 +6,36 @@ class SceneManager extends AbstractManager
 {
     public const TABLE = 'scene';
 
+    /**
+     * Récupère scène par son ID et celui de l'histoire.
+     */
     public function findScene(int $storyId, int $sceneId): array|false
     {
-        // Prepare the SQL query to select the first scene of the specified story
         $statement = $this->pdo->prepare(
-            "SELECT * FROM " . self::TABLE . " WHERE story_id = :storyId AND id = :sceneId ORDER BY id ASC LIMIT 1"
+            "SELECT * FROM " . self::TABLE . " WHERE story_id = :storyId AND id = :sceneId"
         );
 
-        // Bind parameter values
         $statement->bindValue(':storyId', $storyId, \PDO::PARAM_INT);
         $statement->bindValue(':sceneId', $sceneId, \PDO::PARAM_INT);
-        // Execute the query
         $statement->execute();
 
-        // Return the first scene if exists, otherwise return false
+        // Retourne la scène si trouvée, sinon false
         return $statement->fetch();
     }
 
+    /**
+     * Récupère l'ID de la première scène associée à une histoire.
+     */
     public function findFirstSceneIdOfStory(int $storyId): int|false
     {
-        // Préparer la requête SQL pour récupérer l'identifiant de la première scène de l'histoire
         $statement = $this->pdo->prepare(
             "SELECT id FROM scene WHERE story_id = :storyId ORDER BY id ASC LIMIT 1"
         );
 
-        // Bind parameter values
         $statement->bindValue(':storyId', $storyId, \PDO::PARAM_INT);
-        // Execute the query
         $statement->execute();
 
-        // Return the first scene if exists, otherwise return false
+        // Retourne l'id de la première scène si trouvée, sinon false
         $row = $statement->fetch();
         return intval($row['id']);
     }

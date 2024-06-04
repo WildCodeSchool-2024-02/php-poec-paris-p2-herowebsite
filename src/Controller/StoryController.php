@@ -8,7 +8,7 @@ use App\Model\SceneManager;
 class StoryController extends AbstractController
 {
     /**
-     * Display story selection page
+     * Affiche la page de sélection d'histoire
      */
     public function index(): string
     {

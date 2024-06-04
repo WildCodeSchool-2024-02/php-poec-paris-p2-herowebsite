@@ -1,79 +1,69 @@
 {% extends 'layout.html.twig' %}
+
+{### Block supplémentaire de fichiers style & JS ###}
 {% block head_extra %}
-<link rel="stylesheet" href="/assets/css/style2.css">
-<script src="/assets/js/script.js"></script>
-<script src="https://cdn.tailwindcss.com"></script>
-
+<link rel="stylesheet" href="/assets/css/scene.css">
+<script src="/assets/js/scene.js"></script> {### Script de gestion de l'affichage des dialogues & des personnages  ###}
 {% endblock %}
-{% block title %}
 
+{### Block supplémentaire de titre de page  ###}
+{% block title %}
 {{ scene.name }}
 {% endblock %}
 
 {% block content %}
 
-<body style="background-image: url('/assets/images/backgrounds/{{scene.background}}'); background-size: cover;">
-  <div class="bg-black-opacity-70 h-full w-full text-white flex flex-col">
+<body>
+  {### Div de background ###}
 
-    {#// ===== MAIN CONTAINER ===== // #}
-    <section id="container" class="flex flex-col flex-grow">
+  <div class="background" style="background-image: url('/assets/images/backgrounds/{{ scene.background }}');"></div>
 
-      {#// ===== BTN DIV ===== // #}
-      <div class="flex w-full flex-grow gap-2 p-2">
-        <button class="btn-style">
-          BTN 1
-        </button>
+  <section id="container">
 
-        <button class="btn-style">
-          BTN 2
-        </button>
-      </div>
+    {### Div de boutons de menu cachée pour l'instant###}
+    <div class="buttons hidden">
+      <button class="btn">BTN 1</button>
+      <button class="btn">BTN 2</button>
+    </div>
 
-      <article class="dialogs ml-10 relative top-20">
-        {% set displayed_characters = [] %}
-        {% for dialogue in dialogues %}
-        <div class="dialogue-box flex justify-between items-end" id="dialogue-{{ loop.index }}" style="display: {% if loop.first %}flex{% else %}none{% endif %};">
-          <div class='dialogue-content'>
-
-            <h2 class="character-name">
-              {{ dialogue.character_name }}
-            </h2>
-
-            <div>
-              <p class="dialogue-body">
-                {{ dialogue.body }}
-              </p>
-            </div>
-
-          </div>
-
-          <div class="choices hidden">
-            {% for choice in choices %}
-            <a href="/scene/show?storyId={{scene.story_id}}&sceneId={{ choice.next_scene_id }}" class="choice-link">
-              {{ choice.body }}
-            </a>
-            {% endfor %}
-          </div>
-
-          <div class="character-sprite">
-            {% set appears_class = '' %}
-            {% if dialogue.character_name not in displayed_characters %}
-            {% set appears_class = 'appears' %}
-            {% set displayed_characters = displayed_characters | merge([dialogue.character_name]) %}
-            {% endif %}
-            <img src="/assets/images/sprites/{{ dialogue.sprite }}" alt="{{ dialogue.character_name }}" class="sprite {{ appears_class }}">
-          </div>
+    {### Div de dialogues ###}
+    <article class="dialogues">
+      {% for dialogue in dialogues %}
+      <div class="dialogue {% if not loop.first %}hidden{% endif %}" id="dialogue-{{ loop.index }}">
+        <h2 class="character-name">
+          {{ dialogue.character_name }}
+        </h2>
+        <div class="dialogue-content">
+          <p class="dialogue-body">
+            {{ dialogue.body }}
+          </p>
         </div>
-        {% endfor %}
-      </article>
-
-      <div class="continue-button-container">
-        <button id="continue-button" class="continue-button">
-          Continuer
-        </button>
       </div>
+      {% endfor %}
+    </article>
 
-    </section>
-  </div>
+    <div class="continue">
+      <button id="continue-button" class="btn">Continuer</button>
+    </div>
+
+    {### Div pour les sprites des personnages ###}
+    <div class="sprites">
+      {% for dialogue in dialogues %}
+      <div class="sprite  {% if not loop.first %}hidden{% endif %}">
+        <img src="/assets/images/sprites/{{ dialogue.sprite }}" alt="{{ dialogue.character_name }}" class="sprite-appears">
+      </div>
+      {% endfor %}
+    </div>
+
+    {### Div de boutons de choix ###}
+    <div class="choices hidden">
+      {% for choice in choices %}
+      <a href="/scene/show?storyId={{ scene.story_id }}&sceneId={{ choice.next_scene_id }}" class="choice-link">
+        {{ choice.body }}
+      </a>
+      {% endfor %}
+    </div>
+
+  </section>
 </body>
 {% endblock %}

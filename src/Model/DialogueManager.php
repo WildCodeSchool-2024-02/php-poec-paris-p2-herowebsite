@@ -7,7 +7,7 @@ class DialogueManager extends AbstractManager
     public const TABLE = 'dialogue_line';
 
     /**
-     * Get dialogues by scene ID.
+     * Récupère les dialogues & les personnages associés par l'ID de la scène.
      */
     public function getDialoguesBySceneId(int $sceneId): array
     {

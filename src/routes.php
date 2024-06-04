@@ -7,11 +7,11 @@
 //          3. (optional) array of query string keys to send as parameter to the method
 // e.g route '/item/edit?id=1' will execute $itemController->edit(1)
 return [
-    '' => ['HomeController', 'index'],
-    'story' => ['StoryController', 'index'],
+    '' => ['HomeController', 'index'], // Affiche la homepage
+    'story' => ['StoryController', 'index'], // Affiche la page de sélection d'histoire
     'scene/start' => [
-        'SceneController', 'showFirstScene', ['storyId']
+        'SceneController', 'showFirstScene', ['storyId'] // Affiche la première scène de l'histoire
     ],
-    'scene/show' => ['SceneController', 'show', ['storyId', 'sceneId']]
+    'scene/show' => ['SceneController', 'show', ['storyId', 'sceneId']] // Affiche une scène correspondant à une histoire
 
 ];

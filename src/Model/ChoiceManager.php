@@ -7,7 +7,7 @@ class ChoiceManager extends AbstractManager
     public const TABLE = 'choice';
 
     /**
-     * Get choices by scene ID.
+     * Récupère les choix par l'ID de la scène.
      */
     public function getChoicesBySceneId(int $sceneId): array
     {
