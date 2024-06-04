@@ -1,24 +1,23 @@
 <!doctype html>
 <html lang="fr">
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="/assets/images/favicon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Julee&family=Kaisei+Decol&family=Lancelot&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/assets/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Julee&family=Kaisei+Decol&family=Lancelot&display=swap" rel="stylesheet">
+  <title>{% block title %}{% endblock %}</title> {### Block de titre de page  ###}
+  <link rel="stylesheet" href="/assets/css/style.css">
+  {% block head %}{% endblock %}
+  {% block head_extra %}{% endblock %} {### Block supplémentaire de styles & scripts  ###}
 
-    <title>{% block title %}{% endblock %}</title>
-
-    <link rel="stylesheet" href="/assets/css/style.css">
-    {% block stylesheet %}{% endblock %}
-</head>
 
 <body>
-    {% block content %}{% endblock %}
-    {% block javascript %}{% endblock %}
+  {% block content %}{% endblock %}
+  {% block javascript %}{% endblock %}
 </body>
+
 </html>
-
-

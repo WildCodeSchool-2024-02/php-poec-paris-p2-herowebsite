@@ -9,3 +9,7 @@ body {
     --font-text: "Lancelot", serif;
     --font-continue: "Kaisei Decol", serif;
 }
+
+.character-edit {
+    display: none;
+}
