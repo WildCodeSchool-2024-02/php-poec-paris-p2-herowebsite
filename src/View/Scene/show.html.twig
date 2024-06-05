@@ -1,5 +1,4 @@
 {% extends 'layout.html.twig' %}
-
 {### Block supplémentaire de fichiers style & JS ###}
 {% block head_extra %}
 <link rel="stylesheet" href="/assets/css/scene.css">
@@ -13,11 +12,10 @@
 
 {% block content %}
 
-<body>
+<body {### style="background-image: url('/assets/images/backgrounds/{{ scene.background }}');"###}>
   {### Div de background ###}
 
-  <div class="background" style="background-image: url('/assets/images/backgrounds/{{ scene.background }}');"></div>
-
+  <div class="background"></div>
   <section id="container">
 
     {### Div de boutons de menu cachée pour l'instant###}

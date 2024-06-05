@@ -9,6 +9,7 @@ use App\Model\SceneManager;
 use App\Model\CharacterManager;
 use App\Model\DialogueManager;
 use App\Model\StoryManager;
+use App\Model\ChoiceManager;
 
 /**
  * Initialized some Controller common features (Twig...)
@@ -20,6 +21,7 @@ abstract class AbstractController
     protected DialogueManager $dialogueManager;
     protected CharacterManager $characterManager;
     protected StoryManager $storyManager;
+    protected ChoiceManager $choiceManager;
 
     public function __construct()
     {
@@ -37,5 +39,6 @@ abstract class AbstractController
         $this->characterManager = new CharacterManager();
         $this->dialogueManager = new DialogueManager();
         $this->storyManager = new StoryManager();
+        $this->choiceManager = new ChoiceManager();
     }
 }

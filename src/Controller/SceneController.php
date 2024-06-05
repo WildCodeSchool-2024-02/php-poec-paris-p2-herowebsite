@@ -2,11 +2,6 @@
 
 namespace App\Controller;
 
-use App\Model\StoryManager;
-use App\Model\SceneManager;
-use App\Model\DialogueManager;
-use App\Model\ChoiceManager;
-
 // use App\Model\UserSaveManager; à venir
 
 class SceneController extends AbstractController
@@ -58,8 +53,7 @@ class SceneController extends AbstractController
     public function show(int $storyId, int $sceneId): string
     {
         // Utiliser SceneManager pour obtenir les informations sur la scène
-        $sceneManager = new SceneManager();
-        $scene = $sceneManager->findScene($storyId, $sceneId);
+        $scene = $this->sceneManager->findScene($storyId, $sceneId);
 
         // Vérifier si la scène existe, sinon renvoyer une erreur 404
         if (!$scene) {
@@ -69,12 +63,10 @@ class SceneController extends AbstractController
         }
 
         // Utiliser DialogueManager pour obtenir les dialogues de la scène
-        $dialogueManager = new DialogueManager();
-        $dialogues = $dialogueManager->getDialoguesBySceneId($sceneId);
+        $dialogues = $this->dialogueManager->getDialoguesBySceneId($sceneId);
 
         // Utiliser ChoiceManager pour obtenir les choix de la scène
-        $choiceManager = new ChoiceManager();
-        $choices = $choiceManager->getChoicesBySceneId($sceneId);
+        $choices = $this->choiceManager->getChoicesBySceneId($sceneId);
 
         // Rendre la vue avec les données récupérées
         return $this->twig->render('Scene/show.html.twig', [
@@ -93,8 +85,7 @@ class SceneController extends AbstractController
 
     public function showFirstScene(int $storyId): string
     {
-        $sceneManager = new SceneManager();
-        $firstSceneId = $sceneManager->findFirstSceneIdOfStory($storyId);
+        $firstSceneId = $this->sceneManager->findFirstSceneIdOfStory($storyId);
         $firstSceneId = intval($firstSceneId);
 
         // Vérifiez si l'identifiant de la première scène a été trouvé
