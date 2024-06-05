@@ -26,8 +26,9 @@ class SceneController extends AbstractController
         $scene = $this->sceneManager->selectOneById((int) $id);
         $story = $this->sceneManager->getStory($storyId);
         $dialogues = $this->dialogueManager->getDialogues($id);
-        $choices = $this->sceneManager->getChoices($id);
+        $choices = $this->choiceManager->getChoicesBySceneId((int) $id);
         $characters = $this->characterManager->getCharacters($storyId);
+        $allscenes = $this->sceneManager->selectAllByStoryId($storyId);
 
         return $this->twig->render(
             'SceneCreation/show.html.twig',
@@ -36,7 +37,8 @@ class SceneController extends AbstractController
                 'story' => $story,
                 'dialogues' => $dialogues,
                 'choices' => $choices,
-                'characters' => $characters
+                'characters' => $characters,
+                'allscenes' => $allscenes
             ]
         );
     }

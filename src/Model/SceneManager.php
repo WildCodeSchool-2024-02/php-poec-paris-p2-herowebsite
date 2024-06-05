@@ -29,16 +29,6 @@ class SceneManager extends AbstractManager
 
         return $this->decodeHtmlEntitiesInArray($story);
     }
-
-    public function getChoices(string $id): ?array
-    {
-        $statement = $this->pdo->query("SELECT id, body FROM `choice` WHERE `scene_id` = " . $id . ";");
-
-        $choices = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-        return $this->decodeHtmlEntitiesInArray($choices);
-    }
-
     /**
      * Récupère scène par son ID et celui de l'histoire.
      */
@@ -71,5 +61,14 @@ class SceneManager extends AbstractManager
         // Retourne l'id de la première scène si trouvée, sinon false
         $row = $statement->fetch();
         return intval($row['id']);
+    }
+
+    public function selectAllByStoryId(string $storyId): array
+    {
+        $query = 'SELECT * FROM ' . static::TABLE .
+        'WHERE story_id = ' . $storyId . ';';
+
+        $result = $this->pdo->query($query)->fetchAll();
+        return $this->decodeHtmlEntitiesInArray($result);
     }
 }
