@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-
 class StoryController extends AbstractController
 {
     /**
