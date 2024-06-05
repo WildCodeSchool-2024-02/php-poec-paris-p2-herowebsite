@@ -1,62 +1,55 @@
-/**
- * @file
- * Ce script gère l'affichage séquentiel des dialogues et des sprites dans une interface utilisateur.
- * Au clic sur le bouton "Continuer", il passe au dialogue et au sprite suivant.
- * Une fois tous les dialogues affichés, il cache le bouton "Continuer" et affiche une div contenant des choix si disponibles,
- * ou remplace le bouton par un lien de retour.
- */
-
-// Attend que le DOM soit complètement chargé avant d'exécuter le code
-document.addEventListener("DOMContentLoaded", function () {
-    // Récupère le bouton de continuité
+document.addEventListener("DOMContentLoaded", () => {
+    // Récupère l'élément du bouton "continue" par son identifiant.
     const continueButton = document.getElementById("continue-button");
-    // Récupère tous les éléments avec la classe "dialogue"
+    // Récupère tous les éléments avec la classe "dialogue".
     const dialogues = document.querySelectorAll(".dialogue");
-    // Récupère tous les éléments avec la classe "sprite"
+    // Récupère tous les éléments avec la classe "sprite".
     const sprites = document.querySelectorAll(".sprite");
-    // Récupère la div contenant les choix
+    // Récupère l'élément avec la classe "choices".
     const choicesDiv = document.querySelector(".choices");
-    // Récupère l'identifiant de l'histoire depuis l'attribut data-story-id de la div des choix
-    const storyId = choicesDiv.getAttribute("data-story-id");
-    // Initialise l'index du dialogue actuel à 0
+    // Récupère l'ID de l'histoire à partir de l'attribut data-story-id de l'élément choicesDiv.
+    const storyId = choicesDiv.dataset.storyId;
+    // Initialise l'index du dialogue actuel à 0.
     let currentDialogueIndex = 0;
 
-    // Fonction pour afficher ou masquer un élément en fonction de l'index et du paramètre show
-    const showElement = (index, show) => {
-        dialogues[index].classList.toggle("hidden", !show);
-        sprites[index].classList.toggle("hidden", !show);
+    // Fonction pour afficher un élément (dialogue et sprite) à un index donné.
+    const showElement = (index) => {
+        dialogues[index].classList.remove("hidden");
+        sprites[index].classList.remove("hidden");
     };
 
-    // Fonction pour gérer le clic sur le bouton "Continuer"
-    const handleContinueClick = () => {
-        // Masque l'élément actuel
-        showElement(currentDialogueIndex, false);
+    // Fonction pour masquer un élément (dialogue et sprite) à un index donné.
+    const hideElement = (index) => {
+        dialogues[index].classList.add("hidden");
+        sprites[index].classList.add("hidden");
+    };
 
-        // Vérifie si tous les dialogues ont été affichés
-        if (currentDialogueIndex >= dialogues.length - 1) {
-            // Cache le bouton "Continuer"
+    // Fonction pour afficher le dialogue suivant.
+    const showNextDialogue = () => {
+        // Vérifie si l'index actuel est inférieur à la longueur de la liste des dialogues moins un.
+        if (currentDialogueIndex < dialogues.length - 1) {
+            // Masque l'élément actuel.
+            hideElement(currentDialogueIndex);
+            // Incrémente l'index du dialogue actuel.
+            currentDialogueIndex++;
+            // Affiche le nouvel élément.
+            showElement(currentDialogueIndex);
+        } else {
+            // Masque le bouton "continue" lorsque tous les dialogues sont affichés.
             continueButton.style.display = "none";
-
-            // Vérifie s'il y a des choix disponibles
-            if (document.querySelectorAll(".choice-link").length > 0) {
-                // Affiche la div des choix
+            // Vérifie si des choix sont disponibles.
+            if (choicesDiv.querySelectorAll(".choice-link").length > 0) {
+                // Affiche les choix si des liens de choix existent.
                 choicesDiv.style.display = "block";
-                // Affiche le dernier dialogue (si nécessaire)
-                showElement(currentDialogueIndex, true);
             } else {
-                // Si aucun choix n'est disponible, remplace le bouton "Continuer" par un lien de retour
+                // Remplace le bouton "continue" par un lien de retour vers les crédits si aucun choix n'est disponible.
                 continueButton.outerHTML = `<a href="/scene/show?storyId=${storyId}/credits" class="btn">Retour</a>`;
             }
-        } else {
-            // Incrémente l'index du dialogue actuel
-            currentDialogueIndex++;
-            // Affiche le dialogue suivant
-            showElement(currentDialogueIndex, true);
         }
     };
 
-    // Ajoute un gestionnaire d'événements pour le clic sur le bouton "Continuer"
-    continueButton.addEventListener("click", handleContinueClick);
-    // Affiche le premier dialogue et le premier sprite
-    showElement(currentDialogueIndex, true);
+    // Ajoute un écouteur d'événements au bouton "continue" pour afficher le dialogue suivant au clic.
+    continueButton.addEventListener("click", showNextDialogue);
+    // Affiche le premier dialogue et sprite au chargement de la page.
+    showElement(currentDialogueIndex);
 });
