@@ -33,7 +33,7 @@ class DialogueManager extends AbstractManager
         return $statement->execute();
     }
 
-    public function getDialogues(string $id): array
+    public function getDialogues(string $id): ?array
     {
         $statement = $this->pdo->query("SELECT d.*, c.name AS character_name FROM " . self::TABLE . "AS d 
         INNER JOIN `character` AS c
@@ -48,7 +48,7 @@ class DialogueManager extends AbstractManager
     /**
      * Récupère les dialogues & les personnages associés par l'ID de la scène.
      */
-    public function getDialoguesBySceneId(int $sceneId): array
+    public function getDialoguesBySceneId(int $sceneId): ?array
     {
         $query = "SELECT dl.id, dl.body, dl.character_id, c.name AS character_name, c.sprite
                   FROM " . static::TABLE . " dl

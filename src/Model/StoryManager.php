@@ -30,7 +30,7 @@ class StoryManager extends AbstractManager
         return $statement->execute();
     }
 
-    public function getScenes(string $storyId): array
+    public function getScenes(string $storyId): ?array
     {
         $statement = $this->pdo->query(
             "SELECT scene.* FROM `scene`

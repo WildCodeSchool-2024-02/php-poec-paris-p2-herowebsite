@@ -32,7 +32,7 @@ class CharacterManager extends AbstractManager
         return $statement->execute();
     }
 
-    public function getCharacters(string $storyId): array
+    public function getCharacters(string $storyId): ?array
     {
         $statement = $this->pdo->query(
             "SELECT * FROM " . self::TABLE . " WHERE `story_id` = " . $storyId . ";"

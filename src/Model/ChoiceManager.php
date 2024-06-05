@@ -9,7 +9,7 @@ class ChoiceManager extends AbstractManager
     /**
      * Récupère les choix par l'ID de la scène.
      */
-    public function getChoicesBySceneId(int $sceneId): array
+    public function getChoicesBySceneId(int $sceneId): ?array
     {
         $query = "SELECT id, body, next_scene_id
                   FROM " . static::TABLE . "

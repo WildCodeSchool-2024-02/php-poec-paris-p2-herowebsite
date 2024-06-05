@@ -8,7 +8,7 @@ class SceneManager extends AbstractManager
 {
     public const TABLE = "`scene`";
 
-    public function insert(array $scene): int
+    public function insert(array $scene): ?int
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
         "(`name`, `background`, `story_id`) VALUES (:name, :background, :story_id)");
@@ -21,7 +21,7 @@ class SceneManager extends AbstractManager
         return (int) $this->pdo->lastInsertId();
     }
 
-    public function getStory(string $id): array
+    public function getStory(string $id): ?array
     {
         $statement = $this->pdo->query("SELECT * FROM `story` WHERE `id` = " . $id . ";");
 
@@ -30,7 +30,7 @@ class SceneManager extends AbstractManager
         return $this->decodeHtmlEntitiesInArray($story);
     }
 
-    public function getChoices(string $id): array
+    public function getChoices(string $id): ?array
     {
         $statement = $this->pdo->query("SELECT id, body FROM `choice` WHERE `scene_id` = " . $id . ";");
 

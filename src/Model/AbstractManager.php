@@ -58,14 +58,15 @@ abstract class AbstractManager
         $statement->execute();
     }
 
-
-    public function decodeHtmlEntitiesInArray(array $array): array
+    public function decodeHtmlEntitiesInArray(array|null $array): ?array
     {
-        foreach ($array as $key => $value) {
-            if (is_array($value)) {
-                $array[$key] = $this->decodeHtmlEntitiesInArray($value);
-            } else {
-                $array[$key] = html_entity_decode($value);
+        if (!empty($array)) {
+            foreach ($array as $key => $value) {
+                if (is_array($value)) {
+                    $array[$key] = $this->decodeHtmlEntitiesInArray($value);
+                } elseif ($value !== null) {
+                    $array[$key] = html_entity_decode($value);
+                }
             }
         }
         return $array;
