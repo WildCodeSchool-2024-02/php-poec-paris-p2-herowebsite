@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 choicesDiv.style.display = "block";
             } else {
                 // Remplace le bouton "continue" par un lien de retour vers les crédits si aucun choix n'est disponible.
-                continueButton.outerHTML = `<a href="/scene/show?storyId=${storyId}/credits" class="btn">Retour</a>`;
+                continueButton.outerHTML = `<a href="/story" class="btn">Retour</a>`;
             }
         }
     };
