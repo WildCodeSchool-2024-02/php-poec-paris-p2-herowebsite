@@ -1,10 +1,10 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-<form method="post">
+<form method="post" enctype="multipart/form-data">
 <label for="name"> title : </label>
 <input type="text" name="name" id="name">
 <label for="background"> background : </label>
-<input type="text" name="background" id="background">
+<input type="file" name="background" id="background">
 <input type="submit">
 {% endblock %}

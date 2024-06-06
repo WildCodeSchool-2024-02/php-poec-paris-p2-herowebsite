@@ -22,6 +22,9 @@ abstract class AbstractController
     protected CharacterManager $characterManager;
     protected StoryManager $storyManager;
     protected ChoiceManager $choiceManager;
+    public const EXTENSIONS_ALLOWED = ['jpg', 'jpeg', 'png', 'webp', 'svg'];
+    public const MAX_UPLOAD_SIZE = 5000000;
+
 
     public function __construct()
     {
@@ -41,4 +44,5 @@ abstract class AbstractController
         $this->storyManager = new StoryManager();
         $this->choiceManager = new ChoiceManager();
     }
+
 }
