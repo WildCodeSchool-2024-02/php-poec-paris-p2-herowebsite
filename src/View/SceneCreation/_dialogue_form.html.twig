@@ -19,15 +19,15 @@
     {% endfor %}
 
 
-<form method = "post" action ="/storycreation/scene/add_dial?story_id={{ story.id }}&scene_id={{ scene.id }}">
-<label for = "dial_body"></label>
-<input type = "textarea" name = "dial_body" id ="dial_body"> 
-        <label for = "character_id"></label>
-        <select name = "character_id" id = "character_id">
-        {% for character in characters %} 
-            <option  value = "{{ character.id }}"> {{ character.name }} </option>
-        {% endfor %}
-    </select>
-<input type ="submit">
-</form>
+    <form method = "post" action ="/storycreation/scene/add_dial?story_id={{ story.id }}&scene_id={{ scene.id }}">
+        <label for = "dial_body"></label>
+        <input type = "textarea" name = "dial_body" id ="dial_body"> 
+            <label for = "character_id"></label>
+            <select name = "character_id" id = "character_id">
+            {% for character in characters %} 
+                <option  value = "{{ character.id }}"> {{ character.name }} </option>
+            {% endfor %}
+        </select>
+        <input type ="submit">
+    </form>
 </ul>
