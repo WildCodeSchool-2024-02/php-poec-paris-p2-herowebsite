@@ -9,6 +9,7 @@ class SceneController extends AbstractController
     public function add(int $storyId): ?string
     {
         $errors = [];
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $scene = array_map('htmlentities', array_map('trim', $_POST));
             $scene['story_id'] = $storyId;

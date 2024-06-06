@@ -13,6 +13,7 @@ class CharacterController extends AbstractController
             $targetFile = $targetDir . basename($_FILES['sprite']['name']);
             $typeFile = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
             $dimensionsImage = getimagesize($_FILES['sprite']['tmp_name']);
+            $errors = [];
 
             if (!$dimensionsImage) {
                 $errors[] = 'Votre sprite n\'est pas une image';
@@ -34,10 +35,12 @@ class CharacterController extends AbstractController
 
             if (empty($errors)) {
                 $character['sprite'] = basename($_FILES['sprite']['name']);
-                $id = $this->characterManager->insert($character);
+                $this->characterManager->insert($character);
             } else {
                 // Log des erreurs dans un fichier de journal
                 error_log('Erreurs lors de l\'ajout dtu sprite: ' . implode(', ', $errors));
+                // Ajout du personnage en cas d'absence de sprite
+                $this->characterManager->insert($character);
             }
         }
 
