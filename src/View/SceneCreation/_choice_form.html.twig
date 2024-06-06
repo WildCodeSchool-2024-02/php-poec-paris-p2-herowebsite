@@ -16,6 +16,7 @@
       </form>
   </li>
   {% endfor %}
+  
     <form method='post' 
     action="/storycreation/addchoice?story_id={{ story.id }}&scene_id={{ scene.id }}&next_scene_id={{ onescene.id }}">
       <label for="body"></label>
@@ -28,5 +29,4 @@
       <input type="submit">
       <button class="choice_cancel">&#10006;</button>
     </form>
-  
 </ul>
