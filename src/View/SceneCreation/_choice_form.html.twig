@@ -2,7 +2,7 @@
   {% for choice in choices %}
   <li>
     {{ choice.body }}   ⇒  <a href ="/storycreation/scene/show?story_id={{ story.id }}&id={{ choice.next_scene_id }}">{{ choice.next_scene_name }}</a>
-      <a href="/storycreation/delchoice?story_id={{story.id}}&scene_id={{scene.id}}&id={{choice.id}}"> supprimer</a>
+      <button onclick="if(confirm('Êtes vous sûr de vouloir supprimer ce choix ?')) { window.location.href='/storycreation/delchoice?story_id={{story.id}}&scene_id={{scene.id}}&id={{choice.id}}';}"> &#x1F5D1;</button>
       <button class="choice-edit">Editer</button>
       <form method="post" action="/storycreation/update_choice?story_id={{ story.id }}&scene_id={{ scene.id }}&id={{ choice.id }}" class="choice-edit-form">
         <input type="text" name="e_body" id="e_body">
@@ -12,13 +12,13 @@
           {% endfor %}
         </select>
         <input type="submit">
-        <button class="c_cancel">&#10006;</button>
+        <button class="cancel_choice">&#10006;</button>
       </form>
   </li>
   {% endfor %}
-  
+    <button class="add-choice">Ajouter un choix</button>
     <form method='post' 
-    action="/storycreation/addchoice?story_id={{ story.id }}&scene_id={{ scene.id }}&next_scene_id={{ onescene.id }}">
+    action="/storycreation/addchoice?story_id={{ story.id }}&scene_id={{ scene.id }}&next_scene_id={{ onescene.id }}" class="choice-add-form">
       <label for="body"></label>
       <input type="text" id="body" name="body">
       <select name="next_scene" id="next_scene">

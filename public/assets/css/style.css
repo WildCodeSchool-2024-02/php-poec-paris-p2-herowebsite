@@ -12,6 +12,9 @@ body {
 
 .character-edit-form,
 .dialogue-edit-form,
-.choice-edit-form {
+.choice-edit-form,
+.character-add-form,
+.dialogue-add-form,
+.choice-add-form {
     display: none;
 }

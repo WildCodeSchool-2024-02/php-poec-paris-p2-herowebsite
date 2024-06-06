@@ -1,19 +1,24 @@
 <ul>
   {% for character in characters %}
   <li>
-    <input type="checkbox" id="{{character.name}}" name="{{character.name}}">
-    <label for="{{character.name}}">{{character.name}}
-      <a href="/storycreation/delchar?story_id={{story.id}}&scene_id={{scene.id}}&id={{character.id}}"> supprimer</a>
+    {{character.name}}
+      <button 
+      onclick="if(confirm('Êtes vous sûr de vouloir supprimer ce personnage ?')) 
+      { window.location.href='/storycreation/delchar?story_id={{story.id}}&scene_id={{scene.id}}&id={{character.id}}';}">
+      &#x1F5D1;
+      </button>
       <button class="character-edit">Editer</button>
       <form method="post" action="/storycreation/update_char?story_id={{ story.id }}&scene_id={{ scene.id }}&id={{ character.id }}" class="character-edit-form">
         <input type="text" name="e_name" id="character_name">
         <input type="text" name="e_sprite" id="e_sprite">
         <input type="submit">
-        <button class="cancel">&#10006;</button>
+        <button class="cancel-character">&#10006;</button>
       </form>
   </li>
   {% endfor %}
-  <form method='post' action="/storycreation/addchar?story_id={{ story.id }}&scene_id={{ scene.id }}">
+
+  <button class='add-character'>Ajouter un personnage</button>
+  <form method='post' action="/storycreation/addchar?story_id={{ story.id }}&scene_id={{ scene.id }}" class="character-add-form">
     <label for="name"></label>
     <input type="text" id="name" name="name">
     <label for="sprite">sprite</label>

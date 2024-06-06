@@ -3,7 +3,11 @@
     <li>
       {{ dialogue.character_name }} :
       {{ dialogue.body }}
-        <a href="/storycreation/scene/del_dial?story_id={{story.id}}&scene_id={{scene.id}}&id={{dialogue.id}}"> supprimer</a>
+        <button 
+        onclick="if(confirm('Êtes vous sûr de vouloir supprimer ce choix ?')) 
+        { window.location.href='/storycreation/scene/del_dial?story_id={{story.id}}&scene_id={{scene.id}}&id={{dialogue.id}}';}">
+        &#x1F5D1;
+        </button>
         <button class="dialogue-edit">Editer</button>
         <form method="post" action="/storycreation/scene/update_dial?story_id={{ story.id }}&scene_id={{ scene.id }}&id={{dialogue.id }}" class="dialogue-edit-form">
             <input type="textarea" name="e_dial_body" id="e_dial_body">
@@ -13,12 +17,13 @@
             {% endfor %}
             </select>
             <input type="submit">
-            <button class="d_cancel">&#10006;</button>
+            <button class="cancel_dialogue">&#10006;</button>
         </form>
     </li>
     {% endfor %}
 
-    <form method = "post" action ="/storycreation/scene/add_dial?story_id={{ story.id }}&scene_id={{ scene.id }}">
+    <button class="add-dialogue">Ajouter une ligne de dialogue</button>
+    <form method = "post" action ="/storycreation/scene/add_dial?story_id={{ story.id }}&scene_id={{ scene.id }}" class="dialogue-add-form">
         <label for = "dial_body"></label>
         <input type = "textarea" name = "dial_body" id ="dial_body"> 
             <label for = "character_id"></label>
