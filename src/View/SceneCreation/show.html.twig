@@ -9,15 +9,16 @@
     {{ story.name }}
   </p>
   <a href="/storycreation/show?id={{ story.id }}">Retour à l'histoire</a>
-  
-  <h1>{{scene.name}}</h1>
+  <img height=300 width=300 src = "/assets/images/backgrounds/{{scene.background}}" alt="ça s'affiche pas !">
+
+<h1>{{scene.name}}</h1>
 
   <h2>Personnages :</h2>
   {% include 'SceneCreation/_character_form.html.twig' %}
 
   <h2>Répliques :</h2>
   {% include 'SceneCreation/_dialogue_form.html.twig' %}
-  
+
   <h2>Choix :</h2>
   {% include 'SceneCreation/_choice_form.html.twig' %}
 {% endblock %}

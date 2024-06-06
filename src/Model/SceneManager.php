@@ -11,7 +11,7 @@ class SceneManager extends AbstractManager
     public function insert(array $scene): ?int
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
-        "(`name`, `background`, `story_id`) VALUES (:name, :background, :story_id)");
+            "(`name`, `background`, `story_id`) VALUES (:name, :background, :story_id)");
         $statement->bindValue('name', $scene['name'], PDO::PARAM_STR);
         $statement->bindValue('background', $scene['background'], PDO::PARAM_STR);
         $statement->bindValue('story_id', $scene['story_id'], PDO::PARAM_STR);
@@ -66,7 +66,7 @@ class SceneManager extends AbstractManager
     public function selectAllByStoryId(string $storyId): array
     {
         $query = 'SELECT * FROM ' . static::TABLE .
-        'WHERE story_id = ' . $storyId . ';';
+            'WHERE story_id = ' . $storyId . ';';
 
         $result = $this->pdo->query($query)->fetchAll();
         return $this->decodeHtmlEntitiesInArray($result);

@@ -8,12 +8,12 @@ class SceneController extends AbstractController
 {
     public function add(int $storyId): ?string
     {
-
+        $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $scene = array_map('htmlentities', array_map('trim', $_POST));
             $scene['story_id'] = $storyId;
 
-            $targetDir = 'images/backgrounds/';
+            $targetDir = 'assets/images/backgrounds/';
             $targetFile = $targetDir . basename($_FILES['background']['name']);
             $typeFile = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
             $dimensionsImage = getimagesize($_FILES['background']['tmp_name']);
@@ -27,25 +27,34 @@ class SceneController extends AbstractController
             }
 
             if (!in_array($typeFile, parent::EXTENSIONS_ALLOWED)) {
-                $errors[] = 'Votre background n\'as pas le bon format (' . implode(', ', parent::EXTENSIONS_ALLOWED) . ')';
+                $errors[] = 'Votre background n\'as pas le bon format ('
+                    . implode(', ', parent::EXTENSIONS_ALLOWED) . ')';
             }
-            
-            if (file_exists($targetFile) || !move_uploaded_file($_FILES['background']['tmp_name'], $targetFile)) {
-                $errors[] = 'Votre background n\'a pas pu être ajouté';
+
+            if (!move_uploaded_file($_FILES['background']['tmp_name'], $targetFile)) {
+                $errors[] = 'Erreur lors du déplacement du fichier de background';
+                // Log des informations d'erreur
+                error_log('Erreur lors du déplacement du fichier de background: ' . $_FILES['background']['error']);
             }
-            if (empty($errors)) 
-            {
+
+            if (empty($errors)) {
                 $scene['background'] = basename($_FILES['background']['name']);
+                $id = $this->sceneManager->insert($scene);
+            } else {
+                // Log des erreurs dans un fichier de journal
+                error_log('Erreurs lors de l\'ajout de la scène: ' . implode(', ', $errors));
+                // Insère la scène sans background en cas d'erreur
                 $id = $this->sceneManager->insert($scene);
             }
 
             header('Location:/storycreation/scene/show?' . http_build_query(['story_id' => $storyId, 'id' => $id]));
             return null;
-            }
+        }
 
         return $this->twig->render('SceneCreation/add.html.twig');
     }
-    
+
+
     public function showCreation(string $storyId, string $id): string
     {
         $scene = $this->sceneManager->selectOneById((int) $id);
@@ -125,5 +134,4 @@ class SceneController extends AbstractController
         // Afficher la première scène de l'histoire
         return $this->show($storyId, $firstSceneId);
     }
-
 }

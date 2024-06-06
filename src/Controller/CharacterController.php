@@ -9,7 +9,36 @@ class CharacterController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $character = array_map('htmlentities', array_map('trim', $_POST));
             $character['story_id'] = $storyId;
-            $this->characterManager->insert($character);
+            $targetDir = 'assets/images/sprites/';
+            $targetFile = $targetDir . basename($_FILES['sprite']['name']);
+            $typeFile = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+            $dimensionsImage = getimagesize($_FILES['sprite']['tmp_name']);
+
+            if (!$dimensionsImage) {
+                $errors[] = 'Votre sprite n\'est pas une image';
+            }
+
+            if ($_FILES['sprite']['size'] > parent::MAX_UPLOAD_SIZE) {
+                $errors[] = 'Votre sprite ne peut pas dépasser 5Mo';
+            }
+
+            if (!in_array($typeFile, parent::EXTENSIONS_ALLOWED)) {
+                $errors[] = 'Votre sprite n\'as pas le bon format (' . implode(', ', parent::EXTENSIONS_ALLOWED) . ')';
+            }
+
+            if (!move_uploaded_file($_FILES['sprite']['tmp_name'], $targetFile)) {
+                $errors[] = 'Erreur lors du déplacement du fichier de sprite';
+                // Log des informations d'erreur
+                error_log('Erreur lors du déplacement du fichier de sprite: ' . $_FILES['sprite']['error']);
+            }
+
+            if (empty($errors)) {
+                $character['sprite'] = basename($_FILES['sprite']['name']);
+                $id = $this->characterManager->insert($character);
+            } else {
+                // Log des erreurs dans un fichier de journal
+                error_log('Erreurs lors de l\'ajout dtu sprite: ' . implode(', ', $errors));
+            }
         }
 
         header('Location:/storycreation/scene/show?story_id=' . $storyId . '&id=' . $sceneId);
