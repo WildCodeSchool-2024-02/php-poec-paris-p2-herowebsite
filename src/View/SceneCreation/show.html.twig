@@ -16,16 +16,8 @@
   {% include 'SceneCreation/_character_form.html.twig' %}
 
   <h2>Répliques :</h2>
-  <ul>
-    {% for dialogue in dialogues %}
-    <li>
-      {{ dialogue.character_name }} :
-      {{ dialogue.body }}
-    </li>
-    {% endfor %}
-    <li><a href="/storycreation/scene/add_dial?story_id={{ story.id }}&scene_id={{ scene.id }}"> Ajouter une ligne de dialogue</a></li>
-  </ul>
-
+  {% include 'SceneCreation/_dialogue_form.html.twig' %}
+  
   <h2>Choix :</h2>
   {% include 'SceneCreation/_choice_form.html.twig' %}
 {% endblock %}

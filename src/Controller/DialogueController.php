@@ -10,23 +10,9 @@ class DialogueController extends AbstractController
             $dialogues = array_map('htmlentities', array_map('trim', $_POST));
             $dialogues['scene_id'] = $sceneId;
             $this->dialogueManager->insert($dialogues);
-
+        }
             header('Location:/storycreation/scene/show?story_id=' . $storyId . '&id=' . $sceneId);
             return null;
-        }
-
-        $story = $this->sceneManager->getStory($storyId);
-        $scene = $this->sceneManager->selectOneById((int) $sceneId);
-        $characters = $this->characterManager->getCharacters($storyId);
-
-        return $this->twig->render(
-            'DialogueCreation/add.html.twig',
-            [
-                'story' => $story,
-                'scene' => $scene,
-                'characters' => $characters,
-            ]
-        );
     }
 
     public function delete(string $storyId, string $sceneId, int $id): ?string

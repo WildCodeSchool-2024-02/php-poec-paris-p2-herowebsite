@@ -1,10 +1,13 @@
-{% extends 'layout.html.twig' %}
+<ul>
+    {% for dialogue in dialogues %}
+    <li>
+      {{ dialogue.character_name }} :
+      {{ dialogue.body }}
+    </li>
+    {% endfor %}
+</ul>
 
-{% block content %}
-<p>Scène : {{ scene.name }}</p>
-<a href="/storycreation/scene/show?story_id={{ story.id }}&id={{ scene.id }}">Retour à la scène</a>
-
-<form method = "post" action ="">
+<form method = "post" action ="/storycreation/scene/add_dial?story_id={{ story.id }}&scene_id={{ scene.id }}">
 <label for = "body"></label>
 <input type = "textarea" name = "body" id ="body"> 
         <label for = "character_id"></label>
@@ -15,4 +18,3 @@
     </select>
 <input type ="submit">
 </form>
-{% endblock %}
