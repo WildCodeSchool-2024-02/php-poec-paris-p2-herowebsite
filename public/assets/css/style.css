@@ -10,6 +10,8 @@ body {
     --font-continue: "Kaisei Decol", serif;
 }
 
-.character-edit {
+.character-edit-form,
+.dialogue-edit-form,
+.choice-edit-form {
     display: none;
 }

@@ -22,12 +22,13 @@ class DialogueManager extends AbstractManager
         return $statement->execute();
     }
 
-    public function update(array $dialogues): bool
+    public function update(int $id, array $dialogues): bool
     {
         $statement = $this->pdo->prepare(
             "UPDATE " . self::TABLE .
-            "SET body = " . $dialogues["body"] .
-            "character_id = " . $dialogues["character_id"] . ";"
+            " SET body = \"" . $dialogues["body"] .
+            "\", character_id = " . $dialogues["character_id"] .
+            " WHERE id = " . $id . ";"
         );
 
         return $statement->execute();

@@ -22,4 +22,16 @@ class DialogueController extends AbstractController
         header('Location:/storycreation/scene/show?story_id=' . $storyId . '&id=' . $sceneId);
         return null;
     }
+
+    public function update(string $storyId, string $sceneId, int $id): ?string
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $dialogue = array_map('htmlentities', array_map('trim', $_POST));
+            $dialogue['body'] = $dialogue['e_dial_body'];
+            $dialogue['character_id'] = $dialogue['e_character_id'];
+            $this->dialogueManager->update($id, $dialogue);
+        }
+        header('Location:/storycreation/scene/show?story_id=' . $storyId . '&id=' . $sceneId);
+        return null;
+    }
 }
