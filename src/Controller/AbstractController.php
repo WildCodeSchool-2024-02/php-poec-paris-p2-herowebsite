@@ -44,5 +44,4 @@ abstract class AbstractController
         $this->storyManager = new StoryManager();
         $this->choiceManager = new ChoiceManager();
     }
-
 }
