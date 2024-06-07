@@ -18,6 +18,9 @@ class SceneController extends AbstractController
 
     private $characterManager;
 
+    public const EXTENSIONS_ALLOWED = ['jpg', 'jpeg', 'png', 'webp', 'svg'];
+    public const MAX_UPLOAD_SIZE = 5000000;
+
     public function __construct()
     {
         parent::__construct();
@@ -43,13 +46,13 @@ class SceneController extends AbstractController
                 $errors[] = 'Votre background n\'est pas une image';
             }
 
-            if ($_FILES['background']['size'] > parent::MAX_UPLOAD_SIZE) {
+            if ($_FILES['background']['size'] > self::MAX_UPLOAD_SIZE) {
                 $errors[] = 'Votre background ne peut pas dépasser 5Mo';
             }
 
-            if (!in_array($typeFile, parent::EXTENSIONS_ALLOWED)) {
+            if (!in_array($typeFile, self::EXTENSIONS_ALLOWED)) {
                 $errors[] = 'Votre background n\'as pas le bon format ('
-                    . implode(', ', parent::EXTENSIONS_ALLOWED) . ')';
+                    . implode(', ', self::EXTENSIONS_ALLOWED) . ')';
             }
 
             if (!move_uploaded_file($_FILES['background']['tmp_name'], $targetFile)) {
