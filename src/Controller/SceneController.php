@@ -145,6 +145,6 @@ class SceneController extends AbstractController
             exit();
         }
 
-        return $this->show((int) $sceneId);
+        return $this->show((int)$sceneId['scene_id']);
     }
 }
