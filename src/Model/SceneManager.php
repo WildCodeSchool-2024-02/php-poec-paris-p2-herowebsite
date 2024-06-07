@@ -21,21 +21,21 @@ class SceneManager extends AbstractManager
         return (int) $this->pdo->lastInsertId();
     }
 
-    public function findFirstSceneIdOfStory(int $storyId): int|false
+    public function selectFirstByStory(int $storyId): ?array
     {
         $statement = $this->pdo->prepare(
-            "SELECT story.*, MIN(sc.id) AS scene_id
-    FROM story
-    JOIN scene sc ON sc.story_id = story.id
-    GROUP BY story.id;"
+            "SELECT sc.id AS scene_id
+            FROM scene sc
+            WHERE sc.story_id = :storyId
+            ORDER BY sc.id ASC
+            LIMIT 1;"
         );
 
         $statement->bindValue(':storyId', $storyId, PDO::PARAM_INT);
         $statement->execute();
 
         // Retourne l'id de la première scène si trouvée, sinon false
-        $row = $statement->fetch();
-        return intval($row['id']);
+        return $statement->fetch();
     }
 
     public function selectAllByStory(string $storyId): array

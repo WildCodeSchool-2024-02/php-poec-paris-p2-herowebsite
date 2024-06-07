@@ -134,19 +134,17 @@ class SceneController extends AbstractController
     }
 
 
-/*
+
     public function showFirstScene(int $storyId): string
     {
-        $firstSceneId = $this->sceneManager->findFirstSceneIdOfStory($storyId);
-        $firstSceneId = intval($firstSceneId);
+        $sceneId = $this->sceneManager->selectFirstByStory($storyId);
 
-        if (!$firstSceneId) {
+        if (!$sceneId) {
             header("HTTP/1.0 404 Not Found");
             echo '404 - Page not found';
             exit();
         }
 
-        return $this->show($storyId);
+        return $this->show((int) $sceneId);
     }
-*/
 }
