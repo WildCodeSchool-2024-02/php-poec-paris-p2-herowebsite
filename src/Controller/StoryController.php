@@ -2,8 +2,16 @@
 
 namespace App\Controller;
 
+use App\Model\StoryManager;
+
 class StoryController extends AbstractController
 {
+    private $storyManager;
+
+    public function __construct()
+    {
+        $this->storyManager = new StoryManager();
+    }
     public function indexCreation(): ?string
     {
         $stories = $this->storyManager->selectAll();

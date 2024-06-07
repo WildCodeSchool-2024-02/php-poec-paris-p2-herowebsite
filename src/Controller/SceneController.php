@@ -2,10 +2,30 @@
 
 namespace App\Controller;
 
+use App\Model\SceneManager;
+use App\Model\DialogueManager;
+use App\Model\ChoiceManager;
+use App\Model\CharacterManager;
+
 // use App\Model\UserSaveManager; à venir
 
 class SceneController extends AbstractController
 {
+    private $sceneManager;
+    private $dialogueManager;
+
+    private $choiceManager;
+
+    private $characterManager;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->sceneManager = new SceneManager();
+        $this->dialogueManager = new DialogueManager();
+        $this->choiceManager = new ChoiceManager();
+        $this->characterManager = new CharacterManager();
+    }
     public function add(int $storyId): ?string
     {
         $errors = [];

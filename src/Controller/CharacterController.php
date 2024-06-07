@@ -2,8 +2,17 @@
 
 namespace App\Controller;
 
+use App\Model\CharacterManager;
+
 class CharacterController extends AbstractController
 {
+    private $characterManager;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->characterManager = new CharacterManager();
+    }
     public function add($storyId, $sceneId): ?string
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

@@ -2,8 +2,17 @@
 
 namespace App\Controller;
 
+use App\Model\ChoiceManager;
+
 class ChoiceController extends AbstractController
 {
+    private $choiceManager;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->choiceManager = new ChoiceManager();
+    }
     public function add(string $storyId, string $sceneId, string $nextSceneId)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

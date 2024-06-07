@@ -17,11 +17,6 @@ use App\Model\ChoiceManager;
 abstract class AbstractController
 {
     protected Environment $twig;
-    protected SceneManager $sceneManager;
-    protected DialogueManager $dialogueManager;
-    protected CharacterManager $characterManager;
-    protected StoryManager $storyManager;
-    protected ChoiceManager $choiceManager;
     public const EXTENSIONS_ALLOWED = ['jpg', 'jpeg', 'png', 'webp', 'svg'];
     public const MAX_UPLOAD_SIZE = 5000000;
 
@@ -37,12 +32,5 @@ abstract class AbstractController
             ]
         );
         $this->twig->addExtension(new DebugExtension());
-
-        $this->sceneManager = new SceneManager();
-        $this->characterManager = new CharacterManager();
-        $this->dialogueManager = new DialogueManager();
-        $this->storyManager = new StoryManager();
-        $this->choiceManager = new ChoiceManager();
     }
-
 }

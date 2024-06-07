@@ -2,8 +2,17 @@
 
 namespace App\Controller;
 
+use App\Model\DialogueManager;
+
 class DialogueController extends AbstractController
 {
+    private $dialogueManager;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->dialogueManager = new DialogueManager();
+    }
     public function add(string $storyId, string $sceneId): ?string
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
