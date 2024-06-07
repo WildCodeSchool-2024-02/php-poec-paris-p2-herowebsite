@@ -17,6 +17,7 @@ class SceneController extends AbstractController
     private $choiceManager;
 
     private $characterManager;
+    private const TARGET_DIR = 'assets/images/backgrounds/';
 
     public const EXTENSIONS_ALLOWED = ['jpg', 'jpeg', 'png', 'webp', 'svg'];
     public const MAX_UPLOAD_SIZE = 5000000;
@@ -37,8 +38,7 @@ class SceneController extends AbstractController
             $scene = array_map('htmlentities', array_map('trim', $_POST));
             $scene['story_id'] = $storyId;
 
-            $targetDir = 'assets/images/backgrounds/';
-            $targetFile = $targetDir . basename($_FILES['background']['name']);
+            $targetFile = self::TARGET_DIR . basename($_FILES['background']['name']);
             $typeFile = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
             $dimensionsImage = getimagesize($_FILES['background']['tmp_name']);
 

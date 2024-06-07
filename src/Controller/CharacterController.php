@@ -8,6 +8,7 @@ class CharacterController extends AbstractController
 {
     private $characterManager;
 
+    private const TARGET_DIR = 'assets/images/sprites/';
     public const EXTENSIONS_ALLOWED = ['jpg', 'jpeg', 'png', 'webp', 'svg'];
     public const MAX_UPLOAD_SIZE = 5000000;
 
@@ -21,8 +22,7 @@ class CharacterController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $character = array_map('htmlentities', array_map('trim', $_POST));
             $character['story_id'] = $storyId;
-            $targetDir = 'assets/images/sprites/';
-            $targetFile = $targetDir . basename($_FILES['sprite']['name']);
+            $targetFile = self::TARGET_DIR . basename($_FILES['sprite']['name']);
             $typeFile = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
             $dimensionsImage = getimagesize($_FILES['sprite']['tmp_name']);
             $errors = [];
@@ -41,7 +41,7 @@ class CharacterController extends AbstractController
 
             if (!move_uploaded_file($_FILES['sprite']['tmp_name'], $targetFile)) {
                 $errors[] = 'Erreur lors du déplacement du fichier de sprite';
-                // Log des informations d'erreur
+
                 error_log('Erreur lors du déplacement du fichier de sprite: ' . $_FILES['sprite']['error']);
             }
 
@@ -50,7 +50,7 @@ class CharacterController extends AbstractController
                 $this->characterManager->insert($character);
             } else {
                 // Log des erreurs dans un fichier de journal
-                error_log('Erreurs lors de l\'ajout dtu sprite: ' . implode(', ', $errors));
+                error_log('Erreurs lors de l\'ajout du sprite: ' . implode(', ', $errors));
                 // Ajout du personnage en cas d'absence de sprite
                 $this->characterManager->insert($character);
             }
