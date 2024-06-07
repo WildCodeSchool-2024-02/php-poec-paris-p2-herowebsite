@@ -11,12 +11,12 @@ class ChoiceManager extends AbstractManager
     /**
      * Récupère les choix par l'ID de la scène.
      */
-    public function getChoicesBySceneId(int $sceneId): ?array
+    public function selectAllByScene(int $sceneId): ?array
     {
-        $query = "SELECT c.*, s.name AS next_scene_name  
-                  FROM " . static::TABLE . " AS c 
-                  INNER JOIN scene AS s 
-                  ON c.next_scene_id = s.id 
+        $query = "SELECT c.*, s.name AS next_scene_name
+                  FROM " . static::TABLE . " AS c
+                  INNER JOIN scene AS s
+                  ON c.next_scene_id = s.id
                   WHERE scene_id = :scene_id";
 
         $statement = $this->pdo->prepare($query);

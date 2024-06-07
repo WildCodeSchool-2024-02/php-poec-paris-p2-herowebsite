@@ -6,6 +6,7 @@ use App\Model\SceneManager;
 use App\Model\DialogueManager;
 use App\Model\ChoiceManager;
 use App\Model\CharacterManager;
+use App\Model\StoryManager;
 
 // use App\Model\UserSaveManager; à venir
 
@@ -17,6 +18,9 @@ class SceneController extends AbstractController
     private $choiceManager;
 
     private $characterManager;
+
+    private $storyManager;
+
     private const TARGET_DIR = 'assets/images/backgrounds/';
 
     public const EXTENSIONS_ALLOWED = ['jpg', 'jpeg', 'png', 'webp', 'svg'];
@@ -29,6 +33,7 @@ class SceneController extends AbstractController
         $this->dialogueManager = new DialogueManager();
         $this->choiceManager = new ChoiceManager();
         $this->characterManager = new CharacterManager();
+        $this->storyManager = new StoryManager();
     }
     public function add(int $storyId): ?string
     {
@@ -57,7 +62,6 @@ class SceneController extends AbstractController
 
             if (!move_uploaded_file($_FILES['background']['tmp_name'], $targetFile)) {
                 $errors[] = 'Erreur lors du déplacement du fichier de background';
-                // Log des informations d'erreur
                 error_log('Erreur lors du déplacement du fichier de background: ' . $_FILES['background']['error']);
             }
 
@@ -65,7 +69,6 @@ class SceneController extends AbstractController
                 $scene['background'] = basename($_FILES['background']['name']);
                 $id = $this->sceneManager->insert($scene);
             } else {
-                // Log des erreurs dans un fichier de journal
                 error_log('Erreurs lors de l\'ajout de la scène: ' . implode(', ', $errors));
                 // Insère la scène sans background en cas d'erreur
                 $id = $this->sceneManager->insert($scene);
@@ -82,11 +85,11 @@ class SceneController extends AbstractController
     public function showCreation(string $storyId, string $id): string
     {
         $scene = $this->sceneManager->selectOneById((int) $id);
-        $story = $this->sceneManager->getStory($storyId);
-        $dialogues = $this->dialogueManager->getDialogues($id);
-        $choices = $this->choiceManager->getChoicesBySceneId((int) $id);
-        $characters = $this->characterManager->getCharacters($storyId);
-        $allscenes = $this->sceneManager->selectAllByStoryId($storyId);
+        $story = $this->storyManager->selectOneById((int) $storyId);
+        $dialogues = $this->dialogueManager->selectAllByScene($id);
+        $choices = $this->choiceManager->selectAllByScene((int) $id);
+        $characters = $this->characterManager->selectByStory($storyId);
+        $allscenes = $this->sceneManager->selectAllByStory($storyId);
 
         return $this->twig->render(
             'SceneCreation/show.html.twig',
@@ -109,26 +112,20 @@ class SceneController extends AbstractController
         return null;
     }
 
-    // Affiche une scène par son ID et celui de l'histoire
-    public function show(int $storyId, int $sceneId): string
+    public function show(int $sceneId): string
     {
-        // Utiliser SceneManager pour obtenir les informations sur la scène
-        $scene = $this->sceneManager->findScene($storyId, $sceneId);
+        $scene = $this->sceneManager->selectOneById($sceneId);
 
-        // Vérifier si la scène existe, sinon renvoyer une erreur 404
         if (!$scene) {
             header("HTTP/1.0 404 Not Found");
             echo '404 - Page not found';
             exit();
         }
 
-        // Utiliser DialogueManager pour obtenir les dialogues de la scène
-        $dialogues = $this->dialogueManager->getDialoguesBySceneId($sceneId);
+        $dialogues = $this->dialogueManager->selectAllByScene($sceneId);
 
-        // Utiliser ChoiceManager pour obtenir les choix de la scène
-        $choices = $this->choiceManager->getChoicesBySceneId($sceneId);
+        $choices = $this->choiceManager->selectAllByScene($sceneId);
 
-        // Rendre la vue avec les données récupérées
         return $this->twig->render('Scene/show.html.twig', [
             'scene' => $scene,
             'dialogues' => $dialogues,
@@ -136,26 +133,20 @@ class SceneController extends AbstractController
         ]);
     }
 
-    // Affiche la première scène d'une histoire en trouvant le scène ID correspondant
-    /**
-     * Solution alternative, intégrer cette gestion dans le cas où sceneID est null dans la méthode show ⏫
-     * Solution 2 rendre le paramètre storyID optionnel et dans ce cas changer le datamapper pour
-     * faire une condition qui changerait la requête en ajoutant ORDER BY id ASC LIMIT 1
-     */
 
+/*
     public function showFirstScene(int $storyId): string
     {
         $firstSceneId = $this->sceneManager->findFirstSceneIdOfStory($storyId);
         $firstSceneId = intval($firstSceneId);
 
-        // Vérifiez si l'identifiant de la première scène a été trouvé
         if (!$firstSceneId) {
             header("HTTP/1.0 404 Not Found");
             echo '404 - Page not found';
             exit();
         }
 
-        // Afficher la première scène de l'histoire
-        return $this->show($storyId, $firstSceneId);
+        return $this->show($storyId);
     }
+*/
 }

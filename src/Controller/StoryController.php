@@ -10,6 +10,7 @@ class StoryController extends AbstractController
 
     public function __construct()
     {
+        parent::__construct();
         $this->storyManager = new StoryManager();
     }
     public function indexCreation(): ?string
@@ -35,7 +36,7 @@ class StoryController extends AbstractController
     public function showCreation(string $id): string
     {
         $story = $this->storyManager->selectOneById((int) $id);
-        $scenes = $this->storyManager->getScenes($id);
+        $scenes = $this->storyManager->selectAllByStory($id);
 
         return $this->twig->render(
             'StoryCreation/show.html.twig',
