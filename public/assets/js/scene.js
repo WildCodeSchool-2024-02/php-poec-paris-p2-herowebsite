@@ -40,10 +40,12 @@ document.addEventListener("DOMContentLoaded", () => {
             // Vérifie si des choix sont disponibles.
             if (choicesDiv.querySelectorAll(".choice-link").length > 0) {
                 // Affiche les choix si des liens de choix existent.
-                choicesDiv.style.display = "block";
+                choicesDiv.classList.remove("hidden");
+                choicesDiv.style.display = "flex";
             } else {
                 // Remplace le bouton "continue" par un lien de retour vers les crédits si aucun choix n'est disponible.
-                continueButton.outerHTML = `<a href="/story" class="btn">Retour</a>`;
+                continueButton.outerHTML = `<a href="/story">Retour</a>`;
+                choicesDiv.style.display = "none";
             }
         }
     };

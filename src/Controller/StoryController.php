@@ -33,7 +33,7 @@ class StoryController extends AbstractController
             'StoryCreation/show.html.twig',
             [
                 'story' => $story,
-                'scenes' => $scenes
+                'scenes' => $scenes,
             ]
         );
     }

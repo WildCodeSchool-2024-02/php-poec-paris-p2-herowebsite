@@ -67,4 +67,11 @@ class CharacterController extends AbstractController
         header('Location:/storycreation/scene/show?story_id=' . $storyId . '&id=' . $sceneId);
         return null;
     }
+
+    public function show($storyId)
+    {
+        $characters = $this->characterManager->getCharacters($storyId);
+        header('Location: /showchars?story_id=' . $storyId);
+        return $this->twig->render('StoryCreation/showCharacters.html.twig');
+    }
 }

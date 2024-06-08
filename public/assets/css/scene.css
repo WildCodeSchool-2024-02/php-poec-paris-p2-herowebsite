@@ -1,3 +1,171 @@
-.hidden {
+/* variables  */
+:root {
+    --color-textbox: rgba (0, 0, 0, 0.65);
+    --color-text: white;
+    --color-narration: #ffb55e;
+    --color-continue: rgba(217, 217, 217, 0.25);
+    --color-button-hover: rgba(217, 217, 217, 0.6);
+    --font-title: "Julee", cursive;
+    --font-text: "Lancelot", serif;
+    --font-continue: "Kaisei Decol", serif;
+}
+
+/* Reset */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 62.5%;
+    font-size: var(--font-text);
+}
+
+main {
+    width: 100vw;
+    height: 100vh;
+}
+
+#mainScene {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../images/backgrounds/home.png);
+}
+
+
+#mainScene #container {
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row-reverse;
+    width: 95%;
+    height: 40vh;
+    align-items: center;
+    justify-content: end;
+    margin: .5rem;
+    background-color: rgba(250, 235, 215, 0.438);
+    position: relative;
+}
+
+#mainScene #container .dialogues {
+    width: 95%;
+    height: 80%;
+    position: absolute;
+    top: 2rem;
+    display: flex;
+    
+}
+
+#mainScene #container .dialogues .dialogue {
+    position: relative;
+    width: 70%;
+    margin-left: .2rem;   
+    padding-top: .5rem;
+}
+
+#mainScene #container .dialogues .dialogue .character-name {
+    position: absolute;
+    top: -4rem;
+    left: 2.5rem;
+    width: 10rem;
+    height: 2rem;
+    background-color: var(--color-button-hover);
+    background-image: url(../images/backgrounds/brush.png);
+    background-size: 130%;
+    background-position: center;
+    opacity: .75;
+    padding-bottom: .2%;
+    padding-left: 5%;
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    color: var(--color-text);
+    border-radius: 5px;
+}
+
+#mainScene #container .dialogues .dialogue-content {
+    margin-top: 5rem;
+    margin-left: 12rem;
+    margin-right: 2rem;
+}
+
+#mainScene #container .sprites {
+    position: absolute;
+    left: 1.5rem;
+    top: 2.5rem;
+}
+
+#mainScene #container .continue {
+    position: absolute;
+    bottom: 4rem;
+    right: 15rem;
+    width: 5rem;
+}
+
+#mainScene #container .choices {
+    width: 30%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1;
+}
+
+#mainScene #container .choices .choice-link {
+    width: 70%;
+    height: auto;
+    background-color: rgba(82, 80, 80, 0.692);
+    padding: .2rem;
+    margin: .8rem;
+    font-family: var(--font-text);
+    color: #f1f1f1;
+    font-size: 1.2rem;
+    text-decoration: none;
+    text-align: center;
+    list-style-type:none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+#mainScene #container .continue {
+    width: 7rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#mainScene #container .continue #continue-button {
+    text-decoration: none;
+    background-color: red;
+    width: 7rem;
+    border: 1px solid black;
+    padding: .3rem .2rem;
+    color: white;
+    font-family: 'Julee';
+    font-size: 1.2rem;
+}
+
+#mainScene #container .continue a {
+    width: 100%;
+    background-color: red;
+    border: 1px solid black;
+    padding: .3rem .2rem;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    font-family: 'Julee';
+    font-size: 1.2rem;
+}
+
+#mainScene #container .hidden {
     display: none;
 }

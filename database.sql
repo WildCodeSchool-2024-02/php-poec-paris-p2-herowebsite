@@ -39,7 +39,11 @@ CREATE TABLE `character` (
 
 LOCK TABLES `character` WRITE;
 /*!40000 ALTER TABLE `character` DISABLE KEYS */;
-INSERT INTO `character` VALUES (1,'Alice','sprite_alice.png',1),(2,'Le Gardien','sprite_guardian.png',1),(3,'L\'Ancien','sprite_ancient.png',1),(4,'Léa','sprite_lea.png',2),(5,'Le Guide','sprite_guide.png',2),(6,'Le Sage','sprite_sage.png',2);
+INSERT INTO `character` VALUES 
+  (1,'Alice','sprite_alice.png',1),
+  (2,'Le Gardien','sprite_guardian.png',1),
+  (3,"L'Ancien",'sprite_ancient.png',1),
+  (4,'Léa','sprite_lea.png',2),(5,'Le Guide','sprite_guide.png',2),(6,'Le Sage','sprite_sage.png',2);
 /*!40000 ALTER TABLE `character` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -67,7 +71,7 @@ CREATE TABLE `choice` (
 
 LOCK TABLES `choice` WRITE;
 /*!40000 ALTER TABLE `choice` DISABLE KEYS */;
-INSERT INTO `choice` VALUES (1,'Avancer dans la forêt',1,2),(2,'Retourner en arrière',1,1),(3,'Prendre le chemin de droite',2,3),(4,'Prendre le chemin de gauche',2,5),(5,'Parler à l\'Ancien',3,4),(6,'Ignorer l\'Ancien',3,5),(7,'Entrer dans la cité',6,7),(8,'Retourner en arrière',6,6),(9,'Explorer la place',7,8),(10,'Suivre le chemin ombragé',7,10),(11,'Parler au Sage',8,9),(12,'Ignorer le Sage',8,10);
+INSERT INTO `choice` VALUES (1,'Avancer dans la forêt',1,2),(2,'Retourner en arrière',1,1),(3,'Prendre le chemin de droite',2,3),(4,'Prendre le chemin de gauche',2,5),(5,"Parler à l'Ancien",3,4),(6,"Ignorer l'Ancien",3,5),(7,'Entrer dans la cité',6,7),(8,'Retourner en arrière',6,6),(9,'Explorer la place',7,8),(10,'Suivre le chemin ombragé',7,10),(11,'Parler au Sage',8,9),(12,'Ignorer le Sage',8,10);
 /*!40000 ALTER TABLE `choice` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -97,7 +101,7 @@ CREATE TABLE `dialogue_line` (
 
 LOCK TABLES `dialogue_line` WRITE;
 /*!40000 ALTER TABLE `dialogue_line` DISABLE KEYS */;
-INSERT INTO `dialogue_line` VALUES (1,'Alice entre dans la forêt, curieuse mais prudente.',1,1),(2,'Le Gardien apparaît soudainement : \"Bienvenue, jeune aventurière.\"',2,1),(3,'\"Pour continuer, tu devras résoudre une énigme.\"',2,1),(4,'Alice arrive à un carrefour mystérieux.',1,2),(5,'L\'Ancien apparaît et dit : \"Le choix que tu fais ici déterminera ton destin.\"',3,3),(6,'Alice fait son choix et trouve la paix.',1,4),(7,'Alice fait son choix et disparaît dans l\'oubli.',1,5),(8,'Léa arrive à l\'entrée de la cité perdue, émerveillée par ce qu\'elle voit.',4,6),(9,'Le Guide l\'accueille : \"Bienvenue dans la cité perdue.\"',5,6),(10,'\"Pour découvrir ses secrets, tu devras faire preuve de sagesse.\"',5,6),(11,'Léa atteint la place centrale.',4,7),(12,'Le Sage apparaît et dit : \"Le choix que tu fais ici changera ton avenir.\"',6,8),(13,'Léa choisit le bon chemin et découvre un trésor caché.',4,9),(14,'Léa fait un choix erroné et se perd dans les mystères de la cité.',4,10);
+INSERT INTO `dialogue_line` VALUES (1,'Alice entre dans la forêt, curieuse mais prudente.',1,1),(2,'Le Gardien apparaît soudainement : \"Bienvenue, jeune aventurière.\"',2,1),(3,'\"Pour continuer, tu devras résoudre une énigme.\"',2,1),(4,'Alice arrive à un carrefour mystérieux.',1,2),(5,"L'Ancien apparaît et dit : '"Le choix que tu fais ici déterminera ton destin."'",3,3),(6,'Alice fait son choix et trouve la paix.',1,4),(7,"Alice fait son choix et disparaît dans l'oubli.",1,5),(8,"Léa arrive à l'entrée de la cité perdue, émerveillée par ce qu'elle voit.",4,6),(9,"Le Guide l'accueille : '"Bienvenue dans la cité perdue."'",5,6),(10,'"Pour découvrir ses secrets, tu devras faire preuve de sagesse."',5,6),(11,'Léa atteint la place centrale.',4,7),(12,'Le Sage apparaît et dit : "Le choix que tu fais ici changera ton avenir."',6,8),(13,'Léa choisit le bon chemin et découvre un trésor caché.',4,9),(14,'Léa fait un choix erroné et se perd dans les mystères de la cité.',4,10);
 /*!40000 ALTER TABLE `dialogue_line` ENABLE KEYS */;
 UNLOCK TABLES;
 

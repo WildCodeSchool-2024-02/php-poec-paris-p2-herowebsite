@@ -12,7 +12,8 @@ return [
     'scene/start' => [
         'SceneController', 'showFirstScene', ['storyId'] // Affiche la première scène de l'histoire
     ],
-    'scene/show' => ['SceneController', 'show', ['storyId', 'sceneId']], // Affiche une scène à l'aide de son histoire
+    'scene/show' => ['SceneController', 'show', ['storyId', 'sceneId']], 
+    // Affiche une scène à l'aide de son histoire
     'storycreation' => ['StoryController', 'indexCreation'],
     'storycreation/add' => ['StoryController', 'add',],
     'storycreation/show' => ['StoryController', 'showCreation', ['id']],
@@ -23,6 +24,7 @@ return [
     'storycreation/scene/add_dial' => ['DialogueController', 'add', ['story_id', 'scene_id']],
     'storycreation/scene/del_dial' => ['DialogueController', 'delete', ['story_id', 'scene_id', 'id']],
     'storycreation/scene/update_dial' => ['DialogueController', 'update', ['story_id', 'scene_id', 'id']],
+    'storycreation/showchars' => ['CharacterController', 'show', ['story_id']],
     'storycreation/addchar' => ['CharacterController', 'add', ['story_id', 'scene_id']],
     'storycreation/delchar' => ['CharacterController', 'delete', ['story_id', 'scene_id', 'id']],
     'storycreation/update_char' => ['CharacterController', 'update', ['story_id', 'scene_id', 'id']],

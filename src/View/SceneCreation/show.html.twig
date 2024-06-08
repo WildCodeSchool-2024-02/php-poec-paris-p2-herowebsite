@@ -1,24 +1,29 @@
 {% extends 'layout.html.twig' %}
 
 {% block head_extra %}
+<link rel="stylesheet" href="/assets/css/showScene.css">
 <script src="/assets/js/edit.js" defer></script>
 {% endblock %}
 
 {% block content %}
-  <p>Histoire :
+<main id="mainScenes">
+  <section>
+  <h1>Histoire :
     {{ story.name }}
-  </p>
+  </h1>
   <a href="/storycreation/show?id={{ story.id }}">Retour à l'histoire</a>
   <img height=300 width=300 src = "/assets/images/backgrounds/{{scene.background}}" alt="ça s'affiche pas !">
 
-<h1>{{scene.name}}</h1>
+    <h1>{{scene.name}}</h1>
 
-  <h2>Personnages :</h2>
-  {% include 'SceneCreation/_character_form.html.twig' %}
+    <h2>Personnages :</h2>
+    {% include 'SceneCreation/_character_form.html.twig' %}
 
-  <h2>Répliques :</h2>
-  {% include 'SceneCreation/_dialogue_form.html.twig' %}
+    <h2>Répliques :</h2>
+  {%   include 'SceneCreation/_dialogue_form.html.twig' %}
 
-  <h2>Choix :</h2>
-  {% include 'SceneCreation/_choice_form.html.twig' %}
+    <h2>Choix :</h2>
+    {% include 'SceneCreation/_choice_form.html.twig' %}
+  </section>
+</main>
 {% endblock %}

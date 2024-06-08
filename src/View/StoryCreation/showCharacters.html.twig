@@ -1,0 +1,55 @@
+{% extends 'layout.html.twig' %}
+{% block head %}
+  <link rel="stylesheet" href="/assets/css/storycreationShow.css">
+{% endblock %}
+{% block content %}
+<main id="mainStory">
+    <div class="linksBack">
+        <a href="/storycreation" id="backStories">
+            <img src="/assets/images/icones/story.svg" alt="plow icon"> Histoires
+        </a>
+        <a href="/" id="home">
+            <img src="/assets/images/icones/home.svg" alt="plow icon"> Home
+        </a>
+    </div>
+    <h1>{{story.name}}</h1>
+    <nav id="nav">
+        <a href="/scene/show"><h2 id="navScene">Scènes</h2></a>
+        <a href=""><h2 id="navCharacter">Personnages</h2></a>
+    </nav>   
+    <section id="container">
+        
+        {% for character in characters %}
+            <article class="characterList">
+                <div class="name">
+                    <a href="scene/show?story_id={{ story.id }}&id={{ character.id }}">
+                        {{ character.name }}
+                    </a>
+                </div>
+                <div id="charactersEdit">
+                    <div class="characterEdit edit">
+                        <a href="/scenecreation/update_scene?id={{ story.id }}">
+                            <img src="/assets/images/icones/pen.svg" alt="pen icon" class="icon">
+                        </a>
+                    </div>
+                    <div class="sceneShow edit">
+                        <a href="scene/show?story_id={{ story.id }}&id={{ scene.id }}">
+                            <img src="/assets/images/icones/preview.svg" alt="preview icon" class="icon">
+                        </a>
+                    </div>
+                    <div class="sceneDelete edit">
+                        <a href="scene/delete?story_id={{ story.id }}&id={{scene.id}}">
+                            <img src="/assets/images/icones/trash.svg" alt="trash icon" class="icon">
+                        </a>
+                    </div>
+                </div>
+            </article>
+        {% endfor %}
+    </section>
+    <a href = "scene/add?story_id={{story.id}}" id="addSceneLink"> Ajouter une scène </a>
+</main>
+{% endblock %}
+
+{% block javascript %}
+
+{% endblock %}

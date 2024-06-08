@@ -1,11 +1,19 @@
 {% extends 'layout.html.twig' %}
-
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/story.css">
+{% endblock %}
 {% block content %}
-<h1>Story Teller</h1>
-<ul>
-  {% for story in stories %}
-  <li><a href="/scene/start?storyId={{ story.id }}">
-      {{ story.name }}</a></li>
-  {% endfor %}
-</ul>
+<main id="mainStory">
+  <a href="/" id="home"><img src="/assets/images/icones/home.svg" alt="Icone Home">Home</a>
+  <h1>Les histoires</h1>
+  <ul id="container">
+    {% for story in stories %}
+      <li>
+        <a href="/scene/start?storyId={{ story.id }}">
+          {{ story.name }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</main>
 {% endblock %}

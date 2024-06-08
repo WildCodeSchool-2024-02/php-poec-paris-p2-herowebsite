@@ -1,8 +1,19 @@
 {% extends 'layout.html.twig' %}
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/style.css">
+{% endblock %}
 
 {% block content %}
-    <h1>Story Teller</h1>
-    <a href="/story">Sélectionner une histoire</a>
-    <a href="/storycreation">Éditer mes histoires</a>
-    <a href="/options">Options</a>
+<main id="mainHome">
+    <a href="/" id="home">
+        <img src="/assets/images/icones/home.svg" alt="Icone Home">Home
+    </a>
+    <section id="container">
+        <h1>Story Teller</h1>
+        <a href="/story">Sélectionner une histoire</a>
+        <a href="/storycreation">Éditer mes histoires</a>
+        <a href="/options">Options</a>
+    </section>
+
+</main>
 {% endblock %}
