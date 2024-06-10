@@ -20,7 +20,7 @@ class DialogueController extends AbstractController
             $dialogue = array_map('htmlentities', array_map('trim', $_POST));
             $this->dialogueManager->insert($dialogue);
         }
-        header('Location:/storycreation/scene/show?story_id='
+        header('Location:/story/engine/scene/show?story_id='
             . $dialogue['story_id'] . '&id=' . $dialogue['scene_id']);
         return null;
     }
@@ -29,7 +29,7 @@ class DialogueController extends AbstractController
     {
         $this->dialogueManager->delete((int) $id);
 
-        header('Location:/storycreation/scene/show?story_id=' . $storyId . '&id=' . $sceneId);
+        header('Location:/story/engine/scene/show?story_id=' . $storyId . '&id=' . $sceneId);
         return null;
     }
 
@@ -40,7 +40,7 @@ class DialogueController extends AbstractController
             $dialogue = array_map('htmlentities', array_map('trim', $_POST));
             $this->dialogueManager->update($dialogue);
         }
-        header('Location:/storycreation/scene/show?story_id=' . $dialogue['story_id'] . '&id=' . $dialogue['scene_id']);
+        header('Location:/story/engine/scene/show?story_id=' . $dialogue['story_id'] . '&id=' . $dialogue['scene_id']);
         return null;
     }
 }

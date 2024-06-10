@@ -168,3 +168,12 @@ body {
     border-radius: 15px;
     opacity: .6;
 }
+
+.edit_character_form,
+.edit_dialogue_form,
+.edit_choice_form,
+.add_character_form,
+.add_dialogue_form,
+.add_choice_form {
+    display: none;
+}

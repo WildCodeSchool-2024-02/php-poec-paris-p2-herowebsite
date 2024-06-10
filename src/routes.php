@@ -7,26 +7,31 @@
 //          3. (optional) array of query string keys to send as parameter to the method
 // e.g route '/item/edit?id=1' will execute $itemController->edit(1)
 return [
-    '' => ['HomeController', 'index'], // Affiche la homepage
-    'story' => ['StoryController', 'index'], // Affiche la page de sélection d'histoire
-    'scene/start' => [
-        'SceneController', 'showFirstScene', ['storyId']], // Affiche la première scène de l'histoire,
-    'scene/show' => ['SceneController', 'show', ['sceneId']], // Affiche une scène à l'aide de son histoire
-    'storycreation' => ['StoryController', 'indexCreation'],
-    'storycreation/add' => ['StoryController', 'add',],
-    'storycreation/show' => ['StoryController', 'showCreation', ['id']],
-    'storycreation/delete' => ['StoryController', 'delete', ['id']],
-    'storycreation/scene/add' => ['SceneController', 'add', ['story_id']],
-    'storycreation/scene/show' => ['SceneController', 'showCreation', ['story_id', 'id']],
-    'storycreation/scene/delete' => ['SceneController', 'delete', ['story_id', 'id']],
-    'storycreation/scene/add_dial' => ['DialogueController', 'add'],
-    'storycreation/scene/del_dial' => ['DialogueController', 'delete', ['story_id', 'scene_id', 'id']],
-    'storycreation/scene/update_dial' => ['DialogueController', 'update'],
-    'storycreation/showchars' => ['CharacterController', 'show', ['story_id']],
-    'storycreation/addchar' => ['CharacterController', 'add'],
-    'storycreation/delchar' => ['CharacterController', 'delete', ['story_id', 'scene_id', 'id']],
-    'storycreation/update_char' => ['CharacterController', 'update'],
-    'storycreation/addchoice' => ['ChoiceController', 'add'],
-    'storycreation/delchoice' => ['ChoiceController', 'delete', ['story_id', 'scene_id', 'id']],
-    'storycreation/update_choice' => ['ChoiceController', 'update']
+    // Affichage d'une histoire
+    '' => ['HomeController', 'index'],
+    'story' => ['StoryController', 'index'],
+    'story/scene/start' => ['SceneController', 'showFirstScene', ['storyId']],
+    'story/scene/show' => ['SceneController', 'show', ['scene_id']],
+    'story/engine' => ['StoryController', 'indexCreation'],
+    // Création d'une histoire
+    'story/engine/add' => ['StoryController', 'add',],
+    'story/engine/show' => ['StoryController', 'showCreation', ['id']],
+    'story/engine/delete' => ['StoryController', 'delete', ['id']],
+    // Création d'une scène
+    'story/engine/scene/add' => ['SceneController', 'add', ['story_id']],
+    'story/engine/scene/show' => ['SceneController', 'showCreation', ['story_id', 'id']],
+    'story/engine/scene/delete' => ['SceneController', 'delete', ['story_id', 'id']],
+    // Création d'un personnage
+    'story/engine/character/show' => ['CharacterController', 'show', ['story_id']],
+    'story/engine/character/add' => ['CharacterController', 'add'],
+    'story/engine/character/delete' => ['CharacterController', 'delete', ['story_id', 'scene_id', 'id']],
+    'story/engine/character/update' => ['CharacterController', 'update'],
+    // Création d'un dialogue
+    'story/engine/dialogue/add' => ['DialogueController', 'add'],
+    'story/engine/dialogue/delete' => ['DialogueController', 'delete', ['story_id', 'scene_id', 'id']],
+    'story/engine/dialogue/update' => ['DialogueController', 'update'],
+    // Création d'un choix
+    'story/engine/choice/add' => ['ChoiceController', 'add'],
+    'story/engine/choice/delete' => ['ChoiceController', 'delete', ['story_id', 'scene_id', 'id']],
+    'story/engine/choice/update' => ['ChoiceController', 'update']
 ];

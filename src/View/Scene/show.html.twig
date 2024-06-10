@@ -27,7 +27,7 @@
       {% for dialogue in dialogues %}
         <div class="dialogue {% if not loop.first %}hidden{% endif %}" id="dialogue-{{ loop.index }}">
           <h2 class="character-name">
-          {{ dialogue.character_name }}
+          {{ dialogue.name }}
           </h2>
           <div class="dialogue-content">
             <p class="dialogue-body">
@@ -54,7 +54,7 @@
     {### Div de boutons de choix ###}
     <div class="choices hidden" data-story-id="{{scene.story_id}}">
       {% for choice in choices %}
-      <a href="/scene/show?sceneId={{ choice.next_scene_id }}" class="choice-link">
+      <a href="/story/scene/show?scene_id={{ choice.next_scene_id }}" class="choice-link">
         {{ choice.body }}
       </a>
       {% endfor %}

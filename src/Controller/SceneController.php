@@ -74,7 +74,7 @@ class SceneController extends AbstractController
                 $id = $this->sceneManager->insert($scene);
             }
 
-            header('Location:/storycreation/scene/show?' . http_build_query(['story_id' => $storyId, 'id' => $id]));
+            header('Location:/story/engine/scene/show?' . http_build_query(['story_id' => $storyId, 'id' => $id]));
             return null;
         }
 
@@ -86,7 +86,7 @@ class SceneController extends AbstractController
     {
         $scene = $this->sceneManager->selectOneById((int) $id);
         $story = $this->storyManager->selectOneById((int) $storyId);
-        $dialogues = $this->dialogueManager->selectAllByScene($id);
+        $dialogues = $this->dialogueManager->selectAllByScene((int) $id);
         $choices = $this->choiceManager->selectAllByScene((int) $id);
         $characters = $this->characterManager->selectByStory($storyId);
         $allscenes = $this->sceneManager->selectAllByStory($storyId);
@@ -108,7 +108,7 @@ class SceneController extends AbstractController
     {
         $this->sceneManager->delete((int) $sceneId);
 
-        header('Location:/storycreation/show?id=' . $storyId);
+        header('Location:/story/engine/show?id=' . $storyId);
         return null;
     }
 

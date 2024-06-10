@@ -23,15 +23,6 @@ body {
     font-size: 62.5%;
 }
 
-.edit_character_form,
-.edit_dialogue_form,
-.edit_choice_form,
-.add_character_form,
-.add_dialogue_form,
-.add_choice_form {
-    display: none;
-}
-
 #mainHome {
     width: 100vw;
     height: 100vh;

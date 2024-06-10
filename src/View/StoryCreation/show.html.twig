@@ -5,7 +5,7 @@
 {% block content %}
 <main id="mainStory">
     <div class="linksBack">
-        <a href="/storycreation" id="backStories">
+        <a href="/story/engine" id="backStories">
             <img src="/assets/images/icones/story.svg" alt="plow icon"> Histoires
         </a>
         <a href="/" id="home">
@@ -14,30 +14,30 @@
     </div>
     <h1>{{story.name}}</h1>
     <nav id="nav">
-        <a href="storycreation"><h2 id="navScene">Scènes</h2></a>
-        <a href="storycreation/showchars"><h2 id="navCharacter">Personnages</h2></a>
+        <a href="/story/engine"><h2 id="navScene">Scènes</h2></a>
+        <a href="/story/engine/character/show"><h2 id="navCharacter">Personnages</h2></a>
     </nav>   
     <section id="container">        
         {% for scene in scenes %}
             <article class="sceneList">
                 <div class="name">
-                    <a href="scene/show?story_id={{ story.id }}&id={{ scene.id }}">
+                    <a href="/story/scene/show?scene_id={{ scene.id }}">
                         {{ scene.name }}
                     </a>
                 </div>
                 <div id="sceneEdit">
                     <div class="sceneEdit edit">
-                        <a href="/scenecreation/update_scene?id={{ story.id }}">
+                        <a href="/story/engine/scene/show?story_id={{ story.id }}&id={{ scene.id }}">
                             <img src="/assets/images/icones/pen.svg" alt="pen icon" class="icon">
                         </a>
                     </div>
                     <div class="sceneShow edit">
-                        <a href="scene/show?story_id={{ story.id }}&id={{ scene.id }}">
+                        <a href="/story/scene/show?story_id={{ story.id }}&id={{ scene.id }}">
                             <img src="/assets/images/icones/preview.svg" alt="preview icon" class="icon">
                         </a>
                     </div>
                     <div class="sceneDelete edit">
-                        <a href="scene/delete?story_id={{ story.id }}&id={{scene.id}}">
+                        <a href="/story/engine/scene/delete?story_id={{ story.id }}&id={{scene.id}}">
                             <img src="/assets/images/icones/trash.svg" alt="trash icon" class="icon">
                         </a>
                     </div>
@@ -48,23 +48,23 @@
         {% for ressource in ressources %}
             <article class="ressourceList">
                 <div class="name">
-                    <a href="scene/show?story_id={{ story.id }}&id={{ scene.id }}">
+                    <a href="/story/scene/show?story_id={{ story.id }}&id={{ scene.id }}">
                         {{ ressource.name }}
                     </a>
                 </div>
                 <div id="ressourceEdit">
                     <div class="ressourceEdit edit">
-                        <a href="/scenecreation/update_scene?id={{ story.id }}">
+                        <a href="/story/scene/show?id={{ story.id }}">
                             <img src="/assets/images/icones/pen.svg" alt="pen icon" class="icon">
                         </a>
                     </div>
                     <div class="ressourceShow edit">
-                        <a href="scene/show?story_id={{ story.id }}&id={{ scene.id }}">
+                        <a href="/story/scene/show?story_id={{ story.id }}&id={{ scene.id }}">
                             <img src="/assets/images/icones/preview.svg" alt="preview icon" class="icon">
                         </a>
                     </div>
                     <div class="ressourceDelete edit">
-                        <a href="scene/delete?story_id={{ story.id }}&id={{scene.id}}">
+                        <a href="/story/engine/scene/delete?story_id={{ story.id }}&id={{scene.id}}">
                             <img src="/assets/images/icones/trash.svg" alt="trash icon" class="icon">
                         </a>
                     </div>
@@ -72,7 +72,7 @@
             </article>
         {% endfor %}
     </section>
-    <a href = "scene/add?story_id={{story.id}}" id="addSceneLink"> Ajouter une scène </a>
+    <a href = "/story/engine/scene/add?story_id={{story.id}}" id="addSceneLink"> Ajouter une scène </a>
 </main>
 {% endblock %}
 

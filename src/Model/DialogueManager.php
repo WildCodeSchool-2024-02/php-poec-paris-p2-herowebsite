@@ -6,7 +6,7 @@ use PDO;
 
 class DialogueManager extends AbstractManager
 {
-    public const TABLE =  "`dialogue_line`";
+    public const TABLE = "`dialogue_line`";
 
     public function insert(array $dialogues): bool
     {
@@ -37,10 +37,10 @@ class DialogueManager extends AbstractManager
     public function selectAllByScene(string $sceneId): ?array
     {
         $statement = $this->pdo->query(
-            "SELECT d.*, c.* FROM " . self::TABLE . " AS d
-    INNER JOIN `character` AS c
-    ON d.character_id = c.id
-    WHERE `scene_id` = " . $sceneId . ";"
+            "SELECT d.*, c.id AS character_id, c.name, c.sprite, c.story_id FROM " . self::TABLE . " AS d
+            INNER JOIN `character` AS c
+            ON d.character_id = c.id
+            WHERE `scene_id` = " . $sceneId . ";"
         );
 
         $dialogues = $statement->fetchAll(PDO::FETCH_ASSOC);

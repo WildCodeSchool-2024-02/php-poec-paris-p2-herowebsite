@@ -26,7 +26,7 @@ class StoryController extends AbstractController
             $story = array_map('htmlentities', array_map('trim', $_POST));
             $id = $this->storyManager->insert($story);
 
-            header('Location:/storycreation/show?id=' . $id);
+            header('Location:/story/engine/show?id=' . $id);
             return null;
         }
 
@@ -51,7 +51,7 @@ class StoryController extends AbstractController
     {
         $this->storyManager->delete((int) $id);
 
-        header('Location:/storycreation');
+        header('Location:/story/engine');
         return null;
     }
     /**

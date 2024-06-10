@@ -20,7 +20,7 @@ class ChoiceController extends AbstractController
             $choice = array_map('htmlentities', array_map('trim', $_POST));
             $this->choiceManager->insert($choice);
 
-            header('Location:/storycreation/scene/show?story_id=' . $choice['story_id'] . '&id=' . $choice['scene_id']);
+            header('Location:/story/engine/scene/show?story_id=' . $choice['story_id'] . '&id=' . $choice['scene_id']);
             return null;
         }
     }
@@ -29,7 +29,7 @@ class ChoiceController extends AbstractController
     {
         $this->choiceManager->delete((int) $id);
 
-        header('Location:/storycreation/scene/show?story_id=' . $storyId . '&id=' . $sceneId);
+        header('Location:/story/engine/scene/show?story_id=' . $storyId . '&id=' . $sceneId);
         return null;
     }
 
@@ -41,7 +41,7 @@ class ChoiceController extends AbstractController
             $this->choiceManager->update($choice['id'], $choice);
         }
 
-        header('Location:/storycreation/scene/show?story_id=' . $choice['story_id'] . '&id=' . $choice['scene_id']);
+        header('Location:/story/engine/scene/show?story_id=' . $choice['story_id'] . '&id=' . $choice['scene_id']);
         return null;
     }
 }

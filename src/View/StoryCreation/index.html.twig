@@ -15,7 +15,7 @@
             <article class="storiesDetails">
                 <div class="storyDetails">
                     <div class="name">
-                        <h2><a href="/scene/start?storyId={{ story.id }}">{{ story.name }}</a></h2>
+                        <h2><a href="/story/scene/start?storyId={{ story.id }}">{{ story.name }}</a></h2>
                     </div>
                     <div class="details">
                         <h3>Nb scenes : </h3>
@@ -23,17 +23,17 @@
                     </div>
                 </div>
                 <div class="storyEdit">
-                    <a href="/storycreation/show?id={{ story.id }}"><img src="/assets/images/icones/pen.svg" alt="pen icon" class="icon"></a>
+                    <a href="/story/engine/show?id={{ story.id }}"><img src="/assets/images/icones/pen.svg" alt="pen icon" class="icon"></a>
                 </div>
                 <div class="storyShow">
                     <a href=""><img src="/assets/images/icones/preview.svg" alt="preview icon" class="icon"></a>
                 </div>
                 <div class="storyDelete">
-                    <a href="/storycreation/delete?id={{ story.id }}"><img src="/assets/images/icones/trash.svg" alt="trash icon" class="icon"></a></article>
+                    <a href="/story/engine/delete?id={{ story.id }}"><img src="/assets/images/icones/trash.svg" alt="trash icon" class="icon"></a></article>
                 </div>
             </article>
         {% endfor %}
     </section>
-    <a href="/storycreation/add" id="addStoryLink">Créer une histoire</a>
+    <a href="/story/engine/add" id="addStoryLink">Créer une histoire</a>
 </main>
 {% endblock %}
