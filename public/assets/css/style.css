@@ -10,11 +10,11 @@ body {
     --font-continue: "Kaisei Decol", serif;
 }
 
-.character-edit-form,
-.dialogue-edit-form,
-.choice-edit-form,
-.character-add-form,
-.dialogue-add-form,
-.choice-add-form {
+.edit_character_form,
+.edit_dialogue_form,
+.edit_choice_form,
+.add_character_form,
+.add_dialogue_form,
+.add_choice_form {
     display: none;
 }

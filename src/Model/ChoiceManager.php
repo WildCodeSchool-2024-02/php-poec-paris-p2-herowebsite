@@ -31,8 +31,8 @@ class ChoiceManager extends AbstractManager
     {
         $statement = $this->pdo->prepare(
             "UPDATE " . self::TABLE .
-            " SET body = '" . $choice["body"] .
-            "', next_scene_id = " . $choice["next_scene_id"] .
+            " SET body = '" . $choice["edit_choice_body"] .
+            "', next_scene_id = " . $choice["edit_next_scene"] .
             " WHERE id = " . $id . ";"
         );
         return $statement->execute();
@@ -42,7 +42,7 @@ class ChoiceManager extends AbstractManager
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
         "(`body`, `scene_id`, `next_scene_id`) VALUES (:body, :scene_id, :next_scene_id)");
-        $statement->bindValue('body', $choice['body'], PDO::PARAM_STR);
+        $statement->bindValue('body', $choice['choice_body'], PDO::PARAM_STR);
         $statement->bindValue('scene_id', $choice['scene_id'], PDO::PARAM_STR);
         $statement->bindValue('next_scene_id', $choice['next_scene'], PDO::PARAM_STR);
 

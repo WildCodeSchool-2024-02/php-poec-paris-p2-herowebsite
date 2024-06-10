@@ -14,7 +14,7 @@ class DialogueManager extends AbstractManager
             "INSERT INTO " . self::TABLE . " (`body`, `character_id`, `scene_id`)
             VALUE (:body, :character_id, :scene_id);"
         );
-        $statement->bindValue("body", $dialogues["dial_body"], PDO::PARAM_STR);
+        $statement->bindValue("body", $dialogues["dialogue_body"], PDO::PARAM_STR);
         $statement->bindValue("character_id", $dialogues["character_id"], PDO::PARAM_STR);
         $statement->bindValue("scene_id", $dialogues["scene_id"], PDO::PARAM_STR);
 
@@ -22,13 +22,13 @@ class DialogueManager extends AbstractManager
         return $statement->execute();
     }
 
-    public function update(int $id, array $dialogues): bool
+    public function update(array $dialogue): bool
     {
         $statement = $this->pdo->prepare(
             "UPDATE " . self::TABLE .
-            " SET body = \"" . $dialogues["body"] .
-            "\", character_id = " . $dialogues["character_id"] .
-            " WHERE id = " . $id . ";"
+            " SET body = \"" . $dialogue["edit_dialogue_body"] .
+            "\", character_id = " . $dialogue["edit_character_id"] .
+            " WHERE id = " . $dialogue["dialogue_id"] . ";"
         );
 
         return $statement->execute();

@@ -19,13 +19,13 @@ return [
     'storycreation/scene/add' => ['SceneController', 'add', ['story_id']],
     'storycreation/scene/show' => ['SceneController', 'showCreation', ['story_id', 'id']],
     'storycreation/scene/delete' => ['SceneController', 'delete', ['story_id', 'id']],
-    'storycreation/scene/add_dial' => ['DialogueController', 'add', ['story_id', 'scene_id']],
+    'storycreation/scene/add_dial' => ['DialogueController', 'add'],
     'storycreation/scene/del_dial' => ['DialogueController', 'delete', ['story_id', 'scene_id', 'id']],
-    'storycreation/scene/update_dial' => ['DialogueController', 'update', ['story_id', 'scene_id', 'id']],
-    'storycreation/addchar' => ['CharacterController', 'add', ['story_id', 'scene_id']],
+    'storycreation/scene/update_dial' => ['DialogueController', 'update'],
+    'storycreation/addchar' => ['CharacterController', 'add'],
     'storycreation/delchar' => ['CharacterController', 'delete', ['story_id', 'scene_id', 'id']],
-    'storycreation/update_char' => ['CharacterController', 'update', ['story_id', 'scene_id', 'id']],
-    'storycreation/addchoice' => ['ChoiceController', 'add', ['story_id', 'scene_id', 'next_scene_id']],
+    'storycreation/update_char' => ['CharacterController', 'update'],
+    'storycreation/addchoice' => ['ChoiceController', 'add'],
     'storycreation/delchoice' => ['ChoiceController', 'delete', ['story_id', 'scene_id', 'id']],
-    'storycreation/update_choice' => ['ChoiceController', 'update', ['story_id', 'scene_id', 'id']]
+    'storycreation/update_choice' => ['ChoiceController', 'update']
 ];

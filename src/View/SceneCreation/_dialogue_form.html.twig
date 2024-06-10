@@ -3,15 +3,18 @@
     <li>
       {{ dialogue.character_name }} :
       {{ dialogue.body }}
-        <button 
-        onclick="if(confirm('Êtes vous sûr de vouloir supprimer ce choix ?')) 
+        <button
+        onclick="if(confirm('Êtes vous sûr de vouloir supprimer ce choix ?'))
         { window.location.href='/storycreation/scene/del_dial?story_id={{story.id}}&scene_id={{scene.id}}&id={{dialogue.id}}';}">
         &#x1F5D1;
         </button>
-        <button class="dialogue-edit">Editer</button>
-        <form method="post" action="/storycreation/scene/update_dial?story_id={{ story.id }}&scene_id={{ scene.id }}&id={{dialogue.id }}" class="dialogue-edit-form">
-            <input type="textarea" name="e_dial_body" id="e_dial_body">
-            <select name="e_character_id" id="e_character_id">
+        <button class="edit_dialogue">Editer</button>
+        <form method="post" action="/storycreation/scene/update_dial" class="edit_dialogue_form">
+            <input type="hidden" name="story_id" value={{ story.id }}>
+            <input type="hidden" name="scene_id" value={{ scene.id }}>
+            <input type="hidden" name="dialogue_id" value={{ dialogue.id }}>
+            <input type="textarea" name="edit_dialogue_body" id="edit_dialogue_body">
+            <select name="edit_character_id" id="edit_character_id">
             {% for character in characters %}
                 <option value={{ character.id }}>{{ character.name }}</option>
             {% endfor %}
@@ -22,13 +25,15 @@
     </li>
     {% endfor %}
 
-    <button class="add-dialogue">Ajouter une ligne de dialogue</button>
-    <form method = "post" action ="/storycreation/scene/add_dial?story_id={{ story.id }}&scene_id={{ scene.id }}" class="dialogue-add-form">
-        <label for = "dial_body"></label>
-        <input type = "textarea" name = "dial_body" id ="dial_body"> 
+    <button class="add_dialogue">Ajouter une ligne de dialogue</button>
+    <form method = "post" action ="/storycreation/scene/add_dial" class="add_dialogue_form">
+        <input type="hidden" name="story_id" value={{ story.id }}>
+        <input type="hidden" name="scene_id" value={{ scene.id }}>
+        <label for = "dialogue_body"></label>
+        <input type = "textarea" name = "dialogue_body" id ="dialogue_body">
             <label for = "character_id"></label>
             <select name = "character_id" id = "character_id">
-            {% for character in characters %} 
+            {% for character in characters %}
                 <option  value = "{{ character.id }}"> {{ character.name }} </option>
             {% endfor %}
         </select>

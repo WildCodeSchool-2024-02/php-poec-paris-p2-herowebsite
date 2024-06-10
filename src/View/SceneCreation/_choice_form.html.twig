@@ -1,32 +1,41 @@
 <ul>
   {% for choice in choices %}
   <li>
-    {{ choice.body }}   ⇒  <a href ="/storycreation/scene/show?story_id={{ story.id }}&id={{ choice.next_scene_id }}">{{ choice.next_scene_name }}</a>
-      <button onclick="if(confirm('Êtes vous sûr de vouloir supprimer ce choix ?')) { window.location.href='/storycreation/delchoice?story_id={{story.id}}&scene_id={{scene.id}}&id={{choice.id}}';}"> &#x1F5D1;</button>
-      <button class="choice-edit">Editer</button>
-      <form method="post" action="/storycreation/update_choice?story_id={{ story.id }}&scene_id={{ scene.id }}&id={{ choice.id }}" class="choice-edit-form">
-        <input type="text" name="e_body" id="e_body">
-        <select name="e_next_scene" id="e_next_scene">
-          {% for onescene in allscenes %}
-            <option value={{ onescene.id }}>{{ onescene.name }}</option>
-          {% endfor %}
-        </select>
-        <input type="submit">
-        <button class="cancel_choice">&#10006;</button>
-      </form>
+    {{ choice.body }} ⇒ <a href="/storycreation/scene/show?story_id={{ story.id }}&id={{ choice.next_scene_id }}">
+      {{ choice.next_scene_name }}</a>
+    <button onclick="if(confirm('Êtes vous sûr de vouloir supprimer ce choix ?')) { window.location.href='/storycreation/delchoice?story_id={{story.id}}&scene_id={{scene.id}}&id={{choice.id}}';}"> &#x1F5D1;</button>
+    <button class="edit_choice">Editer</button>
+    <form method="post" action="/storycreation/update_choice" class="edit_choice_form">
+      <input type="hidden" name="id" value={{ choice.id }}>
+      <input type="hidden" name="scene_id" value={{ scene.id }}>
+      <input type="hidden" name="story_id" value={{ story.id }}>
+      <input type="text" name="edit_choice_body" id="edit_choice_body">
+      <select name="edit_next_scene" id="edit_next_scene">
+        {% for onescene in allscenes %}
+        <option value={{ onescene.id }}>
+          {{ onescene.name }}
+        </option>
+        {% endfor %}
+      </select>
+      <input type="submit">
+      <button class="cancel_choice">&#10006;</button>
+    </form>
   </li>
   {% endfor %}
-    <button class="add-choice">Ajouter un choix</button>
-    <form method='post' 
-    action="/storycreation/addchoice?story_id={{ story.id }}&scene_id={{ scene.id }}&next_scene_id={{ onescene.id }}" class="choice-add-form">
-      <label for="body"></label>
-      <input type="text" id="body" name="body">
-      <select name="next_scene" id="next_scene">
-          {% for onescene in allscenes %}
-            <option value={{ onescene.id }}>{{ onescene.name }}</option>
-          {% endfor %}
-        </select>
-      <input type="submit">
-      <button class="choice_cancel">&#10006;</button>
-    </form>
+  <button class="add_choice">Ajouter un choix</button>
+  <form method='post' action="/storycreation/addchoice" class="add_choice_form">
+    <label for="choice_body"></label>
+    <input type="hidden" name="scene_id" value={{ scene.id }}>
+    <input type="hidden" name="story_id" value={{ story.id }}>
+    <input type="text" id="choice_body" name="choice_body">
+    <select name="next_scene" id="next_scene">
+      {% for onescene in allscenes %}
+      <option value={{ onescene.id }}>
+        {{ onescene.name }}
+      </option>
+      {% endfor %}
+    </select>
+    <input type="submit">
+    <button class="choice_cancel">&#10006;</button>
+  </form>
 </ul>

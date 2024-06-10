@@ -17,11 +17,11 @@ class CharacterController extends AbstractController
         parent::__construct();
         $this->characterManager = new CharacterManager();
     }
-    public function add($storyId, $sceneId): ?string
+    public function add(): ?string
     {
+        $character = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $character = array_map('htmlentities', array_map('trim', $_POST));
-            $character['story_id'] = $storyId;
             $targetFile = self::TARGET_DIR . basename($_FILES['sprite']['name']);
             $typeFile = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
             $dimensionsImage = getimagesize($_FILES['sprite']['tmp_name']);
@@ -56,7 +56,8 @@ class CharacterController extends AbstractController
             }
         }
 
-        header('Location:/storycreation/scene/show?story_id=' . $storyId . '&id=' . $sceneId);
+        header('Location:/storycreation/scene/show?story_id='
+            . $character['story_id'] . '&id=' . $character['scene_id']);
         return null;
     }
 
@@ -68,15 +69,16 @@ class CharacterController extends AbstractController
         return null;
     }
 
-    public function update(string $storyId, string $sceneId, int $id): ?string
+    public function update(): ?string
     {
+        $character = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $character = array_map('htmlentities', array_map('trim', $_POST));
-            $character['name'] = $character['e_name'];
-            $character['sprite'] = $character['e_sprite'];
-            $this->characterManager->update($id, $character);
+            $this->characterManager->update($character);
         }
-        header('Location:/storycreation/scene/show?story_id=' . $storyId . '&id=' . $sceneId);
+
+        header('Location:/storycreation/scene/show?story_id='
+            . $character['story_id'] . '&id=' . $character['scene_id']);
         return null;
     }
 }
