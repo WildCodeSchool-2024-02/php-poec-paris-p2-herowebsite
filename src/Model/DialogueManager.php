@@ -37,10 +37,10 @@ class DialogueManager extends AbstractManager
     public function selectAllByScene(string $sceneId): ?array
     {
         $statement = $this->pdo->query(
-            "SELECT d.*, c.name AS character_name FROM " . self::TABLE . "AS d
-            INNER JOIN `character` AS c
-            ON d.character_id = c.id
-            WHERE `scene_id` = " . $sceneId . ";"
+            "SELECT d.*, c.* FROM " . self::TABLE . " AS d
+    INNER JOIN `character` AS c
+    ON d.character_id = c.id
+    WHERE `scene_id` = " . $sceneId . ";"
         );
 
         $dialogues = $statement->fetchAll(PDO::FETCH_ASSOC);

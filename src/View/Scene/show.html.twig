@@ -7,7 +7,6 @@
 
 {### Block supplémentaire de titre de page  ###}
 {% block title %}
-{{ scene.name }}
 {% endblock %}
 
 {% block content %}
@@ -54,7 +53,7 @@
     </div>
 
     {### Div de boutons de choix ###}
-    <div class="choices hidden"   data-story-id="{{scene.story_id}}">
+    <div class="choices hidden" data-story-id="{{scene.story_id}}">
       {% for choice in choices %}
       <a href="/scene/show?sceneId={{ choice.next_scene_id }}" class="choice-link">
         {{ choice.body }}
