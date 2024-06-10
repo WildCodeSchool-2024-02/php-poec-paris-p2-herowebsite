@@ -11,12 +11,12 @@ class ChoiceManager extends AbstractManager
     /**
      * Récupère les choix par l'ID de la scène.
      */
-    public function getChoicesBySceneId(int $sceneId): ?array
+    public function selectAllByScene(int $sceneId): ?array
     {
-        $query = "SELECT c.*, s.name AS next_scene_name  
-                  FROM " . static::TABLE . " AS c 
-                  INNER JOIN scene AS s 
-                  ON c.next_scene_id = s.id 
+        $query = "SELECT c.*, s.name AS next_scene_name
+                  FROM " . static::TABLE . " AS c
+                  INNER JOIN scene AS s
+                  ON c.next_scene_id = s.id
                   WHERE scene_id = :scene_id";
 
         $statement = $this->pdo->prepare($query);
@@ -31,8 +31,8 @@ class ChoiceManager extends AbstractManager
     {
         $statement = $this->pdo->prepare(
             "UPDATE " . self::TABLE .
-            " SET body = '" . $choice["body"] .
-            "', next_scene_id = " . $choice["next_scene_id"] .
+            " SET body = '" . $choice["edit_choice_body"] .
+            "', next_scene_id = " . $choice["edit_next_scene"] .
             " WHERE id = " . $id . ";"
         );
         return $statement->execute();
@@ -42,7 +42,7 @@ class ChoiceManager extends AbstractManager
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
         "(`body`, `scene_id`, `next_scene_id`) VALUES (:body, :scene_id, :next_scene_id)");
-        $statement->bindValue('body', $choice['body'], PDO::PARAM_STR);
+        $statement->bindValue('body', $choice['choice_body'], PDO::PARAM_STR);
         $statement->bindValue('scene_id', $choice['scene_id'], PDO::PARAM_STR);
         $statement->bindValue('next_scene_id', $choice['next_scene'], PDO::PARAM_STR);
 

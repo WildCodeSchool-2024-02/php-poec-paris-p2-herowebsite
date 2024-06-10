@@ -5,11 +5,6 @@ namespace App\Controller;
 use Twig\Environment;
 use Twig\Extension\DebugExtension;
 use Twig\Loader\FilesystemLoader;
-use App\Model\SceneManager;
-use App\Model\CharacterManager;
-use App\Model\DialogueManager;
-use App\Model\StoryManager;
-use App\Model\ChoiceManager;
 
 /**
  * Initialized some Controller common features (Twig...)
@@ -17,13 +12,6 @@ use App\Model\ChoiceManager;
 abstract class AbstractController
 {
     protected Environment $twig;
-    protected SceneManager $sceneManager;
-    protected DialogueManager $dialogueManager;
-    protected CharacterManager $characterManager;
-    protected StoryManager $storyManager;
-    protected ChoiceManager $choiceManager;
-    public const EXTENSIONS_ALLOWED = ['jpg', 'jpeg', 'png', 'webp', 'svg'];
-    public const MAX_UPLOAD_SIZE = 5000000;
 
 
     public function __construct()
@@ -37,11 +25,5 @@ abstract class AbstractController
             ]
         );
         $this->twig->addExtension(new DebugExtension());
-
-        $this->sceneManager = new SceneManager();
-        $this->characterManager = new CharacterManager();
-        $this->dialogueManager = new DialogueManager();
-        $this->storyManager = new StoryManager();
-        $this->choiceManager = new ChoiceManager();
     }
 }

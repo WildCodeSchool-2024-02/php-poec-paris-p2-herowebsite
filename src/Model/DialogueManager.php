@@ -11,10 +11,10 @@ class DialogueManager extends AbstractManager
     public function insert(array $dialogues): bool
     {
         $statement = $this->pdo->prepare(
-            "INSERT INTO " . self::TABLE . " (`body`, `character_id`, `scene_id`) 
+            "INSERT INTO " . self::TABLE . " (`body`, `character_id`, `scene_id`)
             VALUE (:body, :character_id, :scene_id);"
         );
-        $statement->bindValue("body", $dialogues["dial_body"], PDO::PARAM_STR);
+        $statement->bindValue("body", $dialogues["dialogue_body"], PDO::PARAM_STR);
         $statement->bindValue("character_id", $dialogues["character_id"], PDO::PARAM_STR);
         $statement->bindValue("scene_id", $dialogues["scene_id"], PDO::PARAM_STR);
 
@@ -22,44 +22,29 @@ class DialogueManager extends AbstractManager
         return $statement->execute();
     }
 
-    public function update(int $id, array $dialogues): bool
+    public function update(array $dialogue): bool
     {
         $statement = $this->pdo->prepare(
             "UPDATE " . self::TABLE .
-            " SET body = \"" . $dialogues["body"] .
-            "\", character_id = " . $dialogues["character_id"] .
-            " WHERE id = " . $id . ";"
+            " SET body = \"" . $dialogue["edit_dialogue_body"] .
+            "\", character_id = " . $dialogue["edit_character_id"] .
+            " WHERE id = " . $dialogue["dialogue_id"] . ";"
         );
 
         return $statement->execute();
     }
 
-    public function getDialogues(string $id): ?array
+    public function selectAllByScene(string $sceneId): ?array
     {
-        $statement = $this->pdo->query("SELECT d.*, c.name AS character_name FROM " . self::TABLE . "AS d 
-        INNER JOIN `character` AS c
-        ON d.character_id = c.id 
-        WHERE `scene_id` = " . $id . ";");
+        $statement = $this->pdo->query(
+            "SELECT d.*, c.* FROM " . self::TABLE . " AS d
+    INNER JOIN `character` AS c
+    ON d.character_id = c.id
+    WHERE `scene_id` = " . $sceneId . ";"
+        );
 
         $dialogues = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         return $this->decodeHtmlEntitiesInArray($dialogues);
-    }
-
-    /**
-     * Récupère les dialogues & les personnages associés par l'ID de la scène.
-     */
-    public function getDialoguesBySceneId(int $sceneId): ?array
-    {
-        $query = "SELECT dl.id, dl.body, dl.character_id, c.name AS character_name, c.sprite
-                  FROM " . static::TABLE . " dl
-                  JOIN `character` c ON dl.character_id = c.id
-                  WHERE dl.scene_id = :scene_id";
-
-        $statement = $this->pdo->prepare($query);
-        $statement->bindValue('scene_id', $sceneId, \PDO::PARAM_INT);
-        $statement->execute();
-
-        return $statement->fetchAll();
     }
 }

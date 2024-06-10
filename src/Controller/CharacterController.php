@@ -2,15 +2,27 @@
 
 namespace App\Controller;
 
+use App\Model\CharacterManager;
+
 class CharacterController extends AbstractController
 {
-    public function add($storyId, $sceneId): ?string
+    private $characterManager;
+
+    public const TARGET_DIR = 'assets/images/sprites/';
+    public const EXTENSIONS_ALLOWED = ['jpg', 'jpeg', 'png', 'webp', 'svg'];
+    public const MAX_UPLOAD_SIZE = 5000000;
+
+    public function __construct()
     {
+        parent::__construct();
+        $this->characterManager = new CharacterManager();
+    }
+    public function add(): ?string
+    {
+        $character = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $character = array_map('htmlentities', array_map('trim', $_POST));
-            $character['story_id'] = $storyId;
-            $targetDir = 'assets/images/sprites/';
-            $targetFile = $targetDir . basename($_FILES['sprite']['name']);
+            $targetFile = self::TARGET_DIR . basename($_FILES['sprite']['name']);
             $typeFile = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
             $dimensionsImage = getimagesize($_FILES['sprite']['tmp_name']);
             $errors = [];
@@ -19,17 +31,17 @@ class CharacterController extends AbstractController
                 $errors[] = 'Votre sprite n\'est pas une image';
             }
 
-            if ($_FILES['sprite']['size'] > parent::MAX_UPLOAD_SIZE) {
+            if ($_FILES['sprite']['size'] > self::MAX_UPLOAD_SIZE) {
                 $errors[] = 'Votre sprite ne peut pas dépasser 5Mo';
             }
 
-            if (!in_array($typeFile, parent::EXTENSIONS_ALLOWED)) {
-                $errors[] = 'Votre sprite n\'as pas le bon format (' . implode(', ', parent::EXTENSIONS_ALLOWED) . ')';
+            if (!in_array($typeFile, self::EXTENSIONS_ALLOWED)) {
+                $errors[] = 'Votre sprite n\'as pas le bon format (' . implode(', ', self::EXTENSIONS_ALLOWED) . ')';
             }
 
             if (!move_uploaded_file($_FILES['sprite']['tmp_name'], $targetFile)) {
                 $errors[] = 'Erreur lors du déplacement du fichier de sprite';
-                // Log des informations d'erreur
+
                 error_log('Erreur lors du déplacement du fichier de sprite: ' . $_FILES['sprite']['error']);
             }
 
@@ -38,13 +50,14 @@ class CharacterController extends AbstractController
                 $this->characterManager->insert($character);
             } else {
                 // Log des erreurs dans un fichier de journal
-                error_log('Erreurs lors de l\'ajout dtu sprite: ' . implode(', ', $errors));
+                error_log('Erreurs lors de l\'ajout du sprite: ' . implode(', ', $errors));
                 // Ajout du personnage en cas d'absence de sprite
                 $this->characterManager->insert($character);
             }
         }
 
-        header('Location:/storycreation/scene/show?story_id=' . $storyId . '&id=' . $sceneId);
+        header('Location:/storycreation/scene/show?story_id='
+            . $character['story_id'] . '&id=' . $character['scene_id']);
         return null;
     }
 
@@ -56,15 +69,16 @@ class CharacterController extends AbstractController
         return null;
     }
 
-    public function update(string $storyId, string $sceneId, int $id): ?string
+    public function update(): ?string
     {
+        $character = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $character = array_map('htmlentities', array_map('trim', $_POST));
-            $character['name'] = $character['e_name'];
-            $character['sprite'] = $character['e_sprite'];
-            $this->characterManager->update($id, $character);
+            $this->characterManager->update($character);
         }
-        header('Location:/storycreation/scene/show?story_id=' . $storyId . '&id=' . $sceneId);
+
+        header('Location:/storycreation/scene/show?story_id='
+            . $character['story_id'] . '&id=' . $character['scene_id']);
         return null;
     }
 
@@ -72,6 +86,11 @@ class CharacterController extends AbstractController
     {
         $characters = $this->characterManager->getCharacters($storyId);
         header('Location: /showchars?story_id=' . $storyId);
-        return $this->twig->render('StoryCreation/showCharacters.html.twig');
+        return $this->twig->render(
+            'StoryCreation/showCharacters.html.twig',
+            [
+            'characters' => $characters
+            ]
+        );
     }
 }

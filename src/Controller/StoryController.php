@@ -2,8 +2,17 @@
 
 namespace App\Controller;
 
+use App\Model\StoryManager;
+
 class StoryController extends AbstractController
 {
+    private $storyManager;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->storyManager = new StoryManager();
+    }
     public function indexCreation(): ?string
     {
         $stories = $this->storyManager->selectAll();
@@ -27,7 +36,7 @@ class StoryController extends AbstractController
     public function showCreation(string $id): string
     {
         $story = $this->storyManager->selectOneById((int) $id);
-        $scenes = $this->storyManager->getScenes($id);
+        $scenes = $this->storyManager->selectAllByStory($id);
 
         return $this->twig->render(
             'StoryCreation/show.html.twig',

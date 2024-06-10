@@ -2,17 +2,27 @@
 
 namespace App\Controller;
 
+use App\Model\DialogueManager;
+
 class DialogueController extends AbstractController
 {
-    public function add(string $storyId, string $sceneId): ?string
+    private $dialogueManager;
+
+    public function __construct()
     {
+        parent::__construct();
+        $this->dialogueManager = new DialogueManager();
+    }
+    public function add(): ?string
+    {
+        $dialogue = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $dialogues = array_map('htmlentities', array_map('trim', $_POST));
-            $dialogues['scene_id'] = $sceneId;
-            $this->dialogueManager->insert($dialogues);
+            $dialogue = array_map('htmlentities', array_map('trim', $_POST));
+            $this->dialogueManager->insert($dialogue);
         }
-            header('Location:/storycreation/scene/show?story_id=' . $storyId . '&id=' . $sceneId);
-            return null;
+        header('Location:/storycreation/scene/show?story_id='
+            . $dialogue['story_id'] . '&id=' . $dialogue['scene_id']);
+        return null;
     }
 
     public function delete(string $storyId, string $sceneId, int $id): ?string
@@ -23,15 +33,14 @@ class DialogueController extends AbstractController
         return null;
     }
 
-    public function update(string $storyId, string $sceneId, int $id): ?string
+    public function update(): ?string
     {
+        $dialogue = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $dialogue = array_map('htmlentities', array_map('trim', $_POST));
-            $dialogue['body'] = $dialogue['e_dial_body'];
-            $dialogue['character_id'] = $dialogue['e_character_id'];
-            $this->dialogueManager->update($id, $dialogue);
+            $this->dialogueManager->update($dialogue);
         }
-        header('Location:/storycreation/scene/show?story_id=' . $storyId . '&id=' . $sceneId);
+        header('Location:/storycreation/scene/show?story_id=' . $dialogue['story_id'] . '&id=' . $dialogue['scene_id']);
         return null;
     }
 }

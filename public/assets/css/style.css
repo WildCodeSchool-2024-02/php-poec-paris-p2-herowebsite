@@ -4,7 +4,7 @@
     --color-text: white;
     --color-narration: #ffb55e;
     --color-continue: rgba(66, 65, 65, 0.25);
-    --color-button: rgba(217, 217, 217, 0.55)
+    --color-button: rgba(217, 217, 217, 0.55);
     --color-button-hover: rgba(217, 217, 217, 0.6);
     --font-title: "Julee", cursive;
     --font-text: "Lancelot", serif;
@@ -23,12 +23,12 @@ body {
     font-size: 62.5%;
 }
 
-.character-edit-form,
-.dialogue-edit-form,
-.choice-edit-form,
-.character-add-form,
-.dialogue-add-form,
-.choice-add-form {
+.edit_character_form,
+.edit_dialogue_form,
+.edit_choice_form,
+.add_character_form,
+.add_dialogue_form,
+.add_choice_form {
     display: none;
 }
 
@@ -98,5 +98,3 @@ body {
     font-size: 2.2rem;
     color: var(--color-button-hover);
 }
-
-
