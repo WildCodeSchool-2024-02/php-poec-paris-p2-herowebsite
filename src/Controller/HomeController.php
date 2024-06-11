@@ -5,7 +5,7 @@ namespace App\Controller;
 class HomeController extends AbstractController
 {
     /**
-     * Display home page
+     * Affiche la home page
      */
     public function index(): string
     {

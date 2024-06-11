@@ -1,0 +1,28 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<main id="mainAddScene">
+    <div class="linksBack">
+        <a href="/story/engine" id="backStories">
+            <img src="/assets/images/icones/story.svg" alt="plow icon"> Scènes
+        </a>
+        <a href="/" id="home">
+            <img src="/assets/images/icones/home.svg" alt="plow icon"> Home
+        </a>
+    </div>
+    <section id="container">
+        <h1>Ajouter une scène</h1>
+        <form method="post" enctype="multipart/form-data">
+            <div class="title">
+                <label for="name"> title : </label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div class="background">
+                <label for="background"> background : </label>
+                <input type="file" name="background" id="background">
+            </div>
+            <input type="submit" id="submit">
+        </form>
+    </section>
+</main>
+{% endblock %}

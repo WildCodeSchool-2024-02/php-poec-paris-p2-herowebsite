@@ -1,0 +1,180 @@
+/* variables  */
+:root {
+    --color-textbox: rgba (0, 0, 0, 0.65);
+    --color-text: white;
+    --color-narration: #ffb55e;
+    --color-continue: rgba(217, 217, 217, 0.25);
+    --color-button-hover: rgba(217, 217, 217, 0.6);
+    --font-title: "Julee", cursive;
+    --font-text: "Lancelot", serif;
+    --font-continue: "Kaisei Decol", serif;
+}
+
+/* Reset */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 62.5%;
+    font-size: var(--font-text);
+}
+
+#mainStory {
+    display: flex;
+    flex-direction: column;   
+    justify-content: start;
+    align-items: center; 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;    
+    background-image: url(../images/backgrounds/home.png);
+}
+
+#mainStory .linksBack {
+    width: 99%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+#mainStory #backStories a {
+    width: 18rem;
+    height: 3rem;
+    color: var(--color-text);
+    margin: 2rem 2rem 2rem 2rem;
+    text-decoration: none;
+    font-family: 'Lancelot';
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#mainStory #backStories img {
+    width: 2rem;
+    height: 2rem;
+}
+
+#mainStory #home img, #mainStory #home img {
+    width: 2rem;
+    height: 2rem;
+    margin-bottom: .5rem;
+}
+
+#mainStory h1 {
+    color: white;
+    font-size: 2rem;
+    text-decoration: none;
+    border-bottom: none;
+    margin-top: -5rem;
+}
+
+#mainStory h2 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+    font-family: 'Julee';
+}
+
+#mainStory #backStories, #mainStory #home {
+    width: 10rem;
+    height: 3rem;
+    color: var(--color-text);
+    margin: -12rem 2rem 8rem 30rem;
+    text-decoration: none;
+    font-family: 'Lancelot';
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#mainStory #container {
+    width: 90%;
+    height: 60%;
+    background: rgb(201, 200, 200);
+    padding: 2rem 1rem;
+    margin-right: 1rem;
+    border-radius: 5px;
+    overflow-y: auto;
+    position: relative;
+}
+
+#mainStory #container .sceneDetails {
+    width: 97%;
+    height: 3.5rem;
+    font-size: .8rem;
+    font-family: 'Lancelot';
+    display: flex;
+    align-items: center;
+    margin: .5rem 0;
+}
+
+#mainStory #container .sceneDetails .name {
+    width: 70%;
+    padding: .5rem;
+    font-style: oblique;
+    background-color: white;
+    height: 3rem;
+    font-size: 1.5rem;
+}
+
+#mainStory #container .sceneDetails .name a {
+    text-decoration: none;
+    color: #000;
+}
+
+
+#mainStory #container .sceneDetails #sceneEdit {
+    display: flex;
+    width: 30%;
+    margin-left: 1.5rem;    
+}
+
+#mainStory #container .sceneDetails #sceneEdit .edit {
+    width: 3.1rem;
+    height: 3.1rem;
+    background: white;
+    margin: 0 .2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#mainStory #container .sceneDetails #sceneEdit .edit .icon {
+    width: 2rem;
+    height: 2rem;
+}
+
+#mainStory #addSceneLink { 
+    width: 15rem;
+    height: 3rem;
+    margin-top: 1.5rem;
+    margin-left: 28rem;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-family: 'Lancelot';
+    color: #000;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 15px;
+    opacity: .6;
+}
+
+.edit_scene_form,
+.edit_character_form,
+.edit_dialogue_form,
+.edit_choice_form,
+.add_character_form,
+.add_dialogue_form,
+.add_choice_form {
+    display: none;
+}
