@@ -176,6 +176,7 @@ body {
 .add_character_form,
 .add_dialogue_form,
 .add_choice_form,
-.hidden_choices {
+.hidden_choices,
+.hidden_dialogue {
     display: none;
 }

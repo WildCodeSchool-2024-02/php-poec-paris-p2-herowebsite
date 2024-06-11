@@ -74,6 +74,7 @@ for (let i = 0; i < cancelCharacter.length; i++) {
 const addDialogue = document.querySelector('.add_dialogue');
 const addDialogueForm = document.querySelector('.add_dialogue_form');
 
+
 addDialogue.addEventListener('click', () => {
     addDialogueForm.style.display = 'inline-block';
 })

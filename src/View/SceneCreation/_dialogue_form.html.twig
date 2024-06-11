@@ -27,6 +27,7 @@
     </li>
     {% endfor %}
 
+    {% if characters %}
     <button class="add_dialogue">Ajouter une ligne de dialogue</button>
     <form method = "post" action ="/story/engine/dialogue/add" class="add_dialogue_form">
         <input type="hidden" name="story_id" value={{ story.id }}>
@@ -42,4 +43,5 @@
         <input type ="submit">
         <button class="cancel_dialogue">&#10006;</button>
     </form>
+    {% endif %}
 </ul>
