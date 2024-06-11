@@ -169,6 +169,7 @@ body {
     opacity: .6;
 }
 
+.edit_scene_form,
 .edit_character_form,
 .edit_dialogue_form,
 .edit_choice_form,

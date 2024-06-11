@@ -25,10 +25,14 @@ class CharacterManager extends AbstractManager
     {
         $statement = $this->pdo->prepare(
             "UPDATE " . self::TABLE .
-                " SET name = \"" . $character["character_name"] .
-                "\", sprite = \"" . $character["sprite"] . "\"
-            WHERE id = " . $character['character_id'] . ";"
+            " SET name = :name, sprite = :sprite
+            WHERE id = :character_id ;"
         );
+
+        $statement->bindValue(":name", $character["character_name"], PDO::PARAM_STR);
+        $statement->bindValue(":sprite", $character["sprite"], PDO::PARAM_STR);
+        $statement->bindValue(":character_id", $character["character_id"], PDO::PARAM_INT);
+
         return $statement->execute();
     }
 

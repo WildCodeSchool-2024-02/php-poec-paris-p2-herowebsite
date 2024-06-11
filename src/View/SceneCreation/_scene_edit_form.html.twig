@@ -1,0 +1,8 @@
+<button class="edit_scene">Editer la scène</button>
+<form method="post" action="/story/engine/scene/update" class="edit_scene_form">
+    <input type="hidden" name="story_id" value={{ story.id }}>
+    <input type="hidden" name="scene_id" value={{ scene.id }}>
+    <input type="text" name="name" id="name" value="{{ scene.name }}">
+    <input type="submit">
+    <button class="cancel_scene">&#10006;</button>
+</form>

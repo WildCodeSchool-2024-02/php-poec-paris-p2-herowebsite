@@ -45,37 +45,19 @@ class SceneController extends AbstractController
             $scene = array_map('htmlentities', array_map('trim', $_POST));
             $scene['story_id'] = $storyId;
 
-            if (!empty($_FILES['full_path'])) {
-                $targetFile = self::TARGET_DIR . basename($_FILES['background']['name']);
-                $typeFile = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-                $dimensionsImage = getimagesize($_FILES['background']['tmp_name']);
+            if (!empty($_FILES['background']['full_path'])) {
+                $uploadErrors = $this->handleBackgroundUpload();
+                $errors = array_merge($errors, $uploadErrors);
 
-
-                if (!$dimensionsImage) {
-                    $errors[] = 'Votre background n\'est pas une image';
-                }
-
-                if ($_FILES['background']['size'] > self::MAX_UPLOAD_SIZE) {
-                    $errors[] = 'Votre background ne peut pas dépasser ' . self::MAX_UPLOAD_SIZE / 1000000 . 'Mo';
-                }
-
-                if (!in_array($typeFile, self::EXTENSIONS_ALLOWED)) {
-                    $errors[] = 'Votre background n\'as pas le bon format ('
-                        . implode(', ', self::EXTENSIONS_ALLOWED) . ')';
-                }
-
-                if (!move_uploaded_file($_FILES['background']['tmp_name'], $targetFile)) {
-                    $errors[] = 'Erreur lors du déplacement du fichier de background';
-                    error_log('Erreur lors du déplacement du fichier de background: ' . $_FILES['background']['error']);
+                if (empty($uploadErrors)) {
+                    $scene['background'] = basename($_FILES['background']['name']);
                 }
             } else {
                 $scene["background"] = "";
             }
 
-            if (strlen($scene["name"]) >= self::MAX_SCENE_TITLE_LENGTH) {
-                $errors[] = "Le titre de votre scene est trop long, maximum : "
-                 . self::MAX_SCENE_TITLE_LENGTH . " caractères.";
-            }
+            $validationErrors = $this->validateScene($scene);
+            $errors = array_merge($errors, $validationErrors);
 
             if (empty($errors)) {
                 $scene['background'] = basename($_FILES['background']['name']);
@@ -91,6 +73,47 @@ class SceneController extends AbstractController
         }
 
         return $this->twig->render('SceneCreation/add.html.twig');
+    }
+
+    public function update(): ?string
+    {
+        $scene = [];
+        $errors = [];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $scene = array_map('htmlentities', array_map('trim', $_POST));
+            $previousSettings = $this->sceneManager->selectOneById($scene['scene_id']);
+
+            if (!empty($_FILES['background']['full_path'])) {
+                $uploadErrors = $this->handleBackgroundUpload();
+                $errors = array_merge($errors, $uploadErrors);
+                if (empty($uploadErrors)) {
+                    $scene['background'] = basename($_FILES['background']['name']);
+                } else {
+                    $scene['background'] = $previousSettings['background'];
+                }
+            } else {
+                $scene['background'] = $previousSettings['background'];
+            }
+
+            if (empty($scene['name'])) {
+                $scene['name'] = $previousSettings['name'];
+            }
+
+            $validationErrors = $this->validateScene($scene);
+            $errors = array_merge($errors, $validationErrors);
+
+
+            if (empty($errors)) {
+                $this->sceneManager->update($scene);
+            } else {
+                error_log('Erreur lors de l\'edition de la scene : ' . implode(', ', $errors));
+            }
+
+            header('Location:/story/engine/scene/show?story_id='
+            . $scene['story_id'] . '&id=' . $scene['scene_id']);
+        }
+        return null;
     }
 
 
@@ -158,5 +181,47 @@ class SceneController extends AbstractController
         }
 
         return $this->show((int) $sceneId['scene_id']);
+    }
+
+    public function handleBackgroundUpload(): array
+    {
+        $errors = [];
+
+        $targetFile = self::TARGET_DIR . basename($_FILES['background']['name']);
+        $typeFile = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+        $dimensionsImage = getimagesize($_FILES['background']['tmp_name']);
+
+
+        if (!$dimensionsImage) {
+            $errors[] = 'Votre background n\'est pas une image';
+        }
+
+        if ($_FILES['background']['size'] > self::MAX_UPLOAD_SIZE) {
+            $errors[] = 'Votre background ne peut pas dépasser ' . self::MAX_UPLOAD_SIZE / 1000000 . 'Mo';
+        }
+
+        if (!in_array($typeFile, self::EXTENSIONS_ALLOWED)) {
+            $errors[] = 'Votre background n\'as pas le bon format ('
+                . implode(', ', self::EXTENSIONS_ALLOWED) . ')';
+        }
+
+        if (!move_uploaded_file($_FILES['background']['tmp_name'], $targetFile)) {
+            $errors[] = 'Erreur lors du déplacement du fichier de background';
+            error_log('Erreur lors du déplacement du fichier de background: ' . $_FILES['background']['error']);
+        }
+
+        return $errors;
+    }
+
+    public function validateScene(array $scene): array
+    {
+        $errors = [];
+
+        if (strlen($scene["name"]) >= self::MAX_SCENE_TITLE_LENGTH) {
+            $errors[] = "Le titre de votre scene est trop long, maximum : "
+             . self::MAX_SCENE_TITLE_LENGTH . " caractères.";
+        }
+
+        return $errors;
     }
 }

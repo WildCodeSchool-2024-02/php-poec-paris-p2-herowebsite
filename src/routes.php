@@ -21,6 +21,7 @@ return [
     'story/engine/scene/add' => ['SceneController', 'add', ['story_id']],
     'story/engine/scene/show' => ['SceneController', 'showCreation', ['story_id', 'id']],
     'story/engine/scene/delete' => ['SceneController', 'delete', ['story_id', 'id']],
+    'story/engine/scene/update' => ['SceneController', 'update', ['story_id', 'id']],
     // Création d'un personnage
     'story/engine/character/show' => ['CharacterController', 'show', ['story_id']],
     'story/engine/character/add' => ['CharacterController', 'add'],

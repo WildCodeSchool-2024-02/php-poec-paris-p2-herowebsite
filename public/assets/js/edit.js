@@ -1,6 +1,21 @@
+const editScene = document.querySelectorAll('.edit_scene');
+const editSceneForm = document.querySelectorAll('.edit_scene_form');
+const cancelScene = document.querySelectorAll('.cancel_scene');
+
+for (let i = 0; i < editScene.length; i++) {
+    editScene[i].addEventListener('click', () => {
+        editSceneForm[i].style.display = 'inline-block';
+    })
+
+    cancelScene[i].addEventListener('click', (e) => {
+        e.preventDefault();
+        editSceneForm[i].style.display = 'none';
+    })
+}
+
 const editCharacter = document.querySelectorAll('.edit_character');
 const editCharacterForm = document.querySelectorAll('.edit_character_form');
-const cancelCharacter = document.querySelectorAll('.cancel-character');
+const cancelCharacter = document.querySelectorAll('.cancel_character');
 
 for (let i = 0; i < editCharacter.length; i++) {
     editCharacter[i].addEventListener('click', () => {

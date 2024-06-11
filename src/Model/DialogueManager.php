@@ -26,10 +26,14 @@ class DialogueManager extends AbstractManager
     {
         $statement = $this->pdo->prepare(
             "UPDATE " . self::TABLE .
-            " SET body = \"" . $dialogue["dialogue_body"] .
-            "\", character_id = " . $dialogue["character_id"] .
-            " WHERE id = " . $dialogue["dialogue_id"] . ";"
+            " SET body = :body, 
+            character_id = :character_id 
+            WHERE id = :dialogue_id;"
         );
+
+        $statement->bindValue(":body", $dialogue["dialogue_body"], PDO::PARAM_STR);
+        $statement->bindValue(":character_id", $dialogue["character_id"], PDO::PARAM_STR);
+        $statement->bindValue(":dialogue_id", $dialogue["dialogue_id"], PDO::PARAM_INT);
 
         return $statement->execute();
     }

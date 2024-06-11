@@ -12,7 +12,8 @@
     {{ story.name }}
   </h1>
   <a href="/story/engine/show?id={{ story.id }}">Retour à l'histoire</a>
-  <img height=300 width=300 src = "/assets/images/backgrounds/{{scene.background}}" alt="ça s'affiche pas !">
+  <img height=300 width=300 src = "/assets/images/backgrounds/{{scene.background}}" alt="Background">
+    {% include 'SceneCreation/_scene_edit_form.html.twig' %}
 
     <h1>{{scene.name}}</h1>
 
