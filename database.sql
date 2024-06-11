@@ -193,6 +193,7 @@ UNLOCK TABLES;
 LOCK TABLES `scene` WRITE;
 /*!40000 ALTER TABLE `scene` DISABLE KEYS */;
 INSERT INTO `scene` VALUES 
+  (0,'[Work In Progress]','background_wip.png',0),
   (1,'Entrée de la forêt','background_forest_entrance.png',1),
   (2,'Carrefour mystérieux','background_crossroad.png',1),
   (3,'Rencontre avec l\'Ancien','background_ancient_meeting.png',1),
