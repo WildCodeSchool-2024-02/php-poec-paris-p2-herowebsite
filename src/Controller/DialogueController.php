@@ -3,22 +3,35 @@
 namespace App\Controller;
 
 use App\Model\DialogueManager;
+use App\Model\CharacterManager;
 
 class DialogueController extends AbstractController
 {
     private $dialogueManager;
-
+    private $characterManager;
+    public const MAX_DIALOGUE_LENGTH = 150;
     public function __construct()
     {
         parent::__construct();
         $this->dialogueManager = new DialogueManager();
+        $this->characterManager = new CharacterManager();
     }
     public function add(): ?string
     {
         $dialogue = [];
+        $errors = [];
+
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $dialogue = array_map('htmlentities', array_map('trim', $_POST));
-            $this->dialogueManager->insert($dialogue);
+
+            $errors = $this->validateDialogue($dialogue);
+
+            if (empty($errors)) {
+                $this->dialogueManager->insert($dialogue);
+            } else {
+                error_log('Erreurs lors de l\'ajout de la ligne de dialogue : ' . implode(', ', $errors));
+            }
         }
         header('Location:/story/engine/scene/show?story_id='
             . $dialogue['story_id'] . '&id=' . $dialogue['scene_id']);
@@ -36,11 +49,43 @@ class DialogueController extends AbstractController
     public function update(): ?string
     {
         $dialogue = [];
+        $errors = [];
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $dialogue = array_map('htmlentities', array_map('trim', $_POST));
-            $this->dialogueManager->update($dialogue);
+            $previousSettings = $this->dialogueManager->selectOneById($dialogue['dialogue_id']);
+
+            if (empty($dialogue["dialogue_body"])) {
+                $dialogue['dialogue_body'] = $previousSettings['body'];
+            }
+
+            $errors = $this->validateDialogue($dialogue);
+
+            if (empty($errors)) {
+                $this->dialogueManager->update($dialogue);
+            } else {
+                error_log('Erreurs lors de l\'edition de la ligne de dialogue : ' . implode(', ', $errors));
+            }
         }
         header('Location:/story/engine/scene/show?story_id=' . $dialogue['story_id'] . '&id=' . $dialogue['scene_id']);
         return null;
+    }
+
+    public function validateDialogue(array $dialogue): array
+    {
+        $errors = [];
+        $character = $this->characterManager->selectByStory($dialogue["story_id"]);
+        $characterIds = array_column($character, 'id');
+
+        if (strlen($dialogue["dialogue_body"]) >= self::MAX_DIALOGUE_LENGTH) {
+            $errors[] = "Votre ligne de dialogue est trop longue, maximum : "
+             . self::MAX_DIALOGUE_LENGTH . " caractères.";
+        }
+
+        if (!in_array($dialogue["character_id"], $characterIds)) {
+            $errors[] = "Le personnage selectionné n'existe pas";
+        }
+
+        return $errors;
     }
 }

@@ -13,8 +13,8 @@
             <input type="hidden" name="story_id" value={{ story.id }}>
             <input type="hidden" name="scene_id" value={{ scene.id }}>
             <input type="hidden" name="dialogue_id" value={{ dialogue.id }}>
-            <input type="textarea" name="edit_dialogue_body" id="edit_dialogue_body">
-            <select name="edit_character_id" id="edit_character_id">
+            <input type="textarea" name="dialogue_body" id="dialogue_body">
+            <select name="character_id" id="character_id">
             {% for character in characters %}
                 <option value={{ character.id }}>{{ character.name }}</option>
             {% endfor %}

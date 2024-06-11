@@ -25,8 +25,8 @@ class CharacterManager extends AbstractManager
     {
         $statement = $this->pdo->prepare(
             "UPDATE " . self::TABLE .
-                " SET name = \"" . $character["edit_character_name"] .
-                "\", sprite = \"" . $character["edit_sprite"] . "\"
+                " SET name = \"" . $character["character_name"] .
+                "\", sprite = \"" . $character["sprite"] . "\"
             WHERE id = " . $character['character_id'] . ";"
         );
         return $statement->execute();
