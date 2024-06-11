@@ -9,9 +9,7 @@
 
     <button type="button" onclick="
         if (confirm('Êtes-vous sûr de vouloir supprimer ce background ?')) {
-            // Change la valeur de l'input caché pour signaler la suppression du background
             document.getElementById('delete_background').value = 'true';
-            // Soumettre le formulaire
             this.form.submit();
         }
     "> &#x1F5D1; Supprimer le background</button>

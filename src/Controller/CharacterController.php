@@ -71,7 +71,6 @@ class CharacterController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $character = array_map('htmlentities', array_map('trim', $_POST));
             $previousSettings = $this->characterManager->selectOneById($character['character_id']);
-
             if (!empty($_FILES['sprite']['full_path'])) {
                 $uploadErrors = $this->handleSpriteUpload();
                 $errors = array_merge($errors, $uploadErrors);
@@ -86,6 +85,10 @@ class CharacterController extends AbstractController
 
             if (empty($character['character_name'])) {
                 $character['character_name'] = $previousSettings['name'];
+            }
+
+            if ($character['delete_sprite'] === 'true') {
+                $character['sprite'] = "";
             }
 
             $validationErrors = $this->validateCharacter($character);
