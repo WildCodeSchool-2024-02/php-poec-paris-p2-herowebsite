@@ -40,12 +40,12 @@ class SceneCreationController extends AbstractController
             if (!empty($_FILES['background']['full_path'])) {
                 $uploadErrors = $this->handleBackgroundUpload();
                 $errors = array_merge($errors, $uploadErrors);
-
                 if (empty($uploadErrors)) {
                     $scene['background'] = basename($_FILES['background']['name']);
                 }
             } else {
-                $scene["background"] = "";
+                $scene["background"] = "black.jpg";
+                $errors[] = "Placeholder chargé";
             }
 
             $validationErrors = $this->validateScene($scene);
@@ -91,6 +91,11 @@ class SceneCreationController extends AbstractController
             if (empty($scene['name'])) {
                 $scene['name'] = $previousSettings['name'];
             }
+
+            if ($scene['delete_background'] === 'true') {
+                $scene['background'] = "black.jpg";
+            }
+
 
             $validationErrors = $this->validateScene($scene);
             $errors = array_merge($errors, $validationErrors);

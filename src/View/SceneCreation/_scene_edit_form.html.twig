@@ -3,6 +3,18 @@
     <input type="hidden" name="story_id" value={{ story.id }}>
     <input type="hidden" name="scene_id" value={{ scene.id }}>
     <input type="text" name="name" id="name" value="{{ scene.name | raw }}" maxlength="30">
+    <input type="file" name="background" id="background">
     <input type="submit">
+    <input type="hidden" name="delete_background" id="delete_background" value="false">
+
+    <button type="button" onclick="
+        if (confirm('Êtes-vous sûr de vouloir supprimer ce background ?')) {
+            // Change la valeur de l'input caché pour signaler la suppression du background
+            document.getElementById('delete_background').value = 'true';
+            // Soumettre le formulaire
+            this.form.submit();
+        }
+    "> &#x1F5D1; Supprimer le background</button>
     <button class="cancel_scene">&#10006;</button>
+
 </form>

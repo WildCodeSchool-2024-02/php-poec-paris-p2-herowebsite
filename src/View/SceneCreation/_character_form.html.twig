@@ -1,7 +1,7 @@
 <ul>
   {% for character in characters %}
   <li>
-    {{character.name}}
+    {{character.name | raw }}
       <button
       onclick="if(confirm('Êtes vous sûr de vouloir supprimer ce personnage ?'))
       { window.location.href='/story/engine/character/delete?story_id={{story.id}}&scene_id={{scene.id}}&id={{character.id}}';}">
