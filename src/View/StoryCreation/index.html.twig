@@ -29,7 +29,11 @@
                     <a href=""><img src="/assets/images/icones/preview.svg" alt="preview icon" class="icon"></a>
                 </div>
                 <div class="storyDelete">
-                    <a href="/story/engine/delete?id={{ story.id }}"><img src="/assets/images/icones/trash.svg" alt="trash icon" class="icon"></a></article>
+                    <a
+                        onclick="if(confirm('Êtes vous sûr de vouloir supprimer ce choix ?'))
+                        { window.location.href='/story/engine/delete?id={{story.id}}';}">
+                        <img src="/assets/images/icones/trash.svg" alt="trash icon" class="icon">
+                    </a>
                 </div>
             </article>
         {% endfor %}

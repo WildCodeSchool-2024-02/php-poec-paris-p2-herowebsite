@@ -160,3 +160,7 @@ body {
     opacity: .6;
 }
 
+.storyDelete a {
+    cursor: pointer;
+}
+
