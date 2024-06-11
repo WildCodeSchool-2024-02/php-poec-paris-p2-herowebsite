@@ -24,6 +24,24 @@ document.addEventListener("DOMContentLoaded", () => {
         sprites[index].classList.add("hidden");
     };
 
+    // Fonction pour vérifier si c'est le dernier dialogue et adapter l'affichage en conséquence.
+    const checkIfLastDialogue = () => {
+        if (currentDialogueIndex >= dialogues.length - 1) {
+            // Masque le bouton "continue" lorsque tous les dialogues sont affichés.
+            continueButton.style.display = "none";
+            // Vérifie si des choix sont disponibles.
+            if (choicesDiv.querySelectorAll(".choice-link").length > 0) {
+                // Affiche les choix si des liens de choix existent.
+                choicesDiv.classList.remove("hidden");
+                choicesDiv.style.display = "flex";
+            } else {
+                // Remplace le bouton "continue" par un lien de retour vers les crédits si aucun choix n'est disponible.
+                continueButton.outerHTML = `<a href="/story">Fin</a>`;
+                choicesDiv.style.display = "none";
+            }
+        }
+    };
+
     // Fonction pour afficher le dialogue suivant.
     const showNextDialogue = () => {
         // Vérifie si l'index actuel est inférieur à la longueur de la liste des dialogues moins un.
@@ -34,24 +52,17 @@ document.addEventListener("DOMContentLoaded", () => {
             currentDialogueIndex++;
             // Affiche le nouvel élément.
             showElement(currentDialogueIndex);
-        } else {
-            // Masque le bouton "continue" lorsque tous les dialogues sont affichés.
-            continueButton.style.display = "none";
-            // Vérifie si des choix sont disponibles.
-            if (choicesDiv.querySelectorAll(".choice-link").length > 0) {
-                // Affiche les choix si des liens de choix existent.
-                choicesDiv.classList.remove("hidden");
-                choicesDiv.style.display = "flex";
-            } else {
-                // Remplace le bouton "continue" par un lien de retour vers les crédits si aucun choix n'est disponible.
-                continueButton.outerHTML = `<a href="/story">Retour</a>`;
-                choicesDiv.style.display = "none";
-            }
         }
+        // Vérifie et ajuste l'affichage si on est au dernier dialogue.
+        checkIfLastDialogue();
     };
 
     // Ajoute un écouteur d'événements au bouton "continue" pour afficher le dialogue suivant au clic.
     continueButton.addEventListener("click", showNextDialogue);
+
     // Affiche le premier dialogue et sprite au chargement de la page.
     showElement(currentDialogueIndex);
+
+    // Vérifie immédiatement si c'est le dernier dialogue au chargement.
+    checkIfLastDialogue();
 });

@@ -37,7 +37,9 @@
                         </a>
                     </div>
                     <div class="sceneDelete edit">
-                        <a href="/story/engine/scene/delete?story_id={{ story.id }}&id={{scene.id}}">
+                        <a
+                        onclick="if(confirm('Êtes vous sûr de vouloir supprimer ce choix ?'))
+                        { window.location.href='/story/engine/scene/delete?story_id={{story.id}}&id={{scene.id}}';}">
                             <img src="/assets/images/icones/trash.svg" alt="trash icon" class="icon">
                         </a>
                     </div>
