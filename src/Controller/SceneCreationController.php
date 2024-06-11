@@ -16,7 +16,7 @@ class SceneCreationController extends AbstractController
     private $characterManager;
     private $storyManager;
     private const TARGET_DIR = 'assets/images/backgrounds/';
-    public const EXTENSIONS_ALLOWED = ['jpg', 'jpeg', 'png', 'webp', 'svg'];
+    public const EXTENSIONS_ALLOWED = ['jpg', 'jpeg', 'png', 'webp'];
     public const MAX_UPLOAD_SIZE = 5000000;
     public const MAX_SCENE_TITLE_LENGTH = 30;
 

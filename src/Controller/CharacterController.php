@@ -9,7 +9,7 @@ class CharacterController extends AbstractController
     private $characterManager;
 
     public const TARGET_DIR = 'assets/images/sprites/';
-    public const EXTENSIONS_ALLOWED = ['jpg', 'jpeg', 'png', 'webp', 'svg'];
+    public const EXTENSIONS_ALLOWED = ['jpg', 'jpeg', 'png', 'webp'];
     public const MAX_UPLOAD_SIZE = 5000000;
 
     public const MAX_CHARACTER_NAME_LENGTH = 30;
