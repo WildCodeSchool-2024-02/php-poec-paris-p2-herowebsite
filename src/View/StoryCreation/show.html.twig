@@ -15,54 +15,27 @@
     <h1>{{story.name | raw}}</h1>
     <section id="container">
         {% for scene in scenes %}
-            <article class="sceneList">
+            <article class="scene-list">
                 <div class="name">
                     <a href="/story/scene/show?scene_id={{ scene.id }}">
                         {{ scene.name | raw }}
                     </a>
                 </div>
-                <div id="sceneEdit">
-                    <div class="sceneEdit edit">
+                <div id="scene-edit">
+                    <div class="scene-edit edit">
                         <a href="/story/engine/scene/show?story_id={{ story.id }}&id={{ scene.id }}">
                             <img src="/assets/images/icones/pen.svg" alt="pen icon" class="icon">
                         </a>
                     </div>
-                    <div class="sceneShow edit">
+                    <div class="scene-show edit">
                         <a href="/story/scene/show?scene_id={{ scene.id }}">
                             <img src="/assets/images/icones/play.svg" alt="play icon" class="icon">
                         </a>
                     </div>
-                    <div class="sceneDelete edit">
+                    <div class="scene-delete edit">
                         <a
                         onclick="if(confirm('Êtes vous sûr de vouloir supprimer ce choix ?'))
                         { window.location.href='/story/engine/scene/delete?story_id={{story.id}}&id={{scene.id}}';}">
-                            <img src="/assets/images/icones/trash.svg" alt="trash icon" class="icon">
-                        </a>
-                    </div>
-                </div>
-            </article>
-        {% endfor %}
-
-        {% for ressource in ressources %}
-            <article class="ressource-list">
-                <div class="name">
-                    <a href="/story/scene/show?story_id={{ story.id }}&id={{ scene.id }}">
-                        {{ ressource.name | raw }}
-                    </a>
-                </div>
-                <div id="ressource-edit">
-                    <div class="ressource-edit edit">
-                        <a href="/story/scene/show?id={{ story.id }}">
-                            <img src="/assets/images/icones/pen.svg" alt="pen icon" class="icon">
-                        </a>
-                    </div>
-                    <div class="ressource-show edit">
-                        <a href="/story/scene/show?story_id={{ story.id }}&id={{ scene.id }}">
-                            <img src="/assets/images/icones/play.svg" alt="play icon" class="icon">
-                        </a>
-                    </div>
-                    <div class="ressource-delete edit">
-                        <a href="/story/engine/scene/delete?story_id={{ story.id }}&id={{scene.id}}">
                             <img src="/assets/images/icones/trash.svg" alt="trash icon" class="icon">
                         </a>
                     </div>

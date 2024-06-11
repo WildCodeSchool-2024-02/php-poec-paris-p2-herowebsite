@@ -9,7 +9,7 @@
   <ul id="container">
     {% for story in stories %}
       <li>
-        <a href="/story/scene/start?storyId={{ story.id }}">
+        <a href="/story/scene/start?story_id={{ story.id }}">
           {{ story.name | raw }}
         </a>
       </li>

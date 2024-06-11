@@ -62,7 +62,7 @@
     position: relative;
 }
 
-#main-story #container .sceneList, #main-story #container .characterList, #main-story #container .ressourcesList {
+#main-story #container .scene-list, #main-story #container .characterList, #main-story #container .ressourcesList {
     width: 97%;
     height: 3.5rem;
     font-size: .8rem;
@@ -76,7 +76,7 @@
     display: none;
 }
 
-#main-story #container .sceneList .name {
+#main-story #container .scene-list .name {
     width: 70%;
     padding: .5rem;
     font-style: oblique;
@@ -85,18 +85,18 @@
     font-size: 1.5rem;
 }
 
-#main-story #container .sceneList .name a {
+#main-story #container .scene-list .name a {
     text-decoration: none;
     color: #000;
 }
 
-#main-story #container .sceneList #sceneEdit {
+#main-story #container .scene-list #scene-edit {
     display: flex;
     width: 30%;
     margin-left: 1.5rem;
 }
 
-#main-story #container .sceneList #sceneEdit .edit {
+#main-story #container .scene-list #scene-edit .edit {
     width: 3.1rem;
     height: 3.1rem;
     background: white;
@@ -106,7 +106,7 @@
     align-items: center;
 }
 
-#main-story #container .sceneList #sceneEdit .edit .icon {
+#main-story #container .scene-list #scene-edit .edit .icon {
     width: 2rem;
     height: 2rem;
 }

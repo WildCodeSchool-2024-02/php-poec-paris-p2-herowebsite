@@ -105,13 +105,13 @@
 }
 
 
-#main-story #container .sceneDetails #sceneEdit {
+#main-story #container .sceneDetails #scene-edit {
     display: flex;
     width: 30%;
     margin-left: 1.5rem;
 }
 
-#main-story #container .sceneDetails #sceneEdit .edit {
+#main-story #container .sceneDetails #scene-edit .edit {
     width: 3.1rem;
     height: 3.1rem;
     background: white;
@@ -121,7 +121,7 @@
     align-items: center;
 }
 
-#main-story #container .sceneDetails #sceneEdit .edit .icon {
+#main-story #container .sceneDetails #scene-edit .edit .icon {
     width: 2rem;
     height: 2rem;
 }
