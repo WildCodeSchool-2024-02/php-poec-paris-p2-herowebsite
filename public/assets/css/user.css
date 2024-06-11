@@ -1,0 +1,135 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    font-size: 62.5%;
+    font-size: var(--font-text);
+    background-image: url(../images/backgrounds/home.png);
+    background-size: cover;
+    background-position: center;
+}
+
+#linksBack {
+    width: 99%;
+    height: 4rem;
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem .5rem;
+    margin-top: 1rem;
+}
+
+#linksBack a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    color: white;
+    margin: .5rem .8rem;
+    text-decoration: none;
+    font-family: 'Lancelot';
+    text-align: center;
+    font-size: 1rem;
+    padding: .5rem;
+}
+
+.linksBack a img {
+    width: 2rem;
+    height: 2rem;
+    padding-bottom: .3rem;
+    margin-left: auto;
+}
+
+#mainUser {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: start;
+}
+
+#mainUser h1 {
+    color: white;
+    font-family: 'Julee';
+    font-size: 4rem;
+    margin: 2rem 0;
+}
+
+#mainUser #container {
+    margin: 1rem auto;
+    width: 80%;
+    height: 60%;
+    padding: 2rem;
+    background: rgb(201, 200, 200, .65);
+    border-radius: 5px;
+    font-family: 'Lancelot';    
+}
+
+#mainUser #container h2 {
+    font-family: 'Julee';
+    font-size: 3rem;
+}
+
+#mainUser #container .connect {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 60%;
+}
+
+#mainUser #container .connect .cases {
+    width: 45%;
+    height: 95%;    
+}
+
+#mainUser #container .connect .cases h2 {
+    font-family: 'Lancelot';
+    font-size: 2rem;
+    margin: 1rem 0;
+    color: white;
+}
+
+#mainUser #container .connect .cases form {
+    width: 95%;
+    height: 98%;
+}
+
+#mainUser #container .connect .cases div {
+    width: 95%;
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: .5rem;
+}
+
+#mainUser #container .connect .cases form div label {
+    margin-bottom: .5rem;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+#mainUser #container .connect .cases form div input {
+    width: 80%;
+    height: 1.5rem;
+    font-size: 'Kaisei';
+}
+
+#mainUser #container .connect .cases form div #validation {
+    width: 60%;
+    height: 2rem;
+    padding: .2rem;
+    background-color: red;
+    color: white;
+    font-size: 1.2em;
+    font-family: 'Julee';
+}
