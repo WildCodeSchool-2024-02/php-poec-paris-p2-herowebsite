@@ -2,7 +2,7 @@
 <form method="post" action="/story/engine/scene/update" class="edit_scene_form">
     <input type="hidden" name="story_id" value={{ story.id }}>
     <input type="hidden" name="scene_id" value={{ scene.id }}>
-    <input type="text" name="name" id="name" value="{{ scene.name }}">
+    <input type="text" name="name" id="name" value="{{ scene.name | raw }}" maxlength="30">
     <input type="submit">
     <button class="cancel_scene">&#10006;</button>
 </form>

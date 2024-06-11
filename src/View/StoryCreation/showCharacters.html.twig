@@ -12,7 +12,7 @@
             <img src="/assets/images/icones/home.svg" alt="plow icon"> Home
         </a>
     </div>
-    <h1>{{story.name}}</h1>
+    <h1>{{story.name | raw}}</h1>
     <nav id="nav">
         <a href="/scene/show"><h2 id="navScene">Scènes</h2></a>
         <a href=""><h2 id="navCharacter">Personnages</h2></a>
@@ -23,7 +23,7 @@
             <article class="characterList">
                 <div class="name">
                     <a href="scene/show?story_id={{ story.id }}&id={{ character.id }}">
-                        {{ character.name }}
+                        {{ character.name | raw }}
                     </a>
                 </div>
                 <div id="charactersEdit">

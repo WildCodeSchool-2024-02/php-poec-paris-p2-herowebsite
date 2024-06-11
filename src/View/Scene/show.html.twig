@@ -27,11 +27,11 @@
       {% for dialogue in dialogues %}
         <div class="dialogue {% if not loop.first %}hidden{% endif %}" id="dialogue-{{ loop.index }}">
           <h2 class="character-name">
-          {{ dialogue.name }}
+          {{ dialogue.name | raw }}
           </h2>
           <div class="dialogue-content">
             <p class="dialogue-body">
-              {{ dialogue.body }}
+              {{ dialogue.body | raw }}
             </p>
           </div>
         </div>
@@ -46,7 +46,7 @@
       <div class="sprites">
         {% for dialogue in dialogues %}
         <div class="sprite  {% if not loop.first %}hidden{% endif %}">
-          <img src="/assets/images/sprites/{{ dialogue.sprite }}" alt="{{ dialogue.character_name }}" class="sprite-appears">
+          <img src="/assets/images/sprites/{{ dialogue.sprite }}" alt="{{ dialogue.character_name | raw }}" class="sprite-appears">
         </div>
         {% endfor %}
       </div>
@@ -55,7 +55,7 @@
     <div class="choices hidden" data-story-id="{{scene.story_id}}">
       {% for choice in choices %}
       <a href="/story/scene/show?scene_id={{ choice.next_scene_id }}" class="choice-link">
-        {{ choice.body }}
+        {{ choice.body | raw }}
       </a>
       {% endfor %}
     </div>

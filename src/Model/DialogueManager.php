@@ -38,17 +38,21 @@ class DialogueManager extends AbstractManager
         return $statement->execute();
     }
 
-    public function selectAllByScene(string $sceneId): ?array
+    public function selectAll(string $sceneId = null, string $orderBy = '', string $direction = 'ASC'): array
     {
-        $statement = $this->pdo->query(
-            "SELECT d.*, c.id AS character_id, c.name, c.sprite, c.story_id FROM " . self::TABLE . " AS d
+        $query = "SELECT d.*, c.id AS character_id, c.name, c.sprite, c.story_id FROM " . self::TABLE . " AS d
             INNER JOIN `character` AS c
             ON d.character_id = c.id
-            WHERE `scene_id` = " . $sceneId . ";"
-        );
+            WHERE `scene_id` = " . $sceneId;
 
-        $dialogues = $statement->fetchAll(PDO::FETCH_ASSOC);
+        if ($orderBy) {
+            $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
+        }
 
-        return $this->decodeHtmlEntitiesInArray($dialogues);
+            $query .= ";";
+
+        $statement = $this->pdo->query($query);
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 }

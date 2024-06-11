@@ -74,10 +74,10 @@ class DialogueController extends AbstractController
     public function validateDialogue(array $dialogue): array
     {
         $errors = [];
-        $character = $this->characterManager->selectByStory($dialogue["story_id"]);
+        $character = $this->characterManager->selectAll($dialogue["story_id"]);
         $characterIds = array_column($character, 'id');
 
-        if (strlen($dialogue["dialogue_body"]) >= self::MAX_DIALOGUE_LENGTH) {
+        if (strlen($dialogue["dialogue_body"]) > self::MAX_DIALOGUE_LENGTH) {
             $errors[] = "Votre ligne de dialogue est trop longue, maximum : "
              . self::MAX_DIALOGUE_LENGTH . " caractères.";
         }

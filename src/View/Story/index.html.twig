@@ -10,7 +10,7 @@
     {% for story in stories %}
       <li>
         <a href="/story/scene/start?storyId={{ story.id }}">
-          {{ story.name }}
+          {{ story.name | raw }}
         </a>
       </li>
     {% endfor %}

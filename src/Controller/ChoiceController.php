@@ -22,9 +22,10 @@ class ChoiceController extends AbstractController
         $choice = [];
         $errors = [];
 
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $choice = array_map('htmlentities', array_map('trim', $_POST));
-            $scenes = $this->sceneManager->selectAllByStory($choice["story_id"]);
+            $scenes = $this->sceneManager->selectAll($choice["story_id"]);
 
             if (strlen($choice["choice_body"]) >= self::MAX_CHOICE_LENGTH) {
                 $errors[] = "Le choix est trop long, maximum : " . self::MAX_CHOICE_LENGTH . " caractères";
@@ -33,7 +34,8 @@ class ChoiceController extends AbstractController
             if (!in_array($choice["next_scene"], $scenes) && !empty($choice["next_scene"])) {
                 $errors[] = "La scene selectionée n'existe pas";
             }
-            if (!empty($errors)) {
+
+            if (empty($errors)) {
                 $this->choiceManager->insert($choice);
             } else {
                 error_log('Erreurs lors de l\'ajout du choix : ' . implode(', ', $errors));
@@ -60,7 +62,9 @@ class ChoiceController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $choice = array_map('htmlentities', array_map('trim', $_POST));
             $previousSettings = $this->choiceManager->selectOneById($choice['id']);
-            $scenes = $this->sceneManager->selectAllByStory($choice["story_id"]);
+            $choices = $this->sceneManager->selectAll($choice["story_id"]);
+            $sceneIds = array_column($choices, 'id');
+            $sceneIds[] = 0;
 
             if (strlen($choice["choice_body"]) >= self::MAX_CHOICE_LENGTH) {
                 $errors[] = "Le choix est trop long, maximum : " . self::MAX_CHOICE_LENGTH . " caractères";
@@ -70,7 +74,7 @@ class ChoiceController extends AbstractController
                 $choice['choice_body'] = $previousSettings['body'];
             }
 
-            if (!in_array($choice["next_scene"], $scenes) && !empty($choice["next_scene"])) {
+            if (!in_array($choice["next_scene"], $sceneIds) && !empty($choice["next_scene"])) {
                 $errors[] = "La scene selectionée n'existe pas";
             }
 

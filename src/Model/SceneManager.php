@@ -52,12 +52,28 @@ class SceneManager extends AbstractManager
         return $statement->fetch();
     }
 
-    public function selectAllByStory(string $storyId): array
+    public function selectAll(string $storyId = null, string $orderBy = '', string $direction = 'ASC'): array
     {
         $query = 'SELECT * FROM ' . static::TABLE .
-            'WHERE story_id = ' . $storyId . ';';
+            'WHERE story_id = ' . $storyId;
+        if ($orderBy) {
+            $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
+        }
 
-        $result = $this->pdo->query($query)->fetchAll();
-        return $this->decodeHtmlEntitiesInArray($result);
+        $query  .= ';';
+
+        return $this->pdo->query($query)->fetchAll();
     }
+
+    // public function selectAllByStory(string $storyId): ?array
+    // {
+    //     $statement = $this->pdo->query(
+    //         "SELECT scene.* FROM `scene`
+    //         INNER JOIN `story` ON story.id = scene.story_id
+    //         WHERE story.id = " . $storyId .
+    //         " ORDER BY scene.id;"
+    //     );
+
+    //     return $scenes = $statement->fetchAll(PDO::FETCH_ASSOC);
+    // }
 }

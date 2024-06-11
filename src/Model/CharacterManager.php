@@ -36,13 +36,18 @@ class CharacterManager extends AbstractManager
         return $statement->execute();
     }
 
-    public function selectByStory(string $storyId): ?array
+    public function selectAll(string $storyId = null, string $orderBy = '', string $direction = 'ASC'): array
     {
-        $statement = $this->pdo->query(
-            "SELECT * FROM " . self::TABLE . " WHERE `story_id` = " . $storyId . ";"
-        );
-        $characters = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $query = "SELECT * FROM " . self::TABLE . " 
+            WHERE `story_id` = " . $storyId;
+        if ($orderBy) {
+            $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
+        }
 
-        return $this->decodeHtmlEntitiesInArray($characters);
+        $query .= ";";
+
+        $statement = $this->pdo->query($query);
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 }

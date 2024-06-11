@@ -29,19 +29,5 @@ class StoryManager extends AbstractManager
 
         return $statement->execute();
     }
-
-    public function selectAllByStory(string $storyId): ?array
-    {
-        $statement = $this->pdo->query(
-            "SELECT scene.* FROM `scene`
-            INNER JOIN `story` ON story.id = scene.story_id
-            WHERE story.id = " . $storyId .
-            " ORDER BY scene.id;"
-        );
-
-        $scenes = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-        return $this->decodeHtmlEntitiesInArray($scenes);
-    }
     // Hérite de la méthode SelectAll pour récupérer toutes les histoires après défintion de la table
 }

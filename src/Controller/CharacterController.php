@@ -105,7 +105,7 @@ class CharacterController extends AbstractController
 
     public function show($storyId)
     {
-        $characters = $this->characterManager->selectByStory($storyId);
+        $characters = $this->characterManager->selectAll($storyId);
         header('Location: /showchars?story_id=' . $storyId);
         return $this->twig->render(
             'StoryCreation/showCharacters.html.twig',
@@ -119,7 +119,7 @@ class CharacterController extends AbstractController
     {
         $errors = [];
 
-        if (strlen($character["character_name"]) >= self::MAX_CHARACTER_NAME_LENGTH) {
+        if (strlen($character["character_name"]) > self::MAX_CHARACTER_NAME_LENGTH) {
             $errors[] = "Le nom du personnage est trop long, maximum : "
                 . self::MAX_CHARACTER_NAME_LENGTH . " caractères.";
         }

@@ -11,7 +11,7 @@ class ChoiceManager extends AbstractManager
     /**
      * Récupère les choix par l'ID de la scène.
      */
-    public function selectAllByScene(int $sceneId): ?array
+    public function selectAll(string $sceneId = null, string $orderBy = '', string $direction = 'ASC'): array
     {
         $query = "SELECT c.*, s.name AS next_scene_name
                   FROM " . static::TABLE . " AS c
@@ -19,12 +19,16 @@ class ChoiceManager extends AbstractManager
                   ON c.next_scene_id = s.id
                   WHERE scene_id = :scene_id";
 
+        if ($orderBy) {
+            $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
+        }
+
+        $query .= ';';
         $statement = $this->pdo->prepare($query);
-        $statement->bindValue('scene_id', $sceneId, \PDO::PARAM_INT);
+        $statement->bindValue('scene_id', $sceneId, PDO::PARAM_INT);
         $statement->execute();
 
-        $result = $statement->fetchAll();
-        return $this->decodeHtmlEntitiesInArray($result);
+        return $statement->fetchAll();
     }
 
     public function update(int $id, array $choice)
