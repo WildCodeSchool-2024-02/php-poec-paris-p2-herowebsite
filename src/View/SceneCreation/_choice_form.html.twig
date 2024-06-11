@@ -1,6 +1,6 @@
-<ul>
+<ul class="choices-list">
   {% for choice in choices %}
-  <li>
+  <li class="choice-item">
 {{ choice.body | raw }}
   {% if choice.next_scene_id == 0 %}
     {{ choice.next_scene_name | raw }}

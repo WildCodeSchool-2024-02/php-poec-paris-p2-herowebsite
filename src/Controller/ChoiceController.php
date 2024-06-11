@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Model\ChoiceManager;
 use App\Model\SceneManager;
+use LengthException;
 
 class ChoiceController extends AbstractController
 {
@@ -26,6 +27,7 @@ class ChoiceController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $choice = array_map('htmlentities', array_map('trim', $_POST));
             $scenes = $this->sceneManager->selectAll($choice["story_id"]);
+            $existingChoices = $this->choiceManager->selectAll($choice["scene_id"]);
 
             if (strlen($choice["choice_body"]) >= self::MAX_CHOICE_LENGTH) {
                 $errors[] = "Le choix est trop long, maximum : " . self::MAX_CHOICE_LENGTH . " caractères";
@@ -33,6 +35,10 @@ class ChoiceController extends AbstractController
 
             if (!in_array($choice["next_scene"], $scenes) && !empty($choice["next_scene"])) {
                 $errors[] = "La scene selectionée n'existe pas";
+            }
+
+            if (count($existingChoices) >= 3) {
+                $errors[] = "Maxmimum de choix déjà atteint pour cette scène";
             }
 
             if (empty($errors)) {
