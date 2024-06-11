@@ -1,7 +1,7 @@
 {% extends 'layout.html.twig' %}
 {### Block supplémentaire de fichiers style & JS ###}
 {% block head_extra %}
-<link rel="stylesheet" href="/assets/css/scene.css">
+<link rel="stylesheet" href="/assets/css/tale/scene.css">
 <script src="/assets/js/scene.js"></script> {### Script de gestion de l'affichage des dialogues & des personnages  ###}
 {% endblock %}
 
@@ -12,7 +12,7 @@
 {% block content %}
 
 <body>
-  <main style="background-image: url('/assets/images/backgrounds/{{ scene.background }}');" id="mainScene">
+  <main style="background-image: url('/assets/images/backgrounds/{{ scene.background }}');" id="main-scene">
   {### Div de background ###}
 
     <section id="container">

@@ -1,11 +1,11 @@
 {% extends 'layout.html.twig' %}
 {% block head %}
-  <link rel="stylesheet" href="/assets/css/storycreationShow.css">
+  <link rel="stylesheet" href="/assets/css/engine/scene-index.css">
 {% endblock %}
 {% block content %}
-<main id="mainStory">
-    <div class="linksBack">
-        <a href="/story/engine" id="backStories">
+<main id="main-story">
+    <div class="links-back">
+        <a href="/story/engine" id="back-stories">
             <img src="/assets/images/icones/story.svg" alt="plow icon"> Histoires
         </a>
         <a href="/" id="home">
@@ -13,11 +13,7 @@
         </a>
     </div>
     <h1>{{story.name | raw}}</h1>
-    <nav id="nav">
-        <a href="/story/engine"><h2 id="navScene">Scènes</h2></a>
-        <a href="/story/engine/character/show"><h2 id="navCharacter">Personnages</h2></a>
-    </nav>   
-    <section id="container">        
+    <section id="container">
         {% for scene in scenes %}
             <article class="sceneList">
                 <div class="name">

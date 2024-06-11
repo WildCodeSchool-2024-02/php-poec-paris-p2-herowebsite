@@ -1,34 +1,9 @@
-/* variables  */
-:root {
-    --color-textbox: rgba (0, 0, 0, 0.65);
-    --color-text: white;
-    --color-narration: #ffb55e;
-    --color-continue: rgba(217, 217, 217, 0.25);
-    --color-button-hover: rgba(217, 217, 217, 0.6);
-    --font-title: "Julee", cursive;
-    --font-text: "Lancelot", serif;
-    --font-continue: "Kaisei Decol", serif;
-}
-
-/* Reset */
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-size: 62.5%;
-    font-size: var(--font-text);
-}
-
 main {
     width: 100vw;
     height: 100vh;
 }
 
-#mainScene {
+#main-scene {
     display: flex;
     flex-direction: column;
     justify-content: end;
@@ -40,7 +15,7 @@ main {
 }
 
 
-#mainScene #container {
+#main-scene #container {
     border-radius: 5px;
     display: flex;
     flex-direction: row-reverse;
@@ -53,23 +28,23 @@ main {
     position: relative;
 }
 
-#mainScene #container .dialogues {
+#main-scene #container .dialogues {
     width: 95%;
     height: 80%;
     position: absolute;
     top: 2rem;
     display: flex;
-    
+
 }
 
-#mainScene #container .dialogues .dialogue {
+#main-scene #container .dialogues .dialogue {
     position: relative;
     width: 70%;
-    margin-left: .2rem;   
+    margin-left: .2rem;
     padding-top: .5rem;
 }
 
-#mainScene #container .dialogues .dialogue .character-name {
+#main-scene #container .dialogues .dialogue .character-name {
     position: absolute;
     top: -4rem;
     left: 2.5rem;
@@ -88,26 +63,26 @@ main {
     border-radius: 5px;
 }
 
-#mainScene #container .dialogues .dialogue-content {
+#main-scene #container .dialogues .dialogue-content {
     margin-top: 5rem;
     margin-left: 12rem;
     margin-right: 2rem;
 }
 
-#mainScene #container .sprites {
+#main-scene #container .sprites {
     position: absolute;
     left: 1.5rem;
     top: 2.5rem;
 }
 
-#mainScene #container .continue {
+#main-scene #container .continue {
     position: absolute;
     bottom: 4rem;
     right: 15rem;
     width: 5rem;
 }
 
-#mainScene #container .choices {
+#main-scene #container .choices {
     width: 30%;
     height: 50%;
     display: flex;
@@ -117,7 +92,7 @@ main {
     z-index: 1;
 }
 
-#mainScene #container .choices .choice-link {
+#main-scene #container .choices .choice-link {
     width: 70%;
     height: auto;
     background-color: rgba(82, 80, 80, 0.692);
@@ -135,7 +110,7 @@ main {
     z-index: 100;
 }
 
-#mainScene #container .continue {
+#main-scene #container .continue {
     width: 7rem;
     height: 3rem;
     display: flex;
@@ -143,7 +118,7 @@ main {
     align-items: center;
 }
 
-#mainScene #container .continue #continue-button {
+#main-scene #container .continue #continue-button {
     text-decoration: none;
     background-color: red;
     width: 7rem;
@@ -154,7 +129,7 @@ main {
     font-size: 1.2rem;
 }
 
-#mainScene #container .continue a {
+#main-scene #container .continue a {
     width: 100%;
     background-color: red;
     border: 1px solid black;
@@ -166,6 +141,6 @@ main {
     font-size: 1.2rem;
 }
 
-#mainScene #container .hidden {
+#main-scene #container .hidden {
     display: none;
 }

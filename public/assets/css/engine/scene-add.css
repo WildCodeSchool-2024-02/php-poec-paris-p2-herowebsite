@@ -1,29 +1,4 @@
-/* variables  */
-:root {
-    --color-textbox: rgba (0, 0, 0, 0.65);
-    --color-text: white;
-    --color-narration: #ffb55e;
-    --color-continue: rgba(217, 217, 217, 0.25);
-    --color-button-hover: rgba(217, 217, 217, 0.6);
-    --font-title: "Julee", cursive;
-    --font-text: "Lancelot", serif;
-    --font-continue: "Kaisei Decol", serif;
-}
-
-/* Reset */
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-size: 62.5%;
-    font-size: var(--font-text);
-}
-
-#mainAddScene {
+#main-add-scene {
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -31,11 +6,36 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url(../images/backgrounds/home.png);
+    background-image: url(../../images/backgrounds/home.png);
     position: relative;
 }
 
-#mainAddScene .linksBack {
+#main-add-scene .links-back #back-stories,
+#main-story .links-back #home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 6rem;
+    height: 3rem;
+    color: var(--color-text);
+    margin: .5rem .8rem;
+    text-decoration: none;
+    font-family: 'Lancelot';
+    font-size: 1rem;
+    padding: .5rem;
+}
+
+
+#main-add-scene #back-stories img,
+#main-add-scene #home img {
+    width: 2rem;
+    height: 2rem;
+    padding-bottom: .3rem;
+}
+
+
+#main-add-scene .links-back {
     width: 99%;
     display: flex;
     justify-content: space-between;
@@ -44,7 +44,7 @@ body {
 }
 
 
-#mainAddScene #backStories {
+#main-add-scene #back-stories {
     width: 10rem;
     height: 3rem;
     color: var(--color-text);
@@ -57,7 +57,7 @@ body {
     align-items: center;
 }
 
-#mainAddScene #backStories a {
+#main-add-scene #back-stories a {
     width: 18rem;
     height: 3rem;
     color: var(--color-text);
@@ -70,7 +70,7 @@ body {
     align-items: center;
 }
 
-#mainAddScene #home {
+#main-add-scene #home {
     width: 10rem;
     height: 3rem;
     color: var(--color-text);
@@ -83,12 +83,12 @@ body {
     align-items: center;
 }
 
-#mainAddScene #backStories img {
+#main-add-scene #back-stories img {
     width: 2rem;
     height: 2rem;
 }
 
-#mainAddScene h1 {
+#main-add-scene h1 {
     font-family: 'Julee';
     color: white;
     border-bottom: none ;
@@ -96,7 +96,7 @@ body {
     margin-top: 2rem;
 }
 
-#mainAddScene #container {
+#main-add-scene #container {
     width: 80%;
     height: 60%;
     opacity: .9;
@@ -106,12 +106,12 @@ body {
     align-items: center;
 }
 
-#mainAddScene #container h1 {
+#main-add-scene #container h1 {
     font-size: 3.5rem;
     margin-bottom: 2rem;
 }
 
-#mainAddScene form {
+#main-add-scene form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -121,7 +121,7 @@ body {
     opacity: .9;
 }
 
-#mainAddScene form .title, #mainAddScene form .background {
+#main-add-scene form .title, #main-add-scene form .background {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -129,29 +129,29 @@ body {
     width: 20rem;
 }
 
-#mainAddScene form .title label, #mainAddScene form .background label {
+#main-add-scene form .title label, #main-add-scene form .background label {
     color: black;
     font-family: 'Julee';
     font-size: 2.5rem;
     margin-bottom: .9rem;
-    text-align: center;    
+    text-align: center;
 }
 
-#mainAddScene form .title input {
+#main-add-scene form .title input {
     width: 15rem;
     height: 2rem;
     margin-bottom: 3.5rem;
     background-color: rgb(223, 221, 221);
 }
 
-#mainAddScene form .background input {
+#main-add-scene form .background input {
     width: 15rem;
     height: 2.5rem;
     margin-top: .5rem;
     margin-bottom: 3.5rem;
 }
 
-#mainAddScene form #submit {
+#main-add-scene form #submit {
     width: 10rem;
     height: 2.5rem;
     padding: .2rem;

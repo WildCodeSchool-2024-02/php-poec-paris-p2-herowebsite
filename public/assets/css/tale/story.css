@@ -1,43 +1,18 @@
-/* variables  */
-:root {
-    --color-textbox: rgba (0, 0, 0, 0.65);
-    --color-text: white;
-    --color-narration: #ffb55e;
-    --color-continue: rgba(217, 217, 217, 0.25);
-    --color-button-hover: rgba(217, 217, 217, 0.6);
-    --font-title: "Julee", cursive;
-    --font-text: "Lancelot", serif;
-    --font-continue: "Kaisei Decol", serif;
-}
-
-/* Reset */
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-size: 62.5%;
-    font-size: var(--font-text);
-}
-
-#mainStory {
+#main-story {
     width: 100vw;
     height: 100vh;
     display: flex;
-    flex-direction: column;   
+    flex-direction: column;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;    
-    background-image: url(../images/backgrounds/home.png);
+    background-repeat: no-repeat;
+    background-image: url(../../images/backgrounds/home.png);
     position: relative;
 }
 
-#mainStory #home {
+#main-story #home {
     position: absolute;
     top: 1.5rem;
     right: 1rem;
@@ -52,13 +27,13 @@ body {
     align-items: center;
 }
 
-#mainStory #home img {
+#main-story #home img {
     width: 2rem;
     height: 2rem;
     margin-bottom: .5rem;
 }
 
-#mainStory h1 {
+#main-story h1 {
     color: white;
     font-size: 5rem;
     text-decoration: none;
@@ -68,7 +43,7 @@ body {
     font-family: 'Julee';
 }
 
-#mainStory #container {
+#main-story #container {
     width: 90%;
     height: 60%;
     display: flex;
@@ -80,7 +55,7 @@ body {
     border-radius: 15px;
 }
 
-#mainStory #container li {
+#main-story #container li {
     width: 60vw;
     height: auto;
     background-color: rgba(82, 80, 80, 0.692);
@@ -94,7 +69,7 @@ body {
     list-style-type:none ;
 }
 
-#mainStory ul li a{
+#main-story ul li a{
     height: auto;
     padding: 1rem;
     margin: .8rem;
@@ -105,13 +80,13 @@ body {
     text-align: center;
     list-style-type:none ;
 }
-    
-#mainStory ul li:hover {
+
+#main-story ul li:hover {
     background-color: var(--color-text);
     font-size: 2.2rem;
     color: var(--color-button-hover);
 }
 
-#mainStory ul li:hover a {
+#main-story ul li:hover a {
     color: black;
 }

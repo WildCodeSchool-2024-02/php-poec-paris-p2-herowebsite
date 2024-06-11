@@ -1,0 +1,134 @@
+    #main-story {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../images/backgrounds/home.png);
+}
+
+#main-story .links-back {
+    width: 99%;
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem .5rem;
+    margin-top: 2rem;
+}
+
+#main-story .links-back #back-stories, #main-story .links-back #home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 6rem;
+    height: 3rem;
+    color: var(--color-text);
+    margin: .5rem .8rem;
+    text-decoration: none;
+    font-family: 'Lancelot';
+    font-size: 1rem;
+    padding: .5rem;
+}
+
+
+#main-story #back-stories img, #main-story #home img {
+    width: 2rem;
+    height: 2rem;
+    padding-bottom: .3rem;
+}
+
+#main-story h1 {
+    color: white;
+    font-size: 2rem;
+    text-decoration: none;
+    border-bottom: none;
+    margin-top: -2rem;
+    font-family: 'Julee';
+}
+
+#main-story #container {
+    width: 90%;
+    height: 60%;
+    margin-top: .5rem;
+    background: rgb(201, 200, 200, .65);
+    padding: 2rem 1rem;
+    margin-right: 1rem;
+    border-radius: 5px;
+    overflow-y: auto;
+    position: relative;
+}
+
+#main-story #container .sceneList, #main-story #container .characterList, #main-story #container .ressourcesList {
+    width: 97%;
+    height: 3.5rem;
+    font-size: .8rem;
+    font-family: 'Lancelot';
+    display: flex;
+    align-items: center;
+    margin: .5rem 0;
+}
+
+#main-story #container .characterList, #main-story #container .ressourcesList {
+    display: none;
+}
+
+#main-story #container .sceneList .name {
+    width: 70%;
+    padding: .5rem;
+    font-style: oblique;
+    background-color: white;
+    height: 3rem;
+    font-size: 1.5rem;
+}
+
+#main-story #container .sceneList .name a {
+    text-decoration: none;
+    color: #000;
+}
+
+#main-story #container .sceneList #sceneEdit {
+    display: flex;
+    width: 30%;
+    margin-left: 1.5rem;
+}
+
+#main-story #container .sceneList #sceneEdit .edit {
+    width: 3.1rem;
+    height: 3.1rem;
+    background: white;
+    margin: 0 .2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#main-story #container .sceneList #sceneEdit .edit .icon {
+    width: 2rem;
+    height: 2rem;
+}
+
+#main-story #addSceneLink {
+    width: 15rem;
+    height: 3rem;
+    margin-top: 1.5rem;
+    margin-left: 28rem;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-family: 'Lancelot';
+    color: #000;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 15px;
+    opacity: .6;
+}
+
+.edit a {
+    cursor: pointer;
+}

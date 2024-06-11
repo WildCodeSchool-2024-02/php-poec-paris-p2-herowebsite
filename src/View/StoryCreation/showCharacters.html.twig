@@ -1,11 +1,9 @@
 {% extends 'layout.html.twig' %}
-{% block head %}
-  <link rel="stylesheet" href="/assets/css/storycreationShow.css">
-{% endblock %}
+
 {% block content %}
-<main id="mainStory">
-    <div class="linksBack">
-        <a href="/story/engine" id="backStories">
+<main id="main-story">
+    <div class="links-back">
+        <a href="/story/engine" id="back-stories">
             <img src="/assets/images/icones/story.svg" alt="plow icon"> Histoires
         </a>
         <a href="/" id="home">
@@ -16,9 +14,9 @@
     <nav id="nav">
         <a href="/scene/show"><h2 id="navScene">Scènes</h2></a>
         <a href=""><h2 id="navCharacter">Personnages</h2></a>
-    </nav>   
+    </nav>
     <section id="container">
-        
+
         {% for character in characters %}
             <article class="characterList">
                 <div class="name">

@@ -1,29 +1,4 @@
-/* variables  */
-:root {
-    --color-textbox: rgba (0, 0, 0, 0.65);
-    --color-text: white;
-    --color-narration: #ffb55e;
-    --color-continue: rgba(217, 217, 217, 0.25);
-    --color-button-hover: rgba(217, 217, 217, 0.6);
-    --font-title: "Julee", cursive;
-    --font-text: "Lancelot", serif;
-    --font-continue: "Kaisei Decol", serif;
-}
-
-/* Reset */
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-size: 62.5%;
-    font-size: var(--font-text);
-}
-
-#mainStories {
+#main-stories {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -33,11 +8,11 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url(../images/backgrounds/home.png);
+    background-image: url(../../images/backgrounds/home.png);
     position: relative;
 }
 
-#mainStories #home {
+#main-stories #home {
     width: 6rem;
     height: 6rem;
     color: var(--color-text);
@@ -50,7 +25,7 @@ body {
     align-items: center;
 }
 
-#mainStories #home .home {
+#main-stories #home .home {
     margin: .5rem 2rem;
     width: 6rem;
     height: 6rem;
@@ -59,17 +34,17 @@ body {
     text-decoration: none;
 }
 
-#mainStories #home .home img {
+#main-stories #home .home img {
     width: 2rem;
     height: 2rem;
     margin: .5rem 2rem;
 }
 
-#mainStories #home .home  {
+#main-stories #home .home  {
     text-align: center;
 }
 
-#mainStories h1 {
+#main-stories h1 {
     font-family: 'Julee';
     color: white;
     border-bottom: none ;
@@ -78,7 +53,7 @@ body {
     margin-bottom: 2rem;
 }
 
-#mainStories #container {
+#main-stories #container {
     width: 90%;
     height: 60%;
     background: rgb(201, 200, 200, .65);
@@ -89,7 +64,7 @@ body {
     position: relative;
 }
 
-#mainStories #container .storiesDetails {
+#main-stories #container .storiesDetails {
     width: 97%;
     height: 3.5rem;
     font-size: .8rem;
@@ -99,7 +74,7 @@ body {
     margin: .5rem 0;
 }
 
-#mainStories #container .storiesDetails .storyDetails {
+#main-stories #container .storiesDetails .storyDetails {
     width: 80%;
     height: 100%;
     display: flex;
@@ -108,18 +83,18 @@ body {
     background: white;
 }
 
-#mainStories #container .storiesDetails .storyDetails .name {
+#main-stories #container .storiesDetails .storyDetails .name {
     width: 70%;
     padding: .5rem;
     font-style: oblique;
 }
 
-#mainStories #container .storiesDetails .storyDetails .name a {
+#main-stories #container .storiesDetails .storyDetails .name a {
     text-decoration: none;
     color: #000;
 }
 
-#mainStories #container .storiesDetails .storyDetails .details {
+#main-stories #container .storiesDetails .storyDetails .details {
     width: 30%;
     display: flex;
     flex-direction: column;
@@ -127,7 +102,7 @@ body {
 }
 
 
-#mainStories #container .storiesDetails .storyEdit, #mainStories #container .storiesDetails .storyShow, #mainStories #container .storiesDetails .storyDelete  {
+#main-stories #container .storiesDetails .storyEdit, #main-stories #container .storiesDetails .storyShow, #main-stories #container .storiesDetails .storyDelete  {
     width: 3.5rem;
     height: 3.5rem;
     background: white;
@@ -137,12 +112,12 @@ body {
     align-items: center;
 }
 
-#mainStories #container .storiesDetails .icon {
+#main-stories #container .storiesDetails .icon {
     width: 2rem;
     height: 2rem;
 }
 
-#mainStories #addStoryLink { 
+#main-stories #addStoryLink {
     width: 15rem;
     height: 3rem;
     margin-top: 1.5rem;
@@ -163,4 +138,3 @@ body {
 .storyDelete a {
     cursor: pointer;
 }
-
