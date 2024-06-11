@@ -86,6 +86,7 @@ for (let i = 0; i < cancelDialogue.length; i++) {
 
 const addChoice = document.querySelector('.add_choice');
 const addChoiceForm = document.querySelector('.add_choice_form');
+const finalScene = document.getElementById("final_scene");
 
 addChoice.addEventListener('click', () => {
     addChoiceForm.style.display = 'inline-block';
@@ -96,3 +97,7 @@ for (let i = 0; i < cancelChoice.length; i++) {
         addChoiceForm.style.display = 'none';
     })
 }
+finalScene.addEventListener('click', () => {
+    addChoice.classList.toggle('hidden_choices');
+    addChoiceForm.style.display = 'none';
+})

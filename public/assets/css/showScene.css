@@ -25,12 +25,12 @@ body {
 
 #mainStory {
     display: flex;
-    flex-direction: column;   
+    flex-direction: column;
     justify-content: start;
-    align-items: center; 
+    align-items: center;
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;    
+    background-repeat: no-repeat;
     background-image: url(../images/backgrounds/home.png);
 }
 
@@ -133,7 +133,7 @@ body {
 #mainStory #container .sceneDetails #sceneEdit {
     display: flex;
     width: 30%;
-    margin-left: 1.5rem;    
+    margin-left: 1.5rem;
 }
 
 #mainStory #container .sceneDetails #sceneEdit .edit {
@@ -151,7 +151,7 @@ body {
     height: 2rem;
 }
 
-#mainStory #addSceneLink { 
+#mainStory #addSceneLink {
     width: 15rem;
     height: 3rem;
     margin-top: 1.5rem;
@@ -175,6 +175,7 @@ body {
 .edit_choice_form,
 .add_character_form,
 .add_dialogue_form,
-.add_choice_form {
+.add_choice_form,
+.hidden_choices {
     display: none;
 }
