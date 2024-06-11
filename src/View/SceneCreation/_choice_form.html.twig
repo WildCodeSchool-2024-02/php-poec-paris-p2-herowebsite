@@ -6,19 +6,19 @@
     <button onclick="if(confirm('Êtes vous sûr de vouloir supprimer ce choix ?')) { window.location.href='/story/engine/choice/delete?story_id={{story.id}}&scene_id={{scene.id}}&id={{choice.id}}';}"> &#x1F5D1;</button>
     <button class="edit_choice">Editer</button>
     <form method="post" action="/story/engine/choice/update" class="edit_choice_form">
-      <input type="hidden" name="id" value={{ choice.id }}>
-      <input type="hidden" name="scene_id" value={{ scene.id }}>
-      <input type="hidden" name="story_id" value={{ story.id }}>
-      <input type="text" name="edit_choice_body" id="edit_choice_body">
-      <select name="edit_next_scene" id="edit_next_scene">
+    <input type="hidden" name="id" value="{{ choice.id }}">
+    <input type="hidden" name="scene_id" value="{{ scene.id }}">
+    <input type="hidden" name="story_id" value="{{ story.id }}">
+    <input type="text" name="choice_body" id="choice_body" value="{{ choice.body }}">
+    <select name="next_scene" id="next_scene">
         {% for onescene in allscenes %}
-        <option value={{ onescene.id }}>
-          {{ onescene.name }}
+        <option value="{{ onescene.id }}" {% if onescene.id == choice.next_scene_id %}selected{% endif %}>
+        {{ onescene.name }}
         </option>
         {% endfor %}
-      </select>
-      <input type="submit">
-      <button class="cancel_choice">&#10006;</button>
+    </select>
+    <input type="submit">
+    <button class="cancel_choice">&#10006;</button>
     </form>
   </li>
   {% endfor %}
@@ -36,6 +36,6 @@
       {% endfor %}
     </select>
     <input type="submit">
-    <button class="choice_cancel">&#10006;</button>
+    <button class="cancel_choice">&#10006;</button>
   </form>
 </ul>

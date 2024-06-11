@@ -62,15 +62,15 @@ class ChoiceController extends AbstractController
             $previousSettings = $this->choiceManager->selectOneById($choice['id']);
             $scenes = $this->sceneManager->selectAllByStory($choice["story_id"]);
 
-            if (strlen($choice["edit_choice_body"]) >= self::MAX_CHOICE_LENGTH) {
+            if (strlen($choice["choice_body"]) >= self::MAX_CHOICE_LENGTH) {
                 $errors[] = "Le choix est trop long, maximum : " . self::MAX_CHOICE_LENGTH . " caractères";
             }
 
-            if (empty($choice['edit_choice_body'])) {
-                $choice['edit_choice_body'] = $previousSettings['body'];
+            if (empty($choice['choice_body'])) {
+                $choice['choice_body'] = $previousSettings['body'];
             }
 
-            if (!in_array($choice["edit_next_scene"], $scenes) && !empty($choice["next_scene"])) {
+            if (!in_array($choice["next_scene"], $scenes) && !empty($choice["next_scene"])) {
                 $errors[] = "La scene selectionée n'existe pas";
             }
 

@@ -31,8 +31,8 @@ class ChoiceManager extends AbstractManager
     {
         $statement = $this->pdo->prepare(
             "UPDATE " . self::TABLE .
-            " SET body = '" . $choice["edit_choice_body"] .
-            "', next_scene_id = " . $choice["edit_next_scene"] .
+            " SET body = '" . $choice["choice_body"] .
+            "', next_scene_id = " . $choice["next_scene"] .
             " WHERE id = " . $id . ";"
         );
         return $statement->execute();
