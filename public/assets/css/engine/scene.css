@@ -144,14 +144,14 @@
     opacity: .6;
 }
 
-.edit_scene_form,
-.edit_character_form,
-.edit_dialogue_form,
-.edit_choice_form,
-.add_character_form,
-.add_dialogue_form,
-.add_choice_form,
-.hidden_choices,
+.edit-scene-form,
+.edit-character-form,
+.edit-dialogue-form,
+.edit-choice-form-form,
+.add-character-form,
+.add-dialogue-form,
+.add-choice-form,
+.hidden-choices,
 .hidden_dialogue {
     display: none;
 }

@@ -28,8 +28,8 @@
                         </a>
                     </div>
                     <div class="sceneShow edit">
-                        <a href="/story/scene/show?story_id={{ story.id }}&id={{ scene.id }}">
-                            <img src="/assets/images/icones/preview.svg" alt="preview icon" class="icon">
+                        <a href="/story/scene/show?scene_id={{ scene.id }}">
+                            <img src="/assets/images/icones/play.svg" alt="play icon" class="icon">
                         </a>
                     </div>
                     <div class="sceneDelete edit">
@@ -44,24 +44,24 @@
         {% endfor %}
 
         {% for ressource in ressources %}
-            <article class="ressourceList">
+            <article class="ressource-list">
                 <div class="name">
                     <a href="/story/scene/show?story_id={{ story.id }}&id={{ scene.id }}">
                         {{ ressource.name | raw }}
                     </a>
                 </div>
-                <div id="ressourceEdit">
-                    <div class="ressourceEdit edit">
+                <div id="ressource-edit">
+                    <div class="ressource-edit edit">
                         <a href="/story/scene/show?id={{ story.id }}">
                             <img src="/assets/images/icones/pen.svg" alt="pen icon" class="icon">
                         </a>
                     </div>
-                    <div class="ressourceShow edit">
+                    <div class="ressource-show edit">
                         <a href="/story/scene/show?story_id={{ story.id }}&id={{ scene.id }}">
-                            <img src="/assets/images/icones/preview.svg" alt="preview icon" class="icon">
+                            <img src="/assets/images/icones/play.svg" alt="play icon" class="icon">
                         </a>
                     </div>
-                    <div class="ressourceDelete edit">
+                    <div class="ressource-delete edit">
                         <a href="/story/engine/scene/delete?story_id={{ story.id }}&id={{scene.id}}">
                             <img src="/assets/images/icones/trash.svg" alt="trash icon" class="icon">
                         </a>
@@ -70,7 +70,7 @@
             </article>
         {% endfor %}
     </section>
-    <a href = "/story/engine/scene/add?story_id={{story.id}}" id="addSceneLink"> Ajouter une scène </a>
+    <a href = "/story/engine/scene/add?story_id={{story.id}}" id="add-scene-link"> Ajouter une scène </a>
 </main>
 {% endblock %}
 

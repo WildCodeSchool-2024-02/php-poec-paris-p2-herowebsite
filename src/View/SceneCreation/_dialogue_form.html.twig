@@ -8,8 +8,8 @@
         { window.location.href='/story/engine/dialogue/delete?story_id={{story.id}}&scene_id={{scene.id}}&id={{dialogue.id}}';}">
         &#x1F5D1;
         </button>
-        <button class="edit_dialogue">Editer</button>
-        <form method="post" action="/story/engine/dialogue/update" class="edit_dialogue_form">
+        <button class="edit-dialogue">Editer</button>
+        <form method="post" action="/story/engine/dialogue/update" class="edit-dialogue-form">
             <input type="hidden" name="story_id" value={{ story.id }}>
             <input type="hidden" name="scene_id" value={{ scene.id }}>
             <input type="hidden" name="dialogue_id" value={{ dialogue.id }}>
@@ -22,14 +22,14 @@
             {% endfor %}
             </select>
             <input type="submit">
-            <button class="cancel_dialogue">&#10006;</button>
+            <button class="cancel-dialogue">&#10006;</button>
         </form>
     </li>
     {% endfor %}
 
     {% if characters %}
-    <button class="add_dialogue">Ajouter une ligne de dialogue</button>
-    <form method = "post" action ="/story/engine/dialogue/add" class="add_dialogue_form">
+    <button class="add-dialogue">Ajouter une ligne de dialogue</button>
+    <form method = "post" action ="/story/engine/dialogue/add" class="add-dialogue-form">
         <input type="hidden" name="story_id" value={{ story.id }}>
         <input type="hidden" name="scene_id" value={{ scene.id }}>
         <label for = "dialogue_body"></label>
@@ -41,7 +41,7 @@
             {% endfor %}
         </select>
         <input type ="submit">
-        <button class="cancel_dialogue">&#10006;</button>
+        <button class="cancel-dialogue">&#10006;</button>
     </form>
     {% endif %}
 </ul>

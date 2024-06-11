@@ -7,8 +7,8 @@
       { window.location.href='/story/engine/character/delete?story_id={{story.id}}&scene_id={{scene.id}}&id={{character.id}}';}">
       &#x1F5D1;
       </button>
-      <button class="edit_character">Editer</button>
-      <form method="post" enctype="multipart/form-data" action="/story/engine/character/update" class="edit_character_form">
+      <button class="edit-character">Editer</button>
+      <form method="post" enctype="multipart/form-data" action="/story/engine/character/update" class="edit-character-form">
         <img src="/assets/images/sprites/{{character.sprite}}">
         <input type="hidden" name="story_id" value={{ story.id}}>
         <input type="hidden" name="scene_id" value={{ scene.id}}>
@@ -17,13 +17,13 @@
         <label for="sprite">sprite</label>
         <input type="file" name="sprite" id="sprite">
         <input type="submit">
-        <button class="cancel_character">&#10006;</button>
+        <button class="cancel-character">&#10006;</button>
       </form>
   </li>
   {% endfor %}
 
-  <button class='add_character'>Ajouter un personnage</button>
-  <form method='post' enctype="multipart/form-data" action="/story/engine/character/add" class="add_character_form">
+  <button class='add-character'>Ajouter un personnage</button>
+  <form method='post' enctype="multipart/form-data" action="/story/engine/character/add" class="add-character-form">
     <input type="hidden" name="story_id" value={{ story.id }}>
     <input type="hidden" name="scene_id" value={{ scene.id }}>
     <label for="character_name"></label>
@@ -31,6 +31,6 @@
     <label for="sprite">sprite</label>
     <input type="file" id="sprite" name="sprite">
     <input type="submit">
-    <button class="cancel_character">&#10006;</button>
+    <button class="cancel-character">&#10006;</button>
   </form>
 </ul>

@@ -1,6 +1,6 @@
-const editScene = document.querySelectorAll('.edit_scene');
-const editSceneForm = document.querySelectorAll('.edit_scene_form');
-const cancelScene = document.querySelectorAll('.cancel_scene');
+const editScene = document.querySelectorAll('.edit-scene');
+const editSceneForm = document.querySelectorAll('.edit-scene-form');
+const cancelScene = document.querySelectorAll('.cancel-scene');
 
 for (let i = 0; i < editScene.length; i++) {
     editScene[i].addEventListener('click', () => {
@@ -13,9 +13,9 @@ for (let i = 0; i < editScene.length; i++) {
     })
 }
 
-const editCharacter = document.querySelectorAll('.edit_character');
-const editCharacterForm = document.querySelectorAll('.edit_character_form');
-const cancelCharacter = document.querySelectorAll('.cancel_character');
+const editCharacter = document.querySelectorAll('.edit-character');
+const editCharacterForm = document.querySelectorAll('.edit-character-form');
+const cancelCharacter = document.querySelectorAll('.cancel-character');
 
 for (let i = 0; i < editCharacter.length; i++) {
     editCharacter[i].addEventListener('click', () => {
@@ -28,9 +28,9 @@ for (let i = 0; i < editCharacter.length; i++) {
     })
 }
 
-const editDialogue = document.querySelectorAll('.edit_dialogue');
-const editDialogueForm = document.querySelectorAll('.edit_dialogue_form');
-const cancelDialogue = document.querySelectorAll('.cancel_dialogue');
+const editDialogue = document.querySelectorAll('.edit-dialogue');
+const editDialogueForm = document.querySelectorAll('.edit-dialogue-form');
+const cancelDialogue = document.querySelectorAll('.cancel-dialogue');
 
 for (let i = 0; i < editDialogue.length; i++) {
     editDialogue[i].addEventListener('click', () => {
@@ -43,9 +43,9 @@ for (let i = 0; i < editDialogue.length; i++) {
     })
 }
 
-const editChoice = document.querySelectorAll('.edit_choice');
-const editChoiceForm = document.querySelectorAll('.edit_choice_form');
-const cancelChoice = document.querySelectorAll('.cancel_choice');
+const editChoice = document.querySelectorAll('.edit-choice');
+const editChoiceForm = document.querySelectorAll('.edit-choice-form');
+const cancelChoice = document.querySelectorAll('.cancel-choice');
 
 for (let i = 0; i < editChoice.length; i++) {
     editChoice[i].addEventListener('click', () => {
@@ -58,8 +58,8 @@ for (let i = 0; i < editChoice.length; i++) {
     })
 }
 
-const addCharacter = document.querySelector('.add_character');
-const addCharacterForm = document.querySelector('.add_character_form');
+const addCharacter = document.querySelector('.add-character');
+const addCharacterForm = document.querySelector('.add-character-form');
 
 addCharacter.addEventListener('click', () => {
     addCharacterForm.style.display = 'inline-block';
@@ -71,8 +71,8 @@ for (let i = 0; i < cancelCharacter.length; i++) {
     })
 }
 
-const addDialogue = document.querySelector('.add_dialogue');
-const addDialogueForm = document.querySelector('.add_dialogue_form');
+const addDialogue = document.querySelector('.add-dialogue');
+const addDialogueForm = document.querySelector('.add-dialogue-form');
 
 
 addDialogue.addEventListener('click', () => {
@@ -85,9 +85,9 @@ for (let i = 0; i < cancelDialogue.length; i++) {
     })
 }
 
-const addChoice = document.querySelector('.add_choice');
-const addChoiceForm = document.querySelector('.add_choice_form');
-const finalScene = document.getElementById("final_scene");
+const addChoice = document.querySelector('.add-choice');
+const addChoiceForm = document.querySelector('.add-choice-form');
+const finalScene = document.getElementById("final-scene");
 
 addChoice.addEventListener('click', () => {
     addChoiceForm.style.display = 'inline-block';
@@ -99,6 +99,6 @@ for (let i = 0; i < cancelChoice.length; i++) {
     })
 }
 finalScene.addEventListener('click', () => {
-    addChoice.classList.toggle('hidden_choices');
+    addChoice.classList.toggle('hidden-choices');
     addChoiceForm.style.display = 'none';
 })
