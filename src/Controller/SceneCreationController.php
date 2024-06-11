@@ -75,7 +75,6 @@ class SceneCreationController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $scene = array_map('htmlentities', array_map('trim', $_POST));
             $previousSettings = $this->sceneManager->selectOneById($scene['scene_id']);
-
             if (!empty($_FILES['background']['full_path'])) {
                 $uploadErrors = $this->handleBackgroundUpload();
                 $errors = array_merge($errors, $uploadErrors);
