@@ -21,31 +21,6 @@ nav {
     margin-top: 3rem;
 }
 
-nav #back-stories {
-    width: 10rem;
-    height: 3rem;
-    color: var(--color-text);
-    margin: -2.5rem .5rem 2rem -.5rem;
-    text-decoration: none;
-    font-family: 'Lancelot';
-    font-size: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-nav #back-stories a {
-    width: 18rem;
-    height: 3rem;
-    color: var(--color-text);
-    margin: 2rem 2rem 2rem 2rem;
-    text-decoration: none;
-    font-family: 'Lancelot';
-    font-size: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 nav #home, 
 nav #back-stories {
     display: flex;
@@ -69,6 +44,32 @@ nav #back-stories img {
     padding-bottom: .3rem;
 }
 
+nav #back-stories {
+    width: 10rem;
+    height: 3rem;
+    color: var(--color-text);
+    margin: -2.5rem .5rem 2rem -.5rem;
+    text-decoration: none;
+    font-family: 'Lancelot';
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav #back-stories a {
+    width: 18rem;
+    height: 3rem;
+    color: var(--color-text);
+    margin: 2rem;
+    text-decoration: none;
+    font-family: 'Lancelot';
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 #container {
     width: 80%;
     height: 60%;
@@ -80,13 +81,12 @@ nav #back-stories img {
 }
 
 #container h1 {
-    font-size: 3.5rem;
-    margin-bottom: 2rem;
     font-family: 'Julee';
     color: white;
-    border-bottom: none ;
+    border-bottom: none;
     font-size: 3rem;
     margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 form {
@@ -129,5 +129,5 @@ form #submit {
     font-family: 'Lancelot';
     font-size: 1.2rem;
     font-weight: 700;
-
+    margin-bottom: 2rem;
 }
