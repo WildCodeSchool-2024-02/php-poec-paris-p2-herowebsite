@@ -43,7 +43,7 @@ DROP TABLE IF EXISTS `choice`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `choice` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `body` VARCHAR(30) NOT NULL,
+  `body` VARCHAR(255) NOT NULL,
   `scene_id` INT NOT NULL,
   `next_scene_id` INT DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -118,7 +118,7 @@ DROP TABLE IF EXISTS `user`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(30) NOT NULL,
+  `name` VARCHAR(255) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
   `fontsize` INT DEFAULT NULL,
   `textspeed` INT DEFAULT NULL,
@@ -133,7 +133,7 @@ CREATE TABLE `user` (
 -- Insertion des données dans `character`
 LOCK TABLES `character` WRITE;
 /*!40000 ALTER TABLE `character` DISABLE KEYS */;
-INSERT INTO `character` VALUES 
+INSERT INTO `character` VALUES
   (1,'Alice','sprite_alice.png',1),
   (2,'Le Gardien','sprite_guardian.png',1),
   (3,'L\'Ancien','sprite_ancient.png',1),
@@ -146,7 +146,7 @@ UNLOCK TABLES;
 -- Insertion des données dans `choice`
 LOCK TABLES `choice` WRITE;
 /*!40000 ALTER TABLE `choice` DISABLE KEYS */;
-INSERT INTO `choice` VALUES 
+INSERT INTO `choice` VALUES
   (1,'Avancer dans la forêt',1,2),
   (2,'Retourner en arrière',1,1),
   (3,'Prendre le chemin de droite',2,3),
@@ -165,7 +165,7 @@ UNLOCK TABLES;
 -- Insertion des données dans `dialogue_line`
 LOCK TABLES `dialogue_line` WRITE;
 /*!40000 ALTER TABLE `dialogue_line` DISABLE KEYS */;
-INSERT INTO `dialogue_line` VALUES 
+INSERT INTO `dialogue_line` VALUES
   (1,'Alice entre dans la forêt, curieuse mais prudente.',1,1),
   (2,'Le Gardien apparaît soudainement : "Bienvenue, jeune aventurière."',2,1),
   (3,'"Pour continuer, tu devras résoudre une énigme."',2,1),
@@ -192,7 +192,7 @@ UNLOCK TABLES;
 -- Insertion des données dans `scene`
 LOCK TABLES `scene` WRITE;
 /*!40000 ALTER TABLE `scene` DISABLE KEYS */;
-INSERT INTO `scene` VALUES 
+INSERT INTO `scene` VALUES
   (0,'[Work In Progress]','background_wip.png',0),
   (1,'Entrée de la forêt','background_forest_entrance.png',1),
   (2,'Carrefour mystérieux','background_crossroad.png',1),
@@ -210,7 +210,7 @@ UNLOCK TABLES;
 -- Insertion des données dans `story`
 LOCK TABLES `story` WRITE;
 /*!40000 ALTER TABLE `story` DISABLE KEYS */;
-INSERT INTO `story` VALUES 
+INSERT INTO `story` VALUES
   (1,'L\'énigme de la forêt enchantée'),
   (2,'Le secret de la cité perdue');
 /*!40000 ALTER TABLE `story` ENABLE KEYS */;

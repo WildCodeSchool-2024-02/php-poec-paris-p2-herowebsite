@@ -25,7 +25,8 @@ class DialogueController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $dialogue = array_map('htmlentities', array_map('trim', $_POST));
 
-            $errors = $this->validateDialogue($dialogue);
+            $validationErrors = $this->validateDialogue($dialogue);
+            $errors = array_merge($errors, $validationErrors);
 
             if (empty($errors)) {
                 $this->dialogueManager->insert($dialogue);
@@ -59,7 +60,8 @@ class DialogueController extends AbstractController
                 $dialogue['dialogue_body'] = $previousSettings['body'];
             }
 
-            $errors = $this->validateDialogue($dialogue);
+            $validationErrors = $this->validateDialogue($dialogue);
+            $errors = array_merge($errors, $validationErrors);
 
             if (empty($errors)) {
                 $this->dialogueManager->update($dialogue);
@@ -77,7 +79,8 @@ class DialogueController extends AbstractController
         $character = $this->characterManager->selectAll($dialogue["story_id"]);
         $characterIds = array_column($character, 'id');
 
-        if (strlen($dialogue["dialogue_body"]) > self::MAX_DIALOGUE_LENGTH) {
+        $length = mb_strlen($dialogue["dialogue_body"], 'UTF-8');
+        if ($length > self::MAX_DIALOGUE_LENGTH) {
             $errors[] = "Votre ligne de dialogue est trop longue, maximum : "
              . self::MAX_DIALOGUE_LENGTH . " caractères.";
         }

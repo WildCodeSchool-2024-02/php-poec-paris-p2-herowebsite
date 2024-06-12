@@ -29,9 +29,8 @@ class ChoiceController extends AbstractController
             $scenes = $this->sceneManager->selectAll($choice["story_id"]);
             $existingChoices = $this->choiceManager->selectAll($choice["scene_id"]);
 
-            if (strlen($choice["choice_body"]) >= self::MAX_CHOICE_LENGTH) {
-                $errors[] = "Le choix est trop long, maximum : " . self::MAX_CHOICE_LENGTH . " caractères";
-            }
+            $validationErrors = $this->validateChoice($choice["choice_body"]);
+            $errors = array_merge($errors, $validationErrors);
 
             if (!in_array($choice["next_scene"], $scenes) && !empty($choice["next_scene"])) {
                 $errors[] = "La scene selectionée n'existe pas";
@@ -72,9 +71,8 @@ class ChoiceController extends AbstractController
             $sceneIds = array_column($choices, 'id');
             $sceneIds[] = 0;
 
-            if (strlen($choice["choice_body"]) >= self::MAX_CHOICE_LENGTH) {
-                $errors[] = "Le choix est trop long, maximum : " . self::MAX_CHOICE_LENGTH . " caractères";
-            }
+            $validationErrors = $this->validateChoice($choice["choice_body"]);
+            $errors = array_merge($errors, $validationErrors);
 
             if (empty($choice['choice_body'])) {
                 $choice['choice_body'] = $previousSettings['body'];
@@ -93,5 +91,18 @@ class ChoiceController extends AbstractController
 
         header('Location:/story/engine/scene/show?story_id=' . $choice['story_id'] . '&id=' . $choice['scene_id']);
         return null;
+    }
+
+    private function validateChoice(string $choiceBody): array
+    {
+        $errors = [];
+
+        // Utiliser mb_strlen pour gérer correctement les caractères spéciaux et multi-octets
+        $length = mb_strlen($choiceBody, 'UTF-8');
+        if ($length > self::MAX_CHOICE_LENGTH) {
+            $errors[] = "Le choix est trop long, maximum : " . self::MAX_CHOICE_LENGTH . " caractères.";
+        }
+
+        return $errors;
     }
 }

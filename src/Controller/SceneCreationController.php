@@ -176,9 +176,10 @@ class SceneCreationController extends AbstractController
     {
         $errors = [];
 
-        if (strlen($scene["name"]) > self::MAX_SCENE_TITLE_LENGTH) {
-            $errors[] = "Le titre de votre scene est trop long, maximum : "
-             . self::MAX_SCENE_TITLE_LENGTH . " caractères.";
+        $length = mb_strlen($scene["name"], 'UTF-8');
+        if ($length > self::MAX_SCENE_TITLE_LENGTH) {
+            $errors[] = "Le titre de votre scène est trop long, maximum : " . self::MAX_SCENE_TITLE_LENGTH .
+             " caractères.";
         }
 
         return $errors;

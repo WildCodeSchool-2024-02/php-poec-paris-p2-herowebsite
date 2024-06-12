@@ -122,9 +122,10 @@ class CharacterController extends AbstractController
     {
         $errors = [];
 
-        if (strlen($character["character_name"]) > self::MAX_CHARACTER_NAME_LENGTH) {
+        $length = mb_strlen($character["character_name"], 'UTF-8');
+        if ($length > self::MAX_CHARACTER_NAME_LENGTH) {
             $errors[] = "Le nom du personnage est trop long, maximum : "
-                . self::MAX_CHARACTER_NAME_LENGTH . " caractères.";
+            . self::MAX_CHARACTER_NAME_LENGTH . " caractères.";
         }
 
         return $errors;
