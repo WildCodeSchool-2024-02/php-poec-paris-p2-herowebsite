@@ -21,11 +21,12 @@ main {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 1rem 2rem 1rem;
-    background: radial-gradient(ellipse 700px 50px, rgba(0, 0, 0, 0.4), rgba(187, 187, 187, 0));
+    text-shadow: 1px 1px 2px black;
 }
 
 h1 {
     margin-top: 1rem;
+    text-shadow: 1px 1px 4px black;
 }
 .icon {
     display: flex;
@@ -40,6 +41,7 @@ h1 {
 img {
     width: 2rem;
     padding-bottom: 0.3rem;
+    filter: drop-shadow(1px 1px 1px black); 
 }
 
 #container {

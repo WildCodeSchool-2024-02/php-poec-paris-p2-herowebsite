@@ -14,11 +14,10 @@ main {
 }
 
 nav {
-    width: 99%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     padding: 1rem;
-    margin-top: 3rem;
 }
 
 nav #home, 
@@ -35,26 +34,14 @@ nav #back-stories {
     font-family: 'Lancelot';
     font-size: 1rem;
     padding: .5rem;
+    text-shadow: 1px 1px 2px black;
 }
 
 nav #home img,
 nav #back-stories img {
     width: 2rem;
-    height: 2rem;
     padding-bottom: .3rem;
-}
-
-nav #back-stories {
-    width: 10rem;
-    height: 3rem;
-    color: var(--color-text);
-    margin: -2.5rem .5rem 2rem -.5rem;
-    text-decoration: none;
-    font-family: 'Lancelot';
-    font-size: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    filter: drop-shadow(1px 1px 1px black); 
 }
 
 nav #back-stories a {
@@ -80,13 +67,14 @@ nav #back-stories a {
     align-items: center;
 }
 
-#container h1 {
+h1 {
     font-family: 'Julee';
     color: white;
     border-bottom: none;
     font-size: 3rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
+    text-shadow: 1px 1px 4px black;
 }
 
 form {
@@ -123,11 +111,28 @@ form .title input {
 }
 
 form #submit {
+    margin-bottom: 2rem;
     width: 10rem;
     height: 2.5rem;
-    padding: .2rem;
-    font-family: 'Lancelot';
+    background: linear-gradient(to bottom, #fdfaf3, #faf6e6, #f0e7d1, #e6dcbf);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-family: "Lancelot", serif;
+    color: #4d352b;
     font-size: 1.2rem;
     font-weight: 700;
-    margin-bottom: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    opacity: 0.9;
+    cursor: pointer;
+    border: none;
+}
+
+form #submit:hover {
+    background: linear-gradient(to bottom, #fefefe, #f7f7f7, #ececec, #e1e1e1);
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
