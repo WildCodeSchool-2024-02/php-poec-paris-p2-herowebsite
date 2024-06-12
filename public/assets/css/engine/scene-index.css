@@ -19,12 +19,13 @@ main {
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 1rem 2rem 1rem;
+    padding: 0.5rem 1rem 2rem 1rem;
     text-shadow: 1px 1px 2px black;
 }
 
 h1 {
     text-shadow: 1px 1px 4px black;
+    padding-top: 1rem;
 }
 
 .icon {
@@ -35,6 +36,7 @@ h1 {
     text-decoration: none;
     font-family: "Lancelot", serif;
     font-size: 1rem;
+    align-self: flex-start;
 }
 
 img {
