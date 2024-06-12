@@ -8,7 +8,11 @@
     </button>
     <button class="edit_character">Editer</button>
     <form method="post" enctype="multipart/form-data" action="/story/engine/character/update" class="edit_character_form">
+
+      {% if character.sprite %}
       <img src="/assets/images/sprites/{{character.sprite}}">
+      {% endif %}
+
       <input type="hidden" name="story_id" value={{ story.id }}>
       <input type="hidden" name="scene_id" value={{ scene.id }}>
       <input type="hidden" name="character_id" value={{ character.id }}>

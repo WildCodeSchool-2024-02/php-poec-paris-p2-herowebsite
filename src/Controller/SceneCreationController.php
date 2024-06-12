@@ -31,12 +31,16 @@ class SceneCreationController extends AbstractController
     }
     public function add(int $storyId): ?string
     {
+    // Initialise le tableau d'erreurs
         $errors = [];
 
+    // Vérifie si la requête est de type POST
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Récupère et nettoie les données du formulaire
             $scene = array_map('htmlentities', array_map('trim', $_POST));
             $scene['story_id'] = $storyId;
 
+            // Gère l'upload du background
             if (!empty($_FILES['background']['full_path'])) {
                 $uploadErrors = $this->handleBackgroundUpload();
                 $errors = array_merge($errors, $uploadErrors);
@@ -44,28 +48,44 @@ class SceneCreationController extends AbstractController
                     $scene['background'] = basename($_FILES['background']['name']);
                 }
             } else {
+                // Utilise un placeholder si aucun background n'est uploadé
                 $scene["background"] = "black.jpg";
                 $errors[] = "Placeholder chargé";
             }
 
+            // Valide la scène
             $validationErrors = $this->validateScene($scene);
             $errors = array_merge($errors, $validationErrors);
 
+            // Vérifie s'il y a des erreurs
             if (empty($errors)) {
+                // Aucune erreur, insère la scène
                 $scene['background'] = basename($_FILES['background']['name']);
                 $id = $this->sceneManager->insert($scene);
+                header('Location:/story/engine/scene/show?' . http_build_query(['story_id' => $storyId, 'id' => $id]));
+                return null;
             } else {
+                // Il y a des erreurs, logge les erreurs
                 error_log('Erreurs lors de l\'ajout de la scène: ' . implode(', ', $errors));
-                // Insère la scène sans background en cas d'erreur
-                $id = $this->sceneManager->insert($scene);
-            }
 
-            header('Location:/story/engine/scene/show?' . http_build_query(['story_id' => $storyId, 'id' => $id]));
-            return null;
+                // Si l'erreur n'est pas bloquante (comme l'absence de sprite), insère quand même la scène
+                if (!in_array("Ce titre de scène est déjà utilisé dans cette histoire.", $errors)) {
+                    $scene['background'] = basename($_FILES['background']['name']);
+                    $id = $this->sceneManager->insert($scene);
+                    header('Location:/story/engine/scene/show?'
+                    . http_build_query(['story_id' => $storyId, 'id' => $id]));
+                    return null;
+                }
+
+                // Retourne à la vue de création avec les erreurs
+                return $this->twig->render('SceneCreation/add.html.twig', ['errors' => $errors]);
+            }
         }
 
+    // Si la méthode n'est pas POST, retourne simplement la vue de création de scène
         return $this->twig->render('SceneCreation/add.html.twig');
     }
+
 
     public function update(): ?string
     {
@@ -181,9 +201,43 @@ class SceneCreationController extends AbstractController
         $length = mb_strlen($sceneName, 'UTF-8');
 
         if ($length > self::MAX_SCENE_TITLE_LENGTH) {
-            $errors[] = "Le titre de votre scène est trop long, maximum : " . self::MAX_SCENE_TITLE_LENGTH
-            . " caractères.";
+            $errors[] = "Le titre de votre scène est trop long, maximum : "
+            . self::MAX_SCENE_TITLE_LENGTH . " caractères.";
         }
+
+        $normalizedSceneName = $this->normalizeName($sceneName);
+
+        // Récupérer toutes les scènes de l'histoire
+        $existingScenes = $this->sceneManager->selectAllByStory($scene['story_id']);
+
+        foreach ($existingScenes as $existingScene) {
+            if (isset($scene['scene_id']) && $existingScene['id'] == $scene['scene_id']) {
+                continue;
+            }
+
+            $normalizedExistName = $this->normalizeName($existingScene['name']);
+            if ($normalizedExistName === $normalizedSceneName) {
+                $errors[] = "Ce titre de scène est déjà utilisé dans cette histoire.";
+                break;
+            }
+        }
+
         return $errors;
+    }
+    private function normalizeName(string $name): string
+    {
+        $name = mb_strtolower($name, 'UTF-8');
+
+        $name = strtr(
+            $name,
+            'àáâäãåçèéêëìíîïñòóôöõùúûüýÿ',
+            'aaaaaaceeeeiiiinooooouuuuyy'
+        );
+
+        $name = preg_replace('/\s+/', '', $name);
+
+        $name = preg_replace('/[^a-z0-9]/', '', $name);
+
+        return $name;
     }
 }
