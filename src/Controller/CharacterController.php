@@ -12,7 +12,7 @@ class CharacterController extends AbstractController
     public const EXTENSIONS_ALLOWED = ['jpg', 'jpeg', 'png', 'webp'];
     public const MAX_UPLOAD_SIZE = 5000000;
 
-    public const MAX_CHARACTER_NAME_LENGTH = 30;
+    public const MAX_CHARACTER_NAME_LENGTH = 35;
 
     public function __construct()
     {
@@ -122,15 +122,16 @@ class CharacterController extends AbstractController
     {
         $errors = [];
 
-        $length = mb_strlen($character["character_name"], 'UTF-8');
+        $characterName = html_entity_decode($character["character_name"]);
+
+        $length = mb_strlen($characterName, 'UTF-8');
         if ($length > self::MAX_CHARACTER_NAME_LENGTH) {
             $errors[] = "Le nom du personnage est trop long, maximum : "
-            . self::MAX_CHARACTER_NAME_LENGTH . " caractères.";
+                . self::MAX_CHARACTER_NAME_LENGTH . " caractères.";
         }
 
         return $errors;
     }
-
     public function handleSpriteUpload(): array
     {
         $errors = [];

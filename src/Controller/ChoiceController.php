@@ -10,7 +10,7 @@ class ChoiceController extends AbstractController
 {
     private $choiceManager;
     private $sceneManager;
-    public const MAX_CHOICE_LENGTH = 30;
+    public const MAX_CHOICE_LENGTH = 35;
 
     public function __construct()
     {
@@ -97,7 +97,8 @@ class ChoiceController extends AbstractController
     {
         $errors = [];
 
-        // Utiliser mb_strlen pour gérer correctement les caractères spéciaux et multi-octets
+        $choiceBody = html_entity_decode($choiceBody);
+
         $length = mb_strlen($choiceBody, 'UTF-8');
         if ($length > self::MAX_CHOICE_LENGTH) {
             $errors[] = "Le choix est trop long, maximum : " . self::MAX_CHOICE_LENGTH . " caractères.";

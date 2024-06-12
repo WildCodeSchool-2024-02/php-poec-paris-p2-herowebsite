@@ -35,7 +35,7 @@ class DialogueController extends AbstractController
             }
         }
         header('Location:/story/engine/scene/show?story_id='
-            . $dialogue['story_id'] . '&id=' . $dialogue['scene_id']);
+        . $dialogue['story_id'] . '&id=' . $dialogue['scene_id']);
         return null;
     }
 
@@ -79,14 +79,16 @@ class DialogueController extends AbstractController
         $character = $this->characterManager->selectAll($dialogue["story_id"]);
         $characterIds = array_column($character, 'id');
 
-        $length = mb_strlen($dialogue["dialogue_body"], 'UTF-8');
+        $dialogueBody = html_entity_decode($dialogue["dialogue_body"]);
+
+        $length = mb_strlen($dialogueBody, 'UTF-8');
         if ($length > self::MAX_DIALOGUE_LENGTH) {
             $errors[] = "Votre ligne de dialogue est trop longue, maximum : "
              . self::MAX_DIALOGUE_LENGTH . " caractères.";
         }
 
         if (!in_array($dialogue["character_id"], $characterIds)) {
-            $errors[] = "Le personnage selectionné n'existe pas";
+            $errors[] = "Le personnage sélectionné n'existe pas";
         }
 
         return $errors;

@@ -18,7 +18,7 @@ class SceneCreationController extends AbstractController
     private const TARGET_DIR = 'assets/images/backgrounds/';
     public const EXTENSIONS_ALLOWED = ['jpg', 'jpeg', 'png', 'webp'];
     public const MAX_UPLOAD_SIZE = 5000000;
-    public const MAX_SCENE_TITLE_LENGTH = 30;
+    public const MAX_SCENE_TITLE_LENGTH = 35;
 
     public function __construct()
     {
@@ -107,7 +107,7 @@ class SceneCreationController extends AbstractController
             }
 
             header('Location:/story/engine/scene/show?story_id='
-            . $scene['story_id'] . '&id=' . $scene['scene_id']);
+                . $scene['story_id'] . '&id=' . $scene['scene_id']);
         }
         return null;
     }
@@ -176,10 +176,13 @@ class SceneCreationController extends AbstractController
     {
         $errors = [];
 
-        $length = mb_strlen($scene["name"], 'UTF-8');
+        $sceneName = html_entity_decode($scene["name"]);
+
+        $length = mb_strlen($sceneName, 'UTF-8');
+
         if ($length > self::MAX_SCENE_TITLE_LENGTH) {
-            $errors[] = "Le titre de votre scène est trop long, maximum : " . self::MAX_SCENE_TITLE_LENGTH .
-             " caractères.";
+            $errors[] = "Le titre de votre scène est trop long, maximum : " . self::MAX_SCENE_TITLE_LENGTH
+            . " caractères.";
         }
 
         return $errors;
