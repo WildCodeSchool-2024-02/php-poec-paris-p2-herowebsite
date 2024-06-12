@@ -71,10 +71,16 @@
     font-family: 'Lancelot';
     display: flex;
     margin: .5rem 0;
-    align-items: center;
     margin-right: .5rem;
-    background: white;
+    padding: 2rem;
+    align-items: center;
+    background: #fef8e2;
     justify-content: space-between;
+    border-width: 4px;
+    border-style: solid;
+    border-image: radial-gradient(circle, rgba(195,165,34,1) 0%, rgba(130,95,16,1) 100%);
+    border-image-slice: 1;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #main-stories #container .storiesDetails .name {
@@ -89,26 +95,6 @@
 #main-stories #container .storiesDetails .name a {
     text-decoration: none;
     color: #000;
-}
-
-#main-stories #container .storiesDetails .details {
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-}
-
-
-#main-stories #container .storiesDetails .storyEdit,
-#main-stories #container .storiesDetails .storyShow,
-#main-stories #container .storiesDetails .storyDelete  {
-    width: 3.5rem;
-    height: 3.5rem;
-    background: white;
-    margin: 0 .2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 #main-stories #container .storiesDetails .icon {
