@@ -114,7 +114,7 @@ form #submit {
     margin-bottom: 2rem;
     width: 10rem;
     height: 2.5rem;
-    background: linear-gradient(to bottom, #fdfaf3, #faf6e6, #f0e7d1, #e6dcbf);
+    background: var(--color-engine-button);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -132,7 +132,7 @@ form #submit {
 }
 
 form #submit:hover {
-    background: linear-gradient(to bottom, #fefefe, #f7f7f7, #ececec, #e1e1e1);
+    background: var(--color-engine-button-hover);
     transform: scale(1.02);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }

@@ -63,7 +63,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #fef8e2;
+    background: var(--color-engine-background);
     border-radius: 10px;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
     transition: background 0.3s, box-shadow 0.3s;
@@ -81,7 +81,7 @@ img {
 }
 
 .scene-list:hover {
-    background: rgba(255, 255, 255, 0.9);
+    background: linear-gradient(to bottom, #f5deb3, #e6cfa2, #dcc898, #d6c49b) border-box;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -136,7 +136,7 @@ img {
     width: 15rem;
     height: 3rem;
     margin-top: 2rem;
-    background: linear-gradient(to bottom, #fdfaf3, #faf6e6, #f0e7d1, #e6dcbf);
+    background: var(--color-engine-button);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -152,7 +152,7 @@ img {
 }
 
 #add-scene-link:hover {
-    background: linear-gradient(to bottom, #fefefe, #f7f7f7, #ececec, #e1e1e1);
+    background: var(--color-engine-button-hover);
     transform: scale(1.02);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
