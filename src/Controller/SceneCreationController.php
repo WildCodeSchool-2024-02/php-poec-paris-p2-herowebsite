@@ -184,7 +184,6 @@ class SceneCreationController extends AbstractController
             $errors[] = "Le titre de votre scène est trop long, maximum : " . self::MAX_SCENE_TITLE_LENGTH
             . " caractères.";
         }
-
         return $errors;
     }
 }

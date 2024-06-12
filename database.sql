@@ -28,7 +28,7 @@ DROP TABLE IF EXISTS `character`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `character` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(255) NOT NULL,
+  `name` TEXT NOT NULL,
   `sprite` TEXT,
   `story_id` INT DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -43,7 +43,7 @@ DROP TABLE IF EXISTS `choice`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `choice` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `body` VARCHAR(255) NOT NULL,
+  `body` TEXT NOT NULL,
   `scene_id` INT NOT NULL,
   `next_scene_id` INT DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -58,7 +58,7 @@ DROP TABLE IF EXISTS `dialogue_line`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `dialogue_line` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `body` VARCHAR(255) NOT NULL,
+  `body` TEXT NOT NULL,
   `character_id` INT NOT NULL,
   `scene_id` INT NOT NULL,
   PRIMARY KEY (`id`),
@@ -92,7 +92,7 @@ DROP TABLE IF EXISTS `scene`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `scene` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(255) NOT NULL,
+  `name` TEXT NOT NULL,
   `background` TEXT,
   `story_id` INT NOT NULL,
   PRIMARY KEY (`id`),
@@ -107,7 +107,7 @@ DROP TABLE IF EXISTS `story`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `story` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(255) NOT NULL,
+  `name` TEXT NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -118,8 +118,8 @@ DROP TABLE IF EXISTS `user`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(255) NOT NULL,
-  `password` VARCHAR(255) NOT NULL,
+  `name` TEXT NOT NULL,
+  `password` TEXT NOT NULL,
   `fontsize` INT DEFAULT NULL,
   `textspeed` INT DEFAULT NULL,
   PRIMARY KEY (`id`)
