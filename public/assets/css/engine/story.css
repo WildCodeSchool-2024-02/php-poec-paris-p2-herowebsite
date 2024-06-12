@@ -21,11 +21,11 @@ main {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 1rem 2rem 1rem;
-    background: radial-gradient(ellipse 700px 50px, rgba(0, 0, 0, 0.4), rgba(187, 187, 187, 0));
+    text-shadow: 1px 1px 2px black;
 }
 
 h1 {
-    margin-top: 1rem;
+    text-shadow: 1px 1px 4px black;
 }
 .icon {
     display: flex;
@@ -40,6 +40,7 @@ h1 {
 img {
     width: 2rem;
     padding-bottom: 0.3rem;
+    filter: drop-shadow(1px 1px 1px black);
 }
 
 #container {
@@ -62,7 +63,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #fef8e2;
+    background: var(--color-engine-background);
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
     transition: background 0.3s, box-shadow 0.3s;
     padding: 2rem;
@@ -75,13 +76,13 @@ img {
 
 
 .story-list:hover {
-    background: rgba(255, 255, 255, 0.9);
+    background: var(--color-engine-background-hover);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .border {
-    height: 4.75rem;
-    border: 4px solid transparent;
+    height: 4.6rem;
+    border: 3px solid transparent;
     border-radius: 10px;
     background: radial-gradient(circle, rgba(195,165,34,1) 0%, rgba(130,95,16,1) 100%);
     margin-bottom: 10px;
@@ -96,30 +97,29 @@ img {
     margin-left: 2rem;
 }
 
-.name a {
+.story-list a {
     text-decoration: none;
     color: #000;
+    width: 100%;
 }
 
 #story-edit {
     display: flex;
     justify-content: right;
-    width: 30%;
     margin: 10px;
 }
 
 #story-edit .edit {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
+
+    padding: 5px;
+    height: 44px;
     background: #fff;
     display: flex;
-    justify-content: center;
-    align-items: center;
     transition: background 0.3s;
     margin-left: 10px;
     border: 1px solid black;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
 }
 
 #story-edit .edit:hover {
@@ -127,19 +127,11 @@ img {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-.story-show img {
-    padding-top: 0.5rem;
-}
-
-.story-delete img {
-    padding-top: 0.3rem;
-}
-
 #add-story-link {
     width: 15rem;
     height: 3rem;
     margin-top: 2rem;
-    background: linear-gradient(to bottom, #fdfaf3, #faf6e6, #f0e7d1, #e6dcbf);
+    background: var(--color-engine-button);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -152,10 +144,11 @@ img {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
     opacity: 0.9;
+    margin-bottom: 2rem;
 }
 
 #add-story-link:hover {
-    background: linear-gradient(to bottom, #fefefe, #f7f7f7, #ececec, #e1e1e1);
+    background: var(--color-engine-button-hover);
     transform: scale(1.02);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }

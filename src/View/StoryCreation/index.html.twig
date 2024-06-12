@@ -20,7 +20,8 @@
     <section id="container">
         {% for story in stories %}
         <div class="border">
-            <article class="story-list clickable" data-url="/story/engine/show?id={{ story.id }}">
+            <article class="story-list" data-url="/story/engine/show?id={{ story.id }}">
+                <a href="/story/engine/show?id={{ story.id }}">
                 <div class="name">
                     <h2>{{ story.name | raw }}</h2>
                 </div>
@@ -32,14 +33,15 @@
                         </a>
                     </div>
                     <div class="story-delete edit">
-                        <a
+                        <a href='/story/engine/delete?id={{story.id}}'
                         onclick="if(confirm('Êtes vous sûr de vouloir supprimer cette histoire ?'))
-                        { window.location.href='/story/engine/scene/delete?story_id={{story.id}}&id={{scene.id}}';}">
+                        { window.location.href='/story/engine/delete?id={{story.id}}';}">
                             <img src="/assets/images/icones/trash.svg" alt="trash icon" class="icon">
                         </a>
                     </div>
                 </div>
                 </div>
+                </a>
             </article>
         </div>
         {% endfor %}

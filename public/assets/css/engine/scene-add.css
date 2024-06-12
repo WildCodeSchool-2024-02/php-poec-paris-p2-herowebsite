@@ -1,17 +1,27 @@
-#main-add-scene {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
+body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-image: url(../../images/backgrounds/home.png);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
     position: relative;
 }
 
-#main-add-scene .links-back #back-stories,
-#main-story .links-back #home {
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+nav #back-scenes,
+nav #home {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,44 +34,21 @@
     font-family: 'Lancelot';
     font-size: 1rem;
     padding: .5rem;
+    text-shadow: 1px 1px 2px black;
 }
 
-
-#main-add-scene #back-stories img,
-#main-add-scene #home img {
+nav #back-scenes img,
+nav #home img {
     width: 2rem;
-    height: 2rem;
     padding-bottom: .3rem;
+    filter: drop-shadow(1px 1px 1px black); 
 }
 
-
-#main-add-scene .links-back {
-    width: 99%;
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
-    margin-top: 3rem;
-}
-
-
-#main-add-scene #back-stories {
-    width: 10rem;
-    height: 3rem;
-    color: var(--color-text);
-    margin: -2.5rem .5rem 2rem -.5rem;
-    text-decoration: none;
-    font-family: 'Lancelot';
-    font-size: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#main-add-scene #back-stories a {
+nav #back-scenes a {
     width: 18rem;
     height: 3rem;
     color: var(--color-text);
-    margin: 2rem 2rem 2rem 2rem;
+    margin: 2rem;
     text-decoration: none;
     font-family: 'Lancelot';
     font-size: 1rem;
@@ -70,33 +57,7 @@
     align-items: center;
 }
 
-#main-add-scene #home {
-    width: 10rem;
-    height: 3rem;
-    color: var(--color-text);
-    margin: -2.5rem .5rem 2rem -.5rem;
-    text-decoration: none;
-    font-family: 'Lancelot';
-    font-size: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#main-add-scene #back-stories img {
-    width: 2rem;
-    height: 2rem;
-}
-
-#main-add-scene h1 {
-    font-family: 'Julee';
-    color: white;
-    border-bottom: none ;
-    font-size: 3rem;
-    margin-top: 2rem;
-}
-
-#main-add-scene #container {
+#container {
     width: 80%;
     height: 60%;
     opacity: .9;
@@ -106,12 +67,17 @@
     align-items: center;
 }
 
-#main-add-scene #container h1 {
-    font-size: 3.5rem;
+h1 {
+    font-family: 'Julee';
+    color: white;
+    border-bottom: none;
+    font-size: 3rem;
+    margin-top: 2rem;
     margin-bottom: 2rem;
+    text-shadow: 1px 1px 4px black;
 }
 
-#main-add-scene form {
+form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -121,7 +87,8 @@
     opacity: .9;
 }
 
-#main-add-scene form .title, #main-add-scene form .background {
+form .title,
+form .background {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -129,7 +96,8 @@
     width: 20rem;
 }
 
-#main-add-scene form .title label, #main-add-scene form .background label {
+form .title label,
+form .background label {
     color: black;
     font-family: 'Julee';
     font-size: 2.5rem;
@@ -137,26 +105,43 @@
     text-align: center;
 }
 
-#main-add-scene form .title input {
+form .title input {
     width: 15rem;
     height: 2rem;
     margin-bottom: 3.5rem;
     background-color: rgb(223, 221, 221);
 }
 
-#main-add-scene form .background input {
+form .background input {
     width: 15rem;
     height: 2.5rem;
     margin-top: .5rem;
     margin-bottom: 3.5rem;
 }
 
-#main-add-scene form #submit {
+form #submit {
+    margin-bottom: 2rem;
     width: 10rem;
     height: 2.5rem;
-    padding: .2rem;
-    font-family: 'Lancelot';
+    background: var(--color-engine-button);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-family: "Lancelot", serif;
+    color: #4d352b;
     font-size: 1.2rem;
     font-weight: 700;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    opacity: 0.9;
+    cursor: pointer;
+    border: none;
+}
 
+form #submit:hover {
+    background: var(--color-engine-button-hover);
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }

@@ -5,6 +5,10 @@
     --color-narration: #ffb55e;
     --color-continue: rgba(217, 217, 217, 0.25);
     --color-button-hover: rgba(217, 217, 217, 0.6);
+    --color-engine-background : #fef8e2;
+    --color-engine-background-hover: radial-gradient(circle, rgba(195,165,34,1) 0%, rgba(130,95,16,1) 100%);;
+    --color-engine-button: linear-gradient(to bottom, #fdfaf3, #faf6e6, #f0e7d1, #e6dcbf);
+    --color-engine-button-hover: linear-gradient(to bottom, #fefefe, #f7f7f7, #ececec, #e1e1e1);
     --font-title: "Julee", cursive;
     --font-text: "Lancelot", serif;
     --font-continue: "Kaisei Decol", serif;
