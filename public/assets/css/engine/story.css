@@ -65,36 +65,33 @@
 }
 
 #main-stories #container .storiesDetails {
-    width: 97%;
+    width: 100%;
     height: 3.5rem;
     font-size: .8rem;
     font-family: 'Lancelot';
     display: flex;
-    align-items: center;
     margin: .5rem 0;
-}
-
-#main-stories #container .storiesDetails .storyDetails {
-    width: 80%;
-    height: 100%;
-    display: flex;
     align-items: center;
     margin-right: .5rem;
     background: white;
+    justify-content: space-between;
 }
 
-#main-stories #container .storiesDetails .storyDetails .name {
+#main-stories #container .storiesDetails .name {
     width: 70%;
     padding: .5rem;
-    font-style: oblique;
+    display : flex;
+    justify-content: center;
+    margin-left: 10rem;
+    font-size: 1.5rem;
 }
 
-#main-stories #container .storiesDetails .storyDetails .name a {
+#main-stories #container .storiesDetails .name a {
     text-decoration: none;
     color: #000;
 }
 
-#main-stories #container .storiesDetails .storyDetails .details {
+#main-stories #container .storiesDetails .details {
     width: 30%;
     display: flex;
     flex-direction: column;
@@ -102,7 +99,9 @@
 }
 
 
-#main-stories #container .storiesDetails .storyEdit, #main-stories #container .storiesDetails .storyShow, #main-stories #container .storiesDetails .storyDelete  {
+#main-stories #container .storiesDetails .storyEdit,
+#main-stories #container .storiesDetails .storyShow,
+#main-stories #container .storiesDetails .storyDelete  {
     width: 3.5rem;
     height: 3.5rem;
     background: white;
@@ -115,6 +114,7 @@
 #main-stories #container .storiesDetails .icon {
     width: 2rem;
     height: 2rem;
+    margin: 0 10px;
 }
 
 #main-stories #addStoryLink {
@@ -135,6 +135,6 @@
     opacity: .6;
 }
 
-.storyDelete a {
+.icons a {
     cursor: pointer;
 }
