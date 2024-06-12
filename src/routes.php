@@ -33,5 +33,8 @@ return [
     // Création d'un choix
     'story/engine/choice/add' => ['ChoiceController', 'add'],
     'story/engine/choice/delete' => ['ChoiceController', 'delete', ['story_id', 'scene_id', 'id']],
-    'story/engine/choice/update' => ['ChoiceController', 'update']
+    'story/engine/choice/update' => ['ChoiceController', 'update'], 
+    // Création d'un utilisateur
+    'user/login' => ['UserController', 'login'],
+    'user/register' => ['UserController', 'register']
 ];

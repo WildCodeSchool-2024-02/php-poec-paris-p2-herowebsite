@@ -1,0 +1,43 @@
+{% extends 'layout.html.twig' %}
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/user.css">
+{% endblock %}
+
+{% block content %}
+
+<div id="linksBack">
+    <a href="/story/engine" id="backStories">
+        <img src="/assets/images/icones/story.svg" alt="plow icon"> Scènes
+    </a>
+    <a href="/" id="home">
+        <img src="/assets/images/icones/home.svg" alt="plow icon"> Home
+    </a>
+</div>
+<main id="mainUser">
+    <h1>Connexion</h1>
+    <section id="container">
+        <h2>Bienvenue à toi !</h2>
+        <section class="connect">
+            <article class="cases" id="exists">
+                <h2>Se connecter</h2>
+                <form action="/user/login" method="post">
+                    {% for error in errors %}
+                    <p class="error"> {{ error }} </p>
+                    {% endfor %}
+                    <div>
+                        <label for="name">Pseudo :</label>
+                        <input type="text" name="name" id="name">
+                    </div>
+                    <div>
+                        <label for="password">Mot de passe :</label>
+                        <input type="password" name="password" id="password">
+                    </div>
+                    <div>
+                        <input type="submit" value="Valider" id="validation">
+                    </div>
+                </form>
+            </article>
+        </section>
+    </section>
+</main>
+{% endblock %}

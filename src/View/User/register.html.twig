@@ -14,36 +14,20 @@
     </a>
 </div>
 <main id="mainUser">
-    <h1>Connexion</h1>
+    <h1>Inscription</h1>
     <section id="container">
         <h2>Bienvenue à toi !</h2>
         <section class="connect">
-            <article class="cases" id="exists">
-                <h2>Se connecter</h2>
-                <form method="post">
-                    <div>
-                        <label for="name">Pseudo :</label>
-                        <input type="text" name="name" id="name">
-                    </div>
-                    <div>
-                        <label for="password">Mot de passe :</label>
-                        <input type="text" name="password" id="password">
-                    </div>
-                    <div>
-                        <input type="submit" value="Valider" id="validation">
-                    </div>
-                </form>
-            </article>
             <article class="cases">
                 <h2>Créer son compte</h2>
-                <form method="post">
+                <form action="/user/register" method="post">
                     <div>
                         <label for="name">Pseudo :</label>
                         <input type="text" name="name" id="name">
                     </div>
                     <div>
                         <label for="password">Mot de passe :</label>
-                        <input type="text" name="password" id="password">
+                        <input type="password" name="password" id="password">
                     </div>
                     <div>
                         <input type="submit" value="Valider" id="validation">

@@ -102,6 +102,15 @@ body {
     height: 98%;
 }
 
+#mainUser #container .connect .cases form .error {
+    width: 95%;
+    height: 1.5rem;
+    margin: .2rem auto;
+    color: red;
+    font-size: 1.2em;
+    font-family: 'Kaisei';
+}
+
 #mainUser #container .connect .cases div {
     width: 95%;
     height: 5rem;
