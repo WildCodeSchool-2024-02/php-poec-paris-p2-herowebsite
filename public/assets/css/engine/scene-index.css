@@ -1,138 +1,161 @@
-#main-story {
+main {
     width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url(../../images/backgrounds/home.png);
+    background-image: url('../../images/backgrounds/home.png');
 }
 
-#main-story .links-back {
-    width: 99%;
+.header {
+    color: #fff;
+    font-size: 1.5rem;
+    font-family: "Julee", cursive;
     display: flex;
+    width: 100%;
     justify-content: space-between;
-    padding: 0.5rem 0.5rem;
-    margin-top: 2rem;
+    align-items: center;
+    padding: 2rem 1rem 2rem 1rem;
+    background: radial-gradient(ellipse 700px 50px, rgba(0, 0, 0, 0.4), rgba(187, 187, 187, 0));
 }
 
-#main-story .links-back #back-stories,
-#main-story .links-back #home {
+
+.icon {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 6rem;
-    height: 3rem;
     color: var(--color-text);
-    margin: 0.5rem 0.8rem;
     text-decoration: none;
-    font-family: "Lancelot";
+    font-family: "Lancelot", serif;
     font-size: 1rem;
-    padding: 0.5rem;
 }
 
-#main-story #back-stories img,
-#main-story #home img {
+img {
     width: 2rem;
-    height: 2rem;
     padding-bottom: 0.3rem;
 }
 
-#main-story h1 {
-    color: white;
-    font-size: 2rem;
-    text-decoration: none;
-    border-bottom: none;
-    margin-top: -2rem;
-    font-family: "Julee";
-}
 
-#main-story #container {
-    width: 90%;
-    height: 60%;
-    margin-top: 0.5rem;
-    background: rgb(201, 200, 200, 0.65);
-    padding: 2rem 1rem;
-    margin-right: 1rem;
-    border-radius: 5px;
+#container {
+    width: 80%;
+    max-height: 60%;
+    margin-top: 5%;
+    background: rgba(212, 212, 212, 0.6);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 10px;
     overflow-y: auto;
-    position: relative;
+    backdrop-filter: blur(3px);
 }
 
-#main-story #container .scene-list,
-#main-story #container .characterList,
-#main-story #container .ressourcesList {
-    width: 97%;
-    height: 3.5rem;
-    font-size: 0.8rem;
-    font-family: "Lancelot";
+
+
+.scene-list {
+    width: 100%;
     display: flex;
     align-items: center;
-    margin: 0.5rem 0;
+    justify-content: space-between;
+    background: #fef8e2;
+    border-radius: 10px;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s, box-shadow 0.3s;
 }
 
-#main-story #container .characterList,
-#main-story #container .ressourcesList {
-    display: none;
+.border {
+    height: 4.63rem;
+    border: 3px solid transparent;
+    border-radius: 12px;
+    background:
+        linear-gradient(to bottom, #f5deb3, #e6cfa2, #dcc898, #d6c49b) border-box;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-#main-story #container .scene-list .name {
+.scene-list:hover {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.name {
     width: 70%;
     padding: 0.5rem;
-    font-style: oblique;
-    background-color: white;
-    height: 3rem;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    font-family: "Lancelot", serif;
+    margin-left: 2rem;
 }
 
-#main-story #container .scene-list .name a {
+.name a {
     text-decoration: none;
     color: #000;
 }
 
-#main-story #container .scene-list #scene-edit {
+#scene-edit {
     display: flex;
+    justify-content: right;
     width: 30%;
-    margin-left: 1.5rem;
+    margin: 10px;
 }
 
-#main-story #container .scene-list #scene-edit .edit {
-    width: 3.1rem;
-    height: 3.1rem;
-    background: white;
-    margin: 0 0.2rem;
+#scene-edit .edit {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: background 0.3s;
+    margin-left: 10px;
+    border: 1px solid black;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#main-story #container .scene-list #scene-edit .edit .icon {
-    width: 2rem;
-    height: 2rem;
+#scene-edit .edit:hover {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-#main-story #addSceneLink {
+.scene-show img {
+    padding-top: 0.5rem;
+}
+
+.scene-delete img {
+    padding-top: 0.3rem;
+}
+
+#add-scene-link {
     width: 15rem;
     height: 3rem;
-    margin-top: 1.5rem;
-    margin-left: 28rem;
-    background: white;
+    margin-top: 2rem;
+    background: linear-gradient(to bottom, #fdfaf3, #faf6e6, #f0e7d1, #e6dcbf);
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    font-family: "Lancelot";
-    color: #000;
+    font-family: "Lancelot", serif;
+    color: #4d352b;
     font-size: 1.2rem;
     font-weight: 700;
-    border-radius: 15px;
-    opacity: 0.6;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    opacity: 0.9;
 }
 
-.edit a {
+#add-scene-link:hover {
+    background: linear-gradient(to bottom, #fefefe, #f7f7f7, #ececec, #e1e1e1);
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.clickable {
     cursor: pointer;
 }

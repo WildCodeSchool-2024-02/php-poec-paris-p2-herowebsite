@@ -2,31 +2,31 @@
 {% block head %}
   <link rel="stylesheet" href="/assets/css/engine/scene-index.css">
 {% endblock %}
+
+{% block head_extra %}
+<script src="/assets/js/scene-index.js" defer></script>
+{% endblock %}
 {% block content %}
-<main id="main-story">
-    <div class="links-back">
-        <a href="/story/engine" id="back-stories">
+<main>
+    <div class="header">
+        <a href="/story/engine" class="icon">
             <img src="/assets/images/icones/story.svg" alt="plow icon"> Histoires
         </a>
-        <a href="/" id="home">
+
+        <h1>{{ story.name | raw }}</h1>
+
+        <a href="/" class="icon">
             <img src="/assets/images/icones/home.svg" alt="plow icon"> Home
         </a>
     </div>
-    <h1>{{story.name | raw}}</h1>
     <section id="container">
         {% for scene in scenes %}
-            <article class="scene-list">
+        <div class="border">
+            <article class="scene-list clickable" data-url="/story/engine/scene/show?story_id={{ story.id }}&id={{ scene.id }}">
                 <div class="name">
-                    <a href="/story/scene/show?scene_id={{ scene.id }}">
                         {{ scene.name | raw }}
-                    </a>
                 </div>
                 <div id="scene-edit">
-                    <div class="scene-edit edit">
-                        <a href="/story/engine/scene/show?story_id={{ story.id }}&id={{ scene.id }}">
-                            <img src="/assets/images/icones/pen.svg" alt="pen icon" class="icon">
-                        </a>
-                    </div>
                     <div class="scene-show edit">
                         <a href="/story/scene/show?scene_id={{ scene.id }}">
                             <img src="/assets/images/icones/play.svg" alt="play icon" class="icon">
@@ -41,6 +41,7 @@
                     </div>
                 </div>
             </article>
+        </div>
         {% endfor %}
     </section>
     <a href = "/story/engine/scene/add?story_id={{story.id}}" id="add-scene-link"> Ajouter une scène </a>
