@@ -64,7 +64,9 @@ class SceneCreationController extends AbstractController
             return null;
         }
 
-        return $this->twig->render('SceneCreation/add.html.twig');
+        return $this->twig->render('SceneCreation/add.html.twig', [
+            'story_id' => $storyId
+        ]);
     }
 
     public function update(): ?string
