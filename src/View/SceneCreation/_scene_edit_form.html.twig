@@ -2,7 +2,7 @@
 <form method="post" enctype="multipart/form-data" action="/story/engine/scene/update" class="edit_scene_form">
     <input type="hidden" name="story_id" value={{ story.id }}>
     <input type="hidden" name="scene_id" value={{ scene.id }}>
-    <input type="text" name="name" id="name" value="{{ scene.name | raw }}" maxlength="30">
+    <input type="text" name="name" id="name" value="{{ scene.name | raw }}" maxlength="35">
     <input type="file" name="background" id="background">
     <input type="submit">
     <input type="hidden" name="delete_background" id="delete_background" value="false">

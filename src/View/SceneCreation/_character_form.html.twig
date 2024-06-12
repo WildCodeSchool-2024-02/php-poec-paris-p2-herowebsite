@@ -12,7 +12,7 @@
       <input type="hidden" name="story_id" value={{ story.id }}>
       <input type="hidden" name="scene_id" value={{ scene.id }}>
       <input type="hidden" name="character_id" value={{ character.id }}>
-      <input type="text" name="character_name" id="character_name" value="{{ character.name | raw }}">
+      <input type="text" name="character_name" id="character_name" value="{{ character.name | raw }}" maxlength="35">
       <label for="sprite">sprite</label>
       <input type="file" name="sprite" id="sprite">
       <input type="hidden" name="delete_sprite" id="delete_sprite_{{character.id}}" value="false">
@@ -36,7 +36,7 @@
     <input type="hidden" name="story_id" value={{ story.id }}>
     <input type="hidden" name="scene_id" value={{ scene.id }}>
     <label for="character_name"></label>
-    <input type="text" id="character_name" name="character_name">
+    <input type="text" id="character_name" name="character_name" maxlength="35">
     <label for="sprite">sprite</label>
     <input type="file" id="sprite" name="sprite">
     <input type="submit">

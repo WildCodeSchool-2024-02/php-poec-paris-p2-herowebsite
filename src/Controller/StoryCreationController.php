@@ -9,7 +9,7 @@ class StoryCreationController extends AbstractController
 {
     private $storyManager;
     private $sceneManager;
-    public const MAX_TITLE_LENGTH = 30;
+    public const MAX_TITLE_LENGTH = 35;
 
     public function __construct()
     {
@@ -43,7 +43,7 @@ class StoryCreationController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $story = array_map('htmlentities', array_map('trim', $_POST));
 
-            if (strlen($story["name"]) >= self::MAX_TITLE_LENGTH) {
+            if (mb_strlen(html_entity_decode($story["name"]), 'UTF-8') >= self::MAX_TITLE_LENGTH) {
                 $errors[] = "Le nom de votre histoire est trop long";
             }
             if (empty($errors)) {
