@@ -1,0 +1,117 @@
+/* A remplacer : */
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../images/backgrounds/home.png);
+    position: relative;
+}
+
+main .links-back #home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 6rem;
+    height: 3rem;
+    color: var(--color-text);
+    margin: .5rem .8rem;
+    text-decoration: none;
+    font-family: 'Lancelot';
+    font-size: 1rem;
+    padding: .5rem;
+}
+
+main #home img {
+    width: 2rem;
+    height: 2rem;
+    padding-bottom: .3rem;
+}
+
+main .links-back {
+    width: 99%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    margin-top: 3rem;
+}
+
+main #home {
+    width: 10rem;
+    height: 3rem;
+    color: var(--color-text);
+    margin: -2.5rem .5rem 2rem -.5rem;
+    text-decoration: none;
+    font-family: 'Lancelot';
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main #container {
+    width: 80%;
+    height: 60%;
+    opacity: .9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main #container h1 {
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+    font-family: 'Julee';
+    color: white;
+    border-bottom: none ;
+    font-size: 3rem;
+    margin-top: 2rem;
+}
+
+main form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    opacity: .9;
+}
+
+main form .title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 20rem;
+}
+
+main form .title label {
+    color: black;
+    font-family: 'Julee';
+    font-size: 2.5rem;
+    margin-bottom: .9rem;
+    text-align: center;
+}
+
+main form .title input {
+    width: 15rem;
+    height: 2rem;
+    margin-bottom: 3.5rem;
+    background-color: rgb(223, 221, 221);
+}
+
+main form #submit {
+    width: 10rem;
+    height: 2.5rem;
+    padding: .2rem;
+    font-family: 'Lancelot';
+    font-size: 1.2rem;
+    font-weight: 700;
+
+}

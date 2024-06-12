@@ -2,31 +2,48 @@
 {% block head %}
     <link rel="stylesheet" href="/assets/css/engine/story.css">
 {% endblock %}
+
+{% block head_extra %}
+<script src="/assets/js/scene-index.js" defer></script>
+{% endblock %}
+
 {% block content %}
-<main id="main-stories">
-    <div id="home">
-        <a href="/" class="home">
-            <img src="/assets/images/icones/home.svg" alt="Icone Home" id="home">Home
+<main>
+    <div class="header">
+        <div></div>
+        <h1>Vos histoires</h1>
+        <a href="/" class="icon">
+            <img src="/assets/images/icones/home.svg" alt="plow icon"> Home
         </a>
     </div>
-    <h1>Vos Histoires</h1>
+
     <section id="container">
         {% for story in stories %}
-            <article class="storiesDetails">
+        <div class="border">
+            <article class="story-list clickable" data-url="/story/engine/show?id={{ story.id }}">
                 <div class="name">
-                    <a href="/story/engine/show?id={{ story.id }}"><h2>{{ story.name | raw }}</h2></a>
+                    <h2>{{ story.name | raw }}</h2>
                 </div>
-                <div class="icons">
-                    <a href="/story/scene/start?story_id={{ story.id }}"><img src="/assets/images/icones/play.svg" alt="play icon" class="icon"></a>
-                   <a
+
+                <div id="story-edit">
+                    <div class="story-show edit">
+                        <a href="/story/scene/start?story_id={{ story.id }}">
+                            <img src="/assets/images/icones/play.svg" alt="play icon" class="icon">
+                        </a>
+                    </div>
+                    <div class="story-delete edit">
+                        <a
                         onclick="if(confirm('Êtes vous sûr de vouloir supprimer cette histoire ?'))
-                        { window.location.href='/story/engine/delete?id={{story.id}}';}">
-                        <img src="/assets/images/icones/trash.svg" alt="trash icon" class="icon">
-                    </a>
+                        { window.location.href='/story/engine/scene/delete?story_id={{story.id}}&id={{scene.id}}';}">
+                            <img src="/assets/images/icones/trash.svg" alt="trash icon" class="icon">
+                        </a>
+                    </div>
+                </div>
                 </div>
             </article>
+        </div>
         {% endfor %}
     </section>
-    <a href="/story/engine/add" id="addStoryLink">Créer une histoire</a>
+    <a href="/story/engine/add" id="add-story-link">Créer une histoire</a>
 </main>
 {% endblock %}
