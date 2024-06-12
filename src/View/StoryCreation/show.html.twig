@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block head_extra %}
-<script src="/assets/js/scene-index.js" defer></script>
+<script src="/assets/js/card.js" defer></script>
 {% endblock %}
 
 {% block content %}
@@ -23,26 +23,31 @@
 
     <section id="container">
         {% for scene in scenes %}
+
         <div class="border">
-            <article class="scene-list clickable" data-url="/story/engine/scene/show?story_id={{ story.id }}&id={{ scene.id }}">
+
+            <article class="scene-list" data-url="/story/engine/scene/show?story_id={{ story.id }}&id={{ scene.id }}">
+                <a href="/story/engine/scene/show?story_id={{ story.id }}&id={{ scene.id }}">
                 <div class="name">
                         {{ scene.name | raw }}
                 </div>
                 <div id="scene-edit">
                     <div class="scene-show edit">
                         <a href="/story/scene/show?scene_id={{ scene.id }}">
-                            <img src="/assets/images/icones/play.svg" alt="play icon" class="icon">
+                            <img src="/assets/images/icones/play.svg" alt="play">
                         </a>
                     </div>
                     <div class="scene-delete edit">
-                        <a
-                        onclick="if(confirm('Êtes vous sûr de vouloir supprimer ce choix ?'))
+                        <a href="/story/engine/scene/delete?story_id={{story.id}}&id={{scene.id}}"
+                        onclick="if(confirm('Êtes vous sûr de vouloir supprimer cette scene ?'))
                         { window.location.href='/story/engine/scene/delete?story_id={{story.id}}&id={{scene.id}}';}">
-                            <img src="/assets/images/icones/trash.svg" alt="trash icon" class="icon">
+                            <img src="/assets/images/icones/trash.svg" alt="trash">
                         </a>
                     </div>
                 </div>
+                </a>
             </article>
+
         </div>
         {% endfor %}
     </section>
