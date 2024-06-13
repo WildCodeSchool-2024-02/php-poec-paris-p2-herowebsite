@@ -25,7 +25,6 @@
         {% for scene in scenes %}
 
         <div class="border">
-
             <article class="scene-list" data-url="/story/engine/scene/show?story_id={{ story.id }}&id={{ scene.id }}">
                 <a href="/story/engine/scene/show?story_id={{ story.id }}&id={{ scene.id }}">
                 <div class="name">
@@ -34,6 +33,7 @@
                 <div id="scene-edit">
                     <div class="scene-show edit">
                         <a href="/story/scene/show?scene_id={{ scene.id }}">
+                            <p class="toaster">Montrer la scène</p>
                             <img src="/assets/images/icones/play.svg" alt="play">
                         </a>
                     </div>
@@ -41,6 +41,7 @@
                         <a href="/story/engine/scene/delete?story_id={{story.id}}&id={{scene.id}}"
                         onclick="if(confirm('Êtes vous sûr de vouloir supprimer cette scene ?'))
                         { window.location.href='/story/engine/scene/delete?story_id={{story.id}}&id={{scene.id}}';}">
+                            <p class="toaster">Supprimer la scène</p>
                             <img src="/assets/images/icones/trash.svg" alt="trash">
                         </a>
                     </div>

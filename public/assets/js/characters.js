@@ -2,11 +2,13 @@
 
 const editCharacter = document.querySelectorAll('.edit-character');
 const editCharacterForm = document.querySelectorAll('.edit-character-form');
+const card = document.querySelectorAll('.card');
 
 console.log(editCharacter);
 for (let i = 0; i < editCharacter.length; i++) {
     editCharacter[i].addEventListener('click', () => {
         editCharacterForm[i].classList.toggle("edit-visible");
+        card[i].classList.toggle("big-card");
     })
 }
 

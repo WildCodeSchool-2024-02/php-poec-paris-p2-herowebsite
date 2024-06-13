@@ -38,6 +38,15 @@ for (let i = 0; i < cancelChoice.length; i++) {
     });
 }
 
+//toggle and use finalScene
+const finalSceneWrapper = document.getElementById("final-scene-wrapper");
+const currentChoices = choicesList.querySelectorAll("li");
+if (currentChoices.length === 0) {
+    finalSceneWrapper.classList.remove("hidden");
+} else {
+    finalSceneWrapper.classList.add("hidden");
+}
+
 finalScene.addEventListener('click', () => {
     addChoice.classList.toggle('hidden-choices');
     if (addChoiceForm.classList.contains("visible"))
