@@ -2,7 +2,10 @@ const body = document.querySelector("body");
 const background = document.getElementById("background");
 
 document.addEventListener('DOMContentLoaded', () => {
-    body.style.backgroundImage = "url(" + background.src + ")";
+    if (background.src && background.src !== window.location.href) {
+        body.style.backgroundImage = "url(" + background.src + ")";
+        background.classList.toggle("pas-empty");
+    }
 })
 
 const editScene = document.querySelectorAll('.edit-scene');
