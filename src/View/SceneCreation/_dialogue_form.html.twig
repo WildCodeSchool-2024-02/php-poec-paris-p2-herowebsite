@@ -2,13 +2,15 @@
     {% for dialogue in dialogues %}
     <li>
         <div class="dialogue-container">
-      <h4>{{ dialogue.name | raw }} :</h4>
-        <button class="del_dial"
-        onclick="if(confirm('Êtes vous sûr de vouloir supprimer ce dialogue ?'))
-        { window.location.href='/story/engine/dialogue/delete?story_id={{story.id}}&scene_id={{scene.id}}&id={{dialogue.id}}';}">
-        &#x2715;
-        </button>
-        <button class="edit-dialogue">Editer</button>
+            <h4>{{ dialogue.name | raw }} :</h4>
+            <div class="dialogue-buttons">
+                <button class="del_dial"
+                onclick="if(confirm('Êtes vous sûr de vouloir supprimer ce dialogue ?'))
+                { window.location.href='/story/engine/dialogue/delete?story_id={{story.id}}&scene_id={{scene.id}}&id={{dialogue.id}}';}">
+                &#x2715;
+                </button>
+                <button class="edit-dialogue">Editer</button>
+            </div>
         </div>
         <p>{{ dialogue.body | raw }}</p>
         <form method="post" action="/story/engine/dialogue/update" class="edit-dialogue-form">
