@@ -32,8 +32,8 @@
       <img id="scene-background" src={% if scene.background %}{{ '/assets/images/backgrounds/' ~ scene.background | raw }}{% else %}""{% endif %} alt="Background">
 
         <div class="categories">
+                <h2 id="characters-title">Personnages</h2>
             <div id="character-view" class="view">
-            <h3>Personnages</h3>
                 <div class='card-container'>
                 {% for character in characters %}
                     {% include 'SceneCreation/_character_edit.html.twig' %}
@@ -42,15 +42,13 @@
                 </div>
             </div>
 
-
+                <h2 id="dialogues-title">Répliques</h2>
             <div id="dialogue-view" class="view">
-                <h3>Répliques</h3>
                 {% include 'SceneCreation/_dialogue_form.html.twig' %}
             </div>
 
-
+                <h2 id="choices-title">Choix</h2>
             <div id="choice-view" class="view">
-                <h3>Choix</h3>
                 {% include 'SceneCreation/_choice_form.html.twig' %}
             </div>
         </div>
