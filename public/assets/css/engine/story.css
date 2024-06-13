@@ -122,11 +122,35 @@ img {
     border: 1px solid black;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 50%;
+    position: relative;
 }
 
 #story-edit .edit:hover {
     background: rgba(255, 255, 255, 0.9);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+#story-edit .story-show a {
+    position: relative;
+}
+
+#story-edit .story-show a .toaster, #story-edit .story-delete a .toaster {
+    display: none;
+    width: 7rem;
+}
+
+#story-edit .story-show:hover a .toaster, #story-edit .story-delete:hover a .toaster {
+    display: inline;
+    position: absolute;
+    top: -30px;
+    left: -20px;
+    color: black;
+    font-size: .9rem;
+    text-align: center;
+    font-weight: 700;
+    background: var(--color-engine-background);
+    padding: .2rem;
+    border-radius: 5px;
 }
 
 #add-story-link {
