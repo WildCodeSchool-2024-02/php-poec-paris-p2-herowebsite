@@ -64,12 +64,4 @@ class SceneManager extends AbstractManager
 
         return $this->pdo->query($query)->fetchAll();
     }
-
-    public function selectAllByStory(string $storyId): array
-    {
-        $query = "SELECT * FROM " . static::TABLE .
-            " WHERE story_id = " . $storyId . ";";
-
-        return $this->pdo->query($query)->fetchAll();
-    }
 }

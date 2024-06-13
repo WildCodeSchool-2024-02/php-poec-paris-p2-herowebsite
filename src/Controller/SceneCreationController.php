@@ -208,7 +208,7 @@ class SceneCreationController extends AbstractController
         $normalizedSceneName = $this->normalizeName($sceneName);
 
         // Récupérer toutes les scènes de l'histoire
-        $existingScenes = $this->sceneManager->selectAllByStory($scene['story_id']);
+        $existingScenes = $this->sceneManager->selectAll($scene['story_id']);
 
         foreach ($existingScenes as $existingScene) {
             if (isset($scene['scene_id']) && $existingScene['id'] == $scene['scene_id']) {
