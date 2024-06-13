@@ -68,6 +68,10 @@
     padding : 0.3rem;
 }
 
+.cancel-add-character {
+    display: none;
+}
+
 .edit-visible {
     display: flex;
 }
@@ -114,4 +118,48 @@
     background: rgba(255, 240, 240, 0.57);
     transform: scale(1.02);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.add-card {
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+}
+
+
+
+.add-character {
+
+    margin-top: 25%;
+    color: rgba(75, 75, 75, 0.57);
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size : 5rem;
+    text-decoration: none;
+    background: none;
+    border : 2px solid black;
+    border-color: rgba(75, 75, 75, 0.57);
+    border-radius: 10px;
+    padding-bottom: 10px;
+}
+
+.add-hidden {
+    display: none;
+    border : 2px solid black;
+}
+
+.add-character:hover {
+    color: rgba(238, 238, 238, 0.57);
+    border-color: rgba(238, 238, 238, 0.57);
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.delete-add {
+    position: relative;
+    top: -77%;
+    left: 94%;
 }

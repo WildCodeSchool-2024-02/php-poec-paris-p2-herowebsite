@@ -1,0 +1,35 @@
+<div class="card">
+
+    <button class="delete" onclick="if(confirm('Êtes vous sûr de vouloir supprimer ce personnage ?'))
+      { window.location.href='/story/engine/character/delete?story_id={{story.id}}&scene_id={{scene.id}}&id={{character.id}}';}">
+      ✖
+    </button>
+
+
+<h1>{{ character.name | raw }}</h1>
+
+{% if character.sprite %}
+    <img src= "/assets/images/sprites/{{character.sprite}}" alt="{{ character.name | raw }}">
+{% endif %}
+
+    <button class="edit-character">Editer</button>
+
+    <form method="post" enctype="multipart/form-data" action="/story/engine/character/update" class="edit-character-form">
+        <input type="hidden" name="story_id" value={{ story.id}}>
+        <input type="hidden" name="scene_id" value={{ scene.id}}>
+        <input type="hidden" name="character_id" value={{ character.id}}>
+
+        <label for="character_name">Nom : </label><input type="text" name="character_name" id="character_name" value="{{character.name | raw}}">
+        <label for="sprite">Apparence : </label><input type="file" name="sprite" id="sprite">
+        <input type="hidden" name="delete_sprite" id="delete_sprite_{{character.id}}" value="false">
+        <button type="button" onclick="
+            if (confirm('Êtes-vous sûr de vouloir supprimer ce sprite ?')) {
+                document.getElementById('delete_sprite_{{character.id}}').value = 'true';
+                this.form.submit();
+            }
+        " class="del-sprite">supprimer le sprite</button>
+
+    <input type="submit" class="submit">
+</form>
+
+</div>

@@ -1,0 +1,23 @@
+<div class="card">
+
+    <button class="delete cancel-add-character">
+      ✖
+    </button>
+
+<button class='add-character'>✚</button>
+
+  <form method='post' enctype="multipart/form-data" action="/story/engine/character/add" class="add-character-form">
+
+    <input type="hidden" name="story_id" value={{ story.id }}>
+    <input type="hidden" name="scene_id" value={{ scene.id }}>
+
+    <label for="character_name"></label>
+    <input type="text" id="character_name" name="character_name" maxlength="35">
+
+    <label for="sprite">sprite</label>
+    <input type="file" id="sprite" name="sprite">
+
+    <input type="submit">
+  </form>
+
+</div>

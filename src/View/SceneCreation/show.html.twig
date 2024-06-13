@@ -36,8 +36,9 @@
             <h3>Personnages</h3>
                 <div class='card-container'>
                 {% for character in characters %}
-                    {% include 'SceneCreation/_character_card.html.twig' %}
+                    {% include 'SceneCreation/_character_edit.html.twig' %}
                 {% endfor %}
+                    {% include 'SceneCreation/_character_add.html.twig' %}
                 </div>
                 {#{% include 'SceneCreation/_character_form.html.twig' %} #}
             </div>
