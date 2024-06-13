@@ -96,7 +96,7 @@ header #home img {
 #container h2 {
     color: white;
     font-size: 2.5rem;
-    margin-bottom: 2.5rem;
+    margin: 1rem 0;
     font-family: 'Julee';
     text-shadow: 1px 1px 4px black;
 }
