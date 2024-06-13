@@ -28,6 +28,7 @@ h1 {
     text-shadow: 1px 1px 4px black;
     padding-top: 1rem;
 }
+
 .icon {
     display: flex;
     flex-direction: column;

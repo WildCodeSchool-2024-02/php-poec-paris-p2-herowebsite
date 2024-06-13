@@ -6,25 +6,31 @@
 {% endblock %}
 
 {% block content %}
-<main id="main-scenes">
-  <section>
-  <h1>Histoire :
-    {{ story.name | raw }}
-  </h1>
-  <a href="/story/engine/show?id={{ story.id }}">Retour à l'histoire</a>
-  <img height=300 width=300 src = "/assets/images/backgrounds/{{scene.background | raw}}" alt="Background">
-    {% include 'SceneCreation/_scene_edit_form.html.twig' %}
+  <header>
+    <a href="/story/engine/show?id={{ story.id }}" id="back-scenes">
+      <img src="/assets/images/icones/story.svg" alt="retour aux scènes"> Scènes
+    </a>
+    <div id="title">
+      <h1>Scène : {{scene.name | raw }}</h1>
+      <h2>Histoire : {{ story.name | raw }} </h2>
+    </div>
+    <a href="/" id="home">
+      <img src="/assets/images/icones/home.svg" alt="retour à l'accueil"> Home
+    </a>
+  </header>
+  <main id="main-scene">
+    <section id="container">
+        <img height=300 width=300 src = "/assets/images/backgrounds/{{scene.background | raw}}" alt="Background">
+        {% include 'SceneCreation/_scene_edit_form.html.twig' %}
 
-    <h1>{{scene.name | raw }}</h1>
+        <h2>Personnages :</h2>
+        {% include 'SceneCreation/_character_form.html.twig' %}
 
-    <h2>Personnages :</h2>
-    {% include 'SceneCreation/_character_form.html.twig' %}
+        <h2>Répliques :</h2>
+        {% include 'SceneCreation/_dialogue_form.html.twig' %}
 
-    <h2>Répliques :</h2>
-    {% include 'SceneCreation/_dialogue_form.html.twig' %}
-
-    <h2>Choix :</h2>
-    {% include 'SceneCreation/_choice_form.html.twig' %}
-  </section>
-</main>
+        <h2>Choix :</h2>
+        {% include 'SceneCreation/_choice_form.html.twig' %}
+    </section>
+  </main>
 {% endblock %}
