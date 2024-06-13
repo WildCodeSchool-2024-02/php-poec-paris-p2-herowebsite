@@ -158,7 +158,20 @@ header .edit-scene {
 
 #dialogue-view { 
     grid-area: 1 / 2 / 2 / 3;
+    padding: .5rem;
 }
+ #dialogue-view h3 {
+    padding: .3rem;
+ }
+
+ #dialogue-view ul li {
+    margin-bottom: .3rem;
+ }
+
+ #dialogue-view ul li #dialogue-name {
+    font-weight: 700;
+    font-size: 1.2em;
+ }
 
 #choice-view { 
     grid-area: 2 / 2 / 3 / 3; 

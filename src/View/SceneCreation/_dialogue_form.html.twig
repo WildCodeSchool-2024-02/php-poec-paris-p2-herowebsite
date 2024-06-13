@@ -1,7 +1,7 @@
 <ul>
     {% for dialogue in dialogues %}
     <li>
-      {{ dialogue.name | raw }} :
+      <span id="dialogue-name">{{ dialogue.name | raw }} : <br></span>
       {{ dialogue.body | raw }}
         <button
         onclick="if(confirm('Êtes vous sûr de vouloir supprimer ce dialogue ?'))
