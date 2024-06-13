@@ -11,7 +11,7 @@ const cancelScene = document.querySelectorAll('.cancel-scene');
 
 for (let i = 0; i < editScene.length; i++) {
     editScene[i].addEventListener('click', () => {
-        editSceneForm[i].style.display = 'inline-block';
+        editSceneForm[i].classList.toggle("hidden");
     })
 
     cancelScene[i].addEventListener('click', (e) => {
@@ -26,12 +26,12 @@ const cancelCharacter = document.querySelectorAll('.cancel-character');
 
 for (let i = 0; i < editCharacter.length; i++) {
     editCharacter[i].addEventListener('click', () => {
-        editCharacterForm[i].style.display = 'inline-block';
+        editCharacterForm[i].classList.toggle("visible");
     })
 
     cancelCharacter[i].addEventListener('click', (e) => {
         e.preventDefault();
-        editCharacterForm[i].style.display = 'none';
+        editCharacterForm[i].classList.toggle("visible");
     })
 }
 
@@ -41,7 +41,7 @@ const cancelDialogue = document.querySelectorAll('.cancel-dialogue');
 
 for (let i = 0; i < editDialogue.length; i++) {
     editDialogue[i].addEventListener('click', () => {
-        editDialogueForm[i].style.display = 'inline-block';
+        editDialogueForm[i].classList.toggle("visible");
     })
 
     cancelDialogue[i].addEventListener('click', (e) => {
@@ -56,7 +56,7 @@ const cancelChoice = document.querySelectorAll('.cancel-choice');
 
 for (let i = 0; i < editChoice.length; i++) {
     editChoice[i].addEventListener('click', () => {
-        editChoiceForm[i].style.display = 'inline-block';
+        editChoiceForm[i].classList.toggle("visible");
     })
 
     cancelChoice[i].addEventListener('click', (e) => {

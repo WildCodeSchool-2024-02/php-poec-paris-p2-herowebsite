@@ -10,7 +10,7 @@
   {% endif %}
     <button onclick="if(confirm('Êtes vous sûr de vouloir supprimer ce choix ?')) { window.location.href='/story/engine/choice/delete?story_id={{story.id}}&scene_id={{scene.id}}&id={{choice.id}}';}"> &#x1F5D1;</button>
     <button class="edit-choice">Editer</button>
-    <form method="post" action="/story/engine/choice/update" class="edit-choice-form-form">
+    <form method="post" action="/story/engine/choice/update" class="edit-choice-form">
     <input type="hidden" name="id" value="{{ choice.id }}">
     <input type="hidden" name="scene_id" value="{{ scene.id }}">
     <input type="hidden" name="story_id" value="{{ story.id }}">

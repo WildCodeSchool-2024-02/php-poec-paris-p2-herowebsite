@@ -13,7 +13,7 @@
             <input type="hidden" name="story_id" value={{ story.id }}>
             <input type="hidden" name="scene_id" value={{ scene.id }}>
             <input type="hidden" name="dialogue_id" value={{ dialogue.id }}>
-            <input type="textarea" name="dialogue_body" id="dialogue_body" value="{{ dialogue.body | raw }}">
+            <input type="textarea" name="dialogue_body" id="dialogue_body" value="{{ dialogue.body | raw }} \">
             <select name="character_id" id="character_id">
             {% for character in characters %}
                 <option value={{ character.id }} {% if onescene.id == choice.next_scene_id %}selected{% endif %} >
