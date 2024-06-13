@@ -18,9 +18,9 @@
             <input type="hidden" name="scene_id" value={{ scene.id }}>
             <input type="hidden" name="dialogue_id" value={{ dialogue.id }}>
             <input type="textarea" name="dialogue_body" id="dialogue_body" value="{{ dialogue.body | raw }}"  maxlength="150">
-            <select name="character_id" id="character_id">
+            <select name="character_id" id="character_id" autocomplete="off">
             {% for character in characters %}
-                <option value={{ character.id }} {% if dialogue.name %}selected{% endif %} >
+                <option value="{{ character.id }}" {% if dialogue.character_id == character.id %} selected {% endif %}>
                 {{ character.name | raw }}
                 </option>
             {% endfor %}
