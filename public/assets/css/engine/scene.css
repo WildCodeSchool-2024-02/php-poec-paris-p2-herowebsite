@@ -207,7 +207,6 @@ header .edit-scene {
 }
 
 #dialogue-view h4 {
-    flex: 0 0 90%;
     display: inline-block;
     margin: 0;
     font-size: 1.17rem;
@@ -223,8 +222,14 @@ header .edit-scene {
 
 .dialogue-container {
     display: flex;
-    justify-content: space-between; /* Align items with space between */
-    align-items: center; /* Center items vertically */
+    justify-content: space-between; 
+    align-items: center;
+}
+
+.dialogue-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
 }
 
 #dialogue-view input,
