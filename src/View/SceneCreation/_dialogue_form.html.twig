@@ -1,14 +1,16 @@
 <ul>
     {% for dialogue in dialogues %}
     <li>
-      {{ dialogue.name | raw }} :
-      {{ dialogue.body | raw }}
-        <button
+        <div class="dialogue-container">
+      <h4>{{ dialogue.name | raw }} :</h4>
+        <button class="del_dial"
         onclick="if(confirm('Êtes vous sûr de vouloir supprimer ce dialogue ?'))
         { window.location.href='/story/engine/dialogue/delete?story_id={{story.id}}&scene_id={{scene.id}}&id={{dialogue.id}}';}">
-        &#x1F5D1;
+        &#x2715;
         </button>
         <button class="edit-dialogue">Editer</button>
+        </div>
+        <p>{{ dialogue.body | raw }}</p>
         <form method="post" action="/story/engine/dialogue/update" class="edit-dialogue-form">
             <input type="hidden" name="story_id" value={{ story.id }}>
             <input type="hidden" name="scene_id" value={{ scene.id }}>
@@ -16,7 +18,7 @@
             <input type="textarea" name="dialogue_body" id="dialogue_body" value="{{ dialogue.body | raw }}"  maxlength="150">
             <select name="character_id" id="character_id">
             {% for character in characters %}
-                <option value={{ character.id }} {% if onescene.id == choice.next_scene_id %}selected{% endif %} >
+                <option value={{ character.id }} {% if dialogue.name %}selected{% endif %} >
                 {{ character.name | raw }}
                 </option>
             {% endfor %}
