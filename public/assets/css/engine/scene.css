@@ -284,3 +284,7 @@ a:hover {
 #choice-view li.choice-item .del_choice {
     margin-left: auto;
 }
+
+li {
+    list-style-type: none;
+}
