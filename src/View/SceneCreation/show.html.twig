@@ -2,6 +2,8 @@
 
 {% block head_extra %}
 <link rel="stylesheet" href="/assets/css/engine/scene.css">
+<link rel="stylesheet" href="/assets/css/engine/character_card.css">
+
 {# <script src="/assets/js/edit.js" defer></script> #}
 <script src="/assets/js/choices.js" defer></script>
 <script src="/assets/js/dialogues.js" defer></script>
@@ -18,7 +20,7 @@
        <h1 {#class="title visible"#}>Scène : {{scene.name | raw }} <img class="edit-scene" src="/assets/images/icones/whitepen.svg" alt="Editer le nom de la scène"></h1>
 
       {% include 'SceneCreation/_scene_edit_form.html.twig' %}
-      
+
       <h2>Histoire : {{ story.name | raw }} </h2>
     </div>
     <a href="/" id="home">
@@ -29,22 +31,28 @@
     <section id="container">
       <img id="scene-background" src={% if scene.background %}{{ '/assets/images/backgrounds/' ~ scene.background | raw }}{% else %}""{% endif %} alt="Background">
 
-        <button id="character-button">Personnages</button>
-        <button id="dialogue-button">Répliques</button>
-        <button id="choice-button">Choix</button>
-
-        <div id="character-view">
-        {% include 'SceneCreation/_character_form.html.twig' %}
-        </div>
-
-
-        <div id="dialogue-view" class="hidden">
-        {% include 'SceneCreation/_dialogue_form.html.twig' %}
-        </div>
+        <div class="categories">
+            <div id="character-view" class="view">
+            <h3>Personnages</h3>
+                <div class='card-container'>
+                {% for character in characters %}
+                {% include 'SceneCreation/_character_card.html.twig' %}
+                {% endfor %}
+                </div>
+                {#{% include 'SceneCreation/_character_form.html.twig' %} #}
+            </div>
 
 
-        <div id="choice-view" class="hidden">
-        {% include 'SceneCreation/_choice_form.html.twig' %}
+            <div id="dialogue-view" class="view">
+                <h3>Répliques</h3>
+                {% include 'SceneCreation/_dialogue_form.html.twig' %}
+            </div>
+
+
+            <div id="choice-view" class="view">
+                <h3>Choix</h3>
+                {% include 'SceneCreation/_choice_form.html.twig' %}
+            </div>
         </div>
     </section>
   </main>

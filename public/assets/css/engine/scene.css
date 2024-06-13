@@ -129,3 +129,18 @@ header .edit-scene {
 .visible {
     display: inline-block;
 }
+
+.categories {
+    display : grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.categories h3 {
+    display: flex;
+    justify-content : center;
+}
+
+.view {
+    width : 100%;
+}
