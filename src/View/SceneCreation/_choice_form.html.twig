@@ -3,6 +3,7 @@
   <div>
   <li class="choice-item">
     <p>{{ choice.body | raw }}</p>
+    <p>➼</p>
   {% if choice.next_scene_id == 0 %}
     {{ choice.next_scene_name | raw }}
   {% else %}
@@ -24,7 +25,7 @@
         {% endfor %}
     </select>
     <input type="submit">
-    <button class="cancel-choice">&#10006;</button>
+    <button class="cancel-choice"><</button>
     </form>
     </div>
   </li>
@@ -47,6 +48,6 @@
       {% endfor %}
     </select>
     <input type="submit">
-    <button class="cancel-add-choice">&#10006;</button>
+    <button class="cancel-add-choice"><</button>
   </form>
 </ul>
