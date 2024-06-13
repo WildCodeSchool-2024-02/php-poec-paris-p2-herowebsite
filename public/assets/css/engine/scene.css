@@ -108,11 +108,16 @@ header #home img {
 .edit-scene-form,
 .edit-character-form,
 .edit-dialogue-form,
-.edit-choice-form-form,
+.edit-choice-form,
 .add-character-form,
 .add-dialogue-form,
 .add-choice-form,
 .hidden-choices,
-.hidden_dialogue {
+.hidden_dialogue,
+.hidden {
     display: none;
+}
+
+.visible {
+    display: inline-block;
 }

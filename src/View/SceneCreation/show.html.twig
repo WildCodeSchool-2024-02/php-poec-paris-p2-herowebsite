@@ -23,18 +23,21 @@
       <img id="background" src={% if scene.background %}{{ '/assets/images/backgrounds/' ~ scene.background | raw }}{% else %}""{% endif %} alt="Background">
         {% include 'SceneCreation/_scene_edit_form.html.twig' %}
 
-        <h2>Personnages :</h2>
-        <div id="character_form">
+        <button id="character-button">Personnages :</button>
+        <button id="dialogue-button">Répliques :</button>
+        <button id="choice-button">Choix :</button>
+
+        <div id="character-view">
         {% include 'SceneCreation/_character_form.html.twig' %}
         </div>
 
-        <h2>Répliques :</h2>
-        <div id="dialogue_form">
+
+        <div id="dialogue-view" class="hidden">
         {% include 'SceneCreation/_dialogue_form.html.twig' %}
         </div>
 
-        <h2>Choix :</h2>
-        <div id="choice_form">
+
+        <div id="choice-view" class="hidden">
         {% include 'SceneCreation/_choice_form.html.twig' %}
         </div>
     </section>
