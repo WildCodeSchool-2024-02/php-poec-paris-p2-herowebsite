@@ -20,13 +20,13 @@ const cancelAddCharacter = document.querySelector('.cancel-add-character');
 
     addCharacter.addEventListener('click', () => {
     addCharacter.classList.toggle('add-hidden');
-    addCharacterForm.classList.toggle("visible");
+    addCharacterForm.classList.toggle("edit-visible");
     cancelAddCharacter.classList.toggle("edit-visible");
     })
 
     cancelAddCharacter.addEventListener('click', (e) => {
         e.preventDefault();
         addCharacter.classList.toggle('add-hidden');
-        addCharacterForm.classList.toggle("visible");
+        addCharacterForm.classList.toggle("edit-visible");
         cancelAddCharacter.classList.toggle("edit-visible");
     })
