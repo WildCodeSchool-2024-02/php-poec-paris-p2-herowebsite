@@ -11,7 +11,7 @@
       <img src="/assets/images/icones/story.svg" alt="retour aux scènes"> Scènes
     </a>
     <div id="title">
-      <h1>Scène : {{scene.name | raw }} <img class="edit-scene" src="/assets/images/icones/whitepen.svg" alt="Editer le nom de la scène"></h1>
+       <h1 {#class="title visible"#}>Scène : {{scene.name | raw }} <img class="edit-scene" src="/assets/images/icones/whitepen.svg" alt="Editer le nom de la scène"></h1>
 
       {% include 'SceneCreation/_scene_edit_form.html.twig' %}
       

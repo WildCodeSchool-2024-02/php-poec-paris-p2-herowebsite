@@ -8,20 +8,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 })
 
-const editScene = document.querySelectorAll('.edit-scene');
-const editSceneForm = document.querySelectorAll('.edit-scene-form');
-const cancelScene = document.querySelectorAll('.cancel-scene');
+const sceneTitle = document.querySelector('.title');
+const editScene = document.querySelector('.edit-scene');
+const editSceneForm = document.querySelector('.edit-scene-form');
+const cancelScene = document.querySelector('.cancel-scene');
 
-for (let i = 0; i < editScene.length; i++) {
-    editScene[i].addEventListener('click', () => {
-        editSceneForm[i].classList.toggle("visible");
+    editScene.addEventListener('click', () => {
+        editSceneForm.classList.toggle("visible");
+        sceneTitle.classList.toggle("visible");
     })
 
-    cancelScene[i].addEventListener('click', (e) => {
+    cancelScene.addEventListener('click', (e) => {
         e.preventDefault();
-        editSceneForm[i].classList.toggle("visible");
+        editSceneForm.classList.toggle("visible");
+        sceneTitle.classList.toggle("visible");
     })
-}
 
 const editCharacter = document.querySelectorAll('.edit-character');
 const editCharacterForm = document.querySelectorAll('.edit-character-form');
