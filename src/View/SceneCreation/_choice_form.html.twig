@@ -3,12 +3,14 @@
   <div>
   <li class="choice-item">
     <p>{{ choice.body | raw }}</p>
+    <p class="arrow" >➼</p>
   {% if choice.next_scene_id == 0 %}
     {{ choice.next_scene_name | raw }}
   {% else %}
     <a href="/story/engine/scene/show?story_id={{ story.id }}&id={{ choice.next_scene_id }}">
     {{ choice.next_scene_name | raw }}</a>
   {% endif %}
+  <div>
     <button class="del_choice" onclick="if(confirm('Êtes vous sûr de vouloir supprimer ce choix ?')) { window.location.href='/story/engine/choice/delete?story_id={{story.id}}&scene_id={{scene.id}}&id={{choice.id}}';}"> &#x2715;</button>
     <button class="edit-choice">Editer</button>
     <form method="post" action="/story/engine/choice/update" class="edit-choice-form">
@@ -26,6 +28,7 @@
     <input type="submit">
     <button class="cancel-choice">&#10006;</button>
     </form>
+    </div>
     </div>
   </li>
   {% endfor %}
