@@ -91,7 +91,7 @@ header .edit-scene {
 
 #container {
     width: 90vw;
-    height: 60vh;
+    height: 70vh;
     background: rgba(201, 200, 200, 0.6);
     padding: 2rem 1rem;
     margin-right: 1rem;
@@ -147,8 +147,9 @@ header .edit-scene {
     width : 100%;
     height: 100%;
     overflow-y: auto;
-    border: 3px solid gray;
     border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 6px 0px inset, rgba(0, 0, 0, 0.5) -3px -3px 6px 1px inset;
+    backdrop-filter: blur(4px);
 }
 
 #character-view { 
