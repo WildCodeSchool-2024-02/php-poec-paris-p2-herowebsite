@@ -41,8 +41,8 @@
             {% for character in characters %}
                 <option  value = "{{ character.id }}"> {{ character.name | raw }} </option>
             {% endfor %}
-        </select>
-        <input type ="submit">
+            </select>
+        <input type ="submit" id="submit">
         <button class="cancel-add-dialogue"><</button>
     </form>
     {% endif %}

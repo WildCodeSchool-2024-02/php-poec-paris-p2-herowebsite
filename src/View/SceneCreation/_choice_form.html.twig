@@ -13,11 +13,11 @@
     <button class="del_choice" onclick="if(confirm('Êtes vous sûr de vouloir supprimer ce choix ?')) { window.location.href='/story/engine/choice/delete?story_id={{story.id}}&scene_id={{scene.id}}&id={{choice.id}}';}"> &#x2715;</button>
     <button class="edit-choice">Editer</button>
     <form method="post" action="/story/engine/choice/update" class="edit-choice-form">
-    <input type="hidden" name="id" value="{{ choice.id }}">
-    <input type="hidden" name="scene_id" value="{{ scene.id }}">
-    <input type="hidden" name="story_id" value="{{ story.id }}">
-    <input type="text" name="choice_body" id="choice_body" value="{{ choice.body | raw }}" maxlength="35">
-    <select name="next_scene" id="next_scene">
+      <input type="hidden" name="id" value="{{ choice.id }}">
+      <input type="hidden" name="scene_id" value="{{ scene.id }}">
+      <input type="hidden" name="story_id" value="{{ story.id }}">
+      <input type="text" name="choice_body" id="choice_body" value="{{ choice.body | raw }}" maxlength="35">
+      <select name="next_scene" id="next_scene">
         {% for onescene in allscenes %}
         <option value="{{ onescene.id }}" {% if onescene.id == choice.next_scene_id %}selected{% endif %}>
         {{ onescene.name | raw }}

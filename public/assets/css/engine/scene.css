@@ -288,3 +288,30 @@ a:hover {
 li {
     list-style-type: none;
 }
+
+form {
+    width: 98%;
+    display: flex;
+    justify-content: space-evenly;
+    padding: .2rem .8rem;
+}
+
+form #dialogue_body, form select {
+    height: 1.5rem;
+    margin-right: .3rem;
+    padding: .2px;
+}
+
+form #submit {
+    width: 3.5rem;
+    height: 1.5rem;
+    margin-top: -1.5rem;
+    margin-left: .2rem;
+}
+
+form .cancel-add-dialogue {
+    margin-left: .3rem;
+    padding: auto 0;
+    width: 1.8rem;
+}
+
