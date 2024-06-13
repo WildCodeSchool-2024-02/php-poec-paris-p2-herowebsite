@@ -1,21 +1,23 @@
-<ul>
+<ul class="choices-list">
   {% for choice in choices %}
-  <li>
-{{ choice.body | raw }}
+  <div>
+  <li class="choice-item">
+    <p>{{ choice.body | raw }}</p>
+    <p>➼</p>
   {% if choice.next_scene_id == 0 %}
     {{ choice.next_scene_name | raw }}
   {% else %}
     <a href="/story/engine/scene/show?story_id={{ story.id }}&id={{ choice.next_scene_id }}">
     {{ choice.next_scene_name | raw }}</a>
   {% endif %}
-    <button onclick="if(confirm('Êtes vous sûr de vouloir supprimer ce choix ?')) { window.location.href='/story/engine/choice/delete?story_id={{story.id}}&scene_id={{scene.id}}&id={{choice.id}}';}"> &#x1F5D1;</button>
-    <button class="edit_choice">Editer</button>
-    <form method="post" action="/story/engine/choice/update" class="edit_choice_form">
-    <input type="hidden" name="id" value="{{ choice.id }}">
-    <input type="hidden" name="scene_id" value="{{ scene.id }}">
-    <input type="hidden" name="story_id" value="{{ story.id }}">
-    <input type="text" name="choice_body" id="choice_body" value="{{ choice.body | raw }}">
-    <select name="next_scene" id="next_scene">
+    <button class="del_choice" onclick="if(confirm('Êtes vous sûr de vouloir supprimer ce choix ?')) { window.location.href='/story/engine/choice/delete?story_id={{story.id}}&scene_id={{scene.id}}&id={{choice.id}}';}"> &#x2715;</button>
+    <button class="edit-choice">Editer</button>
+    <form method="post" action="/story/engine/choice/update" class="edit-choice-form">
+      <input type="hidden" name="id" value="{{ choice.id }}">
+      <input type="hidden" name="scene_id" value="{{ scene.id }}">
+      <input type="hidden" name="story_id" value="{{ story.id }}">
+      <input type="text" name="choice_body" id="choice_body" value="{{ choice.body | raw }}" maxlength="35">
+      <select name="next_scene" id="next_scene">
         {% for onescene in allscenes %}
         <option value="{{ onescene.id }}" {% if onescene.id == choice.next_scene_id %}selected{% endif %}>
         {{ onescene.name | raw }}
@@ -23,16 +25,20 @@
         {% endfor %}
     </select>
     <input type="submit">
-    <button class="cancel_choice">&#10006;</button>
+    <button class="cancel-choice"><</button>
     </form>
+    </div>
   </li>
   {% endfor %}
-  <button class="add_choice">Ajouter un choix</button>
-  <form method='post' action="/story/engine/choice/add" class="add_choice_form">
+  <div id="final-scene-wrapper">
+    <input type="checkbox" id="final-scene">Dernière scène</input>
+  </div>
+  <button class="add-choice">Ajouter un choix</button>
+  <form method='post' action="/story/engine/choice/add" class="add-choice-form">
     <label for="choice_body"></label>
     <input type="hidden" name="scene_id" value={{ scene.id }}>
     <input type="hidden" name="story_id" value={{ story.id }}>
-    <input type="text" id="choice_body" name="choice_body">
+    <input type="text" id="choice_body" name="choice_body" maxlength="35">
     <select name="next_scene" id="next_scene">
       <option value="0">-- À définir --</option>
       {% for onescene in allscenes %}
@@ -42,6 +48,6 @@
       {% endfor %}
     </select>
     <input type="submit">
-    <button class="cancel_choice">&#10006;</button>
+    <button class="cancel-add-choice"><</button>
   </form>
 </ul>

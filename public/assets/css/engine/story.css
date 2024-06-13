@@ -1,0 +1,184 @@
+main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../../images/backgrounds/home.png');
+    position: relative;
+}
+
+.header {
+    color: #fff;
+    font-size: 1.5rem;
+    font-family: "Julee", cursive;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem 2rem 1rem;
+    text-shadow: 1px 1px 2px black;
+}
+
+h1 {
+    text-shadow: 1px 1px 4px black;
+    padding-top: 1rem;
+}
+
+.icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--color-text);
+    text-decoration: none;
+    font-family: "Lancelot", serif;
+    font-size: 1rem;
+    align-self: flex-start;
+}
+
+img {
+    width: 2rem;
+    padding-bottom: 0.3rem;
+    filter: drop-shadow(1px 1px 1px black);
+}
+
+#container {
+    width: 80%;
+    max-height: 60%;
+    margin-top: 5%;
+    background: rgba(212, 212, 212, 0.6);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 10px;
+    overflow-y: auto;
+    backdrop-filter: blur(3px);
+}
+
+.story-list {
+    width: 99.5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--color-engine-background);
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s, box-shadow 0.3s;
+    padding: 2rem;
+    height: 3rem;
+    margin: 2px;
+    border-radius: 4px;
+    font-size: .8rem;
+    font-family: var(--font-text);
+}
+
+
+.story-list:hover {
+    background: var(--color-engine-background-hover);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.border {
+    height: 4.6rem;
+    border: 3px solid transparent;
+    border-radius: 10px;
+    background: radial-gradient(circle, rgba(195,165,34,1) 0%, rgba(130,95,16,1) 100%);
+    margin-bottom: 10px;
+    margin-top: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;}
+
+.name {
+    padding: 0.5rem;
+    font-size: 1.8rem;
+    font-family: "Lancelot", serif;
+    margin-left: 2rem;
+}
+
+.story-list a {
+    text-decoration: none;
+    color: #000;
+    width: 100%;
+}
+
+#story-edit {
+    display: flex;
+    justify-content: right;
+    margin: 10px;
+}
+
+#story-edit .edit {
+
+    padding: 5px;
+    height: 44px;
+    background: #fff;
+    display: flex;
+    transition: background 0.3s;
+    margin-left: 10px;
+    border: 1px solid black;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    position: relative;
+}
+
+#story-edit .edit:hover {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+#story-edit .story-show a {
+    position: relative;
+}
+
+#story-edit .story-show a .toaster, #story-edit .story-delete a .toaster {
+    display: none;
+    width: 7rem;
+}
+
+#story-edit .story-show:hover a .toaster, #story-edit .story-delete:hover a .toaster {
+    display: inline;
+    position: absolute;
+    top: -30px;
+    left: -20px;
+    color: black;
+    font-size: .9rem;
+    text-align: center;
+    font-weight: 700;
+    background: var(--color-engine-background);
+    padding: .2rem;
+    border-radius: 5px;
+}
+
+#add-story-link {
+    width: 15rem;
+    height: 3rem;
+    margin-top: 2rem;
+    background: var(--color-engine-button);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-family: "Lancelot", serif;
+    color: #4d352b;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+#add-story-link:hover {
+    background: var(--color-engine-button-hover);
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.clickable {
+    cursor: pointer;
+}

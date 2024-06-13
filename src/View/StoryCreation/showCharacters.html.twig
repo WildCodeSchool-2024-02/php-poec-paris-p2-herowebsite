@@ -1,11 +1,9 @@
 {% extends 'layout.html.twig' %}
-{% block head %}
-  <link rel="stylesheet" href="/assets/css/storycreationShow.css">
-{% endblock %}
+
 {% block content %}
-<main id="mainStory">
-    <div class="linksBack">
-        <a href="/story/engine" id="backStories">
+<main id="main-story">
+    <div class="links-back">
+        <a href="/story/engine" id="back-stories">
             <img src="/assets/images/icones/story.svg" alt="plow icon"> Histoires
         </a>
         <a href="/" id="home">
@@ -14,30 +12,30 @@
     </div>
     <h1>{{story.name | raw}}</h1>
     <nav id="nav">
-        <a href="/scene/show"><h2 id="navScene">Scènes</h2></a>
-        <a href=""><h2 id="navCharacter">Personnages</h2></a>
-    </nav>   
+        <a href="/scene/show"><h2 id="nav-scene">Scènes</h2></a>
+        <a href=""><h2 id="nav-character">Personnages</h2></a>
+    </nav>
     <section id="container">
-        
+
         {% for character in characters %}
-            <article class="characterList">
+            <article class="character-list">
                 <div class="name">
                     <a href="scene/show?story_id={{ story.id }}&id={{ character.id }}">
                         {{ character.name | raw }}
                     </a>
                 </div>
-                <div id="charactersEdit">
-                    <div class="characterEdit edit">
+                <div id="characters-edit">
+                    <div class="character-edit edit">
                         <a href="/scenecreation/update_scene?id={{ story.id }}">
                             <img src="/assets/images/icones/pen.svg" alt="pen icon" class="icon">
                         </a>
                     </div>
-                    <div class="sceneShow edit">
+                    <div class="scene-show edit">
                         <a href="/story/scene/show?story_id={{ story.id }}&id={{ scene.id }}">
-                            <img src="/assets/images/icones/preview.svg" alt="preview icon" class="icon">
+                            <img src="/assets/images/icones/play.svg" alt="play icon" class="icon">
                         </a>
                     </div>
-                    <div class="sceneDelete edit">
+                    <div class="scene-delete edit">
                         <a href="/story/engine/scene/delete?story_id={{ story.id }}&id={{scene.id}}">
                             <img src="/assets/images/icones/trash.svg" alt="trash icon" class="icon">
                         </a>
@@ -46,7 +44,7 @@
             </article>
         {% endfor %}
     </section>
-    <a href = "scene/add?story_id={{story.id}}" id="addSceneLink"> Ajouter une scène </a>
+    <a href = "scene/add?story_id={{story.id}}" id="add-scene-link"> Ajouter une scène </a>
 </main>
 {% endblock %}
 

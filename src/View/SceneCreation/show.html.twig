@@ -1,30 +1,57 @@
 {% extends 'layout.html.twig' %}
 
 {% block head_extra %}
-<link rel="stylesheet" href="/assets/css/showScene.css">
-<script src="/assets/js/edit.js" defer></script>
+<link rel="stylesheet" href="/assets/css/engine/scene.css">
+<link rel="stylesheet" href="/assets/css/engine/character_card.css">
+
+{# <script src="/assets/js/edit.js" defer></script> #}
+<script src="/assets/js/choices.js" defer></script>
+<script src="/assets/js/dialogues.js" defer></script>
+<script src="/assets/js/characters.js" defer></script>
+<script src="/assets/js/scene-engine.js" defer></script>
 {% endblock %}
 
 {% block content %}
-<main id="mainScenes">
-  <section>
-  <h1>Histoire :
-    {{ story.name | raw }}
-  </h1>
-  <a href="/story/engine/show?id={{ story.id }}">Retour à l'histoire</a>
-  <img height=300 width=300 src = "/assets/images/backgrounds/{{scene.background | raw}}" alt="Background">
-    {% include 'SceneCreation/_scene_edit_form.html.twig' %}
+  <header>
+    <a href="/story/engine/show?id={{ story.id }}" id="back-scenes">
+      <img src="/assets/images/icones/story.svg" alt="retour aux scènes"> Scènes
+    </a>
+    <div id="title">
+       <h1 {#class="title visible"#}>Scène : {{scene.name | raw }} <img class="edit-scene" src="/assets/images/icones/whitepen.svg" alt="Editer le nom de la scène"></h1>
 
-    <h1>{{scene.name | raw }}</h1>
+      {% include 'SceneCreation/_scene_edit_form.html.twig' %}
 
-    <h2>Personnages :</h2>
-    {% include 'SceneCreation/_character_form.html.twig' %}
+      <h2>Histoire : {{ story.name | raw }} </h2>
+    </div>
+    <a href="/" id="home">
+      <img src="/assets/images/icones/home.svg" alt="retour à l'accueil"> Home
+    </a>
+  </header>
+  <main id="main-scene">
+    <section id="container">
+      <img id="scene-background" src={% if scene.background %}{{ '/assets/images/backgrounds/' ~ scene.background | raw }}{% else %}""{% endif %} alt="Background">
 
-    <h2>Répliques :</h2>
-    {% include 'SceneCreation/_dialogue_form.html.twig' %}
+        <div class="categories">
+                <h2 id="characters-title">Personnages</h2>
+            <div id="character-view" class="view">
+                <div class='card-container'>
+                {% for character in characters %}
+                    {% include 'SceneCreation/_character_edit.html.twig' %}
+                {% endfor %}
+                    {% include 'SceneCreation/_character_add.html.twig' %}
+                </div>
+            </div>
 
-    <h2>Choix :</h2>
-    {% include 'SceneCreation/_choice_form.html.twig' %}
-  </section>
-</main>
+                <h2 id="dialogues-title">Répliques</h2>
+            <div id="dialogue-view" class="view">
+                {% include 'SceneCreation/_dialogue_form.html.twig' %}
+            </div>
+
+                <h2 id="choices-title">Choix</h2>
+            <div id="choice-view" class="view">
+                {% include 'SceneCreation/_choice_form.html.twig' %}
+            </div>
+        </div>
+    </section>
+  </main>
 {% endblock %}

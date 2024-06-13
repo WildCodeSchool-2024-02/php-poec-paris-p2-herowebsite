@@ -1,43 +1,53 @@
 {% extends 'layout.html.twig' %}
 {% block head %}
-    <link rel="stylesheet" href="/assets/css/storyCreation.css">
+    <link rel="stylesheet" href="/assets/css/engine/story.css">
 {% endblock %}
+
+{% block head_extra %}
+<script src="/assets/js/card.js" defer></script>
+{% endblock %}
+
 {% block content %}
-<main id="mainStories">
-    <div id="home">
-        <a href="/" class="home">
-            <img src="/assets/images/icones/home.svg" alt="Icone Home" id="home">Home
+<main>
+    <div class="header">
+        <div></div>
+        <h1>Vos histoires</h1>
+        <a href="/" class="icon">
+            <img src="/assets/images/icones/home.svg" alt="plow icon"> Home
         </a>
     </div>
-    <h1>Vos Histoires</h1>
+
     <section id="container">
         {% for story in stories %}
-            <article class="storiesDetails">
-                <div class="storyDetails">
-                    <div class="name">
-                        <h2><a href="/story/scene/start?storyId={{ story.id }}">{{ story.name | raw }}</a></h2>
+        <div class="border">
+            <article class="story-list" data-url="/story/engine/show?id={{ story.id }}">
+                <a href="/story/engine/show?id={{ story.id }}">
+                <div class="name">
+                    <h2>{{ story.name | raw }}</h2>
+                </div>
+
+                <div id="story-edit">
+                    <div class="story-show edit">
+                        <a href="/story/scene/start?story_id={{ story.id }}">
+                            <p class="toaster">Montrer l'histoire</p>
+                            <img src="/assets/images/icones/play.svg" alt="play icon" class="icon">
+                        </a>
                     </div>
-                    <div class="details">
-                        <h3>Nb scenes : </h3>
-                        <h3>Date création : </h3>
-                    </div>
-                </div>
-                <div class="storyEdit">
-                    <a href="/story/engine/show?id={{ story.id }}"><img src="/assets/images/icones/pen.svg" alt="pen icon" class="icon"></a>
-                </div>
-                <div class="storyShow">
-                    <a href=""><img src="/assets/images/icones/preview.svg" alt="preview icon" class="icon"></a>
-                </div>
-                <div class="storyDelete">
-                    <a
+                    <div class="story-delete edit">                    
+                        <a href='/story/engine/delete?id={{story.id}}'
                         onclick="if(confirm('Êtes vous sûr de vouloir supprimer cette histoire ?'))
                         { window.location.href='/story/engine/delete?id={{story.id}}';}">
-                        <img src="/assets/images/icones/trash.svg" alt="trash icon" class="icon">
-                    </a>
+                            <p class="toaster">Supprimer l'histoire</p>
+                            <img src="/assets/images/icones/trash.svg" alt="trash icon" class="icon">
+                        </a>
+                    </div>
                 </div>
+                </div>
+                </a>
             </article>
+        </div>
         {% endfor %}
     </section>
-    <a href="/story/engine/add" id="addStoryLink">Créer une histoire</a>
+    <a href="/story/engine/add" id="add-story-link">Créer une histoire</a>
 </main>
 {% endblock %}

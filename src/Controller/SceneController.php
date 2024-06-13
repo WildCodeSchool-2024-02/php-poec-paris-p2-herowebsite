@@ -13,11 +13,6 @@ class SceneController extends AbstractController
 
     private $choiceManager;
 
-    public const EXTENSIONS_ALLOWED = ['jpg', 'jpeg', 'png', 'webp', 'svg'];
-    public const MAX_UPLOAD_SIZE = 5000000;
-
-    public const MAX_SCENE_TITLE_LENGTH = 30;
-
     public function __construct()
     {
         parent::__construct();

@@ -10,7 +10,7 @@ return [
     // Affichage d'une histoire
     '' => ['HomeController', 'index'],
     'story' => ['StoryController', 'index'],
-    'story/scene/start' => ['SceneController', 'showFirstScene', ['storyId']],
+    'story/scene/start' => ['SceneController', 'showFirstScene', ['story_id']],
     'story/scene/show' => ['SceneController', 'show', ['scene_id']],
     // Création d'une histoire
     'story/engine' => ['StoryCreationController', 'index'],

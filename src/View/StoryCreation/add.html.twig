@@ -1,9 +1,29 @@
 {% extends 'layout.html.twig' %}
 
+{% block head_extra %}
+<link rel="stylesheet" href="/assets/css/engine/story-add.css">
+{% endblock %}
+
 {% block content %}
-<form method="post">
-<label for="name">title : </label>
-<input type="text" name="name" id="name">
-<input type="submit">
-</form>
+<main>
+    <nav class="links-back">
+        <a href="/story/engine" id="back-stories">
+            <img src="/assets/images/icones/story.svg" alt="plow icon"> Histoires
+        </a>
+        <a href="/" id="home">
+            <img src="/assets/images/icones/home.svg" alt="plow icon"> Home
+        </a>
+    </nav>
+
+    <section id="container">
+        <h1>Ajouter une histoire</h1>
+        <form method="post">
+            <div class="title">
+                <label for="name">Titre : </label>
+                <input type="text" name="name" id="name" maxlength="35">
+            </div>
+            <input type="submit" id="submit">
+        </form>
+    </section>
+</main>
 {% endblock %}

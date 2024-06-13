@@ -1,98 +1,153 @@
-const editScene = document.querySelectorAll('.edit_scene');
-const editSceneForm = document.querySelectorAll('.edit_scene_form');
-const cancelScene = document.querySelectorAll('.cancel_scene');
+const body = document.querySelector("body");
+const background = document.getElementById("background");
 
-for (let i = 0; i < editScene.length; i++) {
-    editScene[i].addEventListener('click', () => {
-        editSceneForm[i].style.display = 'inline-block';
+document.addEventListener('DOMContentLoaded', () => {
+    if (background.src && background.src !== window.location.href) {
+        body.style.backgroundImage = "url(" + background.src + ")";
+        background.classList.toggle("pas-empty");
+    }
+})
+
+const sceneTitle = document.querySelector('.title');
+const editScene = document.querySelector('.edit-scene');
+const editSceneForm = document.querySelector('.edit-scene-form');
+const cancelScene = document.querySelector('.cancel-scene');
+
+    editScene.addEventListener('click', () => {
+        editSceneForm.classList.toggle("visible");
+        sceneTitle.classList.toggle("visible");
     })
 
-    cancelScene[i].addEventListener('click', (e) => {
+    cancelScene.addEventListener('click', (e) => {
         e.preventDefault();
-        editSceneForm[i].style.display = 'none';
+        editSceneForm.classList.toggle("visible");
+        sceneTitle.classList.toggle("visible");
     })
-}
 
-const editCharacter = document.querySelectorAll('.edit_character');
-const editCharacterForm = document.querySelectorAll('.edit_character_form');
-const cancelCharacter = document.querySelectorAll('.cancel_character');
+const editCharacter = document.querySelectorAll('.edit-character');
+const editCharacterForm = document.querySelectorAll('.edit-character-form');
+const cancelCharacter = document.querySelectorAll('.cancel-character');
 
 for (let i = 0; i < editCharacter.length; i++) {
     editCharacter[i].addEventListener('click', () => {
-        editCharacterForm[i].style.display = 'inline-block';
+        editCharacterForm[i].classList.toggle("visible");
     })
 
-    cancelCharacter[i].addEventListener('click', (e) => {
+    cancelCharacter[i].addEventListener("click", (e) => {
         e.preventDefault();
-        editCharacterForm[i].style.display = 'none';
+        editCharacterForm[i].classList.toggle("visible");
     })
 }
 
-const editDialogue = document.querySelectorAll('.edit_dialogue');
-const editDialogueForm = document.querySelectorAll('.edit_dialogue_form');
-const cancelDialogue = document.querySelectorAll('.cancel_dialogue');
+const editDialogue = document.querySelectorAll('.edit-dialogue');
+const editDialogueForm = document.querySelectorAll('.edit-dialogue-form');
+const cancelDialogue = document.querySelectorAll('.cancel-dialogue');
 
 for (let i = 0; i < editDialogue.length; i++) {
     editDialogue[i].addEventListener('click', () => {
-        editDialogueForm[i].style.display = 'inline-block';
+        editDialogueForm[i].classList.toggle("visible");
     })
 
     cancelDialogue[i].addEventListener('click', (e) => {
         e.preventDefault();
-        editDialogueForm[i].style.display = 'none';
+        editDialogueForm[i].classList.toggle("visible");
     })
 }
 
-const editChoice = document.querySelectorAll('.edit_choice');
-const editChoiceForm = document.querySelectorAll('.edit_choice_form');
-const cancelChoice = document.querySelectorAll('.cancel_choice');
+const editChoice = document.querySelectorAll('.edit-choice');
+const editChoiceForm = document.querySelectorAll('.edit-choice-form');
+const cancelChoice = document.querySelectorAll('.cancel-choice');
 
 for (let i = 0; i < editChoice.length; i++) {
     editChoice[i].addEventListener('click', () => {
-        editChoiceForm[i].style.display = 'inline-block';
+        editChoiceForm[i].classList.toggle("visible");
     })
 
     cancelChoice[i].addEventListener('click', (e) => {
         e.preventDefault();
-        editChoiceForm[i].style.display = 'none';
+        editChoiceForm[i].classList.toggle("visible");
     })
 }
 
-const addCharacter = document.querySelector('.add_character');
-const addCharacterForm = document.querySelector('.add_character_form');
+const addCharacter = document.querySelector('.add-character');
+const addCharacterForm = document.querySelector('.add-character-form');
 
 addCharacter.addEventListener('click', () => {
-    addCharacterForm.style.display = 'inline-block';
+    addCharacterForm.classList.toggle("visible");
 })
 for (let i = 0; i < cancelCharacter.length; i++) {
     cancelCharacter[i].addEventListener('click', (e) => {
         e.preventDefault();
-        addCharacterForm.style.display = 'none';
+        addCharacterForm.classList.toggle("visible");
     })
 }
 
-const addDialogue = document.querySelector('.add_dialogue');
-const addDialogueForm = document.querySelector('.add_dialogue_form');
+const addDialogue = document.querySelector('.add-dialogue');
+const addDialogueForm = document.querySelector('.add-dialogue-form');
+
 
 addDialogue.addEventListener('click', () => {
-    addDialogueForm.style.display = 'inline-block';
+    addDialogueForm.classList.toggle("visible");
 })
 for (let i = 0; i < cancelDialogue.length; i++) {
-    cancelDialogue[i].addEventListener('click', (e) => {
+    cancelDialogue[i].addEventListener("click", (e) => {
         e.preventDefault();
-        addDialogueForm.style.display = 'none';
+        addDialogueForm.classList.toggle("visible");
     })
 }
 
-const addChoice = document.querySelector('.add_choice');
-const addChoiceForm = document.querySelector('.add_choice_form');
+const addChoice = document.querySelector('.add-choice');
+const addChoiceForm = document.querySelector('.add-choice-form');
+const finalScene = document.getElementById("final-scene");
+const choicesList = document.querySelector(".choices-list");
 
-addChoice.addEventListener('click', () => {
-    addChoiceForm.style.display = 'inline-block';
-})
+addChoice.addEventListener("click", () => {
+    const currentChoices = choicesList.querySelectorAll("li");
+    if (currentChoices.length < 3) {
+        addChoiceForm.classList.toggle("visible");
+    } else {
+        alert("Vous ne pouvez pas ajouter plus de 3 choix.");
+    }
+});
+
 for (let i = 0; i < cancelChoice.length; i++) {
     cancelChoice[i].addEventListener('click', (e) => {
         e.preventDefault();
-        addChoiceForm.style.display = 'none';
-    })
+        editChoiceForm[i].style.display = "none";
+    });
 }
+
+finalScene.addEventListener('click', () => {
+    addChoice.classList.toggle('hidden-choices');
+    addChoiceForm.style.display = 'none';
+})
+
+const characterButton = document.querySelector('#character-button');
+const characterView = document.querySelector('#character-view');
+
+const dialogueButton = document.querySelector('#dialogue-button');
+const dialogueView = document.querySelector('#dialogue-view');
+
+const choiceButton = document.querySelector('#choice-button');
+const choiceView = document.querySelector('#choice-view');
+
+characterButton.addEventListener('click', () => {
+
+    characterView.style.display = 'block';
+    dialogueView.style.display = 'none';
+    choiceView.style.display = 'none';
+});
+
+dialogueButton.addEventListener('click', () => {
+
+    characterView.style.display = 'none';
+    dialogueView.style.display = 'block';
+    choiceView.style.display = 'none';
+});
+
+choiceButton.addEventListener('click', () => {
+
+    characterView.style.display = 'none';
+    dialogueView.style.display = 'none';
+    choiceView.style.display = 'block';
+});
