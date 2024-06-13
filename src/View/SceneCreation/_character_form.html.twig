@@ -1,0 +1,49 @@
+<ul>
+  {% for character in characters %}
+  <li>
+    {{character.name | raw }}
+    <button onclick="if(confirm('Êtes vous sûr de vouloir supprimer ce personnage ?'))
+      { window.location.href='/story/engine/character/delete?story_id={{story.id}}&scene_id={{scene.id}}&id={{character.id}}';}">
+      &#x2715;
+    </button>
+    <button class="edit-character">Editer</button>
+    <form method="post" enctype="multipart/form-data" action="/story/engine/character/update" class="edit-character-form">
+
+      {% if character.sprite %}
+      <img src="/assets/images/sprites/{{character.sprite}}">
+      {% endif %}
+
+      <input type="hidden" name="story_id" value={{ story.id }}>
+      <input type="hidden" name="scene_id" value={{ scene.id }}>
+      <input type="hidden" name="character_id" value={{ character.id }}>
+      <input type="text" name="character_name" id="character_name" value="{{ character.name | raw }}" maxlength="35">
+      <label for="sprite">sprite</label>
+      <input type="file" name="sprite" id="sprite">
+      <input type="hidden" name="delete_sprite" id="delete_sprite_{{character.id}}" value="false">
+
+      <input type="submit">
+
+      <button type="button" onclick="
+        if (confirm('Êtes-vous sûr de vouloir supprimer ce sprite ?')) {
+            document.getElementById('delete_sprite_{{character.id}}').value = 'true';
+            this.form.submit();
+        }
+      "> &#x2715; Supprimer le sprite</button>
+      <button class="cancel-character">✖</button>
+
+    </form>
+  </li>
+  {% endfor %}
+
+  <button class='add-character'>Ajouter un personnage</button>
+  <form method='post' enctype="multipart/form-data" action="/story/engine/character/add" class="add-character-form">
+    <input type="hidden" name="story_id" value={{ story.id }}>
+    <input type="hidden" name="scene_id" value={{ scene.id }}>
+    <label for="character_name"></label>
+    <input type="text" id="character_name" name="character_name" maxlength="35">
+    <label for="sprite">sprite</label>
+    <input type="file" id="sprite" name="sprite">
+    <input type="submit">
+    <button class="cancel-add-character">&#10006;</button>
+  </form>
+</ul>

@@ -1,14 +1,15 @@
 <ul class="choices-list">
   {% for choice in choices %}
+  <div>
   <li class="choice-item">
-{{ choice.body | raw }}
+    <p>{{ choice.body | raw }}</p>
   {% if choice.next_scene_id == 0 %}
     {{ choice.next_scene_name | raw }}
   {% else %}
     <a href="/story/engine/scene/show?story_id={{ story.id }}&id={{ choice.next_scene_id }}">
     {{ choice.next_scene_name | raw }}</a>
   {% endif %}
-    <button onclick="if(confirm('Êtes vous sûr de vouloir supprimer ce choix ?')) { window.location.href='/story/engine/choice/delete?story_id={{story.id}}&scene_id={{scene.id}}&id={{choice.id}}';}"> &#x1F5D1;</button>
+    <button class="del_choice" onclick="if(confirm('Êtes vous sûr de vouloir supprimer ce choix ?')) { window.location.href='/story/engine/choice/delete?story_id={{story.id}}&scene_id={{scene.id}}&id={{choice.id}}';}"> &#x2715;</button>
     <button class="edit-choice">Editer</button>
     <form method="post" action="/story/engine/choice/update" class="edit-choice-form">
     <input type="hidden" name="id" value="{{ choice.id }}">
@@ -25,6 +26,7 @@
     <input type="submit">
     <button class="cancel-choice">&#10006;</button>
     </form>
+    </div>
   </li>
   {% endfor %}
   <div id="final-scene-wrapper">
