@@ -1,3 +1,10 @@
+const body = document.querySelector("body");
+const background = document.getElementById("background");
+
+document.addEventListener('DOMContentLoaded', () => {
+    body.style.backgroundImage = "url(" + background.src + ")";
+})
+
 const editScene = document.querySelectorAll('.edit-scene');
 const editSceneForm = document.querySelectorAll('.edit-scene-form');
 const cancelScene = document.querySelectorAll('.cancel-scene');

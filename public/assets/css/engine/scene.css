@@ -101,22 +101,8 @@ header #home img {
     text-shadow: 1px 1px 4px black;
 }
 
-#addSceneLink {
-    width: 15rem;
-    height: 3rem;
-    margin-top: 1.5rem;
-    margin-left: 28rem;
-    background: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    font-family: 'Lancelot';
-    color: #000;
-    font-size: 1.2rem;
-    font-weight: 700;
-    border-radius: 15px;
-    opacity: .6;
+#container #background {
+    display: none;
 }
 
 .edit-scene-form,
