@@ -46,7 +46,7 @@ for (let i = 0; i < editDialogue.length; i++) {
 
     cancelDialogue[i].addEventListener('click', (e) => {
         e.preventDefault();
-        editDialogueForm[i].style.display = 'none';
+        editDialogueForm[i].classList.toggle("visible");
     })
 }
 
@@ -61,7 +61,7 @@ for (let i = 0; i < editChoice.length; i++) {
 
     cancelChoice[i].addEventListener('click', (e) => {
         e.preventDefault();
-        editChoiceForm[i].style.display = 'none';
+        editChoiceForm[i].classList.toggle("visible");
     })
 }
 
@@ -69,12 +69,12 @@ const addCharacter = document.querySelector('.add-character');
 const addCharacterForm = document.querySelector('.add-character-form');
 
 addCharacter.addEventListener('click', () => {
-    addCharacterForm.style.display = 'inline-block';
+    addCharacterForm.classList.toggle("visible");
 })
 for (let i = 0; i < cancelCharacter.length; i++) {
     cancelCharacter[i].addEventListener('click', (e) => {
         e.preventDefault();
-        addCharacterForm.style.display = 'none';
+        addCharacterForm.classList.toggle("visible");
     })
 }
 
@@ -83,12 +83,12 @@ const addDialogueForm = document.querySelector('.add-dialogue-form');
 
 
 addDialogue.addEventListener('click', () => {
-    addDialogueForm.style.display = 'inline-block';
+    addDialogueForm.classList.toggle("visible");
 })
 for (let i = 0; i < cancelDialogue.length; i++) {
     cancelDialogue[i].addEventListener('click', (e) => {
         e.preventDefault();
-        addDialogueForm.style.display = 'none';
+        addDialogueForm.classList.toggle("visible");
     })
 }
 
@@ -97,12 +97,12 @@ const addChoiceForm = document.querySelector('.add-choice-form');
 const finalScene = document.getElementById("final-scene");
 
 addChoice.addEventListener('click', () => {
-    addChoiceForm.style.display = 'inline-block';
+    addChoiceForm.classList.toggle("visible");
 })
 for (let i = 0; i < cancelChoice.length; i++) {
     cancelChoice[i].addEventListener('click', (e) => {
         e.preventDefault();
-        addChoiceForm.style.display = 'none';
+        addChoiceForm.classList.toggle("visible");
     })
 }
 finalScene.addEventListener('click', () => {
