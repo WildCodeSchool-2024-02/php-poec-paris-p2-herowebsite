@@ -9,22 +9,27 @@ class CharacterController extends AbstractController
     private $characterManager;
 
     public const TARGET_DIR = 'assets/images/sprites/';
-    public const EXTENSIONS_ALLOWED = ['jpg', 'jpeg', 'png', 'webp', 'svg'];
+    public const EXTENSIONS_ALLOWED = ['jpg', 'jpeg', 'png', 'webp'];
     public const MAX_UPLOAD_SIZE = 5000000;
 
-    public const MAX_CHARACTER_NAME_LENGTH = 30;
+    public const MAX_CHARACTER_NAME_LENGTH = 35;
 
     public function __construct()
     {
         parent::__construct();
         $this->characterManager = new CharacterManager();
     }
+
     public function add(): ?string
     {
         $character = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $character = array_map('htmlentities', array_map('trim', $_POST));
             $errors = [];
+
+            if (empty($character["character_name"])) {
+                $errors[] = "Le nom du personnage est requis.";
+            }
 
             if (!empty($_FILES['sprite']['full_path'])) {
                 $uploadErrors = $this->handleSpriteUpload();
@@ -36,23 +41,18 @@ class CharacterController extends AbstractController
                 $character['sprite'] = "";
             }
 
-            $validationErrors = $this->validateCharacter($character);
+            $validationErrors = $this->validateCharacter($character, $character['story_id']);
             $errors = array_merge($errors, $validationErrors);
 
             if (empty($errors)) {
                 $this->characterManager->insert($character);
-            } elseif (!empty($character["character_name"])) {
-                // Log des erreurs dans un fichier de journal
-                error_log('Erreurs lors de l\'ajout du sprite : ' . implode(', ', $errors));
-                // Ajout du personnage en cas d'absence de sprite
-                $this->characterManager->insert($character);
             } else {
-                error_log('erreur lors de l\'ajout du personnage : ' . implode(', ', $errors));
+                error_log('Erreurs lors de l\'ajout du personnage : ' . implode(', ', $errors));
             }
         }
 
-        header('Location:/story/engine/scene/show?story_id='
-            . $character['story_id'] . '&id=' . $character['scene_id']);
+        header('Location:/story/engine/scene/show?story_id=' . $character['story_id'] . '&id='
+        . $character['scene_id']);
         return null;
     }
 
@@ -72,6 +72,10 @@ class CharacterController extends AbstractController
             $character = array_map('htmlentities', array_map('trim', $_POST));
             $previousSettings = $this->characterManager->selectOneById($character['character_id']);
 
+            if (empty($character["character_name"])) {
+                $errors[] = "Le nom du personnage est requis.";
+            }
+
             if (!empty($_FILES['sprite']['full_path'])) {
                 $uploadErrors = $this->handleSpriteUpload();
                 $errors = array_merge($errors, $uploadErrors);
@@ -80,6 +84,9 @@ class CharacterController extends AbstractController
                 } else {
                     $character['sprite'] = $previousSettings['sprite'];
                 }
+            } elseif ($character['delete_sprite'] === 'true') {
+                $this->deleteSpriteFile($previousSettings['sprite']);
+                $character['sprite'] = "";
             } else {
                 $character['sprite'] = $previousSettings['sprite'];
             }
@@ -88,18 +95,18 @@ class CharacterController extends AbstractController
                 $character['character_name'] = $previousSettings['name'];
             }
 
-            $validationErrors = $this->validateCharacter($character);
+            $validationErrors = $this->validateCharacter($character, $character['story_id']);
             $errors = array_merge($errors, $validationErrors);
 
             if (empty($errors)) {
                 $this->characterManager->update($character);
             } else {
-                error_log('Erreurs lors de l\'édition du sprite: ' . implode(', ', $errors));
+                error_log('Erreurs lors de l\'édition du personnage : ' . implode(', ', $errors));
             }
         }
 
-        header('Location:/story/engine/scene/show?story_id='
-            . $character['story_id'] . '&id=' . $character['scene_id']);
+        header('Location:/story/engine/scene/show?story_id=' . $character['story_id'] . '&id='
+        . $character['scene_id']);
         return null;
     }
 
@@ -115,18 +122,34 @@ class CharacterController extends AbstractController
         );
     }
 
-    public function validateCharacter(array $character): array
+    public function validateCharacter(array $character, string $storyId): array
     {
         $errors = [];
+        $characterName = html_entity_decode($character["character_name"]);
 
-        if (strlen($character["character_name"]) > self::MAX_CHARACTER_NAME_LENGTH) {
+        $length = mb_strlen($characterName, 'UTF-8');
+        if ($length > self::MAX_CHARACTER_NAME_LENGTH) {
             $errors[] = "Le nom du personnage est trop long, maximum : "
-                . self::MAX_CHARACTER_NAME_LENGTH . " caractères.";
+            . self::MAX_CHARACTER_NAME_LENGTH . " caractères.";
+        }
+
+        $normalizedCharName = $this->normalizeName($characterName);
+
+        $charactersInStory = $this->characterManager->selectAll($storyId);
+        foreach ($charactersInStory as $existingCharacter) {
+            if (isset($character['character_id']) && $existingCharacter['id'] == $character['character_id']) {
+                continue;
+            }
+
+            $normalizedExistName = $this->normalizeName($existingCharacter['name']);
+            if ($normalizedExistName === $normalizedCharName) {
+                $errors[] = "Ce nom de personnage est déjà utilisé dans cette histoire.";
+                break;
+            }
         }
 
         return $errors;
     }
-
     public function handleSpriteUpload(): array
     {
         $errors = [];
@@ -154,5 +177,30 @@ class CharacterController extends AbstractController
         }
 
         return $errors;
+    }
+
+    private function normalizeName(string $name): string
+    {
+        $name = mb_strtolower($name, 'UTF-8');
+
+        $name = strtr(
+            $name,
+            'àáâäãåçèéêëìíîïñòóôöõùúûüýÿ',
+            'aaaaaaceeeeiiiinooooouuuuyy'
+        );
+
+        $name = preg_replace('/\s+/', '', $name);
+
+        $name = preg_replace('/[^a-z0-9]/', '', $name);
+
+        return $name;
+    }
+
+    private function deleteSpriteFile(string $fileName): void
+    {
+        $filePath = self::TARGET_DIR . $fileName;
+        if (file_exists($filePath)) {
+            unlink($filePath);
+        }
     }
 }

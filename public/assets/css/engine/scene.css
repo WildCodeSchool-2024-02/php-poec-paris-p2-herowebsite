@@ -108,7 +108,7 @@ header .edit-scene {
     text-shadow: 1px 1px 4px black;
 }
 
-#container #background {
+#container #scene-background {
     display: none;
 }
 

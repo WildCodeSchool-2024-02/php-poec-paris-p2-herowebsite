@@ -7,7 +7,6 @@ use App\Model\StoryManager;
 class StoryController extends AbstractController
 {
     private $storyManager;
-    public const MAX_TITLE_LENGTH = 30;
 
     public function __construct()
     {

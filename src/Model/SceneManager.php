@@ -25,7 +25,7 @@ class SceneManager extends AbstractManager
     {
         $statement = $this->pdo->prepare(
             "UPDATE " . self::TABLE .
-            " SET `name` = :name, `background` = :background 
+            " SET `name` = :name, `background` = :background
             WHERE `id` = :scene_id ;"
         );
         $statement->bindValue(':name', $scene['name'], PDO::PARAM_STR);
@@ -64,16 +64,4 @@ class SceneManager extends AbstractManager
 
         return $this->pdo->query($query)->fetchAll();
     }
-
-    // public function selectAllByStory(string $storyId): ?array
-    // {
-    //     $statement = $this->pdo->query(
-    //         "SELECT scene.* FROM `scene`
-    //         INNER JOIN `story` ON story.id = scene.story_id
-    //         WHERE story.id = " . $storyId .
-    //         " ORDER BY scene.id;"
-    //     );
-
-    //     return $scenes = $statement->fetchAll(PDO::FETCH_ASSOC);
-    // }
 }

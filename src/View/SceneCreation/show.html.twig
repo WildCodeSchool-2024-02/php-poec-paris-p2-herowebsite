@@ -2,7 +2,11 @@
 
 {% block head_extra %}
 <link rel="stylesheet" href="/assets/css/engine/scene.css">
-<script src="/assets/js/edit.js" defer></script>
+{# <script src="/assets/js/edit.js" defer></script> #}
+<script src="/assets/js/choices.js" defer></script>
+<script src="/assets/js/dialogues.js" defer></script>
+<script src="/assets/js/characters.js" defer></script>
+<script src="/assets/js/scene-engine.js" defer></script>
 {% endblock %}
 
 {% block content %}
@@ -23,11 +27,11 @@
   </header>
   <main id="main-scene">
     <section id="container">
-      <img id="background" src={% if scene.background %}{{ '/assets/images/backgrounds/' ~ scene.background | raw }}{% else %}""{% endif %} alt="Background">
+      <img id="scene-background" src={% if scene.background %}{{ '/assets/images/backgrounds/' ~ scene.background | raw }}{% else %}""{% endif %} alt="Background">
 
-        <button id="character-button">Personnages :</button>
-        <button id="dialogue-button">Répliques :</button>
-        <button id="choice-button">Choix :</button>
+        <button id="character-button">Personnages</button>
+        <button id="dialogue-button">Répliques</button>
+        <button id="choice-button">Choix</button>
 
         <div id="character-view">
         {% include 'SceneCreation/_character_form.html.twig' %}

@@ -33,7 +33,7 @@ for (let i = 0; i < editCharacter.length; i++) {
         editCharacterForm[i].classList.toggle("visible");
     })
 
-    cancelCharacter[i].addEventListener('click', (e) => {
+    cancelCharacter[i].addEventListener("click", (e) => {
         e.preventDefault();
         editCharacterForm[i].classList.toggle("visible");
     })
@@ -90,7 +90,7 @@ addDialogue.addEventListener('click', () => {
     addDialogueForm.classList.toggle("visible");
 })
 for (let i = 0; i < cancelDialogue.length; i++) {
-    cancelDialogue[i].addEventListener('click', (e) => {
+    cancelDialogue[i].addEventListener("click", (e) => {
         e.preventDefault();
         addDialogueForm.classList.toggle("visible");
     })
@@ -99,16 +99,24 @@ for (let i = 0; i < cancelDialogue.length; i++) {
 const addChoice = document.querySelector('.add-choice');
 const addChoiceForm = document.querySelector('.add-choice-form');
 const finalScene = document.getElementById("final-scene");
+const choicesList = document.querySelector(".choices-list");
 
-addChoice.addEventListener('click', () => {
-    addChoiceForm.classList.toggle("visible");
-})
+addChoice.addEventListener("click", () => {
+    const currentChoices = choicesList.querySelectorAll("li");
+    if (currentChoices.length < 3) {
+        addChoiceForm.classList.toggle("visible");
+    } else {
+        alert("Vous ne pouvez pas ajouter plus de 3 choix.");
+    }
+});
+
 for (let i = 0; i < cancelChoice.length; i++) {
     cancelChoice[i].addEventListener('click', (e) => {
         e.preventDefault();
-        addChoiceForm.classList.toggle("visible");
-    })
+        editChoiceForm[i].style.display = "none";
+    });
 }
+
 finalScene.addEventListener('click', () => {
     addChoice.classList.toggle('hidden-choices');
     addChoiceForm.style.display = 'none';
