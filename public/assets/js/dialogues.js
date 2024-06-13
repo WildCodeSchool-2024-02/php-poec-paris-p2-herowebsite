@@ -19,13 +19,14 @@ for (let i = 0; i < editDialogue.length; i++) {
 
 const addDialogue = document.querySelector('.add-dialogue');
 const addDialogueForm = document.querySelector('.add-dialogue-form');
+const cancelAddDialogue = document.querySelectorAll('.cancel-add-dialogue');
 
 
 addDialogue.addEventListener('click', () => {
     addDialogueForm.classList.toggle("visible");
 })
-for (let i = 0; i < cancelDialogue.length; i++) {
-    cancelDialogue[i].addEventListener("click", (e) => {
+for (let i = 0; i < cancelAddDialogue.length; i++) {
+    cancelAddDialogue[i].addEventListener("click", (e) => {
         e.preventDefault();
         addDialogueForm.classList.toggle("visible");
     })

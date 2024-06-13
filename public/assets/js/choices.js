@@ -19,6 +19,8 @@ for (let i = 0; i < editChoice.length; i++) {
 
 const addChoice = document.querySelector('.add-choice');
 const addChoiceForm = document.querySelector('.add-choice-form');
+const cancelAddChoice = document.querySelector('.cancel-add-choice');
+
 const finalScene = document.getElementById("final-scene");
 const choicesList = document.querySelector(".choices-list");
 
@@ -31,12 +33,10 @@ addChoice.addEventListener("click", () => {
     }
 });
 
-for (let i = 0; i < cancelChoice.length; i++) {
-    cancelChoice[i].addEventListener('click', (e) => {
-        e.preventDefault();
-        editChoiceForm[i].style.display = "none";
-    });
-}
+cancelAddChoice.addEventListener("click", (e)=> {
+     e.preventDefault();
+    addChoiceForm.classList.toggle("visible");
+})
 
 //toggle and use finalScene
 const finalSceneWrapper = document.getElementById("final-scene-wrapper");
