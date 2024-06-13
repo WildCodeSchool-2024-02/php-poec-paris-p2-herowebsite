@@ -189,3 +189,19 @@
     height: 100%;
     object-fit: contain;
 }
+
+.add-character-form {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.add-character-form .edit-character {
+    margin-top: 1.2rem;
+}
+
+.add-character-form .character-input {
+    margin-top: 1rem;
+    margin-bottom: 0.2rem;
+}

@@ -6,18 +6,25 @@
 
 <button class='add-character'>✚</button>
 
-  <form method='post' enctype="multipart/form-data" action="/story/engine/character/add" class="add-character-form">
 
+
+  <form method='post' enctype="multipart/form-data" action="/story/engine/character/add" class="add-character-form">
+    <h3>Ajouter un Personnage</h3>
     <input type="hidden" name="story_id" value={{ story.id }}>
     <input type="hidden" name="scene_id" value={{ scene.id }}>
 
-    <label for="character_name"></label>
-    <input type="text" id="character_name" name="character_name" maxlength="35">
+    <div class="character-input">
+    <label for="character_name">Nom :</label>
+    </div>
 
-    <label for="sprite">sprite</label>
+    <input type="text" id="character_name" name="character_name" maxlength="35"><br>
+
+    <div class="character-input">
+    <label for="sprite">Apparence :</label>
+    </div>
     <input type="file" id="sprite" name="sprite">
 
-    <input type="submit">
+    <input type="submit" class="edit-character">
   </form>
 
 </div>
