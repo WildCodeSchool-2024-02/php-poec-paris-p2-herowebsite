@@ -113,6 +113,7 @@ header #home img {
 .add-dialogue-form,
 .add-choice-form,
 .hidden-choices,
-.hidden_dialogue {
+.hidden_dialogue,
+.hidden {
     display: none;
 }

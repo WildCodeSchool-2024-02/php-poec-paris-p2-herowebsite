@@ -109,3 +109,33 @@ finalScene.addEventListener('click', () => {
     addChoice.classList.toggle('hidden-choices');
     addChoiceForm.style.display = 'none';
 })
+
+const characterButton = document.querySelector('#character-button');
+const characterView = document.querySelector('#character-view');
+
+const dialogueButton = document.querySelector('#dialogue-button');
+const dialogueView = document.querySelector('#dialogue-view');
+
+const choiceButton = document.querySelector('#choice-button');
+const choiceView = document.querySelector('#choice-view');
+
+characterButton.addEventListener('click', () => {
+
+    characterView.style.display = 'block';
+    dialogueView.style.display = 'none';
+    choiceView.style.display = 'none';
+});
+
+dialogueButton.addEventListener('click', () => {
+
+    characterView.style.display = 'none';
+    dialogueView.style.display = 'block';
+    choiceView.style.display = 'none';
+});
+
+choiceButton.addEventListener('click', () => {
+
+    characterView.style.display = 'none';
+    dialogueView.style.display = 'none';
+    choiceView.style.display = 'block';
+});
