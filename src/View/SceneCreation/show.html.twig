@@ -20,7 +20,7 @@
   </header>
   <main id="main-scene">
     <section id="container">
-        <img id="background" height=300 width=300 src="/assets/images/backgrounds/{{scene.background | raw}}" alt="Background">
+      <img id="background" src={% if scene.background %}{{ '/assets/images/backgrounds/' ~ scene.background | raw }}{% else %}""{% endif %} alt="Background">
         {% include 'SceneCreation/_scene_edit_form.html.twig' %}
 
         <h2>Personnages :</h2>
