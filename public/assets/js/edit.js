@@ -14,12 +14,12 @@ const cancelScene = document.querySelectorAll('.cancel-scene');
 
 for (let i = 0; i < editScene.length; i++) {
     editScene[i].addEventListener('click', () => {
-        editSceneForm[i].classList.toggle("hidden");
+        editSceneForm[i].classList.toggle("visible");
     })
 
     cancelScene[i].addEventListener('click', (e) => {
         e.preventDefault();
-        editSceneForm[i].style.display = 'none';
+        editSceneForm[i].classList.toggle("visible");
     })
 }
 

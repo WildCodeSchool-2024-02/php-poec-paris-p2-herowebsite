@@ -82,9 +82,16 @@ header #home img {
     filter: drop-shadow(1px 1px 1px black);
 }
 
+header .edit-scene {
+    width: 1.2rem;
+    height: 1.2rem;
+    cursor: pointer;
+    filter: drop-shadow(1px 1px 1px black);
+}
+
 #container {
-    width: 90%;
-    height: 60%;
+    width: 90vw;
+    height: 60vh;
     background: rgba(201, 200, 200, 0.6);
     padding: 2rem 1rem;
     margin-right: 1rem;

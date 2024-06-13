@@ -11,7 +11,10 @@
       <img src="/assets/images/icones/story.svg" alt="retour aux scènes"> Scènes
     </a>
     <div id="title">
-      <h1>Scène : {{scene.name | raw }}</h1>
+      <h1>Scène : {{scene.name | raw }} <img class="edit-scene" src="/assets/images/icones/whitepen.svg" alt="Editer le nom de la scène"></h1>
+
+      {% include 'SceneCreation/_scene_edit_form.html.twig' %}
+      
       <h2>Histoire : {{ story.name | raw }} </h2>
     </div>
     <a href="/" id="home">
@@ -21,7 +24,6 @@
   <main id="main-scene">
     <section id="container">
       <img id="background" src={% if scene.background %}{{ '/assets/images/backgrounds/' ~ scene.background | raw }}{% else %}""{% endif %} alt="Background">
-        {% include 'SceneCreation/_scene_edit_form.html.twig' %}
 
         <button id="character-button">Personnages :</button>
         <button id="dialogue-button">Répliques :</button>
