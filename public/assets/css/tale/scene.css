@@ -1,6 +1,7 @@
 main {
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
 }
 
 #main-scene {
@@ -26,6 +27,7 @@ main {
     margin: .5rem;
     background-color: rgba(250, 235, 215, 0.438);
     position: relative;
+    backdrop-filter: blur(4px);
 }
 
 #main-scene #container .dialogues {
@@ -51,22 +53,27 @@ main {
     width: 10rem;
     height: 2rem;
     background-color: var(--color-button-hover);
-    background-image: url(../images/backgrounds/brush.png);
+    /* background-image: url(../../images/backgrounds/brush.png); */
     background-size: 130%;
     background-position: center;
-    opacity: .75;
     padding-bottom: .2%;
-    padding-left: 5%;
     font-family: var(--font-title);
     font-size: 1.5rem;
     color: var(--color-text);
     border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    text-shadow: 1px 1px 2px black;
 }
 
 #main-scene #container .dialogues .dialogue-content {
     margin-top: 5rem;
     margin-left: 12rem;
     margin-right: 2rem;
+}
+
+.dialogue-body {
+    font-size: 1.2rem;
 }
 
 #main-scene #container .sprites {
